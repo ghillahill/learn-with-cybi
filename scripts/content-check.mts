@@ -12,7 +12,7 @@ async function main() {
     process.exit(1);
   }
   console.log(
-    `content:check — ok (moduli: ${content.modules.length}, lezioni: ${lessons}, voci di glossario: ${content.glossary.length}).`,
+    `content:check — ok (moduli: ${content.modules.length}, lezioni: ${lessons}, voci di glossario: ${content.glossary.length}, eventi della timeline: ${content.timeline.events.length}).`,
   );
 }
 

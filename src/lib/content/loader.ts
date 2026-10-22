@@ -8,11 +8,13 @@ import {
   lessonFrontmatterSchema,
   moduleManifestSchema,
   quizSchema,
+  timelineSchema,
   type GlossaryEntry,
   type LessonFrontmatter,
   type LessonStatus,
   type ModuleManifest,
   type Quiz,
+  type Timeline,
 } from "./schema";
 
 export const CONTENT_DIR = path.join(process.cwd(), "content");
@@ -33,6 +35,7 @@ export type Module = Omit<ModuleManifest, "lessons"> & {
 export type Content = {
   modules: Module[];
   glossary: GlossaryEntry[];
+  timeline: Timeline;
 };
 
 export class ContentError extends Error {
@@ -169,7 +172,12 @@ export function loadContent(root: string = CONTENT_DIR): Content {
     glossaryFile,
   ).entries;
 
-  return { modules, glossary };
+  const timelineFile = path.join(root, "timeline.yaml");
+  const timeline = parseWith(timelineSchema, readYaml(timelineFile), timelineFile);
+  // Le date parziali in formato ISO si ordinano come stringhe ("1986" < "1986-01-19").
+  timeline.events.sort((a, b) => a.date.localeCompare(b.date));
+
+  return { modules, glossary, timeline };
 }
 
 // In sviluppo rilegge i file a ogni richiesta, così le modifiche ai contenuti
@@ -220,4 +228,20 @@ export function findLesson(
 
 export function getGlossary(): GlossaryEntry[] {
   return getContent().glossary;
+}
+
+// Eventi visibili, con il link alla lezione solo se anche la lezione è visibile.
+export function getVisibleTimeline(): Timeline {
+  const { timeline } = getContent();
+  const modules = getVisibleModules();
+  const lessonVisible = (ref: { module: string; lesson: string }) =>
+    modules.some((m) => m.id === ref.module && m.lessons.some((l) => l.id === ref.lesson));
+  return {
+    sources: timeline.sources,
+    events: timeline.events
+      .filter((event) => isVisible(event.status))
+      .map((event) =>
+        event.lesson && !lessonVisible(event.lesson) ? { ...event, lesson: undefined } : event,
+      ),
+  };
 }

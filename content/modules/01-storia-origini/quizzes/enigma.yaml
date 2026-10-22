@@ -27,18 +27,19 @@ questions:
         explain: Giusto. Colossus serviva contro Lorenz, il cifrario dell'alto comando tedesco.
 
   - id: ordine
-    type: single
-    prompt: Qual è l'ordine cronologico corretto?
-    options:
-      - text: Rejewski ricostruisce Enigma → incontro di Pyry → prima Bombe → Colossus
-        correct: true
-        explain: Esatto. 1932, 1939, 1940, 1944.
-      - text: Prima Bombe → Rejewski ricostruisce Enigma → Colossus → incontro di Pyry
-        correct: false
-        explain: No. La Bombe britannica (1940) parte proprio dal lavoro polacco (1932) condiviso a Pyry (1939).
-      - text: Colossus → prima Bombe → incontro di Pyry → Rejewski ricostruisce Enigma
-        correct: false
-        explain: No. È l'ordine inverso. Colossus arriva per ultimo, nel 1944.
+    type: order
+    prompt: Metti in ordine cronologico questi eventi, dal più antico al più recente.
+    items:
+      - text: Rejewski ricostruisce il cablaggio dell'Enigma militare
+        explain: Dicembre 1932, con la teoria delle permutazioni e i documenti dell'intelligence francese.
+      - text: A Pyry i polacchi condividono il loro lavoro con britannici e francesi
+        explain: Luglio 1939 (25 e 26 luglio secondo GCHQ).
+      - text: Entra in servizio la prima Bombe, "Victory"
+        explain: Marzo 1940. La Bombe parte dalla "bomba" polacca.
+      - text: Il diagonal board di Welchman rende la Bombe molto più efficace
+        explain: Agosto 1940, pochi mesi dopo "Victory".
+      - text: Colossus è operativo contro il cifrario Lorenz
+        explain: Febbraio 1944. È l'evento più recente dei cinque.
 
   - id: tutte
     type: single

@@ -2,10 +2,13 @@ import Link from "next/link";
 import { CybiAvatar } from "@/components/cybi/cybi-avatar";
 import { XpBadge } from "@/components/progress/lesson-progress";
 import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./theme-toggle";
 
+// Su schermi stretti "Percorso" si nasconde: ci porta già il logo.
 const links = [
-  { href: "/", label: "Percorso" },
+  { href: "/", label: "Percorso", className: "hidden sm:inline-flex" },
+  { href: "/timeline", label: "Timeline" },
   { href: "/glossario", label: "Glossario" },
   { href: "/progressi", label: "Progressi" },
 ];
@@ -23,7 +26,7 @@ export function SiteHeader() {
             <Link
               key={link.href}
               href={link.href}
-              className={buttonVariants({ variant: "ghost", size: "sm" })}
+              className={cn(buttonVariants({ variant: "ghost", size: "sm" }), link.className)}
             >
               {link.label}
             </Link>

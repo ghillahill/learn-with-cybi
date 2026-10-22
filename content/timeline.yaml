@@ -1,0 +1,958 @@
+# Timeline interattiva (LEARNWITHCYBI.md §8.2).
+# Ogni evento cita almeno una fonte di `sources` per id. `date` è una data
+# parziale: AAAA, AAAA-MM o AAAA-MM-GG. `approximate: true` mostra "circa".
+# `note` segnala stime, date in conflitto e attribuzioni contestate (⚠ in §9).
+# Come le lezioni, in produzione si vedono solo gli eventi `pubblicata`.
+
+sources:
+  # Modulo 1
+  - id: newscientist-2011
+    level: B
+    title: "Dot-dash-diss: The gentleman hacker's 1903 lulz"
+    author: Paul Marks
+    publisher: New Scientist
+    year: 2011
+  - id: rigb-maskelyne
+    level: B
+    title: Pagina storica sull'episodio Maskelyne–Marconi
+    publisher: Royal Institution
+    url: https://www.rigb.org/node/6238
+  - id: mactutor-rejewski
+    level: B
+    title: Marian Adam Rejewski (biografia)
+    publisher: MacTutor, University of St Andrews
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Rejewski/
+  - id: gchq-pyry
+    level: A
+    title: The Pyry Forest meeting
+    publisher: GCHQ
+    url: https://www.gchq.gov.uk/information/the-pyry-forest-meeting
+  - id: britannica-bombe
+    level: B
+    title: Bombe
+    publisher: Encyclopaedia Britannica
+    url: https://britannica.com/topic/Bombe
+  - id: ieee-colossus
+    level: B
+    title: "Milestones: The Colossus Computers, 1944-1945"
+    publisher: IEEE / Engineering and Technology History Wiki
+    url: https://ethw.org/Milestones:The_Colossus_Computers,_1944-1945
+  - id: smithsonian-log-book
+    level: B
+    title: Log Book With Computer Bug
+    publisher: Smithsonian National Museum of American History
+  - id: wired-password-2012
+    level: B
+    title: "The World's First Computer Password? It Was Useless Too"
+    author: Robert McMillan
+    publisher: Wired
+    year: 2012
+  - id: kleinrock-first-words
+    level: A
+    title: The first words on the Internet
+    author: Leonard Kleinrock
+    publisher: UCLA
+    url: https://www.lk.cs.ucla.edu/internet_first_words.html
+  - id: esquire-1971
+    level: A
+    title: "Secrets of the Little Blue Box"
+    author: Ron Rosenbaum
+    publisher: Esquire
+    year: 1971
+    url: https://explodingthephone.com/docs.php
+    note: Scansione dell'articolo originale (ottobre 1971) sul sito di Phil Lapsley.
+  - id: sans-creeper
+    level: B
+    title: "50 years of malware? Not really. 50 years of computer worms? That's a different story..."
+    publisher: SANS Internet Storm Center
+    url: https://isc.sans.edu/diary/27208
+  - id: anderson-report
+    level: A
+    title: Computer Security Technology Planning Study, Vol. II (ESD-TR-73-51)
+    author: James P. Anderson
+    publisher: US Air Force, Electronic Systems Division
+    year: 1972
+    url: https://apps.dtic.mil/sti/pdfs/AD0758206.pdf
+  - id: diffie-hellman-1976
+    level: A
+    title: New Directions in Cryptography
+    author: Whitfield Diffie, Martin Hellman
+    publisher: IEEE Transactions on Information Theory 22(6)
+    year: 1976
+  - id: fips-46
+    level: A
+    title: "FIPS PUB 46: Data Encryption Standard"
+    publisher: National Bureau of Standards
+    year: 1977
+    url: https://nvlpubs.nist.gov/nistpubs/Legacy/FIPS/fipspub46.pdf
+  - id: rsa-1978
+    level: A
+    title: A Method for Obtaining Digital Signatures and Public-Key Cryptosystems
+    author: Ronald Rivest, Adi Shamir, Leonard Adleman
+    publisher: Communications of the ACM 21(2)
+    year: 1978
+    url: https://doi.org/10.1145/359340.359342
+  - id: nsa-gchq-trio
+    level: A
+    title: Clifford Cocks, James Ellis and Malcolm Williamson
+    publisher: NSA
+    url: https://www.nsa.gov/Press-Room/Digital-Media-Center/Biographies/Biography-View-Page/Article/3006218/clifford-cocks-james-ellis-and-malcolm-williamson/
+  - id: berliner-zeitung-ccc
+    level: B
+    title: Der Chaos Computer Club wird 25
+    publisher: Berliner Zeitung
+    url: https://www.berliner-zeitung.de/article/der-chaos-computer-club-wird-25-mit-ihm-ein-stueck-deutscher-computergeschichte-ungebremster-datendrang-7484
+  - id: inquirer-elk-cloner
+    level: B
+    title: The father of the virus
+    publisher: The Philadelphia Inquirer
+    year: 2007
+    url: https://inquirer.com/philly/business/20070909_The_father_of_the_virus.html
+  - id: eset-adleman
+    level: B
+    title: Professor Len Adleman explains how he coined the term "computer virus"
+    publisher: ESET WeLiveSecurity
+    year: 2017
+    url: https://www.welivesecurity.com/2017/11/01/professor-len-adleman-explains-computer-virus-term/
+  - id: kaplan-dark-territory
+    level: B
+    title: "Dark Territory: The Secret History of Cyber War"
+    author: Fred Kaplan
+    year: 2016
+  - id: computerwoche-btx
+    level: B
+    title: "Hacker knacken BTX-System"
+    publisher: Computerwoche
+    url: https://www.computerwoche.de/article/2843663/dafta-mit-lifetest-hacker-knacken-btx-system.html
+  - id: computinghistory-brain
+    level: B
+    title: Brain, the first PC virus, is released
+    publisher: Centre for Computing History
+    url: https://computinghistory.org.uk/det/6303/Brain,%20the%20first%20PC%20virus,%20is%20released
+  - id: stoll-1988
+    level: A
+    title: Stalking the Wily Hacker
+    author: Clifford Stoll
+    publisher: Communications of the ACM 31(5)
+    year: 1988
+    url: https://nsarchive.gwu.edu/sites/default/files/documents/5626281/Clifford-Stoll-Communications-of-the-ACM.pdf
+  - id: spafford-1988
+    level: A
+    title: "The Internet Worm Program: An Analysis (Purdue CSD-TR-823)"
+    author: Eugene H. Spafford
+    publisher: Purdue University
+    year: 1988
+    url: https://spaf.cerias.purdue.edu/tech-reps/823.pdf
+  - id: us-v-morris
+    level: A
+    title: United States v. Morris, 928 F.2d 504 (2d Cir. 1991)
+    publisher: Corte d'appello federale degli Stati Uniti, secondo circuito
+    year: 1991
+    url: https://law.resource.org/pub/us/case/reporter/F2/928/928.F2d.504.90-1336.774.html
+  - id: nature-1989
+    level: B
+    title: Notizia sul worm di Internet (1989)
+    publisher: Nature 338
+    year: 1989
+    url: https://nature.com/articles/338530d0.pdf
+  - id: heise-ransomware
+    level: B
+    title: "Missing Link: 35 Jahre Ransomware"
+    publisher: heise online
+    url: https://heise.de/-10247713
+  - id: legge-547-1993
+    level: A
+    title: Legge 23 dicembre 1993, n. 547 (testo su WIPO Lex)
+    url: https://www.wipo.int/wipolex/en/legislation/details/2532
+
+  # Modulo 2
+  - id: cern-public-domain
+    level: A
+    title: CERN puts the World Wide Web in the public domain
+    publisher: CERN
+    url: https://timeline.web.cern.ch/node/794
+  - id: doj-mitnick-1995
+    level: A
+    title: Comunicato sull'arresto di Kevin Mitnick (15/02/1995)
+    publisher: US Department of Justice
+    year: 1995
+    url: https://www.justice.gov/opa/pr/Pre_96/February95/89.txt.html
+  - id: rfc-2246
+    level: A
+    title: "RFC 2246: The TLS Protocol Version 1.0"
+    publisher: IETF
+    year: 1999
+  - id: cve-history
+    level: A
+    title: History of the CVE Program
+    publisher: CVE.org (MITRE)
+    url: https://www.cve.org/Resources/Media/Archives/OldWebsite/about/history.html
+  - id: fbi-melissa
+    level: A
+    title: Melissa Virus
+    publisher: FBI
+    url: https://www.fbi.gov/history/famous-cases/melissa-virus
+  - id: cert-ca-2000-04
+    level: A
+    title: "CERT Advisory CA-2000-04: Love Letter Worm"
+    publisher: CERT/CC
+    year: 2000
+    url: https://attrition.org/security/advisory/cert/cert-advisory/CA-00.04.windows
+  - id: microsoft-twc-20
+    level: A
+    title: Celebrating 20 years of Trustworthy Computing
+    publisher: Microsoft
+    year: 2022
+    url: https://microsoft.com/en-us/security/blog/2022/01/21/celebrating-20-years-of-trustworthy-computing
+  - id: moore-slammer
+    level: A
+    title: Inside the Slammer Worm
+    author: David Moore et al.
+    publisher: IEEE Security & Privacy 1(4)
+    year: 2003
+    url: https://css.csail.mit.edu/6.566/2018/readings/slammer.pdf
+  - id: msrc-patch-tuesday
+    level: A
+    title: Reflecting on 20 years of Patch Tuesday
+    publisher: Microsoft Security Response Center
+    year: 2023
+    url: https://msrc.microsoft.com/blog/2023/11/reflecting-on-20-years-of-patch-tuesday
+  - id: stratcom-estonia
+    level: B
+    title: 2007 cyber attacks on Estonia
+    publisher: NATO StratCom COE
+    url: https://stratcomcoe.org/hybrid-threats-2007-cyber-attacks-estonia
+  - id: zetter-countdown
+    level: B
+    title: "Countdown to Zero Day"
+    author: Kim Zetter
+    year: 2014
+  - id: parliament-guardian
+    level: A
+    title: Testimonianza scritta del Guardian Media Group
+    publisher: UK Parliament
+    url: https://committees.parliament.uk/writtenevidence/47696/html/
+  - id: sophos-cryptolocker
+    level: B
+    title: CryptoLocker ransomware
+    publisher: Sophos / Dell SecureWorks
+    url: https://www.sophos.com/research/cryptolocker-ransomware
+  - id: nvd-heartbleed
+    level: A
+    title: CVE-2014-0160
+    publisher: NIST National Vulnerability Database
+    url: https://nvd.nist.gov/vuln/detail/CVE-2014-0160
+  - id: sans-ukraine-grid
+    level: B
+    title: Analysis of the Cyber Attack on the Ukrainian Power Grid
+    publisher: E-ISAC / SANS
+    year: 2016
+    url: https://nsarchive.gwu.edu/sites/default/files/documents/3891751/SANS-and-Electricity-Information-Sharing-and.pdf
+  - id: nhbr-dyn
+    level: B
+    title: Dyn issues analysis of complex and sophisticated cyberattacks
+    publisher: New Hampshire Business Review
+    year: 2016
+    url: https://www.nhbr.com/dyn-issues-analysis-of-complex-and-sophisticated-cyberattacks/
+  - id: nao-wannacry
+    level: A
+    title: "Investigation: WannaCry cyber attack and the NHS"
+    publisher: UK National Audit Office
+    year: 2018
+    url: https://www.nao.org.uk/reports/investigation-wannacry-cyber-attack-and-the-nhs/
+  - id: helpnet-notpetya
+    level: B
+    title: UK government blames Russia for NotPetya attack
+    publisher: Help Net Security
+    year: 2018
+    url: https://www.helpnetsecurity.com/2018/02/15/uk-government-blames-russia-notpetya-attack/
+  - id: gdpr
+    level: A
+    title: Regolamento (UE) 2016/679 (GDPR), art. 99
+    publisher: EUR-Lex
+    year: 2016
+  - id: cisa-ed-21-01
+    level: A
+    title: Emergency Directive 21-01
+    publisher: CISA
+    year: 2020
+  - id: doj-colonial
+    level: A
+    title: Department of Justice seizes $2.3 million in cryptocurrency paid to the ransomware extortionists DarkSide
+    publisher: US Department of Justice
+    year: 2021
+    url: https://www.justice.gov/archives/opa/pr/department-justice-seizes-23-million-cryptocurrency-paid-ransomware-extortionists-darkside
+  - id: dl-82-2021
+    level: A
+    title: Decreto-legge 14 giugno 2021, n. 82
+    publisher: Normattiva
+    year: 2021
+  - id: nvd-log4shell
+    level: A
+    title: CVE-2021-44228
+    publisher: NIST National Vulnerability Database
+    url: https://nvd.nist.gov/vuln/detail/CVE-2021-44228
+  - id: freund-xz
+    level: A
+    title: backdoor in upstream xz/liblzma leading to ssh server compromise
+    author: Andres Freund
+    publisher: oss-security
+    year: 2024
+    url: https://www.openwall.com/lists/oss-security/2024/03/29/4
+  - id: crowdstrike-rca
+    level: A
+    title: Channel File 291 Incident Root Cause Analysis
+    publisher: CrowdStrike
+    year: 2024
+    url: https://crowdstrike.com/wp-content/uploads/2024/08/Channel-File-291-Incident-Root-Cause-Analysis-08.06.2024.pdf
+  - id: techtarget-crowdstrike
+    level: B
+    title: Explaining the largest IT outage in history and what's next
+    publisher: TechTarget
+    year: 2024
+    url: https://techtarget.com/WhatIs/feature/Explaining-the-largest-IT-outage-in-history-and-whats-next
+  - id: nist-pqc
+    level: A
+    title: Announcing approval of three Federal Information Processing Standards (FIPS) for post-quantum cryptography
+    publisher: NIST
+    year: 2024
+    url: https://www.nist.gov/news-events/news/2024/08/announcing-approval-three-federal-information-processing-standards-fips
+  - id: dlgs-138-2024
+    level: A
+    title: Decreto legislativo 4 settembre 2024, n. 138
+    publisher: Normattiva
+    year: 2024
+
+events:
+  # --- Modulo 1: le origini ---
+  - id: maskelyne
+    date: "1903-06"
+    category: attacchi
+    title: Maskelyne disturba la dimostrazione di Marconi
+    description: >-
+      Alla Royal Institution di Londra, durante una dimostrazione del telegrafo
+      senza fili, l'apparato riceve "Rats" ripetuto e una filastrocca contro
+      Marconi. Il responsabile è il mago e inventore Nevil Maskelyne.
+    note: Il giorno esatto non è documentato in modo concorde.
+    lesson: { module: storia-origini, lesson: il-primo-hacker }
+    sources: [newscientist-2011, rigb-maskelyne]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: rejewski-enigma
+    date: "1932-12"
+    category: crittografia
+    title: Rejewski ricostruisce l'Enigma militare
+    description: >-
+      Marian Rejewski, dell'ufficio cifra polacco, ricostruisce il cablaggio
+      interno dell'Enigma militare con la matematica e con documenti
+      dell'intelligence francese.
+    lesson: { module: storia-origini, lesson: enigma }
+    sources: [mactutor-rejewski]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: pyry
+    date: "1939-07"
+    category: crittografia
+    title: L'incontro di Pyry
+    description: >-
+      Vicino a Varsavia, Rejewski, Różycki e Zygalski consegnano a britannici e
+      francesi il loro metodo e copie ricostruite di Enigma.
+    note: Secondo GCHQ il 25 e 26 luglio; altre fonti indicano date tra il 24 e il 27.
+    lesson: { module: storia-origini, lesson: enigma }
+    sources: [gchq-pyry]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: bombe-victory
+    date: "1940-03"
+    category: crittografia
+    title: Entra in servizio la prima Bombe
+    description: >-
+      A Bletchley Park entra in servizio "Victory", la prima Bombe britannica,
+      progettata da Alan Turing a partire dalla "bomba" polacca.
+    lesson: { module: storia-origini, lesson: enigma }
+    sources: [britannica-bombe]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: colossus
+    date: "1944-02"
+    category: crittografia
+    title: Colossus attacca il cifrario Lorenz
+    description: >-
+      Il Colossus Mark I di Tommy Flowers è operativo. È uno dei primi computer
+      elettronici digitali programmabili e serve contro Lorenz, non contro Enigma.
+    lesson: { module: storia-origini, lesson: enigma }
+    sources: [ieee-colossus]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: primo-bug
+    date: "1947-09-09"
+    category: cultura
+    title: Il "primo vero caso di bug"
+    description: >-
+      Sull'Harvard Mark II gli operatori trovano una falena in un relè e la
+      attaccano al registro con la nota "First actual case of bug being found".
+      La parola "bug" esisteva già da prima.
+    lesson: { module: storia-origini, lesson: primi-computer-bug-password }
+    sources: [smithsonian-log-book]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: scherr-password
+    date: "1962"
+    approximate: true
+    category: attacchi
+    title: Il primo furto di password documentato
+    description: >-
+      Al MIT il dottorando Allan Scherr fa stampare il file delle password di
+      CTSS, salvato in chiaro, per avere più tempo macchina. Lo confessa solo
+      decenni dopo.
+    note: La data viene dal racconto dello stesso Scherr; le fonti non sono concordi.
+    lesson: { module: storia-origini, lesson: primi-computer-bug-password }
+    sources: [wired-password-2012]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: arpanet-lo
+    date: "1969-10-29"
+    category: cultura
+    title: Il primo messaggio su ARPANET
+    description: >-
+      Dall'UCLA Charley Kline, seguito da Leonard Kleinrock, prova un login sul
+      computer dello SRI. Arrivano solo "L" e "O", poi il sistema va in crash.
+    lesson: { module: storia-origini, lesson: arpanet-creeper-crittografia }
+    sources: [kleinrock-first-words]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: esquire-blue-box
+    date: "1971-10"
+    category: cultura
+    title: '"Secrets of the Little Blue Box" su Esquire'
+    description: >-
+      L'articolo di Ron Rosenbaum fa conoscere il phone phreaking al grande
+      pubblico e diffonde il termine "phreak".
+    lesson: { module: storia-origini, lesson: phreaker }
+    sources: [esquire-1971]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: creeper
+    date: "1971"
+    category: malware
+    title: Creeper si sposta su ARPANET
+    description: >-
+      Programma sperimentale di Bob Thomas alla BBN: si sposta tra computer
+      collegati ad ARPANET e mostra "I'M THE CREEPER: CATCH ME IF YOU CAN".
+      Non fa danni.
+    lesson: { module: storia-origini, lesson: arpanet-creeper-crittografia }
+    sources: [sans-creeper]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: anderson-report
+    date: "1972-10"
+    category: difesa
+    title: L'Anderson Report e il reference monitor
+    description: >-
+      James P. Anderson consegna all'aeronautica militare americana un rapporto
+      che introduce il reference monitor: un meccanismo che controlla ogni
+      accesso di un soggetto a un oggetto.
+    lesson: { module: storia-origini, lesson: arpanet-creeper-crittografia }
+    sources: [anderson-report]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: diffie-hellman
+    date: "1976-11"
+    category: crittografia
+    title: Nasce la crittografia a chiave pubblica
+    description: >-
+      Whitfield Diffie e Martin Hellman pubblicano "New Directions in
+      Cryptography": si può concordare una chiave segreta su un canale che
+      altri possono ascoltare.
+    lesson: { module: storia-origini, lesson: arpanet-creeper-crittografia }
+    sources: [diffie-hellman-1976]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: des
+    date: "1977-01-15"
+    category: crittografia
+    title: Il DES diventa standard federale USA
+    description: >-
+      Il National Bureau of Standards pubblica il Data Encryption Standard
+      (FIPS PUB 46) come standard federale americano per la cifratura.
+    lesson: { module: storia-origini, lesson: arpanet-creeper-crittografia }
+    sources: [fips-46]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: rsa
+    date: "1978-02"
+    category: crittografia
+    title: Esce l'articolo su RSA
+    description: >-
+      Rivest, Shamir e Adleman descrivono RSA, inventato nel 1977: un sistema a
+      chiave pubblica che permette anche di firmare i messaggi.
+    lesson: { module: storia-origini, lesson: arpanet-creeper-crittografia }
+    sources: [rsa-1978]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: ccc
+    date: "1981-09-12"
+    category: cultura
+    title: Nasce il Chaos Computer Club
+    description: >-
+      A Berlino, nella redazione del quotidiano taz, nasce il Chaos Computer
+      Club. Tra i fondatori c'è Wau Holland.
+    lesson: { module: storia-origini, lesson: anni-80-virus }
+    sources: [berliner-zeitung-ccc]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: elk-cloner
+    date: "1982"
+    category: malware
+    title: Elk Cloner
+    description: >-
+      Rich Skrenta, a 15 anni, scrive un virus del settore di avvio per Apple II
+      che si diffonde con i floppy disk. È tra i primi virus per microcomputer
+      diffusi fuori dal laboratorio.
+    lesson: { module: storia-origini, lesson: anni-80-virus }
+    sources: [inquirer-elk-cloner]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: cohen-virus
+    date: "1983-11"
+    category: malware
+    title: Fred Cohen e il nome "virus"
+    description: >-
+      Fred Cohen dimostra un programma auto-replicante durante un seminario
+      all'University of Southern California. Il suo relatore, Leonard Adleman,
+      suggerisce il nome "virus".
+    lesson: { module: storia-origini, lesson: anni-80-virus }
+    sources: [eset-adleman]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: nsdd-145
+    date: "1984-09-17"
+    category: leggi
+    title: La direttiva NSDD-145
+    description: >-
+      È una delle prime politiche presidenziali USA sulla sicurezza informatica.
+      Nasce dagli studi chiesti da Ronald Reagan dopo aver visto il film
+      WarGames (1983).
+    note: Il legame diretto tra il film e la direttiva viene da un aneddoto riportato da Fred Kaplan.
+    lesson: { module: storia-origini, lesson: anni-80-virus }
+    sources: [kaplan-dark-territory]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: btx-hack
+    date: "1984-11"
+    category: attacchi
+    title: Il CCC e il BTX hack
+    description: >-
+      Il Chaos Computer Club sfrutta una falla del sistema BTX per addebitare
+      alla Hamburger Sparkasse circa 135.000 marchi, poi li restituisce: vuole
+      dimostrare che il sistema non è sicuro.
+    note: La cifra varia tra 134.000 e 137.000 marchi a seconda della fonte.
+    lesson: { module: storia-origini, lesson: anni-80-virus }
+    sources: [computerwoche-btx]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: brain
+    date: "1986-01-19"
+    category: malware
+    title: Brain, il primo virus per PC IBM
+    description: >-
+      Dei fratelli Basit e Amjad Farooq Alvi, di Lahore. Nasce come protezione
+      anticopia e contiene i loro nomi e il loro indirizzo.
+    lesson: { module: storia-origini, lesson: anni-80-virus }
+    sources: [computinghistory-brain]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: cfaa
+    date: "1986"
+    category: leggi
+    title: Il Computer Fraud and Abuse Act
+    description: >-
+      Gli Stati Uniti approvano una legge contro gli accessi non autorizzati ai
+      computer. Sarà usata per condannare Robert Morris.
+    lesson: { module: storia-origini, lesson: anni-80-virus }
+    sources: [us-v-morris]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: stoll
+    date: "1986"
+    category: difesa
+    title: Clifford Stoll e i 75 centesimi
+    description: >-
+      Al Lawrence Berkeley Laboratory un ammanco contabile di 75 centesimi porta
+      Clifford Stoll a scoprire un intruso, Markus Hess, parte di un gruppo che
+      vendeva informazioni al KGB.
+    lesson: { module: storia-origini, lesson: anni-80-virus }
+    sources: [stoll-1988]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: morris-worm
+    date: "1988-11-02"
+    category: malware
+    title: Il worm di Morris
+    description: >-
+      Robert Tappan Morris, dottorando alla Cornell, rilascia un worm dalla rete
+      del MIT. Le copie si moltiplicano e mandano in sovraccarico migliaia di
+      computer.
+    note: La cifra di circa 6.000 macchine colpite è una stima dell'epoca, mai confermata.
+    lesson: { module: storia-origini, lesson: worm-di-morris }
+    sources: [spafford-1988, nature-1989]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: aids-trojan
+    date: "1989-12"
+    category: malware
+    title: L'AIDS Trojan, primo ransomware
+    description: >-
+      Circa 20.000 floppy disk presentati come questionario sull'AIDS. Dopo 90
+      avvii il programma chiede 189 dollari alla "PC Cyborg Corporation".
+    lesson: { module: storia-origini, lesson: anni-80-virus }
+    sources: [heise-ransomware]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  # --- Modulo 2: da Internet a oggi ---
+  - id: web-pubblico-dominio
+    date: "1993-04-30"
+    category: cultura
+    title: Il Web diventa di pubblico dominio
+    description: >-
+      Il CERN rinuncia a ogni diritto sul software del World Wide Web: il Web
+      diventa uno standard aperto.
+    sources: [cern-public-domain]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: legge-547
+    date: "1993-12-23"
+    category: leggi
+    title: I reati informatici entrano nel Codice Penale
+    description: >-
+      In Italia la Legge 547/1993 introduce, tra gli altri, l'articolo 615-ter:
+      accesso abusivo a un sistema informatico o telematico.
+    lesson: { module: benvenuto, lesson: hacker-etica-e-legge }
+    sources: [legge-547-1993]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: mitnick
+    date: "1995-02-15"
+    category: attacchi
+    title: L'arresto di Kevin Mitnick
+    description: >-
+      L'FBI arresta Kevin Mitnick a Raleigh dopo una caccia elettronica di due
+      settimane. Mitnick è famoso soprattutto per l'ingegneria sociale.
+    sources: [doj-mitnick-1995]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: tls-1-0
+    date: "1999-01"
+    category: difesa
+    title: Nasce TLS 1.0
+    description: >-
+      L'IETF pubblica TLS 1.0 (RFC 2246), il successore di SSL 3.0 di Netscape.
+    sources: [rfc-2246]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: melissa
+    date: "1999-03-26"
+    category: malware
+    title: Melissa
+    description: >-
+      Un macro virus in un documento Word che si invia da solo ai primi 50
+      contatti della rubrica. L'FBI stima circa 80 milioni di dollari di danni.
+    note: Il danno è una stima dell'FBI.
+    sources: [fbi-melissa]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: cve
+    date: "1999-09"
+    category: difesa
+    title: La prima lista CVE
+    description: >-
+      MITRE pubblica la prima lista CVE, con 321 voci. Da allora ogni
+      vulnerabilità nota ha un identificatore comune.
+    sources: [cve-history]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: iloveyou
+    date: "2000-05-04"
+    category: malware
+    title: ILOVEYOU
+    description: >-
+      Un worm si diffonde via email con l'allegato LOVE-LETTER-FOR-YOU.TXT.VBS.
+      In poche ore il CERT riceve segnalazioni di oltre 300.000 sistemi colpiti.
+    note: Le stime dei computer infettati in tutto il mondo variano molto tra le fonti.
+    sources: [cert-ca-2000-04]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: trustworthy-computing
+    date: "2002-01-15"
+    category: difesa
+    title: Il memo "Trustworthy Computing"
+    description: >-
+      Bill Gates scrive a tutti i dipendenti Microsoft: tra nuove funzioni e
+      sicurezza, si sceglie la sicurezza.
+    sources: [microsoft-twc-20]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: slammer
+    date: "2003-01-25"
+    category: malware
+    title: SQL Slammer
+    description: >-
+      Sfrutta un buffer overflow in Microsoft SQL Server e infetta oltre il 90%
+      degli host vulnerabili in circa 10 minuti.
+    sources: [moore-slammer]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: patch-tuesday
+    date: "2003-10-14"
+    category: difesa
+    title: Il primo Patch Tuesday
+    description: >-
+      Microsoft raggruppa le correzioni di sicurezza in un'uscita mensile
+      prevedibile.
+    sources: [msrc-patch-tuesday]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: estonia
+    date: "2007-04"
+    category: attacchi
+    title: Attacchi DDoS contro l'Estonia
+    description: >-
+      Per circa tre settimane attacchi DDoS colpiscono siti del governo, del
+      parlamento, delle banche e dei media estoni, dopo lo spostamento del
+      "Soldato di bronzo" di Tallinn.
+    note: La Russia nega ogni coinvolgimento e il ruolo dello Stato russo non è mai stato provato.
+    sources: [stratcom-estonia]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: stuxnet
+    date: "2010-06"
+    category: malware
+    title: Scoperto Stuxnet
+    description: >-
+      L'azienda bielorussa VirusBlokAda individua un malware che colpisce i PLC
+      Siemens. L'obiettivo è l'impianto di arricchimento dell'uranio di Natanz,
+      in Iran.
+    note: L'attribuzione a USA e Israele viene da fonti anonime; nessuno dei due governi l'ha confermata.
+    sources: [zetter-countdown]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: snowden
+    date: "2013-06-05"
+    category: cultura
+    title: Il primo articolo sui documenti di Snowden
+    description: >-
+      Il Guardian rivela la raccolta di massa dei tabulati telefonici Verizon da
+      parte della NSA. Il giorno dopo escono gli articoli su PRISM.
+    note: Il 6 giugno secondo l'ora britannica.
+    sources: [parliament-guardian]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: cryptolocker
+    date: "2013-09"
+    category: malware
+    title: CryptoLocker
+    description: >-
+      Un ransomware che cifra i file delle vittime e chiede un riscatto in
+      Bitcoin. Si diffonde con email di phishing e con la botnet Gameover ZeuS.
+    sources: [sophos-cryptolocker]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: heartbleed
+    date: "2014-04-07"
+    category: attacchi
+    title: Heartbleed
+    description: >-
+      Un bug in OpenSSL 1.0.1 (CVE-2014-0160) permette di leggere la memoria
+      del server, incluse le chiavi private.
+    sources: [nvd-heartbleed]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: ucraina-blackout
+    date: "2015-12-23"
+    category: attacchi
+    title: Il blackout ucraino
+    description: >-
+      Un attacco a tre aziende elettriche ucraine lascia circa 225.000 utenti
+      senza corrente. È il primo blackout causato da un attacco informatico
+      riconosciuto pubblicamente.
+    sources: [sans-ukraine-grid]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: dyn-mirai
+    date: "2016-10-21"
+    category: attacchi
+    title: Mirai contro Dyn
+    description: >-
+      Botnet di dispositivi IoT con password di fabbrica attaccano il provider
+      DNS Dyn: molti siti famosi diventano irraggiungibili per tanti utenti.
+    note: Dyn stima fino a 100.000 dispositivi coinvolti.
+    sources: [nhbr-dyn]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: wannacry
+    date: "2017-05-12"
+    category: malware
+    title: WannaCry
+    description: >-
+      Un ransomware sfrutta EternalBlue contro i sistemi non aggiornati: la
+      patch esisteva da due mesi. Nel Regno Unito colpisce almeno 81 dei 236
+      trust del servizio sanitario.
+    sources: [nao-wannacry]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: notpetya
+    date: "2017-06-27"
+    category: malware
+    title: NotPetya
+    description: >-
+      Parte da un aggiornamento manomesso di un software di contabilità ucraino.
+      Sembra un ransomware, ma è fatto per distruggere: i dati non si possono
+      recuperare.
+    note: Regno Unito e Stati Uniti lo attribuiscono all'esercito russo (GRU) il 15 febbraio 2018.
+    sources: [helpnet-notpetya]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: gdpr
+    date: "2018-05-25"
+    category: leggi
+    title: Il GDPR diventa applicabile
+    description: >-
+      Il Regolamento generale sulla protezione dei dati (UE 2016/679) si applica
+      in tutta l'Unione europea.
+    sources: [gdpr]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: solarwinds
+    date: "2020-12-13"
+    category: attacchi
+    title: SolarWinds
+    description: >-
+      Si scopre che gli aggiornamenti del software Orion erano stati manomessi:
+      un attacco alla supply chain. CISA emette la direttiva di emergenza 21-01.
+    note: Il 15 aprile 2021 Stati Uniti e Regno Unito lo attribuiscono ufficialmente all'SVR russo.
+    sources: [cisa-ed-21-01]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: colonial-pipeline
+    date: "2021-05-07"
+    category: attacchi
+    title: Colonial Pipeline
+    description: >-
+      Il ransomware DarkSide entra da un account VPN senza autenticazione a più
+      fattori. L'azienda ferma l'oleodotto e paga circa 75 bitcoin; il
+      Dipartimento di Giustizia USA ne sequestra 63,7.
+    sources: [doj-colonial]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: acn
+    date: "2021-06-14"
+    category: leggi
+    title: Nasce l'Agenzia per la Cybersicurezza Nazionale
+    description: >-
+      In Italia il decreto-legge 82/2021 istituisce l'ACN.
+    sources: [dl-82-2021]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: log4shell
+    date: "2021-12-09"
+    category: attacchi
+    title: Log4Shell diventa pubblica
+    description: >-
+      Una vulnerabilità nella libreria Java Log4j (CVE-2021-44228), segnalata in
+      privato ad Apache due settimane prima.
+    sources: [nvd-log4shell]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: xz-backdoor
+    date: "2024-03-29"
+    category: difesa
+    title: Scoperta la backdoor in XZ Utils
+    description: >-
+      Andres Freund nota che i login SSH sono più lenti di circa mezzo secondo e
+      scopre una backdoor nelle versioni 5.6.0 e 5.6.1 di XZ Utils, prima che
+      arrivi nelle versioni stabili delle principali distribuzioni Linux.
+    sources: [freund-xz]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: crowdstrike
+    date: "2024-07-19"
+    category: difesa
+    title: L'incidente CrowdStrike (non un attacco)
+    description: >-
+      Un file di configurazione difettoso del software di sicurezza Falcon manda
+      in crash milioni di computer Windows. Anche la disponibilità è sicurezza.
+    note: Microsoft stima circa 8,5 milioni di computer coinvolti.
+    sources: [crowdstrike-rca, techtarget-crowdstrike]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: pqc
+    date: "2024-08-13"
+    category: crittografia
+    title: I primi standard post-quantistici
+    description: >-
+      Il NIST approva FIPS 203, 204 e 205, i primi standard di crittografia
+      pensati per resistere ai computer quantistici.
+    sources: [nist-pqc]
+    status: fonti-verificate
+    lastVerified: 2026-10-22
+
+  - id: nis2-italia
+    date: "2024-09-04"
+    category: leggi
+    title: L'Italia recepisce la direttiva NIS2
+    description: >-
+      Il decreto legislativo 138/2024 recepisce la direttiva europea NIS2;
+      l'ACN è l'autorità nazionale competente.
+    sources: [dlgs-138-2024]
+    status: fonti-verificate
+    lastVerified: 2026-10-22

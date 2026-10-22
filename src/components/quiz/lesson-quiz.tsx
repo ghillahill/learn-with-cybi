@@ -8,16 +8,44 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import type { Quiz } from "@/lib/content/schema";
+import type { Quiz, QuizQuestion } from "@/lib/content/schema";
 import { useProgressStore } from "@/lib/progress/store";
-import { isAnswerCorrect, quizScore } from "@/lib/quiz/score";
+import { isAnswerCorrect, quizScore, type Answer } from "@/lib/quiz/score";
+import { shuffledIndexes } from "@/lib/quiz/shuffle";
 import { cn } from "@/lib/utils";
+import { MatchList } from "./match-list";
+import { OrderList } from "./order-list";
 
 const typeHint = {
   single: "Una sola risposta corretta.",
   truefalse: "Vero o falso?",
   multiple: "Seleziona tutte le risposte corrette.",
+  order: "Metti gli elementi nell'ordine giusto con le frecce.",
+  match: "Abbina ogni voce alla risposta giusta.",
 };
+
+// Ordine mescolato per le domande order (elementi) e match (colonna destra).
+function makeShuffles(quiz: Quiz): number[][] {
+  return quiz.questions.map((q) =>
+    q.type === "order"
+      ? shuffledIndexes(q.items.length)
+      : q.type === "match"
+        ? shuffledIndexes(q.pairs.length)
+        : [],
+  );
+}
+
+function initialAnswer(question: QuizQuestion, shuffle: number[]): Answer {
+  if (question.type === "order") return shuffle;
+  if (question.type === "match") return question.pairs.map(() => -1);
+  return [];
+}
+
+function isComplete(question: QuizQuestion, answer: Answer): boolean {
+  if (question.type === "order") return true;
+  if (question.type === "match") return answer.every((i) => i >= 0);
+  return answer.length > 0;
+}
 
 export function LessonQuiz({
   quiz,
@@ -28,10 +56,16 @@ export function LessonQuiz({
   lessonKey: string;
   xp: number;
 }) {
+  const hydrated = useProgressStore((s) => s.hydrated);
   const recordQuiz = useProgressStore((s) => s.recordQuiz);
+  // Il mescolamento è casuale: il quiz si mostra solo dopo l'idratazione,
+  // così il markup del server (che non lo include) coincide con il client.
+  const [shuffles, setShuffles] = useState(() => makeShuffles(quiz));
   const [index, setIndex] = useState(0);
-  const [answers, setAnswers] = useState<number[][]>([]);
-  const [selected, setSelected] = useState<number[]>([]);
+  const [answers, setAnswers] = useState<Answer[]>([]);
+  const [selected, setSelected] = useState<Answer>(() =>
+    initialAnswer(quiz.questions[0], shuffles[0]),
+  );
   const [checked, setChecked] = useState(false);
   const [score, setScore] = useState<number | null>(null);
 
@@ -50,7 +84,7 @@ export function LessonQuiz({
   function next() {
     if (index + 1 < total) {
       setIndex(index + 1);
-      setSelected([]);
+      setSelected(initialAnswer(quiz.questions[index + 1], shuffles[index + 1]));
       setChecked(false);
       return;
     }
@@ -67,11 +101,17 @@ export function LessonQuiz({
   }
 
   function restart() {
+    const fresh = makeShuffles(quiz);
+    setShuffles(fresh);
     setIndex(0);
     setAnswers([]);
-    setSelected([]);
+    setSelected(initialAnswer(quiz.questions[0], fresh[0]));
     setChecked(false);
     setScore(null);
+  }
+
+  if (!hydrated) {
+    return <div aria-hidden className="bg-muted mt-10 h-64 animate-pulse rounded-xl" />;
   }
 
   if (score !== null) {
@@ -118,44 +158,57 @@ export function LessonQuiz({
         <p className="text-muted-foreground mt-1 text-sm">{typeHint[question.type]}</p>
 
         <div className="mt-4 space-y-2">
-          {question.type === "multiple"
-            ? question.options.map((option, i) => (
+          {question.type === "order" ? (
+            <OrderList
+              items={question.items}
+              order={selected}
+              onChange={setSelected}
+              checked={checked}
+            />
+          ) : question.type === "match" ? (
+            <MatchList
+              question={question}
+              answer={selected}
+              rightOrder={shuffles[index]}
+              onChange={setSelected}
+              checked={checked}
+            />
+          ) : question.type === "multiple" ? (
+            question.options.map((option, i) => (
+              <OptionRow
+                key={i}
+                checked={checked}
+                isSelected={selected.includes(i)}
+                option={option}
+                control={
+                  <Checkbox
+                    checked={selected.includes(i)}
+                    disabled={checked}
+                    onCheckedChange={(on) =>
+                      setSelected((prev) => (on ? [...prev, i] : prev.filter((x) => x !== i)))
+                    }
+                  />
+                }
+              />
+            ))
+          ) : (
+            <RadioGroup
+              value={selected[0] === undefined ? null : String(selected[0])}
+              onValueChange={(value) => setSelected([Number(value)])}
+              disabled={checked}
+              className="gap-2"
+            >
+              {question.options.map((option, i) => (
                 <OptionRow
                   key={i}
                   checked={checked}
                   isSelected={selected.includes(i)}
                   option={option}
-                  control={
-                    <Checkbox
-                      checked={selected.includes(i)}
-                      disabled={checked}
-                      onCheckedChange={(on) =>
-                        setSelected((prev) =>
-                          on ? [...prev, i] : prev.filter((x) => x !== i),
-                        )
-                      }
-                    />
-                  }
+                  control={<RadioGroupItem value={String(i)} />}
                 />
-              ))
-            : (
-              <RadioGroup
-                value={selected[0] === undefined ? null : String(selected[0])}
-                onValueChange={(value) => setSelected([Number(value)])}
-                disabled={checked}
-                className="gap-2"
-              >
-                {question.options.map((option, i) => (
-                  <OptionRow
-                    key={i}
-                    checked={checked}
-                    isSelected={selected.includes(i)}
-                    option={option}
-                    control={<RadioGroupItem value={String(i)} />}
-                  />
-                ))}
-              </RadioGroup>
-            )}
+              ))}
+            </RadioGroup>
+          )}
         </div>
       </fieldset>
 
@@ -172,7 +225,7 @@ export function LessonQuiz({
         {checked ? (
           <Button onClick={next}>{index + 1 < total ? "Avanti" : "Vedi il risultato"}</Button>
         ) : (
-          <Button onClick={check} disabled={selected.length === 0}>
+          <Button onClick={check} disabled={!isComplete(question, selected)}>
             Verifica
           </Button>
         )}

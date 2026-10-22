@@ -67,5 +67,43 @@ export async function checkContent(content: Content): Promise<CheckIssue[]> {
     }
   }
 
+  issues.push(...checkTimeline(content));
+  return issues;
+}
+
+function duplicates(ids: string[]): string[] {
+  return [...new Set(ids.filter((id, i) => ids.indexOf(id) !== i))];
+}
+
+// Timeline (§8.2): ogni evento con almeno una fonte esistente e non solo C,
+// link a lezioni esistenti, stessi stati di verifica delle lezioni.
+function checkTimeline(content: Content): CheckIssue[] {
+  const file = "content/timeline.yaml";
+  const issues: CheckIssue[] = [];
+  const report = (message: string) => issues.push({ file, message });
+  const { sources, events } = content.timeline;
+  const sourcesById = new Map(sources.map((s) => [s.id, s]));
+
+  for (const id of duplicates(sources.map((s) => s.id))) report(`fonte duplicata "${id}"`);
+  for (const id of duplicates(events.map((e) => e.id))) report(`evento duplicato "${id}"`);
+
+  for (const event of events) {
+    const cited = event.sources.flatMap((id) => {
+      const source = sourcesById.get(id);
+      if (!source) report(`evento "${event.id}": fonte "${id}" non elencata`);
+      return source ? [source] : [];
+    });
+    if (onlyLevelC(cited)) report(`evento "${event.id}": solo fonti di livello C`);
+    if (event.status !== "bozza" && !event.lastVerified) {
+      report(`evento "${event.id}": stato "${event.status}" senza lastVerified`);
+    }
+    if (event.lesson) {
+      const { module: moduleId, lesson: lessonId } = event.lesson;
+      const mod = content.modules.find((m) => m.id === moduleId);
+      if (!mod?.lessons.some((l) => l.id === lessonId)) {
+        report(`evento "${event.id}": la lezione "${moduleId}/${lessonId}" non esiste`);
+      }
+    }
+  }
   return issues;
 }

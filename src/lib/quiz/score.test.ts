@@ -36,6 +36,42 @@ describe("isAnswerCorrect", () => {
   });
 });
 
+const order: QuizQuestion = {
+  id: "c",
+  type: "order",
+  prompt: "?",
+  items: [
+    { text: "1932", explain: "." },
+    { text: "1939", explain: "." },
+    { text: "1944", explain: "." },
+  ],
+};
+
+const match: QuizQuestion = {
+  id: "d",
+  type: "match",
+  prompt: "?",
+  pairs: [
+    { left: "DES", right: "1977", explain: "." },
+    { left: "RSA", right: "1978", explain: "." },
+  ],
+};
+
+describe("isAnswerCorrect con order e match", () => {
+  it("in order accetta solo la sequenza esatta", () => {
+    expect(isAnswerCorrect(order, [0, 1, 2])).toBe(true);
+    expect(isAnswerCorrect(order, [1, 0, 2])).toBe(false);
+    expect(isAnswerCorrect(order, [0, 1])).toBe(false);
+  });
+
+  it("in match richiede tutte le coppie giuste", () => {
+    expect(isAnswerCorrect(match, [0, 1])).toBe(true);
+    expect(isAnswerCorrect(match, [1, 0])).toBe(false);
+    expect(isAnswerCorrect(match, [0, 0])).toBe(false);
+    expect(isAnswerCorrect(match, [0])).toBe(false);
+  });
+});
+
 describe("quizScore", () => {
   it("restituisce la frazione di risposte corrette", () => {
     expect(quizScore([single, multiple], [[0], [0]])).toBe(0.5);

@@ -70,3 +70,23 @@ questions:
       - text: Che il DES era stato inventato in Gran Bretagna
         correct: false
         explain: No. Il DES è uno standard americano del 1977.
+
+  - id: chi-ha-fatto-cosa
+    type: match
+    prompt: Abbina ogni persona a quello che ha fatto.
+    pairs:
+      - left: Charley Kline e Leonard Kleinrock
+        right: Il primo collegamento su ARPANET
+        explain: 29 ottobre 1969, all'UCLA. Arrivano solo le lettere "L" e "O".
+      - left: Bob Thomas
+        right: Creeper
+        explain: Nel 1971, alla BBN. Si sposta tra i computer senza fare danni.
+      - left: James P. Anderson
+        right: Il concetto di reference monitor
+        explain: Nel rapporto del 1972 per l'aeronautica militare americana.
+      - left: Whitfield Diffie e Martin Hellman
+        right: La crittografia a chiave pubblica
+        explain: Nel 1976, con l'articolo "New Directions in Cryptography".
+      - left: Rivest, Shamir e Adleman
+        right: RSA
+        explain: Inventato nel 1977; l'articolo esce nel febbraio 1978.

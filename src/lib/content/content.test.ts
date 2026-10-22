@@ -11,6 +11,30 @@ describe("contenuti del corso", () => {
   });
 });
 
+describe("controlli della timeline", () => {
+  it("segnala fonti mancanti, lezioni inesistenti e lastVerified assente", async () => {
+    const content = loadContent();
+    const [event] = content.timeline.events;
+    content.timeline.events = [
+      {
+        ...event,
+        sources: ["fonte-inesistente"],
+        lesson: { module: "storia-origini", lesson: "lezione-inesistente" },
+        lastVerified: null,
+        status: "fonti-verificate",
+      },
+    ];
+    const messages = (await checkContent(content)).map((i) => i.message);
+    expect(messages).toEqual(
+      expect.arrayContaining([
+        expect.stringContaining('fonte "fonte-inesistente" non elencata'),
+        expect.stringContaining('la lezione "storia-origini/lezione-inesistente" non esiste'),
+        expect.stringContaining("senza lastVerified"),
+      ]),
+    );
+  });
+});
+
 describe("schema dei quiz", () => {
   it("rifiuta una domanda a scelta singola con due risposte corrette", () => {
     const result = quizQuestionSchema.safeParse({

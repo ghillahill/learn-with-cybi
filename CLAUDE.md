@@ -16,6 +16,7 @@ npm run build          # content:check + build di produzione (mostra solo le lez
 LWC_SHOW_DRAFTS=1 npm run build   # build che include anche bozze e lezioni non pubblicate
 npm run lint           # ESLint
 npm test               # Vitest (src/**/*.test.ts)
+npm run test:e2e       # Playwright (e2e/*.spec.ts); riusa `npm run dev` se è già attivo su :3000
 npx vitest run src/lib/quiz/score.test.ts   # un singolo file di test
 npm run content:check  # valida contenuti, riferimenti, fonti e sintassi MDX
 npx shadcn@latest add <componente>   # aggiunge un componente shadcn/ui in src/components/ui/
@@ -25,7 +26,7 @@ Non lanciare `npm run build` mentre `npm run dev` è attivo: condividono `.next/
 
 ## Stack
 
-Next.js 16 (App Router, `src/`) + React 19 + TypeScript, Tailwind CSS v4 (configurato in `src/app/globals.css`, non c'è `tailwind.config`), **shadcn/ui** come libreria di componenti. Contenuti in MDX (compilati a runtime lato server con `@mdx-js/mdx` `evaluate`) e YAML (pacchetto `yaml`), validati con Zod 4; stato dei progressi con Zustand; test con Vitest. Playwright è previsto ma non ancora installato.
+Next.js 16 (App Router, `src/`) + React 19 + TypeScript, Tailwind CSS v4 (configurato in `src/app/globals.css`, non c'è `tailwind.config`), **shadcn/ui** come libreria di componenti. Contenuti in MDX (compilati a runtime lato server con `@mdx-js/mdx` `evaluate`) e YAML (pacchetto `yaml`), validati con Zod 4; stato dei progressi con Zustand; test con Vitest (logica) e Playwright (flussi principali, solo Chromium).
 
 - Next.js 16 ha cambiamenti incompatibili rispetto alle versioni precedenti: leggi [AGENTS.md](AGENTS.md) e la guida in `node_modules/next/dist/docs/` prima di scrivere codice Next.
 - shadcn/ui usa il preset `base-nova` (componenti basati su Base UI, non su Radix: verifica le API nel file del componente). Configurazione in `components.json`, componenti in `src/components/ui/`, utility `cn()` in `src/lib/utils.ts`. Usa questi componenti prima di scriverne di nuovi; non modificare a mano i file in `ui/` se puoi personalizzare tramite `className` o varianti.
@@ -39,9 +40,10 @@ Il corso è modulare: aggiungere un modulo vuol dire aggiungere una cartella in 
 
 - `content/modules/<NN-slug>/module.yaml`: manifest del modulo (ordine, prerequisiti, badge, ordine delle lezioni). Schema in §7.1.
 - `content/modules/<NN-slug>/lessons/*.mdx`: una lezione. Il frontmatter contiene `status`, `lastVerified`, `sources` e l'id del quiz (`quiz`). Il corpo usa solo i componenti elencati in `LESSON_COMPONENTS` (`src/lib/content/keys.ts`): `<Cybi mood>`, `<Cite id>`, `<Term id>`, `<MythVsFact myth fact source>`, `<KeyPoints>`, `<Callout type>`.
-- `content/modules/<NN-slug>/quizzes/<id>.yaml`: il quiz finale della lezione (tipi `single`, `multiple`, `truefalse`; ogni opzione ha `explain`). Nei valori YAML che contengono `: ` usa le virgolette.
+- `content/modules/<NN-slug>/quizzes/<id>.yaml`: il quiz finale della lezione. Tipi `single`, `multiple`, `truefalse` (`options`, ognuna con `explain`), `order` (`items` scritti nell'ordine corretto, l'app li mescola) e `match` (`pairs` left/right, l'app mescola la colonna destra). Nei valori YAML che contengono `: ` usa le virgolette.
+- `content/timeline.yaml`: fonti condivise (`sources`) ed eventi (`events`) della pagina `/timeline` e del gioco "Metti in ordine". Ogni evento cita le fonti per id, ha `status`/`lastVerified` come le lezioni, una `date` parziale (AAAA, AAAA-MM o AAAA-MM-GG) e una `note` per stime e date incerte; il link `lesson` deve puntare a una lezione esistente.
 - `content/glossary.yaml`: termini usati da `<Term>`, ognuno con almeno una fonte.
-- Codice: schemi Zod in `src/lib/content/schema.ts` → `loader.ts` legge i file (in sviluppo a ogni richiesta, in produzione una volta) e filtra per stato → `check.ts` fa i controlli incrociati (citazioni, termini, componenti, `lastVerified`, fonti solo C, sintassi MDX). `src/components/lesson/lesson-body.tsx` collega i componenti MDX alle fonti della lezione e al glossario.
+- Codice: schemi Zod in `src/lib/content/schema.ts` → `loader.ts` legge i file (in sviluppo a ogni richiesta, in produzione una volta) e filtra per stato → `check.ts` fa i controlli incrociati (citazioni, termini, componenti, `lastVerified`, fonti solo C, sintassi MDX, riferimenti della timeline). `src/components/lesson/lesson-body.tsx` collega i componenti MDX alle fonti della lezione e al glossario.
 - Progressi: logica pura in `src/lib/progress/logic.ts` (testata), store Zustand in `store.ts`, salvataggio tramite `ProgressRepository` (`repository.ts`), caricamento/salvataggio automatico in `progress-sync.tsx`. Chiave lezione = `modulo/lezione` (`lessonKey`). I componenti client leggono lo store solo dopo `hydrated` per evitare differenze di idratazione.
 
 ## Regole sui contenuti (vincolanti)
