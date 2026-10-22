@@ -1,0 +1,22 @@
+id: storia-origini
+order: 1
+title: "Storia: le origini"
+subtitle: Dai cifrari antichi al worm di Morris
+description: La sicurezza delle informazioni nasce molto prima dei computer. Dai messaggi segreti di Cesare a Enigma, dai primi virus al primo grande incidente di Internet.
+icon: scroll
+color: amber
+requires:
+  - benvenuto
+estimatedMinutes: 100
+badge:
+  id: archeologo-digitale
+  name: Archeologo digitale
+lessons:
+  - 01-segreti-prima-dei-computer
+  - 02-il-primo-hacker
+  - 03-enigma
+  - 04-primi-computer-bug-password
+  - 05-phreaker
+  - 06-arpanet-creeper-crittografia
+  - 07-anni-80-virus
+  - 08-worm-di-morris

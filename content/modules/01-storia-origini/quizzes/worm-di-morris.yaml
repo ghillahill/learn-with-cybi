@@ -1,0 +1,72 @@
+id: worm-di-morris
+passingScore: 0.7
+questions:
+  - id: worm-virus
+    type: single
+    prompt: Qual è la differenza principale tra un worm e un virus?
+    options:
+      - text: Il worm si propaga da solo attraverso la rete, senza bisogno di un programma ospite
+        correct: true
+        explain: Giusto. Il virus invece si attacca ad altri programmi e ha bisogno che vengano eseguiti.
+      - text: Il worm è sempre innocuo
+        correct: false
+        explain: No. Il worm di Morris ha mandato in sovraccarico migliaia di computer.
+      - text: Il worm funziona solo sui floppy disk
+        correct: false
+        explain: "No. È il contrario: il worm viaggia attraverso la rete."
+
+  - id: vettori
+    type: multiple
+    prompt: Quali strade usava il worm di Morris per entrare nei computer?
+    options:
+      - text: Una funzione di debug di sendmail
+        correct: true
+        explain: Sì. Una funzione che non doveva essere attiva.
+      - text: Un buffer overflow nel servizio fingerd
+        correct: true
+        explain: Sì. Inviava più dati di quanti il programma si aspettasse.
+      - text: Password deboli indovinate con un dizionario
+        correct: true
+        explain: Sì. Provava le parole di un elenco.
+      - text: Allegati email aperti dagli utenti
+        correct: false
+        explain: "No. Il worm non aveva bisogno che qualcuno aprisse un file: si propagava da solo."
+
+  - id: errore
+    type: single
+    prompt: Perché il worm ha mandato in sovraccarico così tanti computer?
+    options:
+      - text: Si reinstallava anche sulle macchine già infette, con probabilità 1 su 7
+        correct: true
+        explain: Esatto. Le copie si moltiplicavano sulla stessa macchina.
+      - text: Cancellava il disco rigido
+        correct: false
+        explain: No. Le fonti indicano come causa il sovraccarico dovuto alle copie multiple.
+      - text: Era stato programmato per spegnere i computer a mezzanotte
+        correct: false
+        explain: No. Nessuna fonte parla di un comando del genere; il problema era il meccanismo di reinstallazione.
+
+  - id: stime
+    type: truefalse
+    prompt: La cifra di 6.000 computer colpiti è un dato preciso e confermato.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. È una stima approssimativa dell'epoca, mai confermata. Di sicuro i computer colpiti furono migliaia.
+      - text: Falso
+        correct: true
+        explain: Giusto. È una stima mai confermata, da usare come ordine di grandezza.
+
+  - id: conseguenze
+    type: multiple
+    prompt: Quali sono state le conseguenze del worm di Morris?
+    options:
+      - text: Nasce il CERT/CC alla Carnegie Mellon University
+        correct: true
+        explain: Sì. Finanziato da DARPA, è il primo centro di coordinamento per le emergenze di rete.
+      - text: Morris è il primo condannato in base al Computer Fraud and Abuse Act
+        correct: true
+        explain: Sì. Sentenza nel 1990, confermata in appello nel 1991.
+      - text: Morris viene condannato a dieci anni di carcere
+        correct: false
+        explain: "No. La pena è di 3 anni di libertà vigilata, 400 ore di servizi sociali e una multa: nessun giorno di carcere."

@@ -1,0 +1,95 @@
+---
+id: worm-di-morris
+title: "1988: il worm di Morris"
+minutes: 13
+xp: 70
+status: fonti-verificate
+lastVerified: 2026-10-22
+objectives:
+  - Capire cos'è un worm e come si è diffuso il worm di Morris
+  - Riconoscere le vulnerabilità che ha sfruttato
+  - Sapere quali conseguenze ha avuto (CERT/CC, prima condanna CFAA)
+sources:
+  - id: spafford-1988
+    level: A
+    title: "The Internet Worm Program: An Analysis (Purdue CSD-TR-823)"
+    author: Eugene H. Spafford
+    publisher: Purdue University
+    year: 1988
+    url: https://spaf.cerias.purdue.edu/tech-reps/823.pdf
+  - id: us-v-morris
+    level: A
+    title: United States v. Morris, 928 F.2d 504 (2d Cir. 1991)
+    publisher: Corte d'appello federale degli Stati Uniti, secondo circuito
+    year: 1991
+    url: https://law.resource.org/pub/us/case/reporter/F2/928/928.F2d.504.90-1336.774.html
+  - id: nature-1989
+    level: B
+    title: Notizia sul worm di Internet (1989)
+    publisher: Nature 338
+    year: 1989
+    url: https://nature.com/articles/338530d0.pdf
+  - id: sei-cert-history
+    level: B
+    title: Storia del CERT Coordination Center
+    publisher: Software Engineering Institute, Carnegie Mellon University
+quiz: worm-di-morris
+---
+
+<Cybi mood="preoccupato">
+Una sera di novembre del 1988 un solo programma manda in tilt una parte di Internet. È il primo grande incidente della rete.
+</Cybi>
+
+## Cos'è un worm
+
+Un <Term id="virus">virus</Term> ha bisogno di un programma ospite per diffondersi. Un <Term id="worm">worm</Term> invece è un programma autonomo: si copia da solo e si propaga attraverso la rete, da un computer all'altro, senza bisogno di un ospite.
+
+## La sera del 2 novembre 1988
+
+Intorno alle 20:30 del 2 novembre 1988 **Robert Tappan Morris**, dottorando alla Cornell University, rilascia un worm da un computer della rete del MIT.<Cite id="spafford-1988" />
+
+Il worm usa più strade per entrare nei computer:<Cite id="spafford-1988" />
+
+- una **funzione di debug** del programma di posta `sendmail`, che non doveva essere attiva;
+- un <Term id="buffer-overflow">buffer overflow</Term> nel servizio `fingerd`, che dava informazioni sugli utenti collegati;
+- i comandi `rsh` e `rexec`, usati per eseguire programmi su computer remoti;
+- **password deboli**, indovinate provando le parole di un dizionario.
+
+<Cybi mood="detective">
+Nota la varietà: un difetto di configurazione, un errore di programmazione, una relazione di fiducia tra computer e delle password facili. Più strade ha un attacco, più è probabile che almeno una funzioni.
+</Cybi>
+
+## L'errore che ha fatto disastri
+
+Per non essere bloccato facilmente, il worm si reinstallava anche sui computer già infetti, con una probabilità di 1 su 7. Questa scelta fa moltiplicare le copie sulla stessa macchina, fino a mandarla in sovraccarico.<Cite id="spafford-1988" />
+
+Quanti computer? All'epoca circolò la cifra di circa **6.000**, intorno al 10% delle circa 60.000 macchine allora collegate a Internet. Era però una stima approssimativa, mai confermata con precisione. Di sicuro furono migliaia: la rivista *Nature* scrisse che il worm aveva paralizzato migliaia di installazioni.<Cite id="nature-1989" />
+
+<Callout type="warning" title="Stime, non misure">
+Nel 1988 nessuno poteva contare con precisione i computer collegati a Internet o quelli infettati. Il numero di 6.000 va preso come un ordine di grandezza, non come un dato preciso.
+</Callout>
+
+## Le conseguenze
+
+**Nasce il CERT.** Per coordinare la risposta a emergenze come questa, l'agenzia DARPA finanzia la nascita del **CERT/CC** (Computer Emergency Response Team Coordination Center) alla Carnegie Mellon University: il primo centro di coordinamento per le emergenze di rete.<Cite id="sei-cert-history" />
+
+**La prima condanna.** Morris è la prima persona condannata in base al Computer Fraud and Abuse Act, la legge americana del 1986. La sentenza di primo grado è del 1990 ed è confermata in appello nel 1991. La pena: 3 anni di libertà vigilata, 400 ore di servizi sociali e 10.050 dollari di multa. Nessun giorno di carcere.<Cite id="us-v-morris" />
+
+<MythVsFact
+  myth="Un programma fa danni solo se è progettato per distruggere."
+  fact="Il worm di Morris ha mandato in sovraccarico migliaia di computer a causa del suo meccanismo di reinstallazione, che faceva moltiplicare le copie sulla stessa macchina."
+  source="spafford-1988"
+/>
+
+## Cosa ci lascia il 1988
+
+<Cybi mood="fiero">
+Hai completato la storia delle origini! Dai cifrari di Cesare al primo grande incidente di Internet: ogni epoca ha avuto le sue tecnologie e i suoi punti deboli. Nel prossimo modulo vediamo come la sicurezza diventa una questione mondiale.
+</Cybi>
+
+<KeyPoints>
+- Un worm si propaga da solo attraverso la rete, senza un programma ospite.
+- 2 novembre 1988: il worm di Morris sfrutta sendmail, un buffer overflow in fingerd, rsh/rexec e password deboli.
+- Un errore nella logica di reinstallazione (1 su 7) moltiplica le copie e manda in sovraccarico migliaia di computer (la cifra di 6.000 è una stima mai confermata).
+- Conseguenze: nasce il CERT/CC; Morris è il primo condannato in base al Computer Fraud and Abuse Act.
+</KeyPoints>

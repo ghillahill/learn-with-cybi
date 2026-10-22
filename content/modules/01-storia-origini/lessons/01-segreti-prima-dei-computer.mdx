@@ -1,0 +1,117 @@
+---
+id: segreti-prima-dei-computer
+title: Segreti prima dei computer
+minutes: 14
+xp: 60
+status: fonti-verificate
+lastVerified: 2026-10-22
+objectives:
+  - Capire la differenza tra cifrari a trasposizione e a sostituzione
+  - Sapere come funziona il cifrario di Cesare e perché è debole
+  - Conoscere il contributo italiano alla crittografia (Alberti e Bellaso)
+  - Capire il principio di Kerckhoffs, valido ancora oggi
+sources:
+  - id: kahn-codebreakers
+    level: B
+    title: The Codebreakers
+    author: David Kahn
+    year: 1967
+  - id: plutarco-lisandro
+    level: A
+    title: Vita di Lisandro, 19
+    author: Plutarco
+    url: https://lexundria.com/plut_lys/19/prr
+  - id: kelly-skytale
+    level: B
+    title: The Myth of the Skytale
+    author: Thomas Kelly
+    publisher: Cryptologia
+    year: 1998
+  - id: svetonio-cesari
+    level: A
+    title: Vite dei Cesari (Vita di Cesare 56; Vita di Augusto 88)
+    author: Svetonio
+  - id: cryptomuseum-vigenere
+    level: B
+    title: Vigenère cipher
+    publisher: Crypto Museum
+    url: https://www.cryptomuseum.com/crypto/vigenere/
+  - id: kerckhoffs-1883
+    level: A
+    title: La cryptographie militaire (trascrizione di Fabien Petitcolas)
+    author: Auguste Kerckhoffs
+    year: 1883
+    url: https://www.petitcolas.net/kerckhoffs/
+quiz: segreti-prima-dei-computer
+---
+
+<Cybi mood="sorpreso">
+I computer non c'erano, ma i segreti sì! Generali, re e mercanti hanno sempre avuto bisogno di mandare messaggi che il nemico non potesse leggere.
+</Cybi>
+
+## Due modi di nascondere un messaggio
+
+Un <Term id="cifrario">cifrario</Term> trasforma un testo leggibile in uno incomprensibile. I cifrari classici seguono due idee:
+
+- **Trasposizione**: le lettere restano le stesse, ma cambiano posto. Come mescolare le carte di un mazzo.
+- **Sostituzione**: ogni lettera viene sostituita da un'altra. Come usare un alfabeto segreto.
+
+## La scitala spartana: trasposizione
+
+Secondo Plutarco, gli Spartani usavano la **scitala**: un bastone attorno a cui si avvolgeva una striscia di pergamena. Si scriveva il messaggio lungo il bastone; srotolata, la striscia mostrava le lettere in un ordine senza senso. Per rileggerlo serviva un bastone identico.<Cite id="plutarco-lisandro" />
+
+<Callout type="warning" title="Una storia discussa">
+Non tutti gli storici sono convinti che la scitala fosse davvero uno strumento per cifrare. Alcuni, come Thomas Kelly, pensano che servisse a trasmettere messaggi normali e che il racconto di Plutarco sia in parte leggendario.<Cite id="kelly-skytale" /> Prendila come un racconto antico, discusso dagli storici.
+</Callout>
+
+## Il cifrario di Cesare: sostituzione
+
+Svetonio, nelle *Vite dei Cesari*, racconta che Giulio Cesare, nelle lettere riservate, sostituiva ogni lettera con quella che si trova **tre posizioni dopo** nell'alfabeto: la A diventa D, la B diventa E, e così via.<Cite id="svetonio-cesari" /> Lo stesso Svetonio dice che Augusto usava uno spostamento di una sola lettera.
+
+Prova tu, con l'alfabeto inglese di 26 lettere e uno spostamento di 3:
+
+```
+CIAO  →  FLDR
+```
+
+L'idea è probabilmente più antica, ma Cesare è il primo utilizzatore documentato.
+
+<Cybi mood="detective">
+C'è un problema: con un alfabeto di 26 lettere esistono solo 25 spostamenti possibili. Un nemico paziente li prova tutti in pochi minuti, anche a mano. In crittografia, questo si chiama "attacco a forza bruta".
+</Cybi>
+
+## La svolta italiana: tanti alfabeti invece di uno
+
+Il punto debole della sostituzione semplice è che ogni lettera diventa sempre la stessa lettera. L'idea vincente è cambiare alfabeto mentre si scrive: è il cifrario **polialfabetico**.
+
+- Intorno al 1467 **Leon Battista Alberti** descrive un disco cifrante che permette di passare da un alfabeto all'altro durante la cifratura. È la prima descrizione ben documentata di un cifrario polialfabetico.<Cite id="kahn-codebreakers" />
+- Nel 1553 **Giovan Battista Bellaso** propone un metodo con una **parola chiave** ripetuta: ogni lettera della chiave indica di quanto spostare la lettera corrispondente del messaggio.<Cite id="cryptomuseum-vigenere" />
+
+Un esempio con la chiave LUNA (L sposta di 11, U di 20, N di 13, A di 0):
+
+```
+messaggio:  A T T A C C O
+chiave:     L U N A L U N
+cifrato:    L N G A N W B
+```
+
+Guarda le due T: diventano N e G. Le due C diventano N e W. La stessa lettera non dà più sempre lo stesso risultato, e il messaggio è molto più difficile da indovinare.
+
+<MythVsFact
+  myth="Il cifrario di Vigenère l'ha inventato Blaise de Vigenère."
+  fact="Il metodo con la parola chiave lo descrive Giovan Battista Bellaso nel 1553. Nell'Ottocento viene attribuito per errore a Vigenère, ed è rimasto il suo nome."
+  source="cryptomuseum-vigenere"
+/>
+
+## Il principio di Kerckhoffs
+
+Nel 1883 Auguste Kerckhoffs pubblica, nel *Journal des sciences militaires*, sei principi pratici per progettare cifrari. Il secondo è diventato una regola d'oro della sicurezza: un sistema deve restare sicuro **anche se il nemico conosce tutto, tranne la chiave**.<Cite id="kerckhoffs-1883" /> Molti anni dopo Claude Shannon lo riassume così: "il nemico conosce il sistema".
+
+Perché è così importante? Un segreto nascosto nel metodo prima o poi viene scoperto: basta un traditore o un cifrario catturato. Una chiave, invece, si cambia in un attimo.
+
+<KeyPoints>
+- I cifrari classici mescolano le lettere (trasposizione) oppure le sostituiscono (sostituzione).
+- Il cifrario di Cesare sposta ogni lettera di tre posizioni: ha solo 25 chiavi, quindi si rompe provandole tutte.
+- Alberti (circa 1467) e Bellaso (1553) introducono l'uso di più alfabeti; il "cifrario di Vigenère" è in realtà di Bellaso.
+- Principio di Kerckhoffs (1883): la sicurezza deve stare nella chiave, non nel segreto del metodo.
+</KeyPoints>

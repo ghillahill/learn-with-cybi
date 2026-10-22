@@ -1,0 +1,72 @@
+id: anni-80-virus
+passingScore: 0.7
+questions:
+  - id: nome-virus
+    type: single
+    prompt: Chi suggerisce di chiamare «virus» i programmi che si copiano da soli?
+    options:
+      - text: Leonard Adleman, relatore di Fred Cohen
+        correct: true
+        explain: Giusto. Adleman, la «A» di RSA, nota la somiglianza con i virus biologici.
+      - text: Rich Skrenta, l'autore di Elk Cloner
+        correct: false
+        explain: No. Skrenta scrive Elk Cloner nel 1982; il nome «virus» viene suggerito nel 1983 ad Adleman.
+      - text: Clifford Stoll
+        correct: false
+        explain: No. Stoll è l'astronomo che scopre la spia del KGB.
+
+  - id: brain
+    type: multiple
+    prompt: Quali affermazioni su Brain sono corrette?
+    options:
+      - text: È considerato il primo virus per PC IBM e compatibili
+        correct: true
+        explain: Sì. Compare il 19 gennaio 1986.
+      - text: I suoi autori vi lasciano dentro nomi e indirizzo
+        correct: true
+        explain: Sì. I fratelli Alvi non si nascondevano.
+      - text: È il primo virus stealth, che nasconde la propria presenza
+        correct: true
+        explain: Sì. È una delle sue caratteristiche più importanti.
+      - text: È stato creato per rubare denaro dalle banche
+        correct: false
+        explain: No. Nasce come protezione contro le copie illegali del software dei fratelli Alvi.
+
+  - id: btx
+    type: truefalse
+    prompt: Nel 1984 il Chaos Computer Club tiene i soldi addebitati alla Hamburger Sparkasse tramite BTX.
+    options:
+      - text: Vero
+        correct: false
+        explain: "No. Il CCC restituisce il denaro: voleva solo dimostrare che il sistema non era sicuro."
+      - text: Falso
+        correct: true
+        explain: "Giusto. Il denaro viene restituito: lo scopo era una dimostrazione."
+
+  - id: stoll
+    type: single
+    prompt: Da cosa parte l'indagine di Clifford Stoll?
+    options:
+      - text: Da un ammanco di 75 centesimi nei conti del tempo macchina
+        correct: true
+        explain: Esatto. Circa 9 secondi di calcolo non pagati.
+      - text: Da un virus che cancellava i file del laboratorio
+        correct: false
+        explain: No. Parte da una piccola anomalia contabile, non da un virus.
+      - text: Da una segnalazione del KGB
+        correct: false
+        explain: No. Il KGB era il cliente delle spie che Stoll scopre, non chi le ha segnalate.
+
+  - id: ransomware
+    type: single
+    prompt: Cosa fa l'AIDS Trojan del 1989 dopo 90 avvii del computer?
+    options:
+      - text: Chiede di pagare una «licenza» di 189 dollari alla PC Cyborg Corporation
+        correct: true
+        explain: Giusto. Per questo è considerato il primo ransomware.
+      - text: Mostra una poesia
+        correct: false
+        explain: No. Questo lo fa Elk Cloner, ogni 50 avvii.
+      - text: Si diffonde via Internet a tutti i contatti
+        correct: false
+        explain: No. Viaggia su floppy disk spediti per posta.

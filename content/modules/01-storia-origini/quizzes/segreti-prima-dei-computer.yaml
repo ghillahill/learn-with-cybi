@@ -1,0 +1,72 @@
+id: segreti-prima-dei-computer
+passingScore: 0.7
+questions:
+  - id: cesare
+    type: single
+    prompt: Con il cifrario di Cesare (spostamento di 3), come diventa la parola CIAO?
+    options:
+      - text: FLDR
+        correct: true
+        explain: Giusto. C→F, I→L, A→D, O→R.
+      - text: DJBP
+        correct: false
+        explain: Questo è uno spostamento di 1, quello che secondo Svetonio usava Augusto.
+      - text: OAIC
+        correct: false
+        explain: Qui le lettere sono solo state invertite. È una trasposizione, non una sostituzione.
+
+  - id: debolezza-cesare
+    type: single
+    prompt: Perché il cifrario di Cesare è facile da rompere?
+    options:
+      - text: Perché esistono solo 25 spostamenti possibili, che si possono provare tutti
+        correct: true
+        explain: Esatto. Questo è un attacco a forza bruta, possibile anche a mano.
+      - text: Perché usa troppe lettere
+        correct: false
+        explain: No. Il problema è il numero minuscolo di chiavi possibili.
+      - text: Perché nessuno lo usava davvero
+        correct: false
+        explain: No. Svetonio racconta che Cesare lo usava nelle lettere riservate.
+
+  - id: bellaso
+    type: truefalse
+    prompt: Il cifrario con parola chiave chiamato «di Vigenère» è stato descritto per primo da Giovan Battista Bellaso.
+    options:
+      - text: Vero
+        correct: true
+        explain: Giusto. Bellaso lo descrive nel 1553; il nome di Vigenère arriva per un errore di attribuzione nell'Ottocento.
+      - text: Falso
+        correct: false
+        explain: In realtà è vero. Bellaso lo descrive nel 1553; l'attribuzione a Vigenère è un errore dell'Ottocento.
+
+  - id: kerckhoffs
+    type: single
+    prompt: Cosa afferma il principio di Kerckhoffs?
+    options:
+      - text: Un sistema deve restare sicuro anche se il nemico conosce tutto tranne la chiave
+        correct: true
+        explain: Esatto. La sicurezza deve stare nella chiave, che si può cambiare facilmente.
+      - text: Il metodo di cifratura va tenuto segreto il più a lungo possibile
+        correct: false
+        explain: È l'opposto. Un metodo segreto prima o poi viene scoperto.
+      - text: Bisogna cambiare cifrario ogni giorno
+        correct: false
+        explain: No. Kerckhoffs parla di dove deve stare la sicurezza, non di quanto spesso cambiare metodo.
+
+  - id: polialfabetico
+    type: multiple
+    prompt: Quali affermazioni sui cifrari polialfabetici sono corrette?
+    options:
+      - text: Usano più alfabeti durante la cifratura
+        correct: true
+        explain: Sì. È proprio il significato di «polialfabetico».
+      - text: La stessa lettera del messaggio può diventare lettere diverse
+        correct: true
+        explain: Sì. Nell'esempio con la chiave LUNA le due T diventano N e G.
+      - text: Alberti ne descrive uno con un disco cifrante, intorno al 1467
+        correct: true
+        explain: Sì. È la prima descrizione ben documentata di un cifrario polialfabetico.
+      - text: Sono stati inventati dopo il cifrario di Kerckhoffs
+        correct: false
+        explain: No. Alberti e Bellaso vengono secoli prima del 1883; Kerckhoffs ha scritto dei principi, non un cifrario.

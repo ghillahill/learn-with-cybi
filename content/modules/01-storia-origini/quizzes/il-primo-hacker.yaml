@@ -1,0 +1,69 @@
+id: il-primo-hacker
+passingScore: 0.7
+questions:
+  - id: chi
+    type: single
+    prompt: Chi ha inviato il messaggio inatteso durante la dimostrazione del 1903?
+    options:
+      - text: Nevil Maskelyne, mago e inventore rivale di Marconi
+        correct: true
+        explain: Giusto. Era in disputa con Marconi sui brevetti.
+      - text: Guglielmo Marconi, per scherzo
+        correct: false
+        explain: No. Marconi doveva trasmettere il messaggio ufficiale da Poldhu, in Cornovaglia.
+      - text: Arthur Blok, l'assistente di Fleming
+        correct: false
+        explain: No. Blok è chi ha decodificato il messaggio, non chi l'ha inviato.
+
+  - id: perche
+    type: single
+    prompt: Qual era l'obiettivo di Maskelyne?
+    options:
+      - text: Dimostrare che il sistema di Marconi non era riservato come lui sosteneva
+        correct: true
+        explain: Esatto. Se lui poteva inserirsi nella trasmissione, poteva farlo chiunque.
+      - text: Rubare denaro alla Royal Institution
+        correct: false
+        explain: "No. Nessuna fonte parla di furti: lo scopo era screditare le promesse di Marconi."
+      - text: Provare un nuovo trucco di magia
+        correct: false
+        explain: Maskelyne era un mago, ma qui agiva come inventore rivale nella telegrafia senza fili.
+
+  - id: morse
+    type: single
+    prompt: Nel codice Morse, quale sequenza corrisponde alla lettera S?
+    options:
+      - text: "..."
+        correct: true
+        explain: Giusto. Tre punti.
+      - text: "-"
+        correct: false
+        explain: Una sola linea è la lettera T.
+      - text: ".-"
+        correct: false
+        explain: Punto e linea è la lettera A.
+
+  - id: data
+    type: truefalse
+    prompt: Il giorno esatto della dimostrazione è documentato in modo certo da tutte le fonti.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. Le fonti indicano date diverse (1°, 4 o 12 giugno); è certo solo il mese, giugno 1903.
+      - text: Falso
+        correct: true
+        explain: "Giusto. Le fonti non concordano sul giorno: per questo si dice solo «giugno 1903»."
+
+  - id: lezione
+    type: multiple
+    prompt: Quali insegnamenti di sicurezza possiamo trarre da questa storia?
+    options:
+      - text: Un canale aperto come le onde radio può essere ascoltato o disturbato da altri
+        correct: true
+        explain: Sì. Chiunque abbia l'attrezzatura giusta può inserirsi.
+      - text: Le promesse di sicurezza di chi vende una tecnologia vanno verificate
+        correct: true
+        explain: Sì. Chi promuove una tecnologia ha interesse a minimizzarne i rischi.
+      - text: Le tecnologie senza fili sono sicure per definizione
+        correct: false
+        explain: È proprio l'idea che Maskelyne ha smontato.

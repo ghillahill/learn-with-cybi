@@ -1,0 +1,75 @@
+---
+id: phreaker
+title: "Phreaker: hackerare il telefono"
+minutes: 11
+xp: 50
+status: fonti-verificate
+lastVerified: 2026-10-22
+objectives:
+  - Capire cos'era il phone phreaking e perché funzionava
+  - Conoscere Joe Engressia, John Draper e l'articolo di Esquire del 1971
+  - Capire perché mescolare segnali di controllo e dati è pericoloso
+sources:
+  - id: esquire-1971
+    level: A
+    title: "Secrets of the Little Blue Box"
+    author: Ron Rosenbaum
+    publisher: Esquire
+    year: 1971
+    url: https://explodingthephone.com/docs.php
+    note: Scansione dell'articolo originale (ottobre 1971) sul sito di Phil Lapsley.
+  - id: lapsley-exploding
+    level: B
+    title: "Exploding the Phone: The Untold Story of the Teenagers and Outlaws Who Hacked Ma Bell"
+    author: Phil Lapsley
+    year: 2013
+  - id: levy-hackers
+    level: B
+    title: "Hackers: Heroes of the Computer Revolution"
+    author: Steven Levy
+    year: 1984
+quiz: phreaker
+---
+
+<Cybi mood="sorpreso">
+Prima di Internet esisteva già una grande rete: quella telefonica. E come ogni rete, qualcuno ha trovato il modo di usarla in modi che i progettisti non avevano previsto.
+</Cybi>
+
+## Il tono magico: 2600 Hz
+
+Negli Stati Uniti la rete telefonica usava un tono a **2600 Hz** per segnalare che una linea era libera. Le centrali "ascoltavano" la linea stessa per ricevere questi comandi. Chi riusciva a riprodurre quel tono poteva quindi inviare comandi alle centrali.<Cite id="lapsley-exploding" />
+
+Chi esplorava la rete telefonica in questo modo veniva chiamato **phone phreak**: è il *phone phreaking*. Erano, in un certo senso, cugini degli hacker del club di modellismo ferroviario del MIT che abbiamo visto nella lezione 0.3.<Cite id="levy-hackers" />
+
+## Fischiare alla rete
+
+**Joe Engressia** (che più tardi si farà chiamare "Joybubbles") era cieco e aveva l'orecchio assoluto. Da bambino, verso i 7 anni, scopre che fischiando alla nota giusta, 2600 Hz, può manipolare le linee telefoniche.<Cite id="lapsley-exploding" />
+
+**John Draper** scopre, grazie alla comunità dei phreaker, che un fischietto regalato nelle scatole dei cereali Cap'n Crunch emette proprio 2600 Hz. Da qui il suo soprannome, "Captain Crunch". Più tardi costruisce le **blue box**, apparecchi elettronici che generano i toni di controllo della rete.<Cite id="lapsley-exploding" />
+
+## L'articolo che rende famosi i phreaker
+
+Nell'ottobre 1971 il giornalista Ron Rosenbaum pubblica sulla rivista *Esquire* l'articolo "Secrets of the Little Blue Box". Fa conoscere il phreaking al grande pubblico e diffonde la parola "phreak".<Cite id="esquire-1971" />
+
+Tra i lettori c'è **Steve Wozniak**, studente a Berkeley, che racconta l'articolo a **Steve Jobs**. Nel 1972–1973 i due costruiscono e vendono blue box in California, prima di fondare Apple.<Cite id="lapsley-exploding" />
+
+<Callout type="warning" title="Quante blue box?">
+Le fonti non concordano sul numero di blue box vendute: Wozniak parla di 40–50, Jobs di circa 100. Prendi questi numeri come stime.
+</Callout>
+
+## La vulnerabilità di fondo
+
+<Cybi mood="detective">
+Il vero problema non era il fischietto. Era il progetto della rete: i comandi per le centrali viaggiavano sullo stesso canale della voce degli utenti.
+</Cybi>
+
+Quando i **segnali di controllo** (i comandi) e i **dati** (le conversazioni) viaggiano sullo stesso canale, si parla di *in-band signaling*. Chiunque possa mettere dati nel canale può anche, se trova il modo, inserire comandi.
+
+È uno dei principi più importanti di tutta la sicurezza informatica, e lo ritroveremo spesso. Le moderne **injection** (per esempio la SQL injection, nel Modulo 6) funzionano allo stesso modo: un attaccante scrive dati che il sistema scambia per comandi.
+
+<KeyPoints>
+- La rete telefonica americana usava un tono a 2600 Hz, inviato sulla linea stessa, per gestire le chiamate.
+- Joe Engressia lo riproduceva fischiando; John Draper con il fischietto dei cereali Cap'n Crunch, poi con le blue box.
+- L'articolo di Esquire (ottobre 1971) rende famoso il phreaking; Wozniak e Jobs vendono blue box prima di fondare Apple.
+- Lezione: comandi e dati sullo stesso canale sono una vulnerabilità, la stessa delle injection moderne.
+</KeyPoints>

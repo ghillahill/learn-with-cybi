@@ -1,0 +1,72 @@
+id: enigma
+passingScore: 0.7
+questions:
+  - id: primo
+    type: single
+    prompt: Chi ricostruisce per primo il cablaggio interno dell'Enigma militare, nel 1932?
+    options:
+      - text: Marian Rejewski
+        correct: true
+        explain: Giusto. Matematico dell'ufficio cifra polacco, usa la teoria delle permutazioni e documenti dell'intelligence francese.
+      - text: Alan Turing
+        correct: false
+        explain: No. Turing lavora a Bletchley Park dal lavoro dei polacchi in poi; la sua Bombe entra in servizio nel 1940.
+      - text: Tommy Flowers
+        correct: false
+        explain: No. Flowers costruisce Colossus, che serve contro il cifrario Lorenz.
+
+  - id: colossus
+    type: truefalse
+    prompt: Colossus è stato costruito per decifrare Enigma.
+    options:
+      - text: Vero
+        correct: false
+        explain: È un mito diffuso. Colossus attaccava il cifrario Lorenz; contro Enigma si usavano le Bombe.
+      - text: Falso
+        correct: true
+        explain: Giusto. Colossus serviva contro Lorenz, il cifrario dell'alto comando tedesco.
+
+  - id: ordine
+    type: single
+    prompt: Qual è l'ordine cronologico corretto?
+    options:
+      - text: Rejewski ricostruisce Enigma → incontro di Pyry → prima Bombe → Colossus
+        correct: true
+        explain: Esatto. 1932, 1939, 1940, 1944.
+      - text: Prima Bombe → Rejewski ricostruisce Enigma → Colossus → incontro di Pyry
+        correct: false
+        explain: No. La Bombe britannica (1940) parte proprio dal lavoro polacco (1932) condiviso a Pyry (1939).
+      - text: Colossus → prima Bombe → incontro di Pyry → Rejewski ricostruisce Enigma
+        correct: false
+        explain: No. È l'ordine inverso. Colossus arriva per ultimo, nel 1944.
+
+  - id: tutte
+    type: single
+    prompt: Cosa ha fatto Bill Tutte?
+    options:
+      - text: Ha dedotto la struttura della macchina Lorenz senza averne mai vista una
+        correct: true
+        explain: Giusto. Ci riesce senza averne mai vista una.
+      - text: Ha costruito la prima Bombe
+        correct: false
+        explain: No. La prima Bombe la costruisce la British Tabulating Machine Company, con l'ingegnere Harold Keen.
+      - text: Ha aggiunto il diagonal board alla Bombe
+        correct: false
+        explain: No. Il diagonal board è un'idea di Gordon Welchman.
+
+  - id: lezioni
+    type: multiple
+    prompt: Quali fattori hanno permesso di battere Enigma, secondo la lezione?
+    options:
+      - text: La matematica
+        correct: true
+        explain: Sì. Rejewski usa la teoria delle permutazioni.
+      - text: La collaborazione tra paesi
+        correct: true
+        explain: Sì. I polacchi condividono il loro lavoro con britannici e francesi a Pyry.
+      - text: L'ingegneria
+        correct: true
+        explain: Sì. Le Bombe sono macchine costruite per automatizzare l'attacco.
+      - text: Un difetto di fabbrica delle macchine Enigma
+        correct: false
+        explain: No. La lezione non parla di difetti di fabbrica, ma di analisi matematica e di macchine costruite per l'attacco.

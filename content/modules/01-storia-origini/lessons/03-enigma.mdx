@@ -1,0 +1,92 @@
+---
+id: enigma
+title: "Enigma: la guerra dei codici"
+minutes: 14
+xp: 60
+status: fonti-verificate
+lastVerified: 2026-10-22
+objectives:
+  - Sapere chi ha rotto per primo Enigma, e come
+  - Capire il ruolo della Bombe di Turing e di Bletchley Park
+  - Distinguere Enigma dal cifrario Lorenz e conoscere Colossus
+sources:
+  - id: mactutor-rejewski
+    level: B
+    title: Marian Adam Rejewski (biografia)
+    publisher: MacTutor, University of St Andrews
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Rejewski/
+  - id: gchq-pyry
+    level: A
+    title: The Pyry Forest meeting
+    publisher: GCHQ
+    url: https://www.gchq.gov.uk/information/the-pyry-forest-meeting
+  - id: britannica-bombe
+    level: B
+    title: Bombe
+    publisher: Encyclopaedia Britannica
+    url: https://britannica.com/topic/Bombe
+  - id: ieee-colossus
+    level: B
+    title: "Milestones: The Colossus Computers, 1944-1945"
+    publisher: IEEE / Engineering and Technology History Wiki
+    url: https://ethw.org/Milestones:The_Colossus_Computers,_1944-1945
+  - id: kahn-codebreakers
+    level: B
+    title: The Codebreakers
+    author: David Kahn
+    year: 1967
+quiz: enigma
+---
+
+<Cybi mood="detective">
+Seconda guerra mondiale: i messaggi militari tedeschi viaggiano via radio, quindi chiunque può intercettarli. Ma sono cifrati. La sfida è leggerli prima che sia troppo tardi.
+</Cybi>
+
+## La macchina Enigma
+
+**Enigma** è una macchina cifrante elettromeccanica tedesca. Invece di cifrare a mano, con carta e matita, l'operatore usa una macchina: il segreto sta nel suo cablaggio interno e nelle impostazioni scelte (la chiave).
+
+## I primi a riuscirci: i polacchi
+
+Nel dicembre 1932 **Marian Rejewski**, matematico dell'ufficio cifra polacco (Biuro Szyfrów), riesce a ricostruire il cablaggio interno dell'Enigma militare. Ci arriva con la matematica, in particolare con la teoria delle permutazioni, e con alcuni documenti forniti dall'intelligence francese.<Cite id="mactutor-rejewski" />
+
+Nel luglio 1939 Rejewski e i colleghi Różycki e Zygalski incontrano a Pyry, vicino a Varsavia, gli esperti britannici e francesi. Consegnano il loro metodo e copie ricostruite della macchina.<Cite id="gchq-pyry" /> Secondo GCHQ, l'agenzia di intelligence britannica, l'incontro si tiene il 25 e 26 luglio 1939 (altre fonti indicano date tra il 24 e il 27).
+
+## Bletchley Park e la Bombe
+
+In Gran Bretagna il lavoro continua a **Bletchley Park**. Partendo dalla "bomba" polacca, Alan Turing progetta una macchina più potente, la **Bombe**. La prima, chiamata "Victory", è costruita dalla British Tabulating Machine Company, con l'ingegnere Harold Keen, ed entra in servizio nel marzo 1940.<Cite id="britannica-bombe" />
+
+Victory però è troppo lenta. Gordon Welchman aggiunge un componente, il *diagonal board*, che la rende molto più efficace: la macchina migliorata entra in servizio nell'agosto 1940.<Cite id="britannica-bombe" />
+
+<MythVsFact
+  myth="Alan Turing ha rotto Enigma da solo."
+  fact="Il primo a ricostruire l'Enigma militare è Marian Rejewski, nel 1932. La Bombe di Turing parte dal lavoro polacco, e altri come Gordon Welchman la migliorano in modo decisivo."
+  source="mactutor-rejewski"
+/>
+
+## Colossus e il cifrario Lorenz
+
+Enigma non è l'unico cifrario tedesco. L'alto comando usa un'altra macchina, **Lorenz**. Bill Tutte riesce a dedurne la struttura interna **senza averne mai vista una**.<Cite id="ieee-colossus" />
+
+Per attaccare Lorenz, l'ingegnere Tommy Flowers del General Post Office costruisce **Colossus**. Il primo esemplare è operativo dal febbraio 1944. È uno dei primi computer elettronici digitali programmabili della storia.<Cite id="ieee-colossus" />
+
+<MythVsFact
+  myth="Colossus serviva a decifrare Enigma."
+  fact="Colossus è stato costruito contro il cifrario Lorenz, non contro Enigma. Contro Enigma si usavano le Bombe."
+  source="ieee-colossus"
+/>
+
+<Cybi mood="sorpreso">
+Hai notato? Uno dei primi computer elettronici nasce proprio per rompere un cifrario. Sicurezza e informatica crescono insieme fin dall'inizio.
+</Cybi>
+
+## La lezione per la sicurezza
+
+Enigma è stata battuta da tre cose: la matematica, la collaborazione tra paesi diversi e l'ingegneria. E torna il principio di Kerckhoffs: una volta ricostruito il funzionamento della macchina, tutta la sua sicurezza dipendeva dalle chiavi.
+
+<KeyPoints>
+- Dicembre 1932: Marian Rejewski ricostruisce il cablaggio dell'Enigma militare.
+- Luglio 1939: a Pyry i polacchi condividono il loro lavoro con britannici e francesi.
+- Marzo 1940: entra in servizio la prima Bombe di Turing, "Victory"; Welchman la migliora nell'agosto 1940.
+- Febbraio 1944: Colossus, uno dei primi computer elettronici programmabili, attacca il cifrario Lorenz, non Enigma.
+</KeyPoints>

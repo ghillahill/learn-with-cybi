@@ -135,3 +135,78 @@ entries:
     definition: Garanzia che le informazioni e i sistemi siano accessibili e utilizzabili quando servono. Perderla significa un'interruzione dell'accesso.
     sources:
       - *fips199
+
+  - id: cifrario
+    term: Cifrario
+    definition: Sistema crittografico che sostituisce le unità del testo in chiaro con simboli o gruppi di simboli, oppure le riordina, oppure fa entrambe le cose.
+    sources:
+      - id: nist-cipher
+        level: A
+        title: NIST CSRC Glossary, "cipher"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/cipher
+        note: Definizione tratta da CNSSI 4009-2022.
+
+  - id: crittografia-chiave-pubblica
+    term: Crittografia a chiave pubblica
+    definition: Sistema in cui ognuno ha due chiavi. Quella pubblica si può dare a tutti; quella privata resta segreta. Pubblicare la chiave pubblica non rivela quella privata, e la chiave privata permette anche di firmare i messaggi.
+    sources:
+      - id: rsa-1978
+        level: A
+        title: A Method for Obtaining Digital Signatures and Public-Key Cryptosystems
+        author: Ronald Rivest, Adi Shamir, Leonard Adleman
+        publisher: Communications of the ACM 21(2)
+        year: 1978
+        url: https://doi.org/10.1145/359340.359342
+
+  - id: reference-monitor
+    term: Reference monitor
+    definition: Meccanismo che controlla ogni accesso di un soggetto (un utente, un programma) a un oggetto (un file, una risorsa), applicando le regole di autorizzazione. Concetto introdotto dall'Anderson Report del 1972.
+    sources:
+      - id: anderson-report
+        level: A
+        title: Computer Security Technology Planning Study, Vol. II (ESD-TR-73-51)
+        author: James P. Anderson
+        publisher: US Air Force, Electronic Systems Division
+        year: 1972
+        url: https://apps.dtic.mil/sti/pdfs/AD0758206.pdf
+
+  - id: virus
+    term: Virus
+    definition: Programma malevolo che si propaga modificando altri programmi o file. Non funziona da solo, ma si attiva quando viene eseguito il programma che lo ospita.
+    sources:
+      - id: nist-virus
+        level: A
+        title: NIST CSRC Glossary, "virus"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/virus
+
+  - id: worm
+    term: Worm
+    definition: Programma autonomo che si copia da solo e si propaga attraverso le reti di computer, senza bisogno di un programma ospite né di un'azione dell'utente.
+    sources:
+      - id: nist-worm
+        level: A
+        title: NIST CSRC Glossary, "worm"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/worm
+
+  - id: buffer-overflow
+    term: Buffer overflow
+    definition: Errore per cui un programma accetta in un'area di memoria più dati di quanti ne possa contenere, sovrascrivendo altre informazioni. Gli attaccanti lo sfruttano per bloccare il sistema o per fargli eseguire codice preparato apposta.
+    sources:
+      - id: nist-buffer-overflow
+        level: A
+        title: NIST CSRC Glossary, "buffer overflow"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/buffer_overflow
+
+  - id: ransomware
+    term: Ransomware
+    definition: Malware progettato per cifrare i file di un dispositivo, rendendoli inutilizzabili, e chiedere un riscatto in cambio della decifratura.
+    sources:
+      - id: cisa-ransomware
+        level: A
+        title: Ransomware General Security Postcard
+        publisher: CISA
+        url: https://www.cisa.gov/sites/default/files/publications/Ransomware%20General%20Security%20Postcard%206.23.2021_508c.pdf

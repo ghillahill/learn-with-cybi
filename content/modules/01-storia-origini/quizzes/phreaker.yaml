@@ -1,0 +1,69 @@
+id: phreaker
+passingScore: 0.7
+questions:
+  - id: tono
+    type: single
+    prompt: A cosa serviva il tono a 2600 Hz nella rete telefonica americana?
+    options:
+      - text: A segnalare che una linea era libera
+        correct: true
+        explain: Giusto. Chi lo riproduceva poteva inviare comandi alle centrali.
+      - text: A cifrare le telefonate
+        correct: false
+        explain: No. Le telefonate non erano cifrate; il tono era un segnale di controllo.
+      - text: A far squillare il telefono
+        correct: false
+        explain: No. Era un segnale tra le centrali, che indicava una linea libera.
+
+  - id: draper
+    type: single
+    prompt: Da dove viene il soprannome «Captain Crunch» di John Draper?
+    options:
+      - text: Da un fischietto regalato nei cereali Cap'n Crunch, che emetteva 2600 Hz
+        correct: true
+        explain: Esatto. Lo scopre grazie alla comunità dei phreaker.
+      - text: Dal nome della sua blue box
+        correct: false
+        explain: No. Le blue box arrivano dopo; il soprannome viene dal fischietto.
+      - text: Da un articolo di Esquire
+        correct: false
+        explain: No. L'articolo di Esquire rende famoso il phreaking, ma il soprannome viene dal fischietto.
+
+  - id: wozniak
+    type: truefalse
+    prompt: Steve Wozniak e Steve Jobs hanno costruito e venduto blue box prima di fondare Apple.
+    options:
+      - text: Vero
+        correct: true
+        explain: Giusto. Nel 1972–1973, in California, dopo che Wozniak aveva letto l'articolo di Esquire.
+      - text: Falso
+        correct: false
+        explain: In realtà è vero. Lo fanno nel 1972–1973, prima di fondare Apple.
+
+  - id: in-band
+    type: single
+    prompt: Qual è la vulnerabilità di fondo sfruttata dai phreaker?
+    options:
+      - text: Comandi e voce viaggiavano sullo stesso canale
+        correct: true
+        explain: "Esatto. Si chiama in-band signaling: chi mette dati nel canale può anche inserire comandi."
+      - text: I telefoni non avevano una password
+        correct: false
+        explain: No. Il problema era nel progetto della rete, non nei singoli telefoni.
+      - text: Le centrali erano troppo lente
+        correct: false
+        explain: "No. La velocità non c'entra: le centrali obbedivano a toni che chiunque poteva generare."
+
+  - id: injection
+    type: multiple
+    prompt: Quali affermazioni sul legame tra phreaking e attacchi moderni sono corrette?
+    options:
+      - text: Le injection moderne sfruttano lo stesso principio, dati scambiati per comandi
+        correct: true
+        explain: Sì. È lo stesso errore di progetto, in un'altra tecnologia.
+      - text: La SQL injection è un esempio di questo tipo di attacco
+        correct: true
+        explain: Sì. La vedremo nel Modulo 6.
+      - text: Il problema è sparito con la fine delle linee telefoniche analogiche
+        correct: false
+        explain: No. Il principio vale per qualsiasi sistema che mescola comandi e dati.

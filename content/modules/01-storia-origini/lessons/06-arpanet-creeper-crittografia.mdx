@@ -1,0 +1,110 @@
+---
+id: arpanet-creeper-crittografia
+title: ARPANET, Creeper e la crittografia moderna
+minutes: 14
+xp: 60
+status: fonti-verificate
+lastVerified: 2026-10-22
+objectives:
+  - Conoscere il primo messaggio su ARPANET e il programma Creeper
+  - Capire il concetto di reference monitor (Anderson Report, 1972)
+  - Capire perché la crittografia a chiave pubblica è stata una rivoluzione
+sources:
+  - id: kleinrock-first-words
+    level: A
+    title: The first words on the Internet
+    author: Leonard Kleinrock
+    publisher: UCLA
+    url: https://www.lk.cs.ucla.edu/internet_first_words.html
+  - id: sans-creeper
+    level: B
+    title: "50 years of malware? Not really. 50 years of computer worms? That's a different story..."
+    publisher: SANS Internet Storm Center
+    url: https://isc.sans.edu/diary/27208
+  - id: anderson-report
+    level: A
+    title: Computer Security Technology Planning Study, Vol. II (ESD-TR-73-51)
+    author: James P. Anderson
+    publisher: US Air Force, Electronic Systems Division
+    year: 1972
+    url: https://apps.dtic.mil/sti/pdfs/AD0758206.pdf
+  - id: diffie-hellman-1976
+    level: A
+    title: New Directions in Cryptography
+    author: Whitfield Diffie, Martin Hellman
+    publisher: IEEE Transactions on Information Theory 22(6)
+    year: 1976
+  - id: fips-46
+    level: A
+    title: "FIPS PUB 46: Data Encryption Standard"
+    publisher: National Bureau of Standards
+    year: 1977
+    url: https://nvlpubs.nist.gov/nistpubs/Legacy/FIPS/fipspub46.pdf
+  - id: rsa-1978
+    level: A
+    title: A Method for Obtaining Digital Signatures and Public-Key Cryptosystems
+    author: Ronald Rivest, Adi Shamir, Leonard Adleman
+    publisher: Communications of the ACM 21(2)
+    year: 1978
+    url: https://doi.org/10.1145/359340.359342
+  - id: nsa-gchq-trio
+    level: A
+    title: Clifford Cocks, James Ellis and Malcolm Williamson
+    publisher: NSA
+    url: https://www.nsa.gov/Press-Room/Digital-Media-Center/Biographies/Biography-View-Page/Article/3006218/clifford-cocks-james-ellis-and-malcolm-williamson/
+  - id: gchq-ellis
+    level: A
+    title: James Ellis
+    publisher: GCHQ
+    url: https://www.gchq.gov.uk/person/james-ellis
+quiz: arpanet-creeper-crittografia
+---
+
+<Cybi mood="felice">
+Anni '70: i computer iniziano a parlarsi tra loro. Con le reti arrivano i primi programmi che viaggiano da una macchina all'altra, e le prime idee su come proteggere tutto questo.
+</Cybi>
+
+## "LO": il primo messaggio
+
+Il 29 ottobre 1969, alle 22:30, all'UCLA lo studente Charley Kline, seguito dal professor Leonard Kleinrock, prova a collegarsi al computer dello SRI attraverso **ARPANET**, la rete che darà origine a Internet. Doveva scrivere un comando di login, ma arrivano solo le lettere "L" e "O": poi il sistema va in crash. Il collegamento riesce circa un'ora dopo.<Cite id="kleinrock-first-words" />
+
+## Creeper: "prendimi, se ci riesci"
+
+Nel 1971 Bob Thomas, alla società BBN, scrive **Creeper**, un programma sperimentale che si sposta tra computer DEC PDP-10 con sistema TENEX collegati ad ARPANET. Sullo schermo mostra il messaggio "I'M THE CREEPER: CATCH ME IF YOU CAN". Non fa nessun danno.<Cite id="sans-creeper" />
+
+<Callout type="warning" title="Una storia raccontata in tanti modi">
+La versione originale di Creeper si spostava da un computer all'altro, ma ne esisteva una sola copia in rete. Secondo alcune fonti Ray Tomlinson ne crea poi una versione che si replica, e Reaper, un programma per eliminarlo (circa 1972). Questi dettagli non sono documentati con certezza.<Cite id="sans-creeper" />
+</Callout>
+
+## Il reference monitor
+
+Nell'ottobre 1972 James P. Anderson consegna all'aeronautica militare americana un rapporto sulla sicurezza dei computer, l'**Anderson Report**. Introduce un'idea fondamentale: il <Term id="reference-monitor">reference monitor</Term>, un meccanismo che controlla **ogni** accesso di un soggetto (un utente, un programma) a un oggetto (un file, una risorsa).<Cite id="anderson-report" />
+
+<Cybi mood="pensieroso">
+Pensa a un buttafuori che controlla tutti, sempre, senza eccezioni. Se anche una sola porta resta senza controllo, il sistema non è sicuro.
+</Cybi>
+
+Questa idea ha influenzato gli standard di sicurezza successivi, come l'*Orange Book* (TCSEC, 1983).
+
+## La rivoluzione della chiave pubblica
+
+Fino agli anni '70 c'era un problema enorme: per comunicare in segreto, mittente e destinatario dovevano **condividere prima la stessa chiave**, di persona o con un corriere fidato.
+
+- **1976**: Whitfield Diffie e Martin Hellman pubblicano "New Directions in Cryptography". Propongono la <Term id="crittografia-chiave-pubblica">crittografia a chiave pubblica</Term> e un modo per concordare una chiave segreta su un canale che altri possono ascoltare.<Cite id="diffie-hellman-1976" />
+- **15 gennaio 1977**: il National Bureau of Standards pubblica il **DES** (Data Encryption Standard) come standard federale americano per la cifratura.<Cite id="fips-46" />
+- **1977**: Ron Rivest, Adi Shamir e Leonard Adleman inventano **RSA**, un sistema a chiave pubblica che permette anche di firmare i messaggi. L'articolo esce nel febbraio 1978.<Cite id="rsa-1978" />
+
+L'idea di base: ognuno ha **due chiavi**. Quella pubblica si può dare a tutti; quella privata resta segreta. Pubblicare la chiave pubblica non rivela quella privata.<Cite id="rsa-1978" />
+
+<MythVsFact
+  myth="La crittografia a chiave pubblica l'hanno inventata per primi Diffie, Hellman, Rivest, Shamir e Adleman."
+  fact="Al GCHQ britannico James Ellis concepisce l'idea intorno al 1970; Clifford Cocks trova un metodo equivalente a RSA nel 1973 e Malcolm Williamson uno equivalente a Diffie-Hellman nel 1974. Tutto resta segreto fino al dicembre 1997."
+  source="nsa-gchq-trio"
+/>
+
+<KeyPoints>
+- 29 ottobre 1969: su ARPANET arrivano solo le lettere "LO", poi il crash.
+- 1971: Creeper di Bob Thomas si sposta tra computer collegati ad ARPANET, senza fare danni.
+- 1972: l'Anderson Report introduce il reference monitor, che controlla ogni accesso.
+- 1976–1977: crittografia a chiave pubblica (Diffie-Hellman, RSA) e standard DES; al GCHQ idee equivalenti erano già state trovate in segreto.
+</KeyPoints>

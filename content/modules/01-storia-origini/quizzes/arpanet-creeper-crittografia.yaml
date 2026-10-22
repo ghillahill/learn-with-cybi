@@ -1,0 +1,72 @@
+id: arpanet-creeper-crittografia
+passingScore: 0.7
+questions:
+  - id: lo
+    type: single
+    prompt: Cosa arriva al computer dello SRI nel primo tentativo di collegamento su ARPANET, nel 1969?
+    options:
+      - text: Le lettere L e O, poi il sistema va in crash
+        correct: true
+        explain: Giusto. Doveva essere un login; il collegamento riesce circa un'ora dopo.
+      - text: Il messaggio completo «LOGIN»
+        correct: false
+        explain: No. Arrivano solo le prime due lettere, poi il crash.
+      - text: Il messaggio di Creeper
+        correct: false
+        explain: No. Creeper arriva nel 1971, due anni dopo.
+
+  - id: creeper
+    type: truefalse
+    prompt: Creeper era un programma distruttivo che cancellava i file.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. Era sperimentale e mostrava solo un messaggio, senza fare danni.
+      - text: Falso
+        correct: true
+        explain: Giusto. Si spostava tra i computer mostrando un messaggio, senza fare danni.
+
+  - id: reference-monitor
+    type: single
+    prompt: Cosa fa un reference monitor, secondo l'Anderson Report del 1972?
+    options:
+      - text: Controlla ogni accesso di un soggetto a un oggetto
+        correct: true
+        explain: Esatto. Ogni accesso, senza eccezioni.
+      - text: Cifra tutti i file del computer
+        correct: false
+        explain: No. Il reference monitor controlla gli accessi, non cifra i dati.
+      - text: Registra le telefonate
+        correct: false
+        explain: No. È un concetto di sicurezza dei computer, legato al controllo degli accessi.
+
+  - id: chiave-pubblica
+    type: multiple
+    prompt: Quali affermazioni sulla crittografia a chiave pubblica sono corrette?
+    options:
+      - text: Ognuno ha una chiave pubblica e una chiave privata
+        correct: true
+        explain: Sì. Quella pubblica si può dare a tutti, quella privata resta segreta.
+      - text: Pubblicare la chiave pubblica non rivela quella privata
+        correct: true
+        explain: Sì. È la proprietà su cui si basa il sistema.
+      - text: RSA permette anche di firmare i messaggi
+        correct: true
+        explain: Sì. Lo dice già il titolo dell'articolo del 1978.
+      - text: Mittente e destinatario devono incontrarsi per scambiarsi la chiave
+        correct: false
+        explain: No. Questo era proprio il problema dei sistemi precedenti, che la chiave pubblica risolve.
+
+  - id: gchq
+    type: single
+    prompt: Cosa si scopre nel dicembre 1997?
+    options:
+      - text: Che al GCHQ britannico erano già state trovate in segreto idee equivalenti a RSA e Diffie-Hellman
+        correct: true
+        explain: Giusto. Ellis, Cocks e Williamson ci erano arrivati tra il 1970 e il 1974.
+      - text: Che RSA era stato violato
+        correct: false
+        explain: No. Il 1997 è l'anno in cui il GCHQ rende pubblico il lavoro di Ellis, Cocks e Williamson.
+      - text: Che il DES era stato inventato in Gran Bretagna
+        correct: false
+        explain: No. Il DES è uno standard americano del 1977.

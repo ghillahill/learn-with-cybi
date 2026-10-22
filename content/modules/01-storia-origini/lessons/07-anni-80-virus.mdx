@@ -1,0 +1,131 @@
+---
+id: anni-80-virus
+title: "Anni '80: arrivano i virus"
+minutes: 15
+xp: 70
+status: fonti-verificate
+lastVerified: 2026-10-22
+objectives:
+  - Conoscere i primi virus diffusi davvero (Elk Cloner, Brain)
+  - Sapere da dove viene la parola "virus" in informatica
+  - Conoscere le prime indagini e le prime leggi sulla sicurezza informatica
+  - Conoscere il primo ransomware
+sources:
+  - id: inquirer-elk-cloner
+    level: B
+    title: The father of the virus
+    publisher: The Philadelphia Inquirer
+    year: 2007
+    url: https://inquirer.com/philly/business/20070909_The_father_of_the_virus.html
+  - id: berliner-zeitung-ccc
+    level: B
+    title: Der Chaos Computer Club wird 25
+    publisher: Berliner Zeitung
+    url: https://www.berliner-zeitung.de/article/der-chaos-computer-club-wird-25-mit-ihm-ein-stueck-deutscher-computergeschichte-ungebremster-datendrang-7484
+  - id: computerwoche-btx
+    level: B
+    title: "Hacker knacken BTX-System"
+    publisher: Computerwoche
+    url: https://www.computerwoche.de/article/2843663/dafta-mit-lifetest-hacker-knacken-btx-system.html
+  - id: kaplan-dark-territory
+    level: B
+    title: "Dark Territory: The Secret History of Cyber War"
+    author: Fred Kaplan
+    year: 2016
+  - id: eset-adleman
+    level: B
+    title: Professor Len Adleman explains how he coined the term "computer virus"
+    publisher: ESET WeLiveSecurity
+    year: 2017
+    url: https://www.welivesecurity.com/2017/11/01/professor-len-adleman-explains-computer-virus-term/
+  - id: cohen-1987
+    level: A
+    title: "Computer Viruses: Theory and Experiments"
+    author: Fred Cohen
+    publisher: Computers & Security 6, pp. 22-35
+    year: 1987
+    url: https://www.profsandhu.com/cs5323_s18/cohen-1987.pdf
+  - id: computinghistory-brain
+    level: B
+    title: Brain, the first PC virus, is released
+    publisher: Centre for Computing History
+    url: https://computinghistory.org.uk/det/6303/Brain,%20the%20first%20PC%20virus,%20is%20released
+  - id: stoll-1988
+    level: A
+    title: Stalking the Wily Hacker
+    author: Clifford Stoll
+    publisher: Communications of the ACM 31(5)
+    year: 1988
+    url: https://nsarchive.gwu.edu/sites/default/files/documents/5626281/Clifford-Stoll-Communications-of-the-ACM.pdf
+  - id: stoll-cuckoo
+    level: B
+    title: The Cuckoo's Egg
+    author: Clifford Stoll
+    year: 1989
+  - id: heise-ransomware
+    level: B
+    title: "Missing Link: 35 Jahre Ransomware"
+    publisher: heise online
+    url: https://heise.de/-10247713
+quiz: anni-80-virus
+---
+
+<Cybi mood="preoccupato">
+Anni '80: arrivano i personal computer, e con loro i floppy disk che passano di mano in mano. È il terreno perfetto per i primi virus.
+</Cybi>
+
+## Elk Cloner: una poesia ogni 50 avvii
+
+Nel 1982 **Rich Skrenta**, allora quindicenne, scrive **Elk Cloner**, un <Term id="virus">virus</Term> per il computer Apple II. Si nasconde nel settore di avvio dei floppy disk e si copia sui dischi inseriti nel computer. Ogni 50 avvii mostra una poesia. È tra i primi virus per microcomputer diffusi "in the wild", cioè fuori dal laboratorio in cui è nato.<Cite id="inquirer-elk-cloner" />
+
+## Da dove viene la parola "virus"
+
+Nel novembre 1983 **Fred Cohen**, dottorando alla University of Southern California, mostra in un seminario di sicurezza un programma che si copia da solo, su un computer VAX 11/750 con Unix. Il suo relatore, **Leonard Adleman** (la "A" di RSA, che abbiamo visto nella lezione precedente), suggerisce il nome: **virus**, per la somiglianza con i virus biologici.<Cite id="eset-adleman" />
+
+Cohen presenta il suo studio nel 1984. Definisce il virus come un programma che "infetta" altri programmi modificandoli per includere una copia, anche evoluta, di se stesso.<Cite id="cohen-1987" />
+
+## Brain: il primo virus per PC
+
+Il 19 gennaio 1986 compare **Brain**, considerato il primo virus per PC IBM e compatibili. Lo scrivono i fratelli Basit e Amjad Farooq Alvi a Lahore, in Pakistan, come protezione contro le copie illegali del loro software. Dentro il virus lasciano i loro nomi e il loro indirizzo. Brain è anche il primo virus "stealth": nasconde la propria presenza.<Cite id="computinghistory-brain" />
+
+<Cybi mood="sorpreso">
+Lasciare nome e indirizzo dentro un virus! Brain non voleva fare danni: era nato per controllare chi copiava il software. Ma una volta in giro, nessuno poteva più fermarlo.
+</Cybi>
+
+## Hacker in Germania: il Chaos Computer Club
+
+Il 12 settembre 1981 nasce a Berlino, nella redazione del quotidiano *taz*, il **Chaos Computer Club** (CCC); tra i fondatori c'è Wau Holland.<Cite id="berliner-zeitung-ccc" />
+
+Nel novembre 1984 il CCC sfrutta una falla del sistema telematico tedesco BTX (Bildschirmtext) per addebitare alla banca Hamburger Sparkasse circa 135.000 marchi. Poi **restituisce il denaro**: lo scopo era dimostrare che il sistema non era sicuro.<Cite id="computerwoche-btx" /> Le fonti riportano cifre leggermente diverse, tra 134.000 e 137.000 marchi.
+
+## WarGames e la Casa Bianca
+
+Nel giugno 1983 esce il film *WarGames*, che parla di un'intrusione informatica. Secondo un aneddoto riportato dal giornalista Fred Kaplan, il presidente Ronald Reagan lo vede a Camp David e chiede ai militari se una cosa simile sia possibile davvero. Dagli studi che seguono nasce la direttiva NSDD-145 (17 settembre 1984), una delle prime politiche presidenziali americane sulla sicurezza informatica.<Cite id="kaplan-dark-territory" />
+
+<Callout type="warning" title="Attenzione alle versioni esagerate">
+Il legame diretto tra il film e la direttiva viene da un aneddoto. Molti articoli lo raccontano come se il film avesse "creato" la legge: è un'esagerazione.
+</Callout>
+
+Nel 1986 gli Stati Uniti approvano il **Computer Fraud and Abuse Act** (CFAA), una legge contro gli accessi non autorizzati ai computer. La ritroveremo nella prossima lezione.
+
+## 75 centesimi e una spia
+
+Nel 1986 **Clifford Stoll**, astronomo che gestisce i computer del Lawrence Berkeley Laboratory, deve capire perché nei conti del tempo macchina mancano **75 centesimi**: circa 9 secondi di calcolo che nessuno ha pagato.<Cite id="stoll-1988" />
+
+Seguendo quella piccola differenza scopre un intruso: **Markus Hess**, parte di un gruppo che vendeva informazioni al KGB, il servizio segreto sovietico. Stoll racconta la sua indagine nell'articolo "Stalking the Wily Hacker" (1988) e nel libro *The Cuckoo's Egg* (1989).<Cite id="stoll-cuckoo" />
+
+<Cybi mood="detective">
+Questa è la mia storia preferita: un'anomalia di 75 centesimi porta a una rete di spie. In sicurezza i dettagli strani non si ignorano mai.
+</Cybi>
+
+## Il primo ransomware
+
+Nel dicembre 1989 circa 20.000 floppy disk vengono spediti per posta, presentati come un questionario sull'AIDS; tra i destinatari ci sono i partecipanti a una conferenza dell'Organizzazione Mondiale della Sanità. Dentro c'è l'**AIDS Trojan**, opera di Joseph Popp. Dopo 90 avvii del computer, il programma chiede di pagare una "licenza" di 189 dollari a una "PC Cyborg Corporation". È considerato il primo <Term id="ransomware">ransomware</Term> della storia.<Cite id="heise-ransomware" />
+
+<KeyPoints>
+- 1982: Elk Cloner, virus per Apple II, si diffonde tramite floppy disk.
+- 1983: Fred Cohen dimostra un programma auto-replicante; Leonard Adleman suggerisce il nome "virus".
+- 1986: Brain, primo virus per PC IBM, e il Computer Fraud and Abuse Act negli Stati Uniti.
+- Il Chaos Computer Club dimostra la falla di BTX restituendo il denaro; Clifford Stoll scopre una spia partendo da 75 centesimi.
+- 1989: l'AIDS Trojan è considerato il primo ransomware.
+</KeyPoints>
