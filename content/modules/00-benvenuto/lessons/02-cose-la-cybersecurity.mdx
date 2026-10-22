@@ -1,0 +1,85 @@
+---
+id: cose-la-cybersecurity
+title: Cos'è la cybersecurity
+minutes: 12
+xp: 50
+status: fonti-verificate
+lastVerified: 2026-10-22
+objectives:
+  - Conoscere una definizione ufficiale di cybersecurity
+  - Capire che la cybersecurity non è solo bloccare attacchi, ma anche ripristinare
+  - Capire perché riguarda anche te, non solo le aziende
+sources:
+  - id: nist-cybersecurity
+    level: A
+    title: NIST CSRC Glossary, "cybersecurity"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/cybersecurity
+    note: Definizione tratta da CNSSI 4009-2015. Traduzione di LearnWithCybi.
+  - id: fips-199
+    level: A
+    title: FIPS 199, Standards for Security Categorization of Federal Information and Information Systems
+    publisher: NIST
+    year: 2004
+    url: https://csrc.nist.gov/files/pubs/shared/itlb/itlbul2004-03.pdf
+  - id: nao-wannacry
+    level: A
+    title: "Investigation: WannaCry cyber attack and the NHS"
+    publisher: UK National Audit Office
+    year: 2018
+    url: https://www.nao.org.uk/reports/investigation-wannacry-cyber-attack-and-the-nhs/
+  - id: enisa-etl-2025
+    level: A
+    title: ENISA Threat Landscape 2025
+    publisher: ENISA
+    year: 2025
+    url: https://www.enisa.europa.eu/news/etl-2025-eu-consistently-targeted-by-diverse-yet-convergent-threat-groups
+quiz: cose-la-cybersecurity
+---
+
+<Cybi mood="pensieroso">
+Quando senti "cybersecurity" magari pensi a un hacker incappucciato davanti a uno schermo pieno di codice. In realtà parla di cose molto vicine a te: il telefono, il conto in banca, l'ospedale della tua città.
+</Cybi>
+
+## Una definizione ufficiale
+
+Il NIST (National Institute of Standards and Technology) è l'ente americano che pubblica molti degli standard di sicurezza usati in tutto il mondo. Nel suo glossario definisce la <Term id="cybersecurity">cybersecurity</Term> più o meno così:
+
+> Prevenzione dei danni, protezione e ripristino di computer, sistemi e servizi di comunicazione elettronica, e delle informazioni che contengono, per garantirne disponibilità, integrità, autenticazione, riservatezza e non ripudio.<Cite id="nist-cybersecurity" />
+
+Nota i tre verbi: **prevenire**, **proteggere**, **ripristinare**. La cybersecurity non serve solo a fermare gli attacchi. Serve anche a rimettere in piedi i sistemi quando qualcosa va storto, perché prima o poi succede.
+
+## Cosa si protegge
+
+La definizione elenca cinque proprietà delle informazioni:
+
+- **<Term id="disponibilita">Disponibilità</Term>**: i dati e i servizi funzionano quando servono.
+- **<Term id="integrita">Integrità</Term>**: nessuno li modifica o li distrugge senza permesso.
+- **Autenticazione**: sappiamo con chi stiamo parlando davvero.
+- **<Term id="riservatezza">Riservatezza</Term>**: solo chi è autorizzato può leggerli.
+- **Non ripudio**: chi ha fatto un'azione non può negare di averla fatta.
+
+Tre di queste (riservatezza, integrità, disponibilità) sono così importanti da avere un nome collettivo: la triade **RID**, in inglese **CIA** (Confidentiality, Integrity, Availability). Uno standard del NIST, il FIPS 199, le usa per misurare quanto è grave un incidente: una perdita di riservatezza è una divulgazione non autorizzata, una perdita di integrità è una modifica o distruzione non autorizzata, una perdita di disponibilità è un'interruzione dell'accesso.<Cite id="fips-199" /> Le studieremo a fondo nel Modulo 5.
+
+<Cybi mood="sorpreso">
+Un'analogia: pensa al tuo diario. Riservatezza = nessuno lo legge. Integrità = nessuno ci strappa pagine o riscrive le frasi. Disponibilità = quando lo cerchi, c'è.
+</Cybi>
+
+## Perché riguarda tutti
+
+**Gli ospedali.** Il 12 maggio 2017 il ransomware WannaCry si è diffuso in tutto il mondo. Nel Regno Unito ha colpito il servizio sanitario nazionale: secondo l'ufficio nazionale di revisione dei conti britannico, almeno 81 dei 236 enti ospedalieri (trust) dell'Inghilterra hanno subito disservizi.<Cite id="nao-wannacry" /> Un attacco informatico può quindi avere conseguenze molto concrete, anche sulla salute delle persone.
+
+**Tu.** Secondo l'agenzia europea per la cybersicurezza (ENISA), tra luglio 2024 e giugno 2025 il <Term id="phishing">phishing</Term> è stato il primo metodo usato dagli attaccanti per entrare nei sistemi nell'Unione Europea: circa il 60% dei casi analizzati.<Cite id="enisa-etl-2025" /> Il phishing non attacca i computer: inganna le persone. Per questo la sicurezza riguarda chiunque usi un'email o uno smartphone.
+
+<MythVsFact
+  myth="La cybersecurity è roba da tecnici: a me non serve."
+  fact="Il primo metodo d'attacco nell'UE, il phishing, prende di mira le persone, non le macchine. Riconoscerlo è una competenza utile a tutti."
+  source="enisa-etl-2025"
+/>
+
+<KeyPoints>
+- Il NIST definisce la cybersecurity come prevenzione, protezione e **ripristino** di sistemi e informazioni.
+- Le proprietà da proteggere sono disponibilità, integrità, autenticazione, riservatezza e non ripudio.
+- Riservatezza, integrità e disponibilità formano la triade RID (in inglese CIA).
+- Gli attacchi hanno effetti concreti (WannaCry e gli ospedali) e spesso colpiscono le persone (il phishing).
+</KeyPoints>

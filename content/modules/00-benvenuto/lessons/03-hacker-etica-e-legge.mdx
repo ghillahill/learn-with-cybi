@@ -1,0 +1,144 @@
+---
+id: hacker-etica-e-legge
+title: Hacker, etica e legge
+minutes: 15
+xp: 60
+status: fonti-verificate
+lastVerified: 2026-10-22
+objectives:
+  - Conoscere l'origine della parola "hacker" e i suoi due significati
+  - Distinguere white hat, black hat e grey hat
+  - Sapere cosa dice la legge italiana sull'accesso abusivo a un sistema informatico
+  - Conoscere i modi legali per fare pratica
+sources:
+  - id: mit-hack
+    level: B
+    title: Happy 60th Birthday to the Word "Hack"
+    publisher: MIT Alumni Association
+    url: https://alum.mit.edu/node/588
+  - id: levy-hackers
+    level: B
+    title: "Hackers: Heroes of the Computer Revolution"
+    author: Steven Levy
+    year: 1984
+  - id: niccs-glossary
+    level: A
+    title: NICCS, Cybersecurity Glossary, "hacker"
+    publisher: CISA
+    url: https://niccs.cisa.gov/resources/glossary
+  - id: acsc-white-hat
+    level: A
+    title: Glossary, "white hat"
+    publisher: Australian Cyber Security Centre
+    url: https://www.cyber.gov.au/glossary/white-hat
+  - id: kaspersky-hats
+    level: B
+    title: Black hat, White hat, and Gray hat hackers – Definition and Explanation
+    publisher: Kaspersky
+    url: https://kaspersky.com/resource-center/definitions/hacker-hat-types
+  - id: cyberwire-grey-hat
+    level: B
+    title: Grey Hat Definition
+    publisher: The CyberWire
+    url: https://www.thecyberwire.com/glossary/grey-hat
+  - id: legge-547-1993
+    level: A
+    title: Legge 23 dicembre 1993, n. 547 (testo su WIPO Lex)
+    url: https://www.wipo.int/wipolex/en/legislation/details/2532
+  - id: brocardi-615-ter
+    level: B
+    title: Art. 615-ter Codice Penale, testo vigente e note
+    publisher: Brocardi.it
+    url: https://www.brocardi.it/codice-penale/libro-secondo/titolo-xii/capo-iii/sezione-iv/art615ter.html
+    note: Per una citazione ufficiale usare il testo vigente su Normattiva.
+  - id: splunk-ctf
+    level: B
+    title: What's CTF? Capture The Flag Competitions for Cybersecurity
+    publisher: Splunk
+    url: https://www.splunk.com/en_us/blog/learn/capture-the-flag-ctf.html
+  - id: darkreading-hack-pentagon
+    level: B
+    title: "Hack The Pentagon: DoD Launches First-Ever Federal Bug Bounty Program"
+    publisher: Dark Reading
+    year: 2016
+    url: https://www.darkreading.com/vulnerabilities---threats/hack-the-pentagon-dod-launches-first-ever-federal-bug-bounty-program/d/d-id/1324542
+  - id: cisa-cvd
+    level: A
+    title: Coordinated Vulnerability Disclosure Process
+    publisher: CISA
+    url: https://cisa.gov/coordinated-vulnerability-disclosure-process
+quiz: hacker-etica-e-legge
+---
+
+<Cybi mood="sorpreso">
+Lo sapevi che all'inizio "hacker" non voleva dire criminale? Anzi, era quasi un complimento.
+</Cybi>
+
+## Da dove viene la parola "hacker"
+
+Al MIT (Massachusetts Institute of Technology) "hack" indicava già uno scherzo ingegnoso ed elaborato. Il senso tecnico nasce nel Tech Model Railroad Club, il club di modellismo ferroviario dell'università: una delle prime attestazioni è nei verbali del club del 5 aprile 1955.<Cite id="mit-hack" />
+
+I membri del club passavano ore sui circuiti che facevano funzionare il plastico. Per loro un "hack" era una soluzione brillante, e un <Term id="hacker">hacker</Term> chi esplorava i sistemi per capirli fino in fondo. Il giornalista Steven Levy ha raccontato questa cultura nel libro *Hackers: Heroes of the Computer Revolution* (1984).<Cite id="levy-hackers" />
+
+Oggi la parola ha anche un secondo significato. Il glossario di sicurezza dell'agenzia americana CISA definisce l'hacker come un utente non autorizzato che tenta di accedere, o accede, a un sistema informatico.<Cite id="niccs-glossary" /> I due significati convivono: per capire quale si intende, bisogna guardare il contesto.
+
+<MythVsFact
+  myth="Hacker vuol dire criminale."
+  fact="In origine la parola indicava chi esplora i sistemi in modo creativo. Oggi ha anche il significato negativo, ma ciò che conta davvero è se l'accesso è autorizzato."
+  source="mit-hack"
+/>
+
+## White hat, black hat, grey hat
+
+Per distinguere le intenzioni si usano tre "cappelli", presi dai vecchi film western, dove i buoni avevano il cappello bianco:
+
+- Un **<Term id="white-hat">white hat</Term>** è un hacker etico: un esperto che cerca le vulnerabilità con autorizzazione, per esempio con i test di penetrazione, per aiutare a correggerle.<Cite id="acsc-white-hat" />
+- Un **<Term id="black-hat">black hat</Term>** è un criminale che entra nei sistemi con intenzioni dannose.<Cite id="kaspersky-hats" />
+- Un **<Term id="grey-hat">grey hat</Term>** sta in mezzo: le sue attività non sono chiaramente legali né chiaramente illegali.<Cite id="cyberwire-grey-hat" />
+
+Spesso white hat e black hat usano gli stessi strumenti e le stesse tecniche. La differenza non sta nella tecnica, ma in due domande: **hai il permesso?** e **perché lo fai?**
+
+<Cybi mood="preoccupato">
+Occhio al grey hat: anche con le migliori intenzioni, entrare in un sistema senza permesso resta un accesso non autorizzato. Le buone intenzioni non sono un'autorizzazione.
+</Cybi>
+
+## Cosa dice la legge italiana
+
+In Italia i reati informatici entrano nel Codice Penale con la Legge 547 del 1993. L'articolo 4 di questa legge introduce l'**articolo 615-ter**, "Accesso abusivo ad un sistema informatico o telematico".<Cite id="legge-547-1993" /> Il primo comma dice:
+
+> Chiunque abusivamente si introduce in un sistema informatico o telematico protetto da misure di sicurezza ovvero vi si mantiene contro la volontà espressa o tacita di chi ha il diritto di escluderlo, è punito con la reclusione fino a tre anni.<Cite id="legge-547-1993" />
+
+Due cose da notare nel testo:
+
+1. È reato **entrare** senza permesso in un sistema protetto.
+2. È reato anche **restarci** contro la volontà di chi ha il diritto di escluderti.
+
+Nei casi aggravati le pene sono più alte; queste aggravanti sono state modificate di recente dalla Legge 90 del 2024.<Cite id="brocardi-615-ter" />
+
+<Callout type="legal" title="La regola d'oro">
+Si mettono alla prova **solo** i sistemi che sono tuoi, oppure quelli per cui hai un'**autorizzazione scritta** di chi ne è responsabile. Sempre. In questo corso tutte le attività pratiche sono simulate dentro l'app.
+</Callout>
+
+<Callout type="info" title="Questo non è un parere legale">
+Questa lezione ti fa conoscere la norma, non sostituisce un avvocato. Per i dettagli e per il testo vigente, la fonte ufficiale è Normattiva.
+</Callout>
+
+## Come fare pratica in modo legale
+
+La buona notizia: ci sono molti modi legali per allenarsi.
+
+- **Laboratori personali e simulati**: i tuoi dispositivi, oppure gli esercizi simulati di questo corso.
+- **<Term id="ctf">CTF</Term> (Capture The Flag)**: gare di sicurezza informatica in cui si cercano delle "bandiere" nascoste in sistemi preparati apposta.<Cite id="splunk-ctf" />
+- **<Term id="bug-bounty">Bug bounty</Term>**: programmi in cui un'organizzazione invita i ricercatori a cercare vulnerabilità nei propri sistemi, con regole precise, e li premia. Nel 2016 il Dipartimento della Difesa degli Stati Uniti ha lanciato "Hack the Pentagon", il primo programma di bug bounty del governo federale americano.<Cite id="darkreading-hack-pentagon" />
+- **<Term id="divulgazione-coordinata">Divulgazione coordinata</Term>**: se trovi una <Term id="vulnerabilita">vulnerabilità</Term>, la segnali a chi può correggerla, e solo dopo la correzione viene resa pubblica in modo concordato. L'agenzia CISA, per esempio, coordina la correzione e la divulgazione insieme al produttore e a chi ha fatto la segnalazione.<Cite id="cisa-cvd" />
+
+<KeyPoints>
+- "Hacker" nasce al MIT negli anni '50 con un significato positivo; oggi indica anche chi accede senza autorizzazione.
+- White hat, black hat e grey hat si distinguono per autorizzazione e intenzioni, non per la tecnica.
+- In Italia l'accesso abusivo a un sistema protetto è reato (art. 615-ter c.p., dal 1993), anche solo restandoci senza permesso.
+- Si fa pratica solo su sistemi propri, simulati o con autorizzazione scritta: laboratori, CTF, bug bounty.
+</KeyPoints>
+
+<Cybi mood="fiero">
+Complimenti, hai finito il modulo di benvenuto! Adesso conosci le regole del gioco. Dal prossimo modulo si parte con la storia: cifrari antichi, Enigma e i primi virus.
+</Cybi>

@@ -1,0 +1,137 @@
+# Glossario globale (§5.3). Ogni voce ha almeno una fonte di livello A o B.
+entries:
+  - id: cybersecurity
+    term: Cybersecurity
+    definition: Prevenzione dei danni, protezione e ripristino di computer, sistemi e servizi di comunicazione elettronica e delle informazioni che contengono, per garantirne disponibilità, integrità, autenticazione, riservatezza e non ripudio.
+    sources:
+      - id: nist-cybersecurity
+        level: A
+        title: NIST CSRC Glossary, "cybersecurity"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/cybersecurity
+        note: Definizione tratta da CNSSI 4009-2015. Traduzione di LearnWithCybi.
+
+  - id: hacker
+    term: Hacker
+    definition: Parola con due significati. In origine (MIT, anni '50) indica chi esplora i sistemi in modo creativo e ingegnoso. Nei glossari di sicurezza indica chi tenta di accedere, o accede, a un sistema senza autorizzazione.
+    sources:
+      - id: mit-hack
+        level: B
+        title: Happy 60th Birthday to the Word "Hack"
+        publisher: MIT Alumni Association
+        url: https://alum.mit.edu/node/588
+      - id: niccs-glossary
+        level: A
+        title: NICCS, Cybersecurity Glossary, "hacker"
+        publisher: CISA
+        url: https://niccs.cisa.gov/resources/glossary
+
+  - id: white-hat
+    term: White hat
+    definition: Hacker etico, esperto di sicurezza che cerca le vulnerabilità con autorizzazione, per esempio con i test di penetrazione, per aiutare a correggerle.
+    sources:
+      - id: acsc-white-hat
+        level: A
+        title: Glossary, "white hat"
+        publisher: Australian Cyber Security Centre
+        url: https://www.cyber.gov.au/glossary/white-hat
+      - id: kaspersky-hats
+        level: B
+        title: Black hat, White hat, and Gray hat hackers – Definition and Explanation
+        publisher: Kaspersky
+        url: https://kaspersky.com/resource-center/definitions/hacker-hat-types
+
+  - id: black-hat
+    term: Black hat
+    definition: Criminale che entra nei sistemi informatici senza autorizzazione e con intenzioni dannose.
+    sources:
+      - id: kaspersky-hats
+        level: B
+        title: Black hat, White hat, and Gray hat hackers – Definition and Explanation
+        publisher: Kaspersky
+        url: https://kaspersky.com/resource-center/definitions/hacker-hat-types
+
+  - id: grey-hat
+    term: Grey hat
+    definition: Hacker le cui attività non sono chiaramente legali (come quelle di un white hat) né chiaramente illegali (come quelle di un black hat). Le buone intenzioni, però, non rendono autorizzato un accesso.
+    sources:
+      - id: cyberwire-grey-hat
+        level: B
+        title: Glossary, "grey hat"
+        publisher: The CyberWire
+        url: https://www.thecyberwire.com/glossary/grey-hat
+
+  - id: ctf
+    term: CTF (Capture The Flag)
+    definition: Gara di sicurezza informatica in cui i partecipanti cercano delle "bandiere" (stringhe di testo) nascoste in sistemi resi vulnerabili apposta. È un modo legale di fare pratica.
+    sources:
+      - id: splunk-ctf
+        level: B
+        title: What's CTF? Capture The Flag Competitions for Cybersecurity
+        publisher: Splunk
+        url: https://www.splunk.com/en_us/blog/learn/capture-the-flag-ctf.html
+
+  - id: bug-bounty
+    term: Bug bounty
+    definition: Programma in cui un'organizzazione invita ricercatori esterni a cercare vulnerabilità nei propri sistemi, entro regole precise, e premia chi le segnala.
+    sources:
+      - id: darkreading-hack-pentagon
+        level: B
+        title: "Hack The Pentagon: DoD Launches First-Ever Federal Bug Bounty Program"
+        publisher: Dark Reading
+        year: 2016
+        url: https://www.darkreading.com/vulnerabilities---threats/hack-the-pentagon-dod-launches-first-ever-federal-bug-bounty-program/d/d-id/1324542
+
+  - id: divulgazione-coordinata
+    term: Divulgazione coordinata delle vulnerabilità
+    definition: Processo in cui chi scopre una vulnerabilità la segnala al produttore, che prepara una correzione; poi la vulnerabilità viene resa pubblica in modo concordato. In inglese Coordinated Vulnerability Disclosure (CVD).
+    sources:
+      - id: cisa-cvd
+        level: A
+        title: Coordinated Vulnerability Disclosure Process
+        publisher: CISA
+        url: https://cisa.gov/coordinated-vulnerability-disclosure-process
+
+  - id: vulnerabilita
+    term: Vulnerabilità
+    definition: Debolezza di un sistema, delle sue procedure di sicurezza, dei controlli interni o della sua implementazione, che una minaccia può sfruttare.
+    sources:
+      - id: nist-vulnerability
+        level: A
+        title: NIST CSRC Glossary, "vulnerability"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/vulnerability
+
+  - id: phishing
+    term: Phishing
+    definition: Attacco che usa email o siti web malevoli per ottenere informazioni personali, fingendosi un'organizzazione affidabile.
+    sources:
+      - id: cisa-phishing
+        level: A
+        title: Avoiding Social Engineering and Phishing Attacks
+        publisher: CISA
+        url: https://www.cisa.gov/news-events/news/avoiding-social-engineering-and-phishing-attacks
+
+  - id: riservatezza
+    term: Riservatezza
+    definition: Garanzia che le informazioni siano accessibili solo a chi è autorizzato. Perderla significa una divulgazione non autorizzata.
+    sources:
+      - &fips199
+        id: fips-199
+        level: A
+        title: FIPS 199, Standards for Security Categorization of Federal Information and Information Systems
+        publisher: NIST
+        year: 2004
+        url: https://csrc.nist.gov/files/pubs/shared/itlb/itlbul2004-03.pdf
+
+  - id: integrita
+    term: Integrità
+    definition: Garanzia che le informazioni non vengano modificate o distrutte senza autorizzazione.
+    sources:
+      - *fips199
+
+  - id: disponibilita
+    term: Disponibilità
+    definition: Garanzia che le informazioni e i sistemi siano accessibili e utilizzabili quando servono. Perderla significa un'interruzione dell'accesso.
+    sources:
+      - *fips199

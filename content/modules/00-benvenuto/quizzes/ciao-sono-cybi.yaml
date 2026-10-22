@@ -1,0 +1,41 @@
+id: ciao-sono-cybi
+passingScore: 0.7
+questions:
+  - id: soglia
+    type: single
+    prompt: Quale percentuale di risposte corrette serve per completare una lezione?
+    options:
+      - text: 50%
+        correct: false
+        explain: Non basta la metà. La soglia è più alta, ma puoi rifare il quiz tutte le volte che vuoi.
+      - text: 70%
+        correct: true
+        explain: Giusto. Con il 70% di risposte corrette la lezione risulta completata.
+      - text: 100%
+        correct: false
+        explain: Non serve essere perfetti. Le spiegazioni dei quiz servono proprio a imparare dagli errori.
+
+  - id: dove-progressi
+    type: truefalse
+    prompt: I tuoi progressi vengono salvati su un server di LearnWithCybi.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. Restano solo nel tuo browser. Per conservarli puoi esportarli dalla pagina Progressi.
+      - text: Falso
+        correct: true
+        explain: Esatto. Non ci sono account né server. Per conservarli puoi esportarli dalla pagina Progressi.
+
+  - id: perche-fonti
+    type: multiple
+    prompt: Perché ogni lezione ha l'elenco delle fonti?
+    options:
+      - text: Per permetterti di controllare ogni fatto sul documento originale.
+        correct: true
+        explain: Sì. Ogni data, nome o numero viene da una fonte che puoi verificare.
+      - text: Perché in sicurezza informatica circolano molte storie raccontate male.
+        correct: true
+        explain: Sì. Le fonti aiutano a distinguere i fatti dai miti.
+      - text: Per rendere le lezioni più lunghe.
+        correct: false
+        explain: No. Le fonti stanno in fondo alla lezione proprio per non appesantire il testo.

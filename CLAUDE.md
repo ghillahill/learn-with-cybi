@@ -11,30 +11,38 @@ Utente unico, nessun login: i progressi vivono nel browser (`localStorage`, chia
 ## Comandi
 
 ```bash
-npm run dev        # server di sviluppo su http://localhost:3000
-npm run build      # build di produzione (include il controllo TypeScript)
-npm run lint       # ESLint
+npm run dev            # server di sviluppo su http://localhost:3000 (mostra anche le lezioni non pubblicate)
+npm run build          # content:check + build di produzione (mostra solo le lezioni `pubblicata`)
+LWC_SHOW_DRAFTS=1 npm run build   # build che include anche bozze e lezioni non pubblicate
+npm run lint           # ESLint
+npm test               # Vitest (src/**/*.test.ts)
+npx vitest run src/lib/quiz/score.test.ts   # un singolo file di test
+npm run content:check  # valida contenuti, riferimenti, fonti e sintassi MDX
 npx shadcn@latest add <componente>   # aggiunge un componente shadcn/ui in src/components/ui/
 ```
 
-Test e `content:check` non esistono ancora: si aggiungono nella Fase 1 della roadmap (§11).
+Non lanciare `npm run build` mentre `npm run dev` è attivo: condividono `.next/` e il dev server può restare con CSS vecchio (in quel caso: fermalo, `rm -rf .next`, riavvialo).
 
 ## Stack
 
-Next.js 16 (App Router, `src/`) + React 19 + TypeScript, Tailwind CSS v4 (configurato in `src/app/globals.css`, non c'è `tailwind.config`), **shadcn/ui** come libreria di componenti. Previsti: MDX per le lezioni, YAML per i manifest, Zod per validare i contenuti, Zustand per lo stato, Vitest e Playwright per i test (§6.1).
+Next.js 16 (App Router, `src/`) + React 19 + TypeScript, Tailwind CSS v4 (configurato in `src/app/globals.css`, non c'è `tailwind.config`), **shadcn/ui** come libreria di componenti. Contenuti in MDX (compilati a runtime lato server con `@mdx-js/mdx` `evaluate`) e YAML (pacchetto `yaml`), validati con Zod 4; stato dei progressi con Zustand; test con Vitest. Playwright è previsto ma non ancora installato.
 
 - Next.js 16 ha cambiamenti incompatibili rispetto alle versioni precedenti: leggi [AGENTS.md](AGENTS.md) e la guida in `node_modules/next/dist/docs/` prima di scrivere codice Next.
 - shadcn/ui usa il preset `base-nova` (componenti basati su Base UI, non su Radix: verifica le API nel file del componente). Configurazione in `components.json`, componenti in `src/components/ui/`, utility `cn()` in `src/lib/utils.ts`. Usa questi componenti prima di scriverne di nuovi; non modificare a mano i file in `ui/` se puoi personalizzare tramite `className` o varianti.
-- Il layout radice monta già `TooltipProvider` e il `Toaster` di sonner.
+- `cacheComponents` è attivo in `next.config.ts`: le pagine dinamiche leggono `params` dentro un `<Suspense>` (vedi `src/app/moduli/[modulo]/page.tsx`), non usano `dynamicParams`, e `generateStaticParams` deve restituire almeno un risultato (per questo elenca tutte le lezioni, anche quelle nascoste, e la pagina risponde 404).
+- Il layout radice monta `TooltipProvider`, il `Toaster` di sonner, `ProgressSync` e lo script del tema. Il tema chiaro/scuro è gestito in `src/lib/theme.ts` + `src/lib/theme-script.ts` (niente `next-themes`: generava un errore in console con React 19). `src/components/ui/sonner.tsx` è stato modificato per usare questo hook.
+- Gli script Node che importano codice di `src/` (es. `scripts/content-check.mts`) girano con `tsx`; i pacchetti solo ESM come `@mdx-js/mdx` vanno importati con `import()` dinamico.
 
-## Architettura dei contenuti
+## Architettura
 
 Il corso è modulare: aggiungere un modulo vuol dire aggiungere una cartella in `content/modules/`, senza toccare il codice dell'app.
 
 - `content/modules/<NN-slug>/module.yaml`: manifest del modulo (ordine, prerequisiti, badge, ordine delle lezioni). Schema in §7.1.
-- `content/modules/<NN-slug>/lessons/*.mdx`: una lezione. Il frontmatter contiene `status`, `lastVerified` e `sources`. Il corpo usa componenti MDX dedicati (`<Cybi mood>`, `<Cite id>`, `<Term id>`, `<MythVsFact>`, `<Quiz>`…). Elenco completo in §7.3, tipi di domanda in §7.4.
-- `content/glossary.yaml` e `content/timeline.yaml`: dati condivisi, ogni voce con la sua fonte.
-- `npm run content:check` (§7.5) valida tutto con Zod. Controlla che ogni `<Cite>` e ogni `<Term>` abbiano una voce corrispondente e blocca la build se i contenuti non sono validi.
+- `content/modules/<NN-slug>/lessons/*.mdx`: una lezione. Il frontmatter contiene `status`, `lastVerified`, `sources` e l'id del quiz (`quiz`). Il corpo usa solo i componenti elencati in `LESSON_COMPONENTS` (`src/lib/content/keys.ts`): `<Cybi mood>`, `<Cite id>`, `<Term id>`, `<MythVsFact myth fact source>`, `<KeyPoints>`, `<Callout type>`.
+- `content/modules/<NN-slug>/quizzes/<id>.yaml`: il quiz finale della lezione (tipi `single`, `multiple`, `truefalse`; ogni opzione ha `explain`). Nei valori YAML che contengono `: ` usa le virgolette.
+- `content/glossary.yaml`: termini usati da `<Term>`, ognuno con almeno una fonte.
+- Codice: schemi Zod in `src/lib/content/schema.ts` → `loader.ts` legge i file (in sviluppo a ogni richiesta, in produzione una volta) e filtra per stato → `check.ts` fa i controlli incrociati (citazioni, termini, componenti, `lastVerified`, fonti solo C, sintassi MDX). `src/components/lesson/lesson-body.tsx` collega i componenti MDX alle fonti della lezione e al glossario.
+- Progressi: logica pura in `src/lib/progress/logic.ts` (testata), store Zustand in `store.ts`, salvataggio tramite `ProgressRepository` (`repository.ts`), caricamento/salvataggio automatico in `progress-sync.tsx`. Chiave lezione = `modulo/lezione` (`lessonKey`). I componenti client leggono lo store solo dopo `hydrated` per evitare differenze di idratazione.
 
 ## Regole sui contenuti (vincolanti)
 

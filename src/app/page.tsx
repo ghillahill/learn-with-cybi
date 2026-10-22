@@ -1,5 +1,8 @@
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { ClockIcon } from "lucide-react";
+import Link from "next/link";
+import { CybiBubble } from "@/components/cybi/cybi-bubble";
+import { ModuleGate, ModuleProgress } from "@/components/progress/lesson-progress";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -8,27 +11,63 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { getVisibleModules } from "@/lib/content/loader";
 
 export default function Home() {
+  const modules = getVisibleModules();
+  const lessonKeysOf = (id: string) =>
+    modules.find((m) => m.id === id)?.lessons.map((l) => l.key) ?? [];
+
   return (
-    <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col justify-center gap-6 px-4 py-16">
-      <Badge variant="secondary">In costruzione</Badge>
-      <h1 className="text-3xl font-semibold tracking-tight">LearnWithCybi</h1>
-      <Card>
-        <CardHeader>
-          <CardTitle>Ciao, sono Cybi!</CardTitle>
-          <CardDescription>
-            Impareremo insieme la cybersecurity, partendo da zero.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="text-muted-foreground text-sm">
-          Il percorso parte dalla storia e arriva alle basi: come funzionano
-          computer e reti, cosa vuol dire proteggerli.
-        </CardContent>
-        <CardFooter>
-          <Button disabled>Inizia il percorso</Button>
-        </CardFooter>
-      </Card>
-    </main>
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-3xl font-semibold tracking-tight">Il tuo percorso</h1>
+        <CybiBubble mood="felice">
+          Ciao! Sono Cybi. Impareremo la cybersecurity insieme, partendo da zero:
+          prima la storia, poi le basi. Ogni lezione ha le sue fonti, così puoi
+          verificare tutto quello che ti racconto.
+        </CybiBubble>
+      </div>
+
+      {modules.length === 0 ? (
+        <p className="text-muted-foreground">
+          Nessuna lezione pubblicata, per ora. Torna presto!
+        </p>
+      ) : (
+        <ol className="space-y-4">
+          {modules.map((mod) => (
+            <li key={mod.id}>
+              <Card>
+                <CardHeader>
+                  <CardDescription>Modulo {mod.order}</CardDescription>
+                  <CardTitle className="text-lg">{mod.title}</CardTitle>
+                  <CardDescription>{mod.subtitle}</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <p className="text-sm">{mod.description}</p>
+                  <p className="text-muted-foreground flex items-center gap-1.5 text-xs">
+                    <ClockIcon className="size-3.5" />
+                    {mod.lessons.length} lezioni · circa {mod.estimatedMinutes} minuti
+                  </p>
+                  <ModuleProgress lessonKeys={mod.lessons.map((l) => l.key)} />
+                </CardContent>
+                <CardFooter>
+                  <ModuleGate
+                    requiredLessonKeys={mod.requires.map(lessonKeysOf)}
+                    requiredTitles={mod.requires.map(
+                      (id) => modules.find((m) => m.id === id)?.title ?? id,
+                    )}
+                  >
+                    <Link href={`/moduli/${mod.id}`} className={buttonVariants()}>
+                      Apri il modulo
+                    </Link>
+                  </ModuleGate>
+                </CardFooter>
+              </Card>
+            </li>
+          ))}
+        </ol>
+      )}
+    </div>
   );
 }

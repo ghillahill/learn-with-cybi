@@ -1,0 +1,75 @@
+id: hacker-etica-e-legge
+passingScore: 0.7
+questions:
+  - id: origine
+    type: single
+    prompt: Dove nasce il significato tecnico della parola "hack"?
+    options:
+      - text: In un club di modellismo ferroviario del MIT, negli anni '50
+        correct: true
+        explain: Giusto. Una delle prime attestazioni è nei verbali del Tech Model Railroad Club del 5 aprile 1955.
+      - text: In un film di Hollywood degli anni '80
+        correct: false
+        explain: No. Il cinema ha reso famosa la parola, ma il significato tecnico è nato decenni prima, al MIT.
+      - text: In un tribunale americano, durante un processo
+        correct: false
+        explain: No. La parola nasce in un ambiente universitario e con un senso positivo.
+
+  - id: differenza-cappelli
+    type: single
+    prompt: Cosa distingue davvero un white hat da un black hat?
+    options:
+      - text: L'autorizzazione e le intenzioni
+        correct: true
+        explain: Esatto. Spesso usano gli stessi strumenti; cambia se hanno il permesso e perché lo fanno.
+      - text: Gli strumenti che usano
+        correct: false
+        explain: No. White hat e black hat usano spesso le stesse tecniche e gli stessi strumenti.
+      - text: Il livello di bravura
+        correct: false
+        explain: "No. Ci sono esperti bravissimi da entrambe le parti: la differenza è etica e legale."
+
+  - id: grey-hat-legale
+    type: truefalse
+    prompt: Un grey hat che entra in un sistema senza permesso, ma con buone intenzioni, agisce in modo autorizzato.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. Le buone intenzioni non sono un'autorizzazione. L'accesso resta non autorizzato.
+      - text: Falso
+        correct: true
+        explain: Giusto. Senza il permesso di chi è responsabile del sistema, l'accesso non è autorizzato, qualunque sia lo scopo.
+
+  - id: art-615-ter
+    type: multiple
+    prompt: Secondo il primo comma dell'art. 615-ter del Codice Penale, quali comportamenti sono puniti?
+    options:
+      - text: Introdursi abusivamente in un sistema informatico protetto da misure di sicurezza
+        correct: true
+        explain: Sì. È il primo comportamento descritto dalla norma.
+      - text: Restare in un sistema contro la volontà di chi ha il diritto di escluderti
+        correct: true
+        explain: Sì. La norma punisce anche chi "vi si mantiene" contro la volontà del titolare.
+      - text: Mettere alla prova il proprio computer
+        correct: false
+        explain: "No. Il sistema è tuo: non c'è nessun accesso abusivo."
+      - text: Partecipare a una gara CTF
+        correct: false
+        explain: No. Le CTF usano sistemi preparati apposta, e i partecipanti sono autorizzati a provarli.
+
+  - id: pratica-legale
+    type: multiple
+    prompt: Quali sono modi legali per fare pratica di sicurezza informatica?
+    options:
+      - text: Le gare CTF
+        correct: true
+        explain: Sì. Sono gare pensate proprio per allenarsi su sistemi vulnerabili apposta.
+      - text: I programmi di bug bounty, rispettandone le regole
+        correct: true
+        explain: Sì. L'organizzazione autorizza i ricercatori e definisce cosa si può provare.
+      - text: Provare le password sul profilo di un amico, per scherzo
+        correct: false
+        explain: No. Anche per scherzo, senza autorizzazione è un accesso non autorizzato a un sistema di altre persone.
+      - text: I laboratori simulati
+        correct: true
+        explain: Sì. Come quelli di questo corso, che girano solo dentro l'app.

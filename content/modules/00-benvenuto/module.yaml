@@ -1,0 +1,16 @@
+id: benvenuto
+order: 0
+title: Benvenuto
+subtitle: Cos'è la cybersecurity e come si impara in modo etico
+description: Conosci Cybi, scopri come funziona il corso e quali sono le regole etiche e legali da rispettare fin dal primo giorno.
+icon: hand
+color: cyan
+requires: []
+estimatedMinutes: 35
+badge:
+  id: primo-passo
+  name: Primo passo
+lessons:
+  - 01-ciao-sono-cybi
+  - 02-cose-la-cybersecurity
+  - 03-hacker-etica-e-legge

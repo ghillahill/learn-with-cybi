@@ -1,0 +1,58 @@
+id: cose-la-cybersecurity
+passingScore: 0.7
+questions:
+  - id: tre-verbi
+    type: single
+    prompt: Secondo la definizione del NIST, quale di queste attività fa parte della cybersecurity insieme a prevenire e proteggere?
+    options:
+      - text: Ripristinare i sistemi e le informazioni
+        correct: true
+        explain: Giusto. La cybersecurity serve anche a rimettere in funzione i sistemi dopo un incidente.
+      - text: Vendere software antivirus
+        correct: false
+        explain: No. La definizione parla di attività (prevenire, proteggere, ripristinare), non di prodotti.
+      - text: Scoprire i colpevoli e punirli
+        correct: false
+        explain: No. Le indagini sono compito delle forze dell'ordine; la definizione non le include.
+
+  - id: rid
+    type: multiple
+    prompt: Quali proprietà formano la triade RID (in inglese CIA)?
+    options:
+      - text: Riservatezza
+        correct: true
+        explain: Sì. Solo chi è autorizzato può leggere le informazioni.
+      - text: Integrità
+        correct: true
+        explain: Sì. Le informazioni non vengono modificate o distrutte senza permesso.
+      - text: Disponibilità
+        correct: true
+        explain: Sì. Dati e servizi funzionano quando servono.
+      - text: Velocità
+        correct: false
+        explain: No. La velocità non è una proprietà di sicurezza della triade.
+
+  - id: perdita-integrita
+    type: single
+    prompt: Qualcuno modifica di nascosto il voto sul tuo registro elettronico. Quale proprietà è stata violata?
+    options:
+      - text: Integrità
+        correct: true
+        explain: Esatto. Per il FIPS 199 una perdita di integrità è una modifica o distruzione non autorizzata.
+      - text: Disponibilità
+        correct: false
+        explain: No. Il registro è ancora accessibile; il problema è che il dato è stato cambiato.
+      - text: Riservatezza
+        correct: false
+        explain: Non per forza. Il voto è stato modificato, non solo letto da chi non doveva.
+
+  - id: phishing-persone
+    type: truefalse
+    prompt: Il phishing attacca soprattutto le persone, ingannandole, più che i computer.
+    options:
+      - text: Vero
+        correct: true
+        explain: Giusto. Il phishing finge di essere un'organizzazione affidabile per ottenere informazioni dalle persone.
+      - text: Falso
+        correct: false
+        explain: In realtà sì, attacca le persone. Per questo riconoscerlo è utile a tutti, non solo ai tecnici.
