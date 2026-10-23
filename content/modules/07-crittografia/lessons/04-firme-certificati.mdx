@@ -1,0 +1,139 @@
+---
+id: firme-certificati
+title: Firme digitali e certificati
+minutes: 13
+xp: 70
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Capire a cosa serve una firma digitale e come si crea e si verifica
+  - Capire cos'è un certificato e chi lo rilascia
+  - Capire la catena di fiducia tra le autorità di certificazione
+  - Conoscere Let's Encrypt e la durata dei certificati
+sources:
+  - id: fips-186-5
+    level: A
+    title: "FIPS 186-5: Digital Signature Standard (DSS)"
+    publisher: NIST
+    year: 2023
+    url: https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-5.pdf
+    note: Pubblicato il 3 febbraio 2023, sostituisce FIPS 186-4.
+  - id: nist-certificate
+    level: A
+    title: NIST CSRC Glossary, "public key certificate"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/public_key_certificate
+    note: Definizione di FIPS 186-5.
+  - id: nist-ca
+    level: A
+    title: NIST CSRC Glossary, "certificate authority"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/certificate_authority
+  - id: nist-pki
+    level: A
+    title: NIST CSRC Glossary, "public key infrastructure"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/public_key_infrastructure
+    note: Definizione di FIPS 186-5.
+  - id: rfc-5280
+    level: A
+    title: "RFC 5280: Internet X.509 Public Key Infrastructure Certificate and CRL Profile"
+    author: D. Cooper e altri
+    publisher: IETF
+    year: 2008
+    url: https://www.rfc-editor.org/rfc/rfc5280
+    note: Maggio 2008. Sezioni 3.2 (catene di certificati) e 6.1 (trust anchor).
+  - id: le-public-beta
+    level: A
+    title: "Public Beta: December 3, 2015"
+    publisher: Let's Encrypt
+    year: 2015
+    url: https://www.letsencrypt.org/2015/11/12/public-beta-timing
+  - id: le-leaving-beta
+    level: A
+    title: Leaving Beta, New Sponsors
+    author: Josh Aas
+    publisher: Let's Encrypt
+    year: 2016
+    url: https://letsencrypt.org/2016/04/12/leaving-beta-new-sponsors
+  - id: le-lifetimes
+    level: A
+    title: Certificate Lifetime Rationale and Plans
+    publisher: Let's Encrypt
+    url: https://letsencrypt.org/docs/cert-lifetimes/
+    note: Pagina aggiornata il 22 luglio 2026.
+  - id: le-64-days
+    level: A
+    title: 64-Day Certificate Lifetimes Coming Feb 2027
+    publisher: Let's Encrypt
+    year: 2026
+    url: https://letsencrypt.org/2026/10/07/64-day-certs
+    note: Post del 7 ottobre 2026.
+quiz: firme-certificati
+---
+
+<Cybi mood="pensieroso">
+Ricevi un file che dice di arrivare dalla tua banca. Come fai a sapere che l'ha mandato davvero la banca, e che nessuno l'ha cambiato per strada? Serve una firma, ma digitale.
+</Cybi>
+
+## La firma digitale
+
+Lo standard NIST FIPS 186-5 (3 febbraio 2023) spiega a cosa servono le <Term id="firma-digitale">firme digitali</Term>:<Cite id="fips-186-5" />
+
+- **scoprire modifiche non autorizzate** ai dati (integrità);
+- **autenticare l'identità di chi firma**;
+- impedire a chi ha firmato di negarlo in seguito: si chiama **non ripudio**, e lo hai incontrato nel Modulo 5.
+
+Come funziona? Si usano le due chiavi della cifratura asimmetrica, al contrario della cassetta delle lettere:<Cite id="fips-186-5" />
+
+- per **firmare** si usa la **chiave privata**: solo il proprietario può farlo;
+- per **verificare** si usa la **chiave pubblica**: chiunque può farlo.
+
+Di solito non si firma tutto il documento, ma il suo **hash**, che ne è una versione condensata.<Cite id="fips-186-5" /> Ecco perché le collisioni della lezione precedente sono così pericolose.
+
+<Cybi mood="detective">
+Una firma digitale è come un sigillo di ceralacca con uno stemma che solo tu possiedi. Tutti conoscono il tuo stemma e possono controllare il sigillo, nessuno può rifarlo.
+</Cybi>
+
+## Di chi è questa chiave pubblica?
+
+C'è un problema: se un impostore ti dà la *sua* chiave pubblica dicendo che è quella della banca, le firme che verifichi sono le sue. Serve qualcuno che garantisca a chi appartiene una chiave.
+
+Un <Term id="certificato-digitale">certificato digitale</Term> è un insieme di dati che identifica una chiave pubblica e il suo proprietario. Contiene la chiave pubblica del proprietario ed è **firmato da un'autorità di certificazione**, che così lega la chiave al proprietario.<Cite id="nist-certificate" />
+
+- L'**autorità di certificazione** (<Term id="certificate-authority">Certificate Authority</Term>, CA) è un ente fidato che rilascia i certificati e li revoca.<Cite id="nist-ca" />
+- La **PKI** (<Term id="pki">Public Key Infrastructure</Term>) è l'insieme delle regole e dei sistemi che servono a rilasciare, mantenere e revocare i certificati.<Cite id="nist-pki" />
+
+## La catena di fiducia
+
+Il tuo browser non conosce tutte le CA del mondo: parte da un numero limitato di chiavi pubbliche di cui si fida. Per questo spesso serve una **catena** di certificati: quello del sito, firmato da una CA, più eventuali certificati di CA firmati da altre CA.<Cite id="rfc-5280" />
+
+- La catena deve partire da un'autorità di cui ti fidi già, chiamata **trust anchor** ("ancora di fiducia").<Cite id="rfc-5280" />
+- Se un anello non si verifica, il browser non si fida del certificato e ti avvisa.
+
+## Let's Encrypt: certificati gratis per tutti
+
+**Let's Encrypt** è un'autorità di certificazione gratuita, automatica e aperta, gestita da un'organizzazione senza scopo di lucro.<Cite id="le-public-beta" />
+
+- Il **3 dicembre 2015** apre la beta pubblica.<Cite id="le-public-beta" />
+- Il **12 aprile 2016** esce dalla beta: ha già rilasciato più di 1,7 milioni di certificati per più di 3,8 milioni di siti.<Cite id="le-leaving-beta" />
+- I suoi certificati durano **90 giorni**, e oggi è ancora la durata predefinita.<Cite id="le-lifetimes" />
+- Dal **10 febbraio 2027** la durata predefinita scende a **64 giorni**, e nel 2028 a **45 giorni**.<Cite id="le-64-days" />
+
+<Callout type="info" title="Perché certificati così brevi?">
+Secondo Let's Encrypt, un certificato che dura poco limita i danni se viene rilasciato per errore o se la chiave viene rubata, e spinge a rinnovarlo in modo automatico.<Cite id="le-lifetimes" />
+</Callout>
+
+<MythVsFact
+  myth="Se un sito ha un certificato valido, il sito è affidabile."
+  fact="Un certificato lega una chiave pubblica a un nome. Ti dice che stai parlando con il proprietario di quel nome, non che il proprietario sia onesto: come hai visto nel Modulo 4, anche i siti di phishing usano HTTPS."
+  source="nist-certificate"
+/>
+
+<KeyPoints>
+- Firma digitale (FIPS 186-5): integrità, identità di chi firma, non ripudio.
+- Si firma con la chiave privata e si verifica con la chiave pubblica, di solito sull'hash del documento.
+- Un certificato lega una chiave pubblica al suo proprietario ed è firmato da una CA; la PKI rilascia, mantiene e revoca i certificati.
+- Catena di fiducia (RFC 5280): dal certificato del sito fino a una trust anchor.
+- Let's Encrypt (beta dal 3/12/2015): certificati gratuiti da 90 giorni, 64 dal 10/02/2027, 45 nel 2028.
+</KeyPoints>

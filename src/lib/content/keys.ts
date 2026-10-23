@@ -24,5 +24,9 @@ export const LAB_IDS = [
   "triade-rid",
   "detective-phishing",
   "forza-password",
+  "cesare",
+  "analisi-frequenza",
+  "scambio-chiavi",
+  "hash",
 ] as const;
 export type LabId = (typeof LAB_IDS)[number];

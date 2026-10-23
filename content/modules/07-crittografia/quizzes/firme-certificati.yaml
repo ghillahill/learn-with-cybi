@@ -1,0 +1,72 @@
+id: firme-certificati
+passingScore: 0.7
+questions:
+  - id: chiavi-firma
+    type: single
+    prompt: Con quale chiave si crea una firma digitale, e con quale si verifica?
+    options:
+      - text: Si crea con la chiave privata e si verifica con la chiave pubblica
+        correct: true
+        explain: Esatto. Solo il proprietario può firmare, chiunque può verificare.
+      - text: Si crea con la chiave pubblica e si verifica con la chiave privata
+        correct: false
+        explain: No. Se si firmasse con la chiave pubblica, chiunque potrebbe firmare al posto tuo.
+      - text: Si usa la stessa chiave segreta per entrambe le cose
+        correct: false
+        explain: No, la firma digitale usa le due chiavi della crittografia asimmetrica.
+
+  - id: servizi
+    type: multiple
+    prompt: Secondo FIPS 186-5, a cosa servono le firme digitali? Seleziona tutte le risposte giuste.
+    options:
+      - text: Scoprire modifiche non autorizzate ai dati
+        correct: true
+        explain: Giusto, è la protezione dell'integrità.
+      - text: Autenticare l'identità di chi firma
+        correct: true
+        explain: Giusto.
+      - text: Impedire a chi ha firmato di negarlo
+        correct: true
+        explain: Giusto, si chiama non ripudio.
+      - text: Nascondere il contenuto del documento
+        correct: false
+        explain: "No. La firma non cifra: il documento firmato resta leggibile."
+
+  - id: ruoli
+    type: match
+    prompt: Abbina ogni termine alla sua descrizione.
+    pairs:
+      - left: Certificato
+        right: Lega una chiave pubblica al suo proprietario
+        explain: Ed è firmato da un'autorità di certificazione.
+      - left: Certificate Authority
+        right: Ente fidato che rilascia e revoca i certificati
+        explain: Let's Encrypt è un esempio.
+      - left: Trust anchor
+        right: Autorità da cui parte la catena di fiducia
+        explain: Il browser parte da un numero limitato di chiavi di cui si fida già.
+
+  - id: lets-encrypt
+    type: single
+    prompt: Qual è la durata predefinita dei certificati Let's Encrypt dal 10 febbraio 2027?
+    options:
+      - text: 64 giorni
+        correct: true
+        explain: Giusto. Oggi sono 90 giorni; dal 2028 diventeranno 45.
+      - text: 90 giorni
+        correct: false
+        explain: No, 90 giorni è la durata attuale, fino al cambio del febbraio 2027.
+      - text: 10 anni
+        correct: false
+        explain: No. Let's Encrypt va nella direzione opposta, verso certificati sempre più brevi.
+
+  - id: affidabile
+    type: truefalse
+    prompt: Se un sito ha un certificato valido, il sito è sicuramente onesto.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. Il certificato dice a chi appartiene la chiave, non se il proprietario è onesto. Anche i siti di phishing usano HTTPS.
+      - text: Falso
+        correct: true
+        explain: Giusto. Un certificato garantisce l'identità, non le intenzioni.

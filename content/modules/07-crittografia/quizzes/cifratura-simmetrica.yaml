@@ -1,0 +1,72 @@
+id: cifratura-simmetrica
+passingScore: 0.7
+questions:
+  - id: simmetrica
+    type: single
+    prompt: Cosa caratterizza la cifratura simmetrica?
+    options:
+      - text: La stessa chiave segreta serve per cifrare e per decifrare
+        correct: true
+        explain: Esatto. Per questo mittente e destinatario devono condividere la chiave.
+      - text: Si cifra con una chiave pubblica e si decifra con una privata
+        correct: false
+        explain: No, questa è la cifratura asimmetrica, che vedrai nella prossima lezione.
+      - text: Non usa nessuna chiave
+        correct: false
+        explain: No. Un metodo senza chiave, come Base64, è una codifica, non una cifratura.
+
+  - id: cesare-chiavi
+    type: single
+    prompt: Perché il cifrario di Cesare si rompe in fretta?
+    options:
+      - text: Con 26 lettere ci sono solo 25 spostamenti utili da provare
+        correct: true
+        explain: Giusto. Un attacco a forza bruta li prova tutti in pochi minuti, anche a mano.
+      - text: Perché la chiave è sempre scritta nel messaggio
+        correct: false
+        explain: No, la chiave non è nel messaggio. Il problema è che le chiavi possibili sono pochissime.
+      - text: Perché usa le lettere invece dei numeri
+        correct: false
+        explain: No. Il problema è il numero ridottissimo di chiavi.
+
+  - id: al-kindi
+    type: single
+    prompt: Su cosa si basa l'analisi di frequenza descritta da al-Kindi?
+    options:
+      - text: In un testo le lettere non compaiono tutte con la stessa frequenza
+        correct: true
+        explain: Esatto. La sostituzione semplice cambia le lettere, ma non quante volte compaiono.
+      - text: Sul provare una dopo l'altra tutte le chiavi possibili
+        correct: false
+        explain: No, quella è la forza bruta. Contro la sostituzione, con 26! chiavi, non funzionerebbe.
+      - text: Sul rubare la chiave a chi ha cifrato il messaggio
+        correct: false
+        explain: No. L'analisi di frequenza funziona senza conoscere la chiave.
+
+  - id: aes
+    type: multiple
+    prompt: Quali affermazioni su AES sono corrette? Seleziona tutte quelle giuste.
+    options:
+      - text: È stato pubblicato come standard FIPS 197 nel 2001
+        correct: true
+        explain: Giusto, il 26 novembre 2001.
+      - text: Usa chiavi da 128, 192 o 256 bit
+        correct: true
+        explain: Giusto. I nomi AES-128, AES-192 e AES-256 indicano la lunghezza della chiave.
+      - text: È basato sul cifrario Rijndael
+        correct: true
+        explain: Giusto, di Joan Daemen e Vincent Rijmen.
+      - text: Il suo algoritmo è segreto, per renderlo più sicuro
+        correct: false
+        explain: No. AES è pubblico, come vuole il principio di Kerckhoffs. Il segreto sta nella chiave.
+
+  - id: aggiornamento
+    type: truefalse
+    prompt: Nel 2023 il NIST ha modificato l'algoritmo AES per renderlo più sicuro.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. L'aggiornamento del 2023 è solo redazionale e non cambia l'algoritmo.
+      - text: Falso
+        correct: true
+        explain: Giusto. Il NIST ha migliorato il documento, senza nessuna modifica tecnica.

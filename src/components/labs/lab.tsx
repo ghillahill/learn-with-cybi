@@ -1,7 +1,11 @@
 import type { LabId } from "@/lib/content/keys";
 import { Base64Lab } from "./base64-lab";
+import { CaesarLab } from "./caesar-lab";
 import { CiaLab } from "./cia-lab";
+import { FrequencyLab } from "./frequency-lab";
+import { HashLab } from "./hash-lab";
 import { IpLab } from "./ip-lab";
+import { KeyExchangeLab } from "./key-exchange-lab";
 import { NumberConverterLab } from "./number-converter-lab";
 import { PacketLab } from "./packet-lab";
 import { PasswordLab } from "./password-lab";
@@ -19,6 +23,10 @@ const labs: Record<LabId, React.ComponentType> = {
   "triade-rid": CiaLab,
   "detective-phishing": PhishingLab,
   "forza-password": PasswordLab,
+  cesare: CaesarLab,
+  "analisi-frequenza": FrequencyLab,
+  "scambio-chiavi": KeyExchangeLab,
+  hash: HashLab,
 };
 
 export function Lab({ id }: { id: string }) {

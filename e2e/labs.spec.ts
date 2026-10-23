@@ -1,4 +1,6 @@
 import { expect, type Page, test } from "@playwright/test";
+import { caesarSecret } from "../src/lib/labs/caesar";
+import { cipherLetters, correctPlainLetter } from "../src/lib/labs/frequency";
 import { phishingEmails } from "../src/lib/labs/phishing";
 import { enableFreeMode } from "./helpers";
 
@@ -153,4 +155,78 @@ test("forza delle password: calcolatore e due sfide", async ({ page }) => {
   await section.getByRole("button", { name: "Verifica" }).click();
   await expect(section.getByText("Completato")).toBeVisible();
   expect(await savedLabs(page)).toHaveProperty("forza-password");
+});
+
+test("Cesare: cifratura e forza bruta sul messaggio intercettato", async ({ page }) => {
+  await page.goto("/moduli/crittografia/cifratura-simmetrica");
+  const section = lab(page, "cesare");
+
+  await expect(section.getByLabel("Messaggio cifrato")).toHaveText("FLDR");
+  await section.getByRole("button", { name: "Prova tutte le 25 chiavi" }).click();
+  await expect(section.getByRole("list", { name: "Tutte le decifrature possibili" })).toContainText(caesarSecret.plaintext);
+
+  await section.getByLabel("3. Qual era la chiave?").fill("3");
+  await section.getByRole("button", { name: "Verifica" }).click();
+  await expect(section.getByText(/^Non è questa/)).toBeVisible();
+
+  await section.getByLabel("3. Qual era la chiave?").fill(String(caesarSecret.key));
+  await section.getByRole("button", { name: "Verifica" }).click();
+  await expect(section.getByText("Completato")).toBeVisible();
+  expect(await savedLabs(page)).toHaveProperty("cesare");
+});
+
+test("Cesare: il lab compare anche nella lezione 1.1", async ({ page }) => {
+  await page.goto("/moduli/storia-origini/segreti-prima-dei-computer");
+  await expect(lab(page, "cesare")).toBeVisible();
+});
+
+test("analisi di frequenza: suggerimento e messaggio decifrato", async ({ page }) => {
+  await page.goto("/moduli/crittografia/cifratura-simmetrica");
+  const section = lab(page, "analisi-frequenza");
+
+  await section.getByRole("button", { name: "Suggeriscimi una lettera" }).click();
+  await expect(section.getByLabel(`Lettera cifrata ${cipherLetters[0]} →`)).toHaveValue(correctPlainLetter(cipherLetters[0]));
+  await section.getByRole("button", { name: "Verifica" }).click();
+  await expect(section.getByText(`Hai indovinato 1 lettere su ${cipherLetters.length}`, { exact: false })).toBeVisible();
+
+  for (const c of cipherLetters.slice(1)) {
+    await section.getByLabel(`Lettera cifrata ${c} →`).fill(correctPlainLetter(c).toLowerCase());
+  }
+  await section.getByRole("button", { name: "Verifica" }).click();
+  await expect(section.getByText("Completato")).toBeVisible();
+  expect(await savedLabs(page)).toHaveProperty("analisi-frequenza");
+});
+
+test("scambio di chiavi: colori e numeri", async ({ page }) => {
+  await page.goto("/moduli/crittografia/cifratura-asimmetrica");
+  const section = lab(page, "scambio-chiavi");
+
+  await section.getByLabel("Segreto di Alice (a)").fill("6");
+  await section.getByLabel("Segreto di Bob (b)").fill("15");
+  await expect(section.getByText("Alice spedisce A = g^a mod p = 5^6 mod 23 = 8")).toBeVisible();
+  await section.getByLabel(/^Qual è il segreto comune/).fill("2");
+  await section.getByRole("button", { name: "Verifica" }).click();
+  await expect(section.getByText(/^Esatto: 2.*completa anche i passi/)).toBeVisible();
+
+  for (let i = 0; i < 3; i++) await section.getByRole("button", { name: "Avanti" }).click();
+  await expect(section.getByText("colore finale", { exact: true })).toHaveCount(2);
+  await expect(section.getByText("Completato")).toBeVisible();
+  expect(await savedLabs(page)).toHaveProperty("scambio-chiavi");
+});
+
+test("hash: un carattere cambiato e la domanda finale", async ({ page }) => {
+  await page.goto("/moduli/crittografia/funzioni-hash");
+  const section = lab(page, "hash");
+
+  await expect(section.getByTestId("bit-diversi")).toHaveText(/^Stesso testo, stesso hash/);
+  await section.getByRole("textbox", { name: "Testo 1" }).fill("abc");
+  await expect(section.getByLabel("SHA-256 del testo 1")).toHaveText(
+    "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+  );
+  await section.getByRole("textbox", { name: "Testo 2" }).fill("abd");
+  await expect(section.getByTestId("bit-diversi")).toHaveText(/^Bit diversi: \d+ su 256\. Ed è cambiato un solo carattere!$/);
+
+  await section.getByRole("button", { name: /^No, un hash non si/ }).click();
+  await expect(section.getByText("Completato")).toBeVisible();
+  expect(await savedLabs(page)).toHaveProperty("hash");
 });

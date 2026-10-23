@@ -476,3 +476,119 @@ entries:
         publisher: NIST
         url: https://csrc.nist.gov/glossary/term/mitm
         note: Definizione di NISTIR 7711. Traduzione di LearnWithCybi.
+
+  - id: cifratura
+    term: Cifratura (encryption)
+    definition: Trasformazione crittografica di dati leggibili (testo in chiaro) in una forma che ne nasconde il significato (testo cifrato). L'operazione inversa, che riporta i dati com'erano, si chiama decifratura.
+    sources:
+      - id: nist-encryption
+        level: A
+        title: NIST CSRC Glossary, "encryption"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/encryption
+        note: Definizioni di CNSSI 4009-2022 e NIST SP 800-12 Rev. 1. Traduzione di LearnWithCybi.
+
+  - id: chiave-simmetrica
+    term: Chiave simmetrica
+    definition: Chiave crittografica usata sia per un'operazione sia per la sua inversa, per esempio per cifrare e per decifrare. Va tenuta segreta, per questo si chiama anche chiave segreta.
+    sources:
+      - id: nist-symmetric-key
+        level: A
+        title: NIST CSRC Glossary, "symmetric key"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/symmetric_key
+        note: Definizioni di FIPS 201-3 e CNSSI 4009-2022. Traduzione di LearnWithCybi.
+
+  - id: funzione-hash
+    term: Funzione di hash
+    definition: Funzione che trasforma dati di qualsiasi lunghezza in un risultato di lunghezza fissa (hash o digest). Deve essere a senso unico (dato un hash, è impraticabile trovare un input che lo produce) e resistente alle collisioni (è impraticabile trovare due input diversi con lo stesso hash).
+    sources:
+      - id: nist-hash-function
+        level: A
+        title: NIST CSRC Glossary, "hash function"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/hash_function
+        note: Definizione di FIPS 186-5. Traduzione di LearnWithCybi.
+
+  - id: sale
+    term: Sale (salt)
+    definition: Valore non segreto usato in un calcolo crittografico perché i risultati di un caso non possano essere riusati da un attaccante. Per le password è una stringa casuale, diversa per ogni utente, aggiunta prima di calcolare l'hash.
+    sources:
+      - id: nist-salt
+        level: A
+        title: NIST CSRC Glossary, "salt"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/salt
+        note: Definizione di NIST SP 800-63-4. Traduzione di LearnWithCybi.
+      - id: owasp-password-storage
+        level: A
+        title: Password Storage Cheat Sheet
+        publisher: OWASP
+        url: https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html
+
+  - id: firma-digitale
+    term: Firma digitale
+    definition: Risultato di una trasformazione crittografica dei dati che permette di verificarne l'origine e l'integrità e impedisce a chi ha firmato di negarlo (non ripudio). Si crea con la chiave privata e si verifica con la chiave pubblica.
+    sources:
+      - id: nist-digital-signature
+        level: A
+        title: NIST CSRC Glossary, "digital signature"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/digital_signature
+        note: Definizione di FIPS 186-5. Traduzione di LearnWithCybi.
+      - id: fips-186-5
+        level: A
+        title: "FIPS 186-5: Digital Signature Standard (DSS)"
+        publisher: NIST
+        year: 2023
+        url: https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-5.pdf
+
+  - id: certificato-digitale
+    term: Certificato digitale
+    definition: Insieme di dati che identifica una chiave pubblica e il suo proprietario. Contiene la chiave pubblica ed è firmato da un'autorità di certificazione, che così lega la chiave al proprietario.
+    sources:
+      - id: nist-certificate
+        level: A
+        title: NIST CSRC Glossary, "public key certificate"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/public_key_certificate
+        note: Definizione di FIPS 186-5. Traduzione di LearnWithCybi.
+
+  - id: certificate-authority
+    term: Certificate Authority (CA)
+    definition: Autorità di certificazione, un ente fidato che rilascia e revoca i certificati a chiave pubblica.
+    sources:
+      - id: nist-ca
+        level: A
+        title: NIST CSRC Glossary, "certificate authority"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/certificate_authority
+        note: Definizione di NISTIR 8149. Traduzione di LearnWithCybi.
+
+  - id: pki
+    term: PKI (Public Key Infrastructure)
+    definition: Infrastruttura a chiave pubblica, l'insieme di regole e sistemi che servono a rilasciare, mantenere e revocare i certificati a chiave pubblica.
+    sources:
+      - id: nist-pki
+        level: A
+        title: NIST CSRC Glossary, "public key infrastructure"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/public_key_infrastructure
+        note: Definizione di FIPS 186-5. Traduzione di LearnWithCybi.
+
+  - id: end-to-end
+    term: Cifratura end-to-end
+    definition: Cifratura in cui i dati restano cifrati per tutto il percorso attraverso la rete, mentre le informazioni per instradarli restano visibili. Nelle app di messaggi significa che solo mittente e destinatario possono leggere i messaggi, non chi gestisce il servizio.
+    sources:
+      - id: nist-e2e
+        level: A
+        title: NIST CSRC Glossary, "end-to-end encryption"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/end_to_end_encryption
+        note: Definizione di NIST SP 800-12 Rev. 1. Traduzione di LearnWithCybi.
+      - id: whatsapp-whitepaper
+        level: A
+        title: WhatsApp Encryption Overview (white paper)
+        publisher: WhatsApp
+        year: 2026
+        url: https://www.whatsapp.com/security/WhatsApp-Security-Whitepaper.pdf

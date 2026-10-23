@@ -1,0 +1,121 @@
+---
+id: cifratura-simmetrica
+title: Cifratura simmetrica
+minutes: 15
+xp: 80
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Capire cosa vuol dire cifrare e cosa sono chiave, testo in chiaro e testo cifrato
+  - Sapere perché i cifrari a sostituzione cadono con l'analisi di frequenza
+  - Conoscere AES, lo standard simmetrico di oggi
+  - Capire perché la forza bruta contro una chiave da 128 bit è impraticabile
+sources:
+  - id: nist-encryption
+    level: A
+    title: NIST CSRC Glossary, "encryption"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/encryption
+    note: Definizioni di CNSSI 4009-2022 e NIST SP 800-12 Rev. 1.
+  - id: nist-symmetric-key
+    level: A
+    title: NIST CSRC Glossary, "symmetric key"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/symmetric_key
+    note: Definizioni di FIPS 201-3 e CNSSI 4009-2022 (da NIST SP 800-57 Part 1 Rev. 5).
+  - id: svetonio-cesari
+    level: A
+    title: Vite dei Cesari (Vita di Cesare 56)
+    author: Svetonio
+  - id: singh-arab
+    level: B
+    title: Arab Code Breakers
+    author: Simon Singh
+    url: https://simonsingh.net/media/articles/maths-and-science/arab-code-breakers
+  - id: fips-197
+    level: A
+    title: "FIPS 197-upd1: Advanced Encryption Standard (AES)"
+    publisher: NIST
+    year: 2023
+    url: https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197-upd1.pdf
+    note: Pubblicato il 26 novembre 2001, aggiornato il 9 maggio 2023.
+  - id: nist-aes-update
+    level: A
+    title: NIST Updates FIPS 197, Advanced Encryption Standard
+    publisher: NIST
+    year: 2023
+    url: https://csrc.nist.gov/news/2023/nist-updates-fips-197-advanced-encryption-standard
+  - id: kerckhoffs-1883
+    level: A
+    title: La cryptographie militaire (trascrizione di Fabien Petitcolas)
+    author: Auguste Kerckhoffs
+    year: 1883
+    url: https://www.petitcolas.net/kerckhoffs/
+quiz: cifratura-simmetrica
+---
+
+<Cybi mood="felice">
+Benvenuto nel modulo dei segreti! Nel Modulo 1 hai visto Cesare e Bellaso. Ora scopriamo come si cifra oggi, e perché i vecchi trucchi non bastano più.
+</Cybi>
+
+## Cifrare: le parole del mestiere
+
+<Term id="cifratura">Cifrare</Term> (*encryption*) vuol dire trasformare dei dati leggibili, il **testo in chiaro** (*plaintext*), in una forma che ne nasconde il significato, il **testo cifrato** (*ciphertext*). La trasformazione inversa, che riporta i dati come erano, si chiama **decifrare** (*decryption*).<Cite id="nist-encryption" />
+
+Per cifrare serve una **chiave**: un'informazione segreta che dice al metodo *come* trasformare i dati. Nella crittografia **simmetrica** la stessa chiave serve sia per cifrare sia per decifrare, e va tenuta segreta: per questo si chiama anche *chiave segreta*. È la <Term id="chiave-simmetrica">chiave simmetrica</Term>.<Cite id="nist-symmetric-key" />
+
+<Cybi mood="pensieroso">
+È come un lucchetto con una sola chiave, copiata per te e per il tuo amico. Chi ha la chiave chiude e apre; chi non ce l'ha resta fuori.
+</Cybi>
+
+## Cesare: troppe poche chiavi
+
+Il cifrario di Cesare sposta ogni lettera di tre posizioni nell'alfabeto.<Cite id="svetonio-cesari" /> In realtà lo spostamento è la chiave: con un alfabeto di 26 lettere ci sono solo 25 spostamenti utili. Prova a cifrare, poi rompi un messaggio intercettato.
+
+<Lab id="cesare" />
+
+## Più chiavi non bastano: l'analisi di frequenza
+
+Un'idea migliore è il **cifrario a sostituzione**: ogni lettera viene sostituita da un'altra secondo un alfabeto rimescolato a piacere. Le chiavi possibili sono tutte le permutazioni di 26 lettere, cioè 26! (fattoriale di 26): più di 400 milioni di miliardi di miliardi. Nessuno le può provare tutte a mano.
+
+Eppure anche questo cifrario cade. Intorno all'850, a Baghdad, lo studioso arabo **al-Kindi** scrive il *Manoscritto sulla decifrazione dei messaggi crittografici*. Vi descrive l'**analisi di frequenza**: in un testo le lettere dell'alfabeto non compaiono tutte con la stessa frequenza. Basta contare i simboli del messaggio cifrato e confrontarli con le lettere più comuni della lingua.<Cite id="singh-arab" />
+
+<Cybi mood="detective">
+La sostituzione cambia il "vestito" delle lettere, ma non quante volte compaiono. Se un simbolo ricorre tantissimo, probabilmente nasconde una lettera molto comune. Mettiti alla prova!
+</Cybi>
+
+<Lab id="analisi-frequenza" />
+
+<MythVsFact
+  myth="Più chiavi possibili ha un cifrario, più è sicuro."
+  fact="Il numero di chiavi conta, ma non basta. La sostituzione semplice ha più di 400 milioni di miliardi di miliardi di chiavi, eppure si rompe contando le lettere, come descrive al-Kindi intorno all'850."
+  source="singh-arab"
+/>
+
+## AES, lo standard di oggi
+
+I cifrari moderni lavorano sui bit, non sulle lettere. Lo standard di riferimento è l'**AES** (*Advanced Encryption Standard*), pubblicato dal NIST nello standard FIPS 197 il **26 novembre 2001**.<Cite id="fips-197" />
+
+- Nel 2000 il NIST sceglie come vincitore il cifrario **Rijndael**, di Joan Daemen e Vincent Rijmen.<Cite id="fips-197" />
+- AES cifra i dati in **blocchi da 128 bit** e usa chiavi da **128, 192 o 256 bit**: AES-128, AES-192 e AES-256.<Cite id="fips-197" />
+- Nel maggio 2023 il NIST ha aggiornato il documento con miglioramenti redazionali, senza nessuna modifica tecnica all'algoritmo.<Cite id="nist-aes-update" />
+
+## Perché la forza bruta non funziona più
+
+Con una chiave da 128 bit le chiavi possibili sono 2¹²⁸, cioè circa 3,4 × 10³⁸. Facciamo un conto con un'ipotesi generosissima: un attaccante che prova mille miliardi di miliardi di chiavi al secondo (10²¹). In media dovrebbe provarne metà, e gli servirebbero più di 5 miliardi di anni.
+
+<Callout type="info" title="Un conto, non una misura">
+Il calcolo dice quanto costa provare *tutte* le chiavi. Non dice niente su altri attacchi: errori nel programma, chiavi rubate o scelte male. Per questo un buon algoritmo è solo una parte della sicurezza.
+</Callout>
+
+## Kerckhoffs, ancora lui
+
+Ti ricordi il principio di Kerckhoffs (1883)? Un sistema deve restare sicuro anche se il nemico conosce tutto, tranne la chiave.<Cite id="kerckhoffs-1883" /> AES lo rispetta in pieno: l'algoritmo è pubblico, chiunque può leggerlo e studiarlo. Il segreto sta tutto nella chiave.<Cite id="fips-197" />
+
+<KeyPoints>
+- Cifrare: trasformare il testo in chiaro in testo cifrato; decifrare: tornare indietro.
+- Simmetrica: la stessa chiave segreta cifra e decifra.
+- Cesare ha 25 chiavi utili; la sostituzione ne ha 26!, ma cade con l'analisi di frequenza (al-Kindi, circa 850).
+- AES (FIPS 197, 26 novembre 2001): Rijndael, blocchi da 128 bit, chiavi da 128, 192 o 256 bit.
+- 2¹²⁸ chiavi rendono impraticabile la forza bruta; la sicurezza sta nella chiave, non nel segreto del metodo.
+</KeyPoints>

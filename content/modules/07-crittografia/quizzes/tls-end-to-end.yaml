@@ -1,0 +1,71 @@
+id: tls-end-to-end
+passingScore: 0.7
+questions:
+  - id: tls-protegge
+    type: multiple
+    prompt: Da cosa protegge TLS 1.3, secondo l'RFC 8446? Seleziona tutte le risposte giuste.
+    options:
+      - text: Intercettazioni
+        correct: true
+        explain: Giusto, i dati sono cifrati.
+      - text: Manomissioni
+        correct: true
+        explain: Giusto, le modifiche vengono scoperte.
+      - text: Falsificazione dei messaggi
+        correct: true
+        explain: Giusto.
+      - text: Siti di phishing
+        correct: false
+        explain: No. TLS protegge la connessione, non ti dice se il sito è onesto.
+
+  - id: handshake
+    type: order
+    prompt: Metti in ordine i passi semplificati dell'handshake TLS 1.3.
+    items:
+      - text: Il browser manda la sua parte dello scambio Diffie-Hellman
+        explain: È il primo messaggio, insieme agli algoritmi che il browser conosce.
+      - text: Il server risponde con la sua parte dello scambio
+        explain: Da qui entrambi calcolano le stesse chiavi segrete.
+      - text: Il server manda certificato e firma
+        explain: Così prova di possedere la chiave privata giusta.
+      - text: I dati viaggiano cifrati con un cifrario simmetrico
+        explain: Per esempio AES-128, che ogni implementazione deve supportare.
+
+  - id: tipi
+    type: match
+    prompt: Abbina ogni tipo di cifratura a cosa protegge.
+    pairs:
+      - left: In transito
+        right: I dati mentre viaggiano in rete
+        explain: È il lavoro di TLS.
+      - left: A riposo
+        right: I dati salvati su un dispositivo
+        explain: Per esempio il disco di un portatile rubato.
+      - left: End-to-end
+        right: I messaggi, che solo mittente e destinatario leggono
+        explain: Nemmeno chi gestisce il servizio può leggerli.
+
+  - id: forward-secrecy
+    type: single
+    prompt: Cosa garantisce la forward secrecy del Signal Protocol?
+    options:
+      - text: Chi ruba le chiavi attuali non può decifrare i messaggi già inviati
+        correct: true
+        explain: Esatto. Le chiavi cambiano di continuo.
+      - text: I messaggi arrivano più velocemente
+        correct: false
+        explain: No, la velocità non c'entra.
+      - text: I messaggi si cancellano dopo la lettura
+        correct: false
+        explain: No, quella è un'altra funzione delle app, non la forward secrecy.
+
+  - id: metadati
+    type: truefalse
+    prompt: Con la cifratura end-to-end restano nascoste anche le informazioni per instradare i messaggi.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. Secondo la definizione del NIST, le informazioni di instradamento restano visibili.
+      - text: Falso
+        correct: true
+        explain: Giusto. Il contenuto è protetto, ma per esempio si vede a chi è diretto un messaggio.

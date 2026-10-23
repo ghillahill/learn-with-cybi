@@ -1,0 +1,101 @@
+---
+id: cifratura-asimmetrica
+title: Cifratura asimmetrica
+minutes: 14
+xp: 80
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Capire il problema della distribuzione delle chiavi
+  - Capire come funzionano chiave pubblica e chiave privata
+  - Vedere con un'analogia come funziona lo scambio di chiavi Diffie-Hellman
+  - Sapere perché i computer quantistici sono una minaccia per RSA ed ECC
+sources:
+  - id: nist-asymmetric
+    level: A
+    title: NIST CSRC Glossary, "asymmetric cryptography"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/asymmetric_cryptography
+    note: Definizioni di FIPS 204 e CNSSI 4009-2022.
+  - id: diffie-hellman-1976
+    level: A
+    title: New Directions in Cryptography
+    author: Whitfield Diffie, Martin Hellman
+    publisher: IEEE Transactions on Information Theory 22(6)
+    year: 1976
+    url: https://ee.stanford.edu/~hellman/publications/24.pdf
+  - id: nist-diffie-hellman
+    level: A
+    title: NIST CSRC Glossary, "Diffie-Hellman"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/diffie_hellman
+    note: Definizione di NIST SP 800-113.
+  - id: rsa-1978
+    level: A
+    title: A Method for Obtaining Digital Signatures and Public-Key Cryptosystems
+    author: Ronald Rivest, Adi Shamir, Leonard Adleman
+    publisher: Communications of the ACM 21(2)
+    year: 1978
+    url: https://doi.org/10.1145/359340.359342
+  - id: nist-ir-8547
+    level: A
+    title: "NIST IR 8547 (Initial Public Draft): Transition to Post-Quantum Cryptography Standards"
+    publisher: NIST
+    year: 2024
+    url: https://csrc.nist.gov/pubs/ir/8547/ipd
+    note: Bozza del 12 novembre 2024, commenti chiusi il 10 gennaio 2025. Al 23/10/2026 non risulta una versione finale.
+quiz: cifratura-asimmetrica
+---
+
+<Cybi mood="pensieroso">
+La cifratura simmetrica funziona benissimo… se tu e il tuo amico avete già la stessa chiave. Ma se vi trovate ai due capi del mondo, come ve la passate senza che qualcuno la copi?
+</Cybi>
+
+## Il problema della chiave condivisa
+
+Con la cifratura simmetrica, mittente e destinatario devono condividere la chiave **prima** di comunicare. Nel 1976 Whitfield Diffie e Martin Hellman descrivono proprio questo problema. La chiave va mandata in anticipo su un canale sicuro, per esempio con un corriere privato o una raccomandata. Ma spesso due persone che non si sono mai sentite prima vogliono parlarsi in privato su un **canale insicuro**, cioè ascoltabile da altri: i costi e i ritardi della distribuzione delle chiavi sono un grosso ostacolo.<Cite id="diffie-hellman-1976" />
+
+## Due chiavi invece di una
+
+La soluzione è la <Term id="crittografia-chiave-pubblica">crittografia a chiave pubblica</Term>, detta anche **asimmetrica**: usa due chiavi diverse, una per cifrare (o firmare) i dati e l'altra per decifrarli (o verificare la firma).<Cite id="nist-asymmetric" />
+
+- La **chiave pubblica** si può dare a tutti.
+- La **chiave privata** la conosce solo il proprietario.
+- Pubblicare la chiave pubblica non rivela la chiave privata.<Cite id="rsa-1978" />
+
+<Cybi mood="felice">
+Pensa a una cassetta delle lettere: chiunque può imbucare un messaggio dalla fessura (la chiave pubblica), ma solo chi ha la chiave della cassetta (la chiave privata) può aprirla e leggerlo.
+</Cybi>
+
+Il sistema più famoso è **RSA**, descritto da Rivest, Shamir e Adleman nell'articolo del 1978, che permette anche di firmare i messaggi.<Cite id="rsa-1978" /> Oggi si usa molto anche la **crittografia a curve ellittiche** (ECC, *Elliptic Curve Cryptography*), per esempio per le firme digitali (ECDSA) e per concordare le chiavi.<Cite id="nist-ir-8547" />
+
+## Diffie-Hellman: un segreto detto in pubblico
+
+Diffie-Hellman è un metodo per stabilire una chiave segreta comune attraverso una rete insicura.<Cite id="nist-diffie-hellman" /> Nell'articolo del 1976 ognuno sceglie un numero segreto e rende pubblico un numero calcolato a partire da quello. Combinando il proprio segreto con il numero pubblico dell'altro, entrambi ottengono la **stessa chiave**, senza averla mai spedita.<Cite id="diffie-hellman-1976" />
+
+Il trucco è un calcolo facile in un verso e, con numeri scelti bene, molto difficile all'indietro. Gli autori lo dicono chiaramente: la sicurezza del metodo dipende tutta da questa difficoltà.<Cite id="diffie-hellman-1976" /> Nel laboratorio la vernice prende il posto dei numeri: mescolare due colori è facile, separarli no.
+
+<Lab id="scambio-chiavi" />
+
+<Callout type="warning" title="Numeri giocattolo">
+Nel laboratorio p vale 23: con un numero così piccolo chiunque trova i segreti provando tutte le possibilità. Nei sistemi veri i numeri sono enormi, ed è questo che rende il calcolo all'indietro impraticabile.
+</Callout>
+
+## Il futuro: i computer quantistici
+
+RSA, ECC e Diffie-Hellman hanno un punto debole comune. Un **computer quantistico** abbastanza potente, che oggi non esiste ancora, potrebbe romperli con l'algoritmo di Shor.<Cite id="nist-ir-8547" />
+
+- Il pericolo riguarda anche i dati di oggi: un avversario può raccogliere ora messaggi cifrati e conservarli per decifrarli in futuro. Il NIST lo chiama *harvest now, decrypt later* ("raccogli ora, decifra dopo").<Cite id="nist-ir-8547" />
+- Nel novembre 2024 il NIST ha proposto un piano di transizione nella bozza NIST IR 8547: RSA ed ECC con sicurezza a 112 bit **deprecati dopo il 2030**, e tutti **non più ammessi dopo il 2035**.<Cite id="nist-ir-8547" />
+- Al loro posto, gli algoritmi **post-quantistici** degli standard FIPS 203, 204 e 205, che hai incontrato nel Modulo 2.<Cite id="nist-ir-8547" />
+
+<Callout type="info" title="Ancora una proposta">
+NIST IR 8547 è una bozza: i commenti si sono chiusi il 10 gennaio 2025 e, al 23 ottobre 2026, non risulta una versione finale. Le date del 2030 e del 2035 sono proposte, non ancora regole definitive.<Cite id="nist-ir-8547" />
+</Callout>
+
+<KeyPoints>
+- La cifratura simmetrica ha un problema: come condividere la chiave su un canale insicuro.
+- Asimmetrica: chiave pubblica per tutti, chiave privata solo per il proprietario (RSA, ECC).
+- Diffie-Hellman (1976): due persone ottengono lo stesso segreto senza mai spedirlo.
+- Un computer quantistico potente romperebbe RSA ed ECC; il NIST propone di abbandonarli entro il 2035 (bozza NIST IR 8547).
+</KeyPoints>

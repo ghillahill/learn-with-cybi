@@ -1,0 +1,69 @@
+id: funzioni-hash
+passingScore: 0.7
+questions:
+  - id: proprieta
+    type: match
+    prompt: Abbina ogni proprietà a ciò che deve essere impraticabile.
+    pairs:
+      - left: Resistenza alle collisioni
+        right: Trovare due input diversi con lo stesso hash
+        explain: SHAttered ha rotto questa proprietà per SHA-1.
+      - left: Resistenza alla preimmagine
+        right: Dato un hash, trovare un input che lo produce
+        explain: Per questo si dice che un hash è a senso unico.
+      - left: Resistenza alla seconda preimmagine
+        right: Dato un input, trovarne un altro con lo stesso hash
+        explain: Qui l'attaccante parte da un input preciso, non da uno qualsiasi.
+
+  - id: sha256
+    type: single
+    prompt: Quanto è lungo il digest di SHA-256?
+    options:
+      - text: 256 bit, cioè 64 cifre esadecimali
+        correct: true
+        explain: Giusto. Ogni cifra esadecimale vale 4 bit, e 64 × 4 = 256.
+      - text: Dipende dalla lunghezza del testo
+        correct: false
+        explain: No. Il risultato di una funzione di hash ha sempre la stessa lunghezza.
+      - text: 256 caratteri
+        correct: false
+        explain: No, 256 sono i bit, non i caratteri.
+
+  - id: decifrare
+    type: truefalse
+    prompt: Un hash si può decifrare, se si conosce la chiave giusta.
+    options:
+      - text: Vero
+        correct: false
+        explain: "No. Un hash non ha chiave: è a senso unico. Si può solo provare un testo e confrontare il risultato."
+      - text: Falso
+        correct: true
+        explain: Giusto. Hash e cifratura sono cose diverse.
+
+  - id: rotti
+    type: multiple
+    prompt: Quali funzioni di hash non sono più considerate sicure? Seleziona tutte quelle giuste.
+    options:
+      - text: MD5
+        correct: true
+        explain: Giusto. Collisioni dal 2004; nel 2012 Flame ne ha sfruttata una per un certificato falso.
+      - text: SHA-1
+        correct: true
+        explain: Giusto. Prima collisione con SHAttered (2017); il NIST lo abbandona entro il 2030.
+      - text: SHA-256
+        correct: false
+        explain: No, SHA-256 è tra le funzioni approvate da FIPS 180-4.
+
+  - id: password
+    type: single
+    prompt: Cosa consiglia OWASP per salvare le password?
+    options:
+      - text: Argon2id, una funzione lenta, con un sale diverso per ogni utente
+        correct: true
+        explain: Esatto. Con almeno 19 MiB di memoria, 2 iterazioni e parallelismo 1.
+      - text: SHA-256, perché è veloce
+        correct: false
+        explain: No. Proprio perché è veloce permette all'attaccante di provare moltissime password.
+      - text: Base64, perché nessuno la riconosce
+        correct: false
+        explain: No. Base64 è una codifica che chiunque decodifica.

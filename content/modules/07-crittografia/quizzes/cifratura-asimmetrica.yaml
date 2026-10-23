@@ -1,0 +1,80 @@
+id: cifratura-asimmetrica
+passingScore: 0.7
+questions:
+  - id: problema
+    type: single
+    prompt: Quale problema della cifratura simmetrica risolve la crittografia a chiave pubblica?
+    options:
+      - text: Condividere una chiave segreta con qualcuno su un canale che altri possono ascoltare
+        correct: true
+        explain: Esatto. È il problema della distribuzione delle chiavi descritto da Diffie e Hellman nel 1976.
+      - text: Rendere i messaggi più corti
+        correct: false
+        explain: No, la lunghezza dei messaggi non c'entra.
+      - text: Fare a meno di qualsiasi chiave
+        correct: false
+        explain: No. Le chiavi ci sono, anzi sono due.
+
+  - id: chiavi
+    type: match
+    prompt: Abbina ogni chiave a cosa ne fa il proprietario.
+    pairs:
+      - left: Chiave pubblica
+        right: La dà a tutti
+        explain: Pubblicarla non rivela la chiave privata.
+      - left: Chiave privata
+        right: La tiene solo per sé
+        explain: Serve per decifrare i messaggi ricevuti e per firmare.
+
+  - id: cassetta
+    type: single
+    prompt: "Nell'analogia della cassetta delle lettere, cosa rappresenta la fessura da cui chiunque può imbucare?"
+    options:
+      - text: La chiave pubblica
+        correct: true
+        explain: Giusto. Chiunque può usarla per mandarti un messaggio cifrato.
+      - text: La chiave privata
+        correct: false
+        explain: No, la chiave privata è quella che apre la cassetta, e ce l'hai solo tu.
+      - text: Il messaggio in chiaro
+        correct: false
+        explain: No, il messaggio è la lettera che viene imbucata.
+
+  - id: diffie-hellman
+    type: single
+    prompt: Cosa ottengono Alice e Bob con lo scambio Diffie-Hellman?
+    options:
+      - text: Lo stesso segreto, senza averlo mai spedito
+        correct: true
+        explain: Esatto. Ognuno combina il proprio segreto con il valore pubblico dell'altro.
+      - text: Il segreto dell'altro, spedito in chiaro
+        correct: false
+        explain: No. I segreti di Alice e Bob non viaggiano mai in rete.
+      - text: Un messaggio che Eva può leggere ma non modificare
+        correct: false
+        explain: No. Lo scopo è concordare una chiave che Eva non conosce.
+
+  - id: quantistico
+    type: truefalse
+    prompt: Secondo la bozza NIST IR 8547, RSA ed ECC non saranno più ammessi dopo il 2035.
+    options:
+      - text: Vero
+        correct: true
+        explain: Giusto, ma è ancora una bozza (novembre 2024) e le date sono proposte.
+      - text: Falso
+        correct: false
+        explain: No. La bozza propone proprio il 2035, con RSA ed ECC a 112 bit deprecati già dopo il 2030.
+
+  - id: harvest
+    type: single
+    prompt: Cosa vuol dire "harvest now, decrypt later"?
+    options:
+      - text: Raccogliere oggi dati cifrati per decifrarli quando esisterà un computer quantistico potente
+        correct: true
+        explain: Esatto. Per questo la transizione agli algoritmi post-quantistici è urgente anche se quel computer non esiste ancora.
+      - text: Cifrare oggi i dati e cancellarli domani
+        correct: false
+        explain: No, non c'entra la cancellazione.
+      - text: Raccogliere password per usarle subito
+        correct: false
+        explain: No. Il rischio riguarda dati cifrati conservati per anni.

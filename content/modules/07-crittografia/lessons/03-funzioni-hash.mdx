@@ -1,0 +1,135 @@
+---
+id: funzioni-hash
+title: Funzioni di hash
+minutes: 15
+xp: 80
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Capire cos'è una funzione di hash e quali proprietà deve avere
+  - Osservare con SHA-256 il determinismo e l'effetto valanga
+  - Sapere perché MD5 e SHA-1 non sono più sicuri
+  - Capire perché un hash non è una cifratura e come si salvano le password
+sources:
+  - id: nist-hash-functions
+    level: A
+    title: Hash Functions
+    publisher: NIST CSRC
+    url: https://csrc.nist.gov/projects/hash-functions
+  - id: nist-hash-glossary
+    level: A
+    title: NIST CSRC Glossary, "hash function"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/hash_function
+    note: Definizione di FIPS 186-5.
+  - id: fips-180-4
+    level: A
+    title: "FIPS 180-4: Secure Hash Standard (SHS)"
+    publisher: NIST
+    year: 2015
+    url: https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf
+    note: Agosto 2015. Figura 1 (dimensioni dei digest) e sezione "Explanation".
+  - id: wang-2004
+    level: A
+    title: Collisions for Hash Functions MD4, MD5, HAVAL-128 and RIPEMD
+    author: Xiaoyun Wang, Dengguo Feng, Xuejia Lai, Hongbo Yu
+    publisher: IACR Cryptology ePrint Archive 2004/199
+    year: 2004
+    url: https://eprint.iacr.org/2004/199
+  - id: cwi-flame
+    level: A
+    title: CWI cryptanalyst discovers new cryptographic attack variant in Flame spy malware
+    publisher: CWI Amsterdam
+    year: 2012
+    url: https://www.cwi.nl/en/news/2012/cwi-cryptanalist-discovers-new-cryptographic-attack-variant-in-flame-spy-malware/
+  - id: shattered
+    level: A
+    title: SHAttered
+    author: Marc Stevens, Pierre Karpman, Elie Bursztein, Ange Albertini, Yarik Markov
+    publisher: CWI Amsterdam e Google
+    year: 2017
+    url: https://shattered.io/
+  - id: nist-sha1-retire
+    level: A
+    title: NIST Transitioning Away from SHA-1 for All Applications
+    publisher: NIST
+    year: 2022
+    url: https://csrc.nist.gov/news/2022/nist-transitioning-away-from-sha-1-for-all-apps
+  - id: phc
+    level: A
+    title: Password Hashing Competition
+    publisher: password-hashing.net
+    url: https://www.password-hashing.net/
+  - id: rfc-9106
+    level: A
+    title: "RFC 9106: Argon2 Memory-Hard Function for Password Hashing and Proof-of-Work Applications"
+    publisher: IRTF
+    year: 2021
+    url: https://www.rfc-editor.org/rfc/rfc9106
+    note: Settembre 2021, documento informativo. Sezione 7.4 (raccomandazioni).
+  - id: owasp-password-storage
+    level: A
+    title: Password Storage Cheat Sheet
+    publisher: OWASP
+    url: https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html
+quiz: funzioni-hash
+---
+
+<Cybi mood="sorpreso">
+E se ti dicessi che esiste un modo per fare l'impronta digitale di un intero libro, in 64 caratteri? Cambi una virgola e l'impronta diventa un'altra. Benvenuto nel mondo degli hash!
+</Cybi>
+
+## Un'impronta digitale per i dati
+
+Una <Term id="funzione-hash">funzione di hash</Term> prende dati di qualsiasi lunghezza e produce un risultato di **lunghezza fissa**, chiamato *hash* o *digest*.<Cite id="nist-hash-glossary" /> Lo standard NIST FIPS 180-4 (agosto 2015) dice a cosa serve: il digest permette di **scoprire se un messaggio è stato modificato** dopo che il digest è stato calcolato.<Cite id="fips-180-4" />
+
+Per essere sicura, secondo il NIST, una funzione di hash deve rendere impraticabile, cioè troppo costoso da calcolare:<Cite id="nist-hash-functions" />
+
+- **resistenza alle collisioni**: trovare due input diversi con lo stesso hash;
+- **resistenza alla preimmagine**: dato un hash, trovare un input che lo produce (per questo si dice che l'hash è "a senso unico");
+- **resistenza alla seconda preimmagine**: dato un input, trovarne un altro con lo stesso hash.
+
+Inoltre lo stesso input dà sempre lo stesso hash, e qualsiasi modifica al messaggio produce, con probabilità altissima, un digest diverso.<Cite id="fips-180-4" />
+
+## SHA-256
+
+FIPS 180-4 definisce diverse funzioni, tra cui **SHA-256** della famiglia SHA-2: produce un digest di **256 bit**, che in esadecimale (Modulo 3) si scrive con 64 cifre.<Cite id="fips-180-4" /> Prova a calcolarlo.
+
+<Lab id="hash" />
+
+## Quando un hash si rompe
+
+Una funzione di hash è rotta quando qualcuno riesce a trovare collisioni in pratica.
+
+- **MD5**: nel 2004 Xiaoyun Wang e colleghi presentano le prime collisioni.<Cite id="wang-2004" /> Nel 2012 il crittografo Marc Stevens del CWI di Amsterdam scopre che il malware spia **Flame** ha usato una variante di un attacco di collisione su MD5. Così si è procurato un certificato falso che sembrava di Microsoft e poteva spacciarsi per un aggiornamento di Windows.<Cite id="cwi-flame" />
+- **SHA-1**: il NIST lo depreca nel 2011.<Cite id="nist-hash-functions" /> Il **23 febbraio 2017** CWI Amsterdam e Google pubblicano **SHAttered**, la prima collisione: due file PDF diversi con lo stesso hash SHA-1. Sono servite circa nove miliardi di miliardi di calcoli SHA-1.<Cite id="shattered" /> Il NIST ha fissato al **31 dicembre 2030** l'abbandono di SHA-1 in tutte le applicazioni.<Cite id="nist-sha1-retire" />
+
+<Cybi mood="preoccupato">
+Una collisione non è un problema teorico: se due documenti diversi hanno la stessa impronta, chi controlla solo l'impronta non li distingue più. E le firme digitali, come vedrai nella prossima lezione, si appoggiano proprio sull'impronta.
+</Cybi>
+
+## Hash non vuol dire cifratura
+
+Una cifratura si può invertire con la chiave giusta. Un hash no: non ha chiave e non c'è niente da "decifrare". Chi vuole sapere da quale testo viene un hash può solo provare dei testi, calcolarne l'hash e confrontare.<Cite id="nist-hash-functions" />
+
+<MythVsFact
+  myth="Se un sito salva l'hash della mia password, qualcuno può decifrarlo e leggerla."
+  fact="Un hash non si decifra: è a senso unico. Un attaccante che ruba gli hash può solo tirare a indovinare, calcolando l'hash di tante password possibili. Ecco perché contano password lunghe e casuali e il modo in cui il sito salva gli hash."
+  source="nist-hash-functions"
+/>
+
+## Come si salvano le password
+
+Nel Modulo 6 hai visto le rainbow table e il <Term id="sale">sale</Term>, una stringa casuale diversa per ogni utente. Per le password, però, OWASP avverte che un hash veloce come SHA-256 non va bene: permette all'attaccante di provare moltissime password in poco tempo. Servono funzioni **lente**, che rendono ogni tentativo più costoso.<Cite id="owasp-password-storage" />
+
+- Nel luglio 2015 **Argon2** vince la *Password Hashing Competition*.<Cite id="phc" />
+- L'RFC 9106 (settembre 2021, documento informativo) descrive Argon2 e indica la variante **Argon2id** come prima scelta consigliata.<Cite id="rfc-9106" />
+- OWASP consiglia Argon2id con almeno 19 MiB di memoria, 2 iterazioni e grado di parallelismo 1. Se non è disponibile, scrypt; bcrypt solo per i sistemi già esistenti.<Cite id="owasp-password-storage" />
+
+<KeyPoints>
+- Una funzione di hash dà un'impronta di lunghezza fissa e serve a scoprire se i dati sono stati modificati.
+- Proprietà richieste dal NIST: resistenza alle collisioni, alla preimmagine e alla seconda preimmagine.
+- SHA-256 (FIPS 180-4) produce 256 bit; basta un carattere diverso per cambiare il risultato.
+- MD5 (collisioni dal 2004, Flame nel 2012) e SHA-1 (SHAttered, 2017; abbandono entro il 2030) non sono più sicuri.
+- Un hash non si decifra. Per le password: sale e funzioni lente come Argon2id.
+</KeyPoints>

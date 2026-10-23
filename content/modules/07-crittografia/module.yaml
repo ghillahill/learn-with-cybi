@@ -1,0 +1,19 @@
+id: crittografia
+order: 7
+title: Crittografia di base
+subtitle: Cosa fa la crittografia, cosa non fa, e dove la incontri ogni giorno
+description: Cifratura simmetrica e asimmetrica, funzioni di hash, firme digitali e certificati, TLS e cifratura end-to-end. Con quattro laboratori simulati, dal cifrario di Cesare allo scambio di chiavi.
+icon: lock
+color: indigo
+requires:
+  - minacce-attacchi
+estimatedMinutes: 75
+badge:
+  id: custode-delle-chiavi
+  name: Custode delle chiavi
+lessons:
+  - 01-cifratura-simmetrica
+  - 02-cifratura-asimmetrica
+  - 03-funzioni-hash
+  - 04-firme-certificati
+  - 05-tls-end-to-end

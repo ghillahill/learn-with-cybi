@@ -136,3 +136,21 @@ test("tutti i quiz del Modulo 6 si completano con le risposte corrette", async (
     await expect(page.getByText(`${quiz.questions.length} risposte corrette su`)).toBeVisible();
   }
 });
+
+test("tutti i quiz del Modulo 7 si completano con le risposte corrette", async ({ page }) => {
+  test.slow();
+  await enableFreeMode(page);
+
+  for (const id of [
+    "cifratura-simmetrica",
+    "cifratura-asimmetrica",
+    "funzioni-hash",
+    "firme-certificati",
+    "tls-end-to-end",
+  ]) {
+    const quiz = loadQuiz("07-crittografia", id);
+    await page.goto(`/moduli/crittografia/${id}`);
+    await completeQuiz(page, quiz);
+    await expect(page.getByText(`${quiz.questions.length} risposte corrette su`)).toBeVisible();
+  }
+});
