@@ -37,10 +37,15 @@ export async function enableFreeMode(page: Page) {
 // non compaiono nell'ordine richiesto.
 export async function sortOrderList(list: Locator, wanted: string[]) {
   for (let target = 0; target < wanted.length; target++) {
-    const texts = await list.locator("> li").allInnerTexts();
-    let position = texts.findIndex((t) => t.includes(wanted[target]));
+    // Confronto esatto sull'etichetta del pulsante: "SYN" non deve trovare "SYN-ACK".
+    const labels = await list
+      .locator("> li")
+      .evaluateAll((items) =>
+        items.map((li) => li.querySelector('[aria-label^="Sposta su: "]')?.getAttribute("aria-label")),
+      );
+    let position = labels.indexOf(`Sposta su: ${wanted[target]}`);
     while (position > target) {
-      await list.getByRole("button", { name: `Sposta su: ${wanted[target]}` }).click();
+      await list.getByRole("button", { name: `Sposta su: ${wanted[target]}`, exact: true }).click();
       position--;
     }
   }

@@ -98,3 +98,22 @@ test("tutti i quiz del Modulo 4 si completano con le risposte corrette", async (
     await expect(page.getByText(`${quiz.questions.length} risposte corrette su`)).toBeVisible();
   }
 });
+
+test("tutti i quiz del Modulo 5 si completano con le risposte corrette", async ({ page }) => {
+  test.slow();
+  await enableFreeMode(page);
+
+  for (const id of [
+    "triade-rid",
+    "vocabolario-rischio",
+    "identita-accessi",
+    "principi-difesa",
+    "chi-attacca",
+    "organizzare-difesa",
+  ]) {
+    const quiz = loadQuiz("05-concetti-chiave", id);
+    await page.goto(`/moduli/concetti-chiave-sicurezza/${id}`);
+    await completeQuiz(page, quiz);
+    await expect(page.getByText(`${quiz.questions.length} risposte corrette su`)).toBeVisible();
+  }
+});

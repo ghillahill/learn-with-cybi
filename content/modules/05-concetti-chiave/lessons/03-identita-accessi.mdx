@@ -1,0 +1,116 @@
+---
+id: identita-accessi
+title: Identità e accessi
+minutes: 12
+xp: 60
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Distinguere identificazione, autenticazione, autorizzazione e accounting
+  - Conoscere i tre tipi di fattore di autenticazione
+  - Capire cosa rende "multi-fattore" un'autenticazione
+sources:
+  - id: nist-identification
+    level: A
+    title: NIST CSRC Glossary, "identification"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/identification
+    note: Definizione di NISTIR 5153.
+  - id: nist-authentication
+    level: A
+    title: NIST CSRC Glossary, "authentication"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/authentication
+    note: Definizione di FIPS 200.
+  - id: nist-authorization
+    level: A
+    title: NIST CSRC Glossary, "authorization"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/authorization
+    note: Definizione di CNSSI 4009-2022.
+  - id: nist-accountability
+    level: A
+    title: NIST CSRC Glossary, "accountability"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/accountability
+    note: Definizione di CNSSI 4009-2022.
+  - id: nist-aaa
+    level: A
+    title: NIST CSRC Glossary, "AAA"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/aaa
+  - id: nist-mfa
+    level: A
+    title: NIST CSRC Glossary, "multi-factor authentication"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/multi_factor_authentication
+    note: Definizioni di CNSSI 4009-2022 e NIST SP 800-63-4.
+  - id: sp800-63-4
+    level: A
+    title: "NIST SP 800-63-4: Digital Identity Guidelines"
+    publisher: NIST
+    year: 2025
+    url: https://csrc.nist.gov/pubs/sp/800/63/4/final
+  - id: sp800-63b-4
+    level: A
+    title: "NIST SP 800-63B-4: Authentication and Authenticator Management"
+    publisher: NIST
+    year: 2025
+    url: https://pages.nist.gov/800-63-4/sp800-63b.html
+quiz: identita-accessi
+---
+
+<Cybi mood="felice">
+Ogni volta che entri nella tua email succedono quattro cose diverse, una dopo l'altra. Di solito durano meno di un secondo. Rallentiamo il film!
+</Cybi>
+
+## Quattro domande, quattro passi
+
+1. **Identificazione** — *chi dici di essere?* Ti presenti con un identificativo unico nel sistema, di solito una stringa come il nome utente.<Cite id="nist-identification" />
+2. <Term id="autenticazione">Autenticazione</Term> — *lo dimostri?* Il sistema verifica l'identità di un utente, di un processo o di un dispositivo, spesso come condizione per dare accesso alle risorse.<Cite id="nist-authentication" />
+3. <Term id="autorizzazione">Autorizzazione</Term> — *cosa puoi fare?* Sono i privilegi di accesso concessi a un utente, a un programma o a un processo, o l'atto di concederli.<Cite id="nist-authorization" />
+4. **Accounting** — *cosa hai fatto?* Il sistema registra le azioni in modo che ognuna si possa ricondurre con certezza a chi l'ha compiuta (in inglese *accountability*).<Cite id="nist-accountability" />
+
+Gli ultimi tre passi formano la sigla **AAA**: *Authentication, Authorization, Accounting*.<Cite id="nist-aaa" />
+
+<Cybi mood="pensieroso">
+In albergo dici il tuo nome (identificazione), mostri il documento (autenticazione), ricevi una chiave che apre solo la tua stanza (autorizzazione). E il registro segna a che ora sei entrato (accounting).
+</Cybi>
+
+<MythVsFact
+  myth="Se mi sono autenticato, posso fare tutto."
+  fact="L'autenticazione dimostra chi sei. Cosa puoi fare lo decide l'autorizzazione, che è un passo separato."
+  source="nist-authorization"
+/>
+
+## I tre tipi di fattore
+
+Per autenticarti puoi usare tre tipi di prova. Le linee guida del NIST li chiamano così:<Cite id="sp800-63b-4" />
+
+- **qualcosa che sai**: per esempio una password;
+- **qualcosa che hai**: per esempio un telefono che riceve un codice, o una chiave di sicurezza;
+- **qualcosa che sei**: una caratteristica biometrica, come l'impronta digitale.
+
+## Autenticazione a più fattori
+
+L'**autenticazione a più fattori** (<Term id="mfa">MFA</Term>, *multi-factor authentication*) usa due o più fattori **di tipo diverso**.<Cite id="nist-mfa" /> Così, a chi ruba la tua password manca ancora un pezzo.
+
+<Callout type="warning" title="Due password non fanno una MFA">
+Una password più un PIN sono due prove dello stesso tipo: entrambe sono "qualcosa che sai". Per il NIST serve più di un tipo distinto di fattore.
+</Callout>
+
+La biometria ha una regola speciale. Per il NIST un'impronta o un volto, da soli, non sono un autenticatore: si possono usare solo come parte di un'autenticazione a più fattori, insieme a un oggetto fisico, per esempio il telefono che sblocchi con l'impronta.<Cite id="sp800-63b-4" />
+
+## Il riferimento: NIST SP 800-63-4
+
+Le linee guida del NIST sull'identità digitale sono le **NIST SP 800-63-4**, pubblicate a luglio 2025. Sostituiscono la versione precedente, la 800-63-3.<Cite id="sp800-63-4" /> Sono divise in tre volumi: 63A sulla verifica dell'identità, 63B sull'autenticazione e 63C sulla federazione, cioè su come trasmettere le informazioni di identità e di autenticazione da un sistema all'altro.<Cite id="sp800-63-4" />
+
+Il volume 63B tratta anche una novità: gli autenticatori **sincronizzabili** (*syncable authenticators*), che copiano le loro chiavi segrete nel cloud e da lì su altri dispositivi. Così le chiavi hanno una copia di riserva e si possono trasferire.<Cite id="sp800-63b-4" /> Ne riparleremo nel modulo sull'igiene digitale.
+
+<KeyPoints>
+- Identificazione (chi dici di essere), autenticazione (lo dimostri), autorizzazione (cosa puoi fare), accounting (cosa hai fatto). Gli ultimi tre formano la sigla AAA.
+- Tre tipi di fattore: qualcosa che sai, che hai, che sei.
+- MFA = almeno due fattori di tipo diverso. Due password non bastano.
+- Per il NIST la biometria va usata solo dentro una MFA, insieme a un oggetto fisico.
+- Riferimento attuale: NIST SP 800-63-4 (luglio 2025), che sostituisce la 800-63-3.
+</KeyPoints>

@@ -1,0 +1,112 @@
+---
+id: chi-attacca
+title: Chi attacca e perché
+minutes: 13
+xp: 65
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Conoscere le principali categorie di attaccanti
+  - Distinguere le motivazioni più comuni
+  - Leggere i dati del rapporto ENISA sulle minacce in Europa
+sources:
+  - id: enisa-etl-2026
+    level: A
+    title: ENISA Threat Landscape 2026
+    publisher: ENISA
+    year: 2026
+    url: https://www.enisa.europa.eu/publications/enisa-threat-landscape-2026
+    note: Periodo analizzato dal 1° gennaio al 31 dicembre 2025. Rapporto PDF letto il 23/10/2026.
+  - id: enisa-etl-2026-news
+    level: A
+    title: "Exploring the evolution of the cyber threat landscape: How dependencies weaken our digital resilience"
+    publisher: ENISA
+    year: 2026
+    url: https://www.enisa.europa.eu/news/exploring-the-evolution-of-the-cyber-threat-landscape-how-dependencies-weaken-our-digital-resilience
+    note: Comunicato del 22 settembre 2026.
+  - id: nist-insider-threat
+    level: A
+    title: NIST CSRC Glossary, "insider threat"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/insider_threat
+    note: Definizione di NIST SP 800-171 Rev. 3.
+  - id: nist-apt
+    level: A
+    title: NIST CSRC Glossary, "advanced persistent threat"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/advanced_persistent_threat
+    note: Definizione di NIST SP 800-39.
+  - id: kaspersky-script-kiddie
+    level: B
+    title: Kaspersky IT Encyclopedia, "Script kiddie"
+    publisher: Kaspersky
+    url: https://encyclopedia.kaspersky.com/glossary/script-kiddie/
+quiz: chi-attacca
+---
+
+<Cybi mood="detective">
+Per difendersi bene bisogna conoscere chi attacca. Non sono tutti geni incappucciati in una stanza buia: ci sono aziende criminali, spie, attivisti e anche principianti.
+</Cybi>
+
+## La fonte: il rapporto ENISA
+
+L'**ENISA** è l'agenzia dell'Unione europea per la cybersecurity. Ogni anno pubblica il *Threat Landscape*, un rapporto sulle minacce che colpiscono l'UE. L'edizione 2026, uscita il 22 settembre 2026, analizza **8.257 incidenti** avvenuti nel 2025.<Cite id="enisa-etl-2026" /><Cite id="enisa-etl-2026-news" />
+
+## Le categorie di attaccanti
+
+Il rapporto studia quattro grandi aree di minaccia:<Cite id="enisa-etl-2026" />
+
+- **cybercriminali**: cercano soldi, con ransomware, furto di dati, frodi;
+- **attori legati a stati** (*state-nexus*): lavorano per un governo o in linea con i suoi interessi, soprattutto per spionaggio. Quando sono molto capaci e restano a lungo nei sistemi presi di mira si parla di <Term id="apt">APT</Term>;<Cite id="nist-apt" />
+- **hacktivisti**: attaccano per una causa politica o ideologica, soprattutto con attacchi <Term id="ddos">DDoS</Term>;
+- **manipolazione dell'informazione e interferenze da parte di stati esteri** (*FIMI*): campagne per manipolare l'informazione, sempre più spesso con contenuti generati dall'intelligenza artificiale.<Cite id="enisa-etl-2026-news" />
+
+A queste si aggiungono due figure che ogni professionista conosce:
+
+- l'**insider**: una persona che usa l'accesso che ha già, per esempio da dipendente, per fare danni, **volontariamente o no**;<Cite id="nist-insider-threat" />
+- lo **script kiddie**: un attaccante poco esperto che usa programmi scritti da altri senza capire come funzionano. Spesso vuole solo fare colpo sugli amici.<Cite id="kaspersky-script-kiddie" />
+
+<Cybi mood="pensieroso">
+Hai notato il "volontariamente o no"? Un collega che clicca il link sbagliato non è un criminale, ma per la sicurezza il danno può essere lo stesso.
+</Cybi>
+
+## Perché attaccano
+
+ENISA classifica gli incidenti del 2025 anche per obiettivo:<Cite id="enisa-etl-2026" />
+
+- **ideologia**: il 57,3% degli incidenti, soprattutto DDoS di hacktivisti;
+- **denaro**: circa il 29%;
+- **spionaggio**: circa il 6%.
+
+<Callout type="info" title="Numeri arrotondati">
+Il rapporto riporta valori leggermente diversi in punti diversi: per esempio 29,3% e 29,2% per gli incidenti a scopo di guadagno, 5,9% e 6,3% per lo spionaggio. Per questo qui li arrotondiamo.
+</Callout>
+
+## Tanti attacchi non vuol dire grandi danni
+
+Uno dei punti chiave del rapporto:<Cite id="enisa-etl-2026" />
+
+- i **DDoS** sono il tipo di incidente più frequente (51,3%), ma per lo più a basso impatto;
+- gli incidenti di tipo ideologico sono la maggioranza, ma non hanno causato danni significativi su larga scala;
+- le attività a scopo di guadagno, in particolare il **ransomware**, restano la minaccia con l'impatto maggiore nel breve periodo;
+- lo **spionaggio** è meno frequente, ma è una minaccia strategica nel medio e lungo periodo.
+
+Il settore più colpito è la pubblica amministrazione, con il 31,8% degli incidenti.<Cite id="enisa-etl-2026" />
+
+<MythVsFact
+  myth="Gli attacchi più frequenti sono anche i più pericolosi."
+  fact="Nel 2025 i DDoS sono stati il 51,3% degli incidenti nell'UE, per lo più a basso impatto. Il danno maggiore nel breve periodo viene dal ransomware."
+  source="enisa-etl-2026"
+/>
+
+## Confini sempre più sfumati
+
+ENISA nota che le categorie si mescolano: cybercriminali, hacktivisti e gruppi statali usano tecniche, infrastrutture e strumenti simili.<Cite id="enisa-etl-2026" /> Per esempio, alcuni gruppi legati a stati usano anche ransomware e strumenti per rubare credenziali, tipici del crimine.<Cite id="enisa-etl-2026" /> Le categorie aiutano a ragionare, ma non sono compartimenti stagni.
+
+<KeyPoints>
+- ENISA Threat Landscape 2026: 8.257 incidenti nell'UE nel 2025.
+- Quattro aree: cybercriminali, attori legati a stati (APT), hacktivisti, manipolazione dell'informazione (FIMI). In più insider e script kiddie.
+- Motivazioni: ideologia (57,3%), denaro (circa 29%), spionaggio (circa 6%).
+- I DDoS sono i più frequenti (51,3%) ma poco dannosi; il ransomware ha l'impatto maggiore nel breve periodo.
+- Le categorie si sovrappongono sempre di più.
+</KeyPoints>

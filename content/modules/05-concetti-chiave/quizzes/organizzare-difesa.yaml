@@ -1,0 +1,75 @@
+id: organizzare-difesa
+passingScore: 0.7
+questions:
+  - id: kill-chain
+    type: order
+    prompt: Metti in ordine alcune fasi della Cyber Kill Chain.
+    items:
+      - text: Ricognizione
+        explain: L'attaccante studia e sceglie il bersaglio.
+      - text: Armamento
+        explain: Unisce exploit e programma di controllo remoto.
+      - text: Consegna
+        explain: Il pacco arriva al bersaglio, per esempio via email.
+      - text: Sfruttamento
+        explain: Il codice dell'attaccante parte.
+      - text: Comando e controllo
+        explain: Il sistema infettato si collega al server dell'attaccante.
+      - text: Azioni sugli obiettivi
+        explain: Solo ora l'attaccante ottiene ciò che voleva.
+
+  - id: funzioni
+    type: multiple
+    prompt: Quali sono funzioni del NIST CSF 2.0? (Più risposte corrette)
+    options:
+      - text: Govern
+        correct: true
+        explain: Sì, ed è la novità della versione 2.0.
+      - text: Detect
+        correct: true
+        explain: Sì. Trovare e analizzare possibili attacchi.
+      - text: Recover
+        correct: true
+        explain: Sì. Ripristinare sistemi e attività.
+      - text: Attack
+        correct: false
+        explain: No. Il CSF è una guida per chi difende.
+
+  - id: govern
+    type: single
+    prompt: Quale funzione è stata aggiunta nel CSF 2.0?
+    options:
+      - text: Govern
+        correct: true
+        explain: Giusto. Si aggiunge alle cinque funzioni della versione originale.
+      - text: Protect
+        correct: false
+        explain: No. Protect c'era già nella versione originale.
+      - text: Respond
+        correct: false
+        explain: No. Respond c'era già nella versione originale.
+
+  - id: team
+    type: match
+    prompt: Abbina ogni squadra al suo compito.
+    pairs:
+      - left: Red team
+        right: Imita gli attacchi, con autorizzazione
+        explain: Mostra cosa succede se un attacco riesce.
+      - left: Blue team
+        right: Difende i sistemi dell'organizzazione
+        explain: È chi protegge ogni giorno.
+      - left: SOC
+        right: Riceve e analizza gli allarmi di sicurezza
+        explain: Può essere interno o affidato a un fornitore.
+
+  - id: catena
+    type: truefalse
+    prompt: Nella Cyber Kill Chain, per fermare l'attacco bisogna bloccare tutte le fasi.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. Basta una contromisura che spezza la catena.
+      - text: Falso
+        correct: true
+        explain: Giusto. Per questo ogni fase è un'occasione per chi difende.

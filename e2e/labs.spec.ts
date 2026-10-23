@@ -92,3 +92,22 @@ test("viaggio di un pacchetto: tutte le tappe", async ({ page }) => {
   await expect(section.getByText("200 OK")).toBeVisible();
   await expect(section.getByText("Completato")).toBeVisible();
 });
+
+test("triade RID: dieci incidenti classificati", async ({ page }) => {
+  await page.goto("/moduli/concetti-chiave-sicurezza/triade-rid");
+  const section = lab(page, "triade-rid");
+  const answers = ["Riservatezza", "Integrità", "Disponibilità", "Riservatezza", "Integrità",
+    "Disponibilità", "Riservatezza", "Integrità", "Disponibilità", "Riservatezza"];
+
+  const groups = section.getByRole("group");
+  await groups.nth(0).getByRole("button", { name: "Disponibilità" }).click();
+  await section.getByRole("button", { name: "Verifica" }).click();
+  await expect(section.getByText(/^Hai classificato 1 incidenti/)).toBeVisible();
+
+  for (const [i, answer] of answers.entries()) {
+    await groups.nth(i).getByRole("button", { name: answer }).click();
+  }
+  await section.getByRole("button", { name: "Verifica" }).click();
+  await expect(section.getByText("Completato")).toBeVisible();
+  expect(await savedLabs(page)).toHaveProperty("triade-rid");
+});

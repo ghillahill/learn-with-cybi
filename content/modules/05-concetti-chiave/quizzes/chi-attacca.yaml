@@ -1,0 +1,72 @@
+id: chi-attacca
+passingScore: 0.7
+questions:
+  - id: categorie
+    type: match
+    prompt: Abbina ogni categoria di attaccante a ciò che lo caratterizza.
+    pairs:
+      - left: Cybercriminale
+        right: Cerca soldi, per esempio con il ransomware
+        explain: È la categoria con l'impatto maggiore nel breve periodo.
+      - left: Hacktivista
+        right: Attacca per una causa politica, soprattutto con DDoS
+        explain: Gli incidenti di tipo ideologico sono la maggioranza, ma nel 2025 non hanno causato danni su larga scala.
+      - left: Attore legato a uno stato
+        right: Lavora per gli interessi di un governo, soprattutto per spionaggio
+        explain: Quando è molto capace e persistente si parla di APT.
+      - left: Script kiddie
+        right: Usa programmi di altri senza capire come funzionano
+        explain: Spesso vuole solo fare colpo.
+
+  - id: insider
+    type: truefalse
+    prompt: Un insider fa danni solo se lo vuole.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. Per il NIST un insider può fare danni volontariamente o no, per esempio per un errore.
+      - text: Falso
+        correct: true
+        explain: Giusto. Anche un errore di chi ha già accesso può causare un incidente.
+
+  - id: frequente
+    type: single
+    prompt: Secondo ENISA, qual è stato il tipo di incidente più frequente nell'UE nel 2025?
+    options:
+      - text: DDoS
+        correct: true
+        explain: Esatto, il 51,3% degli incidenti, per lo più a basso impatto.
+      - text: Ransomware
+        correct: false
+        explain: No. Il ransomware è meno frequente, ma ha l'impatto maggiore nel breve periodo.
+      - text: Spionaggio
+        correct: false
+        explain: No. Lo spionaggio è circa il 6% degli incidenti.
+
+  - id: impatto
+    type: single
+    prompt: Secondo ENISA, quale minaccia ha l'impatto maggiore nel breve periodo?
+    options:
+      - text: Le attività a scopo di guadagno, in particolare il ransomware
+        correct: true
+        explain: Giusto. Sono meno frequenti dei DDoS, ma fanno più danni.
+      - text: I DDoS degli hacktivisti
+        correct: false
+        explain: No. Sono i più frequenti, ma quasi sempre a basso impatto.
+      - text: Gli script kiddie
+        correct: false
+        explain: No. ENISA non li indica come la minaccia principale.
+
+  - id: motivazioni
+    type: single
+    prompt: Qual è stata la motivazione più comune degli incidenti nell'UE nel 2025?
+    options:
+      - text: Ideologia
+        correct: true
+        explain: Esatto, il 57,3%, soprattutto con DDoS di hacktivisti.
+      - text: Denaro
+        correct: false
+        explain: No. Il denaro è circa il 29% degli incidenti.
+      - text: Spionaggio
+        correct: false
+        explain: No. Lo spionaggio è circa il 6%.

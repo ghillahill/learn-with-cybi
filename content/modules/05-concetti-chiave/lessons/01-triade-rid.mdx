@@ -1,0 +1,101 @@
+---
+id: triade-rid
+title: La triade RID (CIA)
+minutes: 12
+xp: 60
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Definire riservatezza, integrità e disponibilità
+  - Riconoscere quale proprietà viene violata in un incidente
+  - Sapere cosa sono autenticità e non ripudio
+sources:
+  - id: fips-199
+    level: A
+    title: FIPS 199, Standards for Security Categorization of Federal Information and Information Systems
+    publisher: NIST
+    year: 2004
+    url: https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.199.pdf
+    note: Le definizioni riprendono la legge USA 44 U.S.C. 3542. Traduzione di LearnWithCybi.
+  - id: bsi-rid
+    level: B
+    title: "I 3 pilastri della sicurezza delle informazioni: la triade CIA (o RID)"
+    publisher: BSI Group
+    url: https://www.bsigroup.com/it-IT/insights-and-media/insights/blogs/the-3-pillars-of-information-security-understanding-the-cia-triad/
+  - id: nist-authenticity
+    level: A
+    title: NIST CSRC Glossary, "authenticity"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/authenticity
+  - id: nist-non-repudiation
+    level: A
+    title: NIST CSRC Glossary, "non-repudiation"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/non_repudiation
+quiz: triade-rid
+---
+
+<Cybi mood="felice">
+Benvenuto nel modulo dei concetti chiave! Si parte da tre parole che sentirai in ogni riunione di sicurezza. Te le ricordi dal Modulo 0?
+</Cybi>
+
+## Tre proprietà da proteggere
+
+Quando un professionista dice "sicurezza delle informazioni", di solito pensa a tre proprietà. In inglese formano l'acronimo **CIA** (*Confidentiality, Integrity, Availability*), in italiano **RID**.<Cite id="bsi-rid" />
+
+Delle definizioni molto citate vengono da una legge degli Stati Uniti (44 U.S.C. 3542), riprese dallo standard **FIPS 199** del NIST (febbraio 2004).<Cite id="fips-199" />
+
+- <Term id="riservatezza">Riservatezza</Term>: rispettare le restrizioni autorizzate sull'accesso e sulla divulgazione delle informazioni, compresi i mezzi per proteggere la privacy delle persone e i segreti delle aziende (*proprietary information*).
+- <Term id="integrita">Integrità</Term>: proteggere le informazioni da modifiche o distruzioni improprie.
+- <Term id="disponibilita">Disponibilità</Term>: garantire un accesso tempestivo e affidabile alle informazioni e il loro uso.
+
+## Come si riconosce una violazione
+
+Il FIPS 199 dice anche cosa significa **perdere** ognuna delle tre proprietà:<Cite id="fips-199" />
+
+- perdita di riservatezza: una **divulgazione** non autorizzata delle informazioni;
+- perdita di integrità: una **modifica o distruzione** non autorizzata delle informazioni;
+- perdita di disponibilità: un'**interruzione** dell'accesso alle informazioni o al sistema, o del loro uso.
+
+<Cybi mood="pensieroso">
+Pensa a una cassetta delle lettere. Se qualcuno legge la tua posta, è riservatezza. Se la cambia, è integrità. Se blocca la cassetta, è disponibilità.
+</Cybi>
+
+Nella realtà un incidente può colpire più proprietà insieme. Per esempio, un attacco che cancella dei dati ne distrugge l'integrità e, se non c'è una copia, li rende anche indisponibili.
+
+<Lab id="triade-rid" />
+
+## Quanto è grave?
+
+Il FIPS 199 non si ferma alla classificazione: per ogni proprietà chiede di stimare l'**impatto** di una perdita, su tre livelli.<Cite id="fips-199" />
+
+- **basso**: effetto negativo limitato;
+- **moderato**: effetto negativo serio;
+- **alto**: effetto negativo grave o catastrofico.
+
+Le tre proprietà non pesano sempre allo stesso modo. Nell'esempio del FIPS 199 sulle informazioni pubbliche di un sito, la riservatezza non conta (sono già pubbliche), mentre integrità e disponibilità hanno impatto moderato.<Cite id="fips-199" />
+
+## Autenticità e non ripudio
+
+Spesso alla triade si aggiungono altre due proprietà:
+
+- **autenticità**: la proprietà di essere genuino, verificabile e affidabile; la fiducia che un messaggio venga davvero da chi dice di mandarlo;<Cite id="nist-authenticity" />
+- **non ripudio**: la protezione contro chi nega falsamente di aver compiuto un'azione, per esempio di aver mandato un messaggio.<Cite id="nist-non-repudiation" />
+
+<Callout type="info" title="Dentro o fuori dalla triade?">
+Le fonti non le contano allo stesso modo. Nella definizione della legge USA, ripresa dal FIPS 199, autenticità e non ripudio fanno parte dell'integrità. Altre definizioni li elencano a parte: quella di cybersecurity che hai visto nel Modulo 0, per esempio, nomina il non ripudio accanto a riservatezza, integrità e disponibilità.
+</Callout>
+
+<MythVsFact
+  myth="La sicurezza serve solo a tenere segreti i dati."
+  fact="La segretezza è solo la riservatezza. Un attacco che modifica i dati o li rende irraggiungibili è un incidente di sicurezza quanto un furto di dati."
+  source="fips-199"
+/>
+
+<KeyPoints>
+- La triade RID (CIA in inglese): riservatezza, integrità, disponibilità.
+- Perdita di riservatezza = divulgazione non autorizzata; di integrità = modifica o distruzione non autorizzata; di disponibilità = interruzione dell'accesso (FIPS 199, 2004).
+- Un incidente può violare più proprietà insieme.
+- Il FIPS 199 misura l'impatto di ogni perdita su tre livelli: basso, moderato, alto.
+- Autenticità e non ripudio: per la legge USA fanno parte dell'integrità, per altre fonti sono proprietà a sé.
+</KeyPoints>

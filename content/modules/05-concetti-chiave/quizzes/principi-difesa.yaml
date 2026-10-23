@@ -1,0 +1,72 @@
+id: principi-difesa
+passingScore: 0.7
+questions:
+  - id: principi
+    type: match
+    prompt: Abbina ogni principio di Saltzer e Schroeder alla sua idea.
+    pairs:
+      - left: Minimo privilegio
+        right: Solo i privilegi che servono per il lavoro
+        explain: Così un incidente o un errore fa meno danni.
+      - left: Default sicuri
+        right: Di partenza nessun accesso, si elencano i permessi
+        explain: L'accesso si basa sul permesso, non sull'esclusione.
+      - left: Separazione dei privilegi
+        right: Due chiavi affidate a soggetti diversi
+        explain: Nessun singolo incidente o tradimento basta.
+      - left: Progetto aperto
+        right: La protezione non dipende dal segreto del progetto
+        explain: Dipende da chiavi e password, più facili da proteggere.
+
+  - id: difesa-profondita
+    type: single
+    prompt: Cos'è la difesa in profondità?
+    options:
+      - text: Più contromisure a strati, così un attacco sfuggito a una viene fermato da un'altra
+        correct: true
+        explain: Esatto. Unisce persone, tecnologia e processi.
+      - text: Un unico firewall molto potente
+        correct: false
+        explain: No. Un solo strato è proprio ciò che la difesa in profondità vuole evitare.
+      - text: Nascondere i server in profondità nella rete
+        correct: false
+        explain: No. Non riguarda la posizione dei server, ma gli strati di difesa.
+
+  - id: zero-trust
+    type: single
+    prompt: Cosa dice lo zero trust secondo il NIST SP 800-207?
+    options:
+      - text: Nessuna fiducia implicita in base alla posizione nella rete; si verifica prima di ogni sessione
+        correct: true
+        explain: Giusto. Essere "dentro" la rete non basta per essere considerati fidati.
+      - text: Chi è dentro la rete aziendale è fidato
+        correct: false
+        explain: No. È proprio l'idea che lo zero trust rovescia.
+      - text: Non bisogna mai usare Internet
+        correct: false
+        explain: No. Lo zero trust riguarda come si concede la fiducia, non l'uso di Internet.
+
+  - id: segreto
+    type: truefalse
+    prompt: Un sistema è più sicuro se nessuno sa come funziona.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. Per il principio del progetto aperto la protezione deve stare nelle chiavi, non nel segreto del progetto.
+      - text: Falso
+        correct: true
+        explain: Giusto. È la stessa idea del principio di Kerckhoffs.
+
+  - id: secure-by-design
+    type: single
+    prompt: Chi ha pubblicato nell'aprile 2023 i principi secure by design e by default?
+    options:
+      - text: CISA, FBI e NSA, con le agenzie di altri 6 paesi
+        correct: true
+        explain: Esatto. Australia, Canada, Regno Unito, Germania, Paesi Bassi e Nuova Zelanda.
+      - text: Saltzer e Schroeder
+        correct: false
+        explain: No. Loro hanno scritto i principi di progettazione nel 1975.
+      - text: Solo i produttori di software
+        correct: false
+        explain: No. Sono principi delle agenzie governative, rivolti ai produttori.

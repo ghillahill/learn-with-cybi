@@ -1,0 +1,141 @@
+---
+id: vocabolario-rischio
+title: Il vocabolario del rischio
+minutes: 13
+xp: 65
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Distinguere asset, minaccia, attore della minaccia, vulnerabilità ed exploit
+  - Capire cosa sono la superficie d'attacco e il rischio
+  - Leggere un codice CVE e un punteggio CVSS
+sources:
+  - id: nist-asset
+    level: A
+    title: NIST CSRC Glossary, "asset"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/asset
+    note: Definizioni di NIST SP 800-160 Vol. 1 Rev. 1 (da ISO/IEC/IEEE 24765:2017) e NISTIR 8286.
+  - id: nist-threat
+    level: A
+    title: NIST CSRC Glossary, "threat"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/threat
+    note: Definizione di FIPS 200, adattata da CNSSI 4009.
+  - id: nist-threat-actor
+    level: A
+    title: NIST CSRC Glossary, "threat actor"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/threat_actor
+    note: Definizione di NIST SP 800-150.
+  - id: nist-vulnerability
+    level: A
+    title: NIST CSRC Glossary, "vulnerability"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/vulnerability
+  - id: cisa-niccs-glossary
+    level: A
+    title: NICCS Cybersecurity Glossary
+    publisher: CISA
+    url: https://niccs.cisa.gov/resources/glossary
+  - id: nist-attack-surface
+    level: A
+    title: NIST CSRC Glossary, "attack surface"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/attack_surface
+    note: Definizione di NIST SP 800-53 Rev. 5.
+  - id: nist-risk
+    level: A
+    title: NIST CSRC Glossary, "risk"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/risk
+    note: Definizione di NIST SP 800-30 Rev. 1.
+  - id: sp800-30
+    level: A
+    title: "NIST SP 800-30 Rev. 1: Guide for Conducting Risk Assessments"
+    publisher: NIST
+    year: 2012
+    url: https://csrc.nist.gov/pubs/sp/800/30/r1/final
+  - id: cvss-v4
+    level: A
+    title: Common Vulnerability Scoring System v4.0, Specification Document
+    publisher: FIRST
+    year: 2023
+    url: https://www.first.org/cvss/v4.0/specification-document
+  - id: nvd-log4shell
+    level: A
+    title: CVE-2021-44228
+    publisher: NIST National Vulnerability Database
+    url: https://nvd.nist.gov/vuln/detail/CVE-2021-44228
+  - id: enisa-etl-2026
+    level: A
+    title: ENISA Threat Landscape 2026
+    publisher: ENISA
+    year: 2026
+    url: https://www.enisa.europa.eu/publications/enisa-threat-landscape-2026
+quiz: vocabolario-rischio
+---
+
+<Cybi mood="pensieroso">
+Minaccia, vulnerabilità, rischio: nella vita di tutti i giorni sembrano sinonimi. In sicurezza no, e confonderle porta a decisioni sbagliate. Mettiamo ordine!
+</Cybi>
+
+## Cosa proteggiamo, e da chi
+
+- Un **asset** è qualsiasi cosa che ha valore per una persona o un'organizzazione. Per un'azienda, per esempio: dati, persone, dispositivi, sistemi ed edifici.<Cite id="nist-asset" />
+- Una <Term id="minaccia">minaccia</Term> è qualsiasi circostanza o evento che può danneggiare un'organizzazione, i suoi asset o delle persone attraverso un sistema informatico: con un accesso non autorizzato, distruggendo, divulgando o modificando informazioni, o bloccando un servizio.<Cite id="nist-threat" />
+- Un **attore della minaccia** (*threat actor*) è una persona o un gruppo che rappresenta una minaccia.<Cite id="nist-threat-actor" />
+
+La definizione parla di "qualsiasi circostanza o evento": una minaccia non è per forza una persona.
+
+## Dove si entra
+
+- Una <Term id="vulnerabilita">vulnerabilità</Term> è una debolezza che una minaccia può sfruttare.<Cite id="nist-vulnerability" />
+- Un <Term id="exploit">exploit</Term> è la tecnica che la sfrutta per violare la sicurezza di un sistema.<Cite id="cisa-niccs-glossary" />
+- La <Term id="superficie-attacco">superficie d'attacco</Term> è l'insieme dei punti sul confine di un sistema da cui un attaccante può provare a entrare, causare un effetto o estrarre dati.<Cite id="nist-attack-surface" />
+
+<Cybi mood="detective">
+Una casa è l'asset. Il ladro è l'attore della minaccia. La finestra rotta è la vulnerabilità. Tutte le porte e le finestre insieme sono la superficie d'attacco.
+</Cybi>
+
+Ogni servizio esposto aggiunge punti alla superficie d'attacco: per questo conviene spegnere ciò che non serve.
+
+## Il rischio
+
+Per il NIST (SP 800-30 Rev. 1, settembre 2012), il <Term id="rischio">rischio</Term> misura quanto un'entità è minacciata da una possibile circostanza o evento. Di solito è funzione di due cose:<Cite id="nist-risk" /><Cite id="sp800-30" />
+
+- l'**impatto** negativo se l'evento accade;
+- la **probabilità** che accada.
+
+<Callout type="info" title="Una formula da usare con cautela">
+Spesso si legge "rischio = probabilità × impatto". È una semplificazione utile per ragionare, non la definizione del NIST, che parla di una "funzione" delle due grandezze senza fissare un calcolo.
+</Callout>
+
+Quindi la stessa vulnerabilità può avere un rischio basso su un computer spento e scollegato, dove un attacco è improbabile, e un rischio alto su un server raggiungibile da Internet che custodisce dati importanti.
+
+## CVE e CVSS
+
+Ricordi i codici **CVE** (*Common Vulnerabilities and Exposures*) del Modulo 2? Il programma CVE serve a identificare, definire e catalogare le vulnerabilità divulgate pubblicamente, dando a ognuna un identificatore. Nel 2025 sono state pubblicate più di 48.000 nuove CVE, il 22% in più dell'anno prima.<Cite id="enisa-etl-2026" />
+
+Il **CVSS** (*Common Vulnerability Scoring System*) dà a ogni vulnerabilità un punteggio di gravità da 0,0 a 10,0. È gestito da FIRST, un'organizzazione non profit; la versione attuale, CVSS v4.0, è stata pubblicata il 1° novembre 2023.<Cite id="cvss-v4" /> Il punteggio si traduce in una scala a parole:<Cite id="cvss-v4" />
+
+- **None** (nessuna): 0,0
+- **Low** (bassa): da 0,1 a 3,9
+- **Medium** (media): da 4,0 a 6,9
+- **High** (alta): da 7,0 a 8,9
+- **Critical** (critica): da 9,0 a 10,0
+
+Una stessa CVE può avere punteggi diversi con versioni diverse del CVSS. Log4Shell (CVE-2021-44228), che hai incontrato nel Modulo 2, ha 10,0 (critica) con CVSS 3.1 e 9,3 (alta) con CVSS 2.0 nel database NVD del NIST.<Cite id="nvd-log4shell" />
+
+<MythVsFact
+  myth="Il punteggio CVSS dice quanto rischio corro io."
+  fact="Il CVSS misura la gravità di una vulnerabilità rispetto alle altre. Il rischio dipende anche da quanto è probabile un attacco nel tuo caso e da quanto ti costerebbe."
+  source="cvss-v4"
+/>
+
+<KeyPoints>
+- Asset: ciò che ha valore. Minaccia: ciò che può danneggiarlo. Attore della minaccia: chi la porta.
+- Vulnerabilità: la debolezza. Exploit: la tecnica che la sfrutta. Superficie d'attacco: tutti i punti da cui si può entrare.
+- Rischio (NIST SP 800-30): funzione di impatto e probabilità. "Probabilità × impatto" è una semplificazione.
+- CVE identifica una vulnerabilità; CVSS ne misura la gravità da 0 a 10 (versione attuale v4.0, novembre 2023).
+</KeyPoints>

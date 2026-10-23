@@ -311,7 +311,7 @@ entries:
       - id: saltzer-schroeder
         level: A
         title: The Protection of Information in Computer Systems (Saltzer e Schroeder, 1975)
-        url: https://www.cs.virginia.edu/~evans/cs551/saltzer/
+        url: https://web.mit.edu/Saltzer/www/publications/protection/Basic.html
 
   - id: tls
     term: TLS (Transport Layer Security)
@@ -323,3 +323,80 @@ entries:
         publisher: NIST
         url: https://csrc.nist.gov/glossary/term/transport_layer_security
         note: Definizioni tratte da CNSSI 4009-2022 e NISTIR 7711. Traduzione di LearnWithCybi.
+
+  - id: minaccia
+    term: Minaccia
+    definition: Qualsiasi circostanza o evento che può danneggiare un'organizzazione, i suoi asset o delle persone attraverso un sistema informatico, con un accesso non autorizzato, la distruzione, la divulgazione o la modifica di informazioni, o il blocco di un servizio.
+    sources:
+      - id: nist-threat
+        level: A
+        title: NIST CSRC Glossary, "threat"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/threat
+        note: Definizione tratta da FIPS 200 (adattata da CNSSI 4009). Traduzione di LearnWithCybi.
+
+  - id: superficie-attacco
+    term: Superficie d'attacco
+    definition: L'insieme dei punti sul confine di un sistema, di un suo componente o di un ambiente da cui un attaccante può provare a entrare, causare un effetto o estrarre dati.
+    sources:
+      - id: nist-attack-surface
+        level: A
+        title: NIST CSRC Glossary, "attack surface"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/attack_surface
+        note: Definizione tratta da NIST SP 800-53 Rev. 5. Traduzione di LearnWithCybi.
+
+  - id: rischio
+    term: Rischio
+    definition: Misura di quanto un'entità è minacciata da una possibile circostanza o evento. Di solito è funzione dell'impatto negativo se l'evento accade e della probabilità che accada.
+    sources:
+      - id: nist-risk
+        level: A
+        title: NIST CSRC Glossary, "risk"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/risk
+        note: Definizione tratta da NIST SP 800-30 Rev. 1. Traduzione di LearnWithCybi.
+
+  - id: autenticazione
+    term: Autenticazione
+    definition: Verifica dell'identità di un utente, di un processo o di un dispositivo, spesso come condizione per dare accesso alle risorse di un sistema informatico.
+    sources:
+      - id: nist-authentication
+        level: A
+        title: NIST CSRC Glossary, "authentication"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/authentication
+        note: Definizione tratta da FIPS 200. Traduzione di LearnWithCybi.
+
+  - id: autorizzazione
+    term: Autorizzazione
+    definition: Privilegi di accesso concessi a un utente, a un programma o a un processo, oppure l'atto di concederli.
+    sources:
+      - id: nist-authorization
+        level: A
+        title: NIST CSRC Glossary, "authorization"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/authorization
+        note: Definizione tratta da CNSSI 4009-2022. Traduzione di LearnWithCybi.
+
+  - id: mfa
+    term: MFA (autenticazione a più fattori)
+    definition: Autenticazione che usa due o più fattori di tipo diverso, scelti tra qualcosa che sai (per esempio una password), qualcosa che hai (per esempio un telefono) e qualcosa che sei (una caratteristica biometrica).
+    sources:
+      - id: nist-mfa
+        level: A
+        title: NIST CSRC Glossary, "multi-factor authentication"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/multi_factor_authentication
+        note: Definizioni tratte da CNSSI 4009-2022 e NIST SP 800-63-4. Traduzione di LearnWithCybi.
+
+  - id: defense-in-depth
+    term: Difesa in profondità (defense in depth)
+    definition: Strategia che unisce persone, tecnologia e processi e applica più contromisure a strati, così un attacco sfuggito a una viene fermato da un'altra.
+    sources:
+      - id: nist-defense-in-depth
+        level: A
+        title: NIST CSRC Glossary, "defense-in-depth"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/defense_in_depth
+        note: Definizioni tratte da CNSSI 4009 e ISA/IEC 62443. Traduzione di LearnWithCybi.

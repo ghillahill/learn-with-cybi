@@ -1,0 +1,121 @@
+---
+id: principi-difesa
+title: Principi di difesa
+minutes: 14
+xp: 70
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Conoscere quattro principi di progettazione di Saltzer e Schroeder (1975)
+  - Capire la difesa in profondità
+  - Sapere cosa significano secure by design e secure by default
+  - Capire l'idea di zero trust
+sources:
+  - id: saltzer-schroeder
+    level: A
+    title: The Protection of Information in Computer Systems (Saltzer e Schroeder, 1975)
+    author: J. H. Saltzer, M. D. Schroeder
+    year: 1975
+    url: https://web.mit.edu/Saltzer/www/publications/protection/Basic.html
+    note: Sezione I.A.3, "Design Principles". Copia sul sito di Saltzer al MIT.
+  - id: nist-defense-in-depth
+    level: A
+    title: NIST CSRC Glossary, "defense-in-depth"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/defense_in_depth
+    note: Definizioni di CNSSI 4009 e ISA/IEC 62443.
+  - id: nist-separation-of-duty
+    level: A
+    title: NIST CSRC Glossary, "separation of duty"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/separation_of_duty
+    note: Definizione di NIST SP 800-192.
+  - id: cisa-secure-by-design
+    level: A
+    title: "Shifting the Balance of Cybersecurity Risk: Principles and Approaches for Security-by-Design and -Default"
+    publisher: CISA e partner internazionali
+    year: 2023
+    url: https://www.cisa.gov/sites/default/files/2023-04/principles_approaches_for_security-by-design-default_508_0.pdf
+    note: Documento originale del 13 aprile 2023, firmato da CISA, NSA, FBI, ACSC, NCSC-UK, CCCS, BSI, NCSC-NL, CERT NZ e NCSC-NZ. Aggiornato da CISA a ottobre 2023 con altri partner.
+  - id: sp800-207
+    level: A
+    title: "NIST SP 800-207: Zero Trust Architecture"
+    author: S. Rose, O. Borchert, S. Mitchell, S. Connelly
+    publisher: NIST
+    year: 2020
+    url: https://csrc.nist.gov/pubs/sp/800/207/final
+  - id: isc2-zero-trust
+    level: B
+    title: 15 Years of Zero Trust
+    publisher: ISC2
+    year: 2025
+    url: https://www.isc2.org/insights/2025/10/15-years-of-zero-trust
+  - id: forrester-chewy
+    level: A
+    title: "No More Chewy Centers: The Zero Trust Model Of Information Security"
+    author: John Kindervag
+    publisher: Forrester
+    url: https://www.forrester.com/report/No-More-Chewy-Centers/RES56682
+    note: La pagina mostra la versione aggiornata del 2016 (rapporto a pagamento); il riassunto dice che Forrester ha introdotto il modello nel 2009.
+quiz: principi-difesa
+---
+
+<Cybi mood="sorpreso">
+Molte regole di sicurezza che si usano oggi sono state scritte nel 1975. Le buone idee invecchiano bene!
+</Cybi>
+
+## I principi di Saltzer e Schroeder
+
+Nel 1975 Jerome Saltzer e Michael Schroeder pubblicano un articolo sulla protezione delle informazioni nei computer. Vi elencano **otto principi di progettazione** per i meccanismi di protezione.<Cite id="saltzer-schroeder" /> Eccone quattro, i più utili per cominciare.
+
+- **Minimo privilegio** (*least privilege*): ogni programma e ogni utente deve lavorare con il minimo insieme di privilegi che gli serve. Così un incidente o un errore fa meno danni.<Cite id="saltzer-schroeder" /> L'hai già visto nel Modulo 3: è la voce <Term id="minimo-privilegio">minimo privilegio</Term> del glossario.
+- **Default sicuri** (*fail-safe defaults*): le decisioni di accesso si basano sul permesso, non sull'esclusione. La situazione di partenza è "nessun accesso", e il sistema elenca quando l'accesso è permesso. Se c'è un errore, il sistema tende a negare l'accesso: un guasto sicuro, che si nota subito.<Cite id="saltzer-schroeder" />
+- **Separazione dei privilegi** (*separation of privilege*): dove si può, un meccanismo che richiede due chiavi è più robusto di uno che ne richiede una sola. Le due chiavi si affidano a persone o programmi diversi, così nessun singolo incidente, inganno o tradimento basta a compromettere tutto.<Cite id="saltzer-schroeder" />
+- **Progetto aperto** (*open design*): il progetto non deve essere segreto. La protezione non deve dipendere dall'ignoranza degli attaccanti, ma dal possesso di chiavi o password, più facili da proteggere.<Cite id="saltzer-schroeder" />
+
+<Cybi mood="pensieroso">
+Il progetto aperto ti ricorda qualcosa? È il principio di Kerckhoffs del Modulo 1: la sicurezza sta nella chiave, non nel segreto del metodo.
+</Cybi>
+
+Saltzer e Schroeder fanno anche due esempi di separazione dei privilegi: le cassette di sicurezza delle banche e il sistema che lancia un'arma nucleare solo se due persone diverse danno entrambe il comando giusto.<Cite id="saltzer-schroeder" /> Nelle organizzazioni la stessa idea si chiama **separazione dei compiti** (*separation of duties*): nessun utente deve avere abbastanza privilegi da poter abusare del sistema da solo.<Cite id="nist-separation-of-duty" />
+
+## Difesa in profondità
+
+La **difesa in profondità** (<Term id="defense-in-depth">defense in depth</Term>) è una strategia che mette più contromisure a strati. Le tecnologie di sicurezza si sovrappongono, così un attacco sfuggito a una viene fermato da un'altra.<Cite id="nist-defense-in-depth" /> La strategia unisce persone, tecnologia e processi.<Cite id="nist-defense-in-depth" />
+
+<Cybi mood="detective">
+Un castello non ha solo le mura: ha il fossato, il ponte levatoio, le guardie e la torre. Se cade un livello, l'attaccante trova il successivo.
+</Cybi>
+
+## Secure by design e secure by default
+
+Il 13 aprile 2023 CISA, FBI e NSA, insieme alle agenzie di sicurezza informatica di Australia, Canada, Regno Unito, Germania, Paesi Bassi e Nuova Zelanda, pubblicano principi per prodotti software sicuri **per progettazione** (*secure by design*) e **per impostazione predefinita** (*secure by default*).<Cite id="cisa-secure-by-design" />
+
+- **Secure by design**: la sicurezza dei clienti è un obiettivo centrale del prodotto, fissato prima ancora di iniziare a svilupparlo.<Cite id="cisa-secure-by-design" />
+- **Secure by default**: il prodotto è sicuro appena tolto dalla scatola (*out of the box*), con poche o nessuna modifica alla configurazione, e le funzioni di sicurezza non costano di più.<Cite id="cisa-secure-by-design" />
+
+Insieme, i due principi spostano gran parte del peso della sicurezza dai clienti ai produttori.<Cite id="cisa-secure-by-design" /> Il secure by default ricorda da vicino i default sicuri di Saltzer e Schroeder.
+
+## Zero trust
+
+Molte reti sono state difese come una caramella: guscio duro fuori, centro morbido dentro. Chi superava il perimetro era considerato fidato. Lo **zero trust** rovescia l'idea.
+
+- Per il NIST (SP 800-207, agosto 2020), lo zero trust non concede nessuna fiducia implicita ad asset o account in base alla loro posizione nella rete o a chi li possiede. Autenticazione e autorizzazione avvengono prima di ogni sessione verso una risorsa.<Cite id="sp800-207" />
+- Il termine viene di solito fatto risalire a un rapporto di John Kindervag per Forrester del 2010, intitolato proprio *No More Chewy Centers*: "basta centri morbidi". Secondo la versione aggiornata del rapporto, difendere solo il perimetro non basta contro chi è già dentro e contro gli attacchi mirati.<Cite id="isc2-zero-trust" /><Cite id="forrester-chewy" />
+
+<Callout type="warning" title="Una data e uno slogan da prendere con cautela">
+Sulla data le fonti non coincidono: ISC2 indica il rapporto del 2010, mentre Forrester scrive di aver introdotto il modello nel 2009. Lo slogan "never trust, always verify" (mai fidarsi, verificare sempre) è molto diffuso, ma non abbiamo trovato prove che compaia nel rapporto originale.
+</Callout>
+
+<MythVsFact
+  myth="Se nessuno conosce come funziona il mio sistema, è più sicuro."
+  fact="Per Saltzer e Schroeder il progetto non deve essere segreto: la protezione deve stare in chiavi e password, non nell'ignoranza degli attaccanti."
+  source="saltzer-schroeder"
+/>
+
+<KeyPoints>
+- Saltzer e Schroeder (1975): otto principi. Tra questi minimo privilegio, default sicuri, separazione dei privilegi, progetto aperto.
+- Difesa in profondità: più strati di contromisure, così il fallimento di uno non basta.
+- Secure by design e by default: principi pubblicati il 13 aprile 2023 da CISA, FBI, NSA e agenzie di altri 6 paesi.
+- Zero trust (NIST SP 800-207, 2020): nessuna fiducia implicita in base alla posizione nella rete; si verifica prima di ogni sessione.
+</KeyPoints>

@@ -1,0 +1,68 @@
+id: identita-accessi
+passingScore: 0.7
+questions:
+  - id: passi
+    type: order
+    prompt: Metti in ordine i quattro passi che avvengono quando entri nella tua email.
+    items:
+      - text: Identificazione (dici chi sei)
+        explain: Ti presenti con il nome utente.
+      - text: Autenticazione (lo dimostri)
+        explain: Il sistema verifica la tua identità.
+      - text: Autorizzazione (cosa puoi fare)
+        explain: Ricevi i privilegi di accesso.
+      - text: Accounting (cosa hai fatto)
+        explain: Le tue azioni vengono registrate.
+
+  - id: fattori
+    type: match
+    prompt: Abbina ogni prova al suo tipo di fattore.
+    pairs:
+      - left: Password
+        right: Qualcosa che sai
+        explain: È un'informazione che ricordi.
+      - left: Telefono che riceve un codice
+        right: Qualcosa che hai
+        explain: È un oggetto in tuo possesso.
+      - left: Impronta digitale
+        right: Qualcosa che sei
+        explain: È una caratteristica biometrica.
+
+  - id: mfa
+    type: single
+    prompt: Quale di queste combinazioni è un'autenticazione a più fattori?
+    options:
+      - text: Password e codice ricevuto sul telefono
+        correct: true
+        explain: Giusto. Un fattore che sai e uno che hai.
+      - text: Password e PIN
+        correct: false
+        explain: No. Sono entrambi "qualcosa che sai", e serve più di un tipo di fattore.
+      - text: Due password diverse
+        correct: false
+        explain: No. Due prove dello stesso tipo non fanno una MFA.
+
+  - id: autorizzazione
+    type: truefalse
+    prompt: Una volta autenticato, un utente può fare tutto nel sistema.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. Cosa puoi fare lo decide l'autorizzazione, un passo separato.
+      - text: Falso
+        correct: true
+        explain: Giusto. L'autenticazione dimostra chi sei, l'autorizzazione stabilisce i tuoi privilegi.
+
+  - id: biometria
+    type: single
+    prompt: Secondo il NIST SP 800-63B-4, come si può usare la biometria?
+    options:
+      - text: Solo dentro un'autenticazione a più fattori, insieme a un oggetto fisico
+        correct: true
+        explain: Esatto. Per il NIST una caratteristica biometrica da sola non è un autenticatore.
+      - text: Da sola, perché è impossibile da copiare
+        correct: false
+        explain: No. Il NIST non la riconosce come autenticatore da sola.
+      - text: Mai
+        correct: false
+        explain: No. Si può usare, ma solo come parte di una MFA.

@@ -1,0 +1,72 @@
+id: vocabolario-rischio
+passingScore: 0.7
+questions:
+  - id: casa
+    type: match
+    prompt: In una casa da proteggere, abbina ogni elemento al suo termine.
+    pairs:
+      - left: La casa e ciò che contiene
+        right: Asset
+        explain: Ciò che ha valore e va protetto.
+      - left: Il ladro
+        right: Attore della minaccia
+        explain: Una persona o un gruppo che rappresenta una minaccia.
+      - left: La finestra rotta
+        right: Vulnerabilità
+        explain: La debolezza che una minaccia può sfruttare.
+      - left: Tutte le porte e le finestre
+        right: Superficie d'attacco
+        explain: L'insieme dei punti da cui si può provare a entrare.
+
+  - id: rischio
+    type: single
+    prompt: Per il NIST (SP 800-30), da cosa dipende di solito il rischio?
+    options:
+      - text: Dall'impatto se l'evento accade e dalla probabilità che accada
+        correct: true
+        explain: Esatto. "Probabilità × impatto" è una semplificazione di questa idea.
+      - text: Solo dal punteggio CVSS
+        correct: false
+        explain: No. Il CVSS misura la gravità di una vulnerabilità, non il rischio per una specifica organizzazione.
+      - text: Solo dal numero di vulnerabilità
+        correct: false
+        explain: No. Una vulnerabilità su un sistema spento e scollegato può avere un rischio basso.
+
+  - id: cvss
+    type: single
+    prompt: Una vulnerabilità ha punteggio CVSS 9,5. Come si classifica?
+    options:
+      - text: Critica
+        correct: true
+        explain: Giusto. Da 9,0 a 10,0 la gravità è critica.
+      - text: Alta
+        correct: false
+        explain: No. Alta va da 7,0 a 8,9.
+      - text: Media
+        correct: false
+        explain: No. Media va da 4,0 a 6,9.
+
+  - id: cve-cvss
+    type: single
+    prompt: Qual è la differenza tra CVE e CVSS?
+    options:
+      - text: Il CVE identifica una vulnerabilità, il CVSS ne misura la gravità
+        correct: true
+        explain: Esatto. Per esempio CVE-2021-44228 è Log4Shell, che con CVSS 3.1 ha 10,0.
+      - text: Sono due nomi della stessa cosa
+        correct: false
+        explain: No. Uno è un codice identificativo, l'altro un punteggio.
+      - text: Il CVE misura il rischio, il CVSS è l'elenco delle vulnerabilità
+        correct: false
+        explain: No, è il contrario, e nessuno dei due misura il rischio di una specifica organizzazione.
+
+  - id: versioni
+    type: truefalse
+    prompt: Una stessa CVE può avere punteggi diversi con versioni diverse del CVSS.
+    options:
+      - text: Vero
+        correct: true
+        explain: Giusto. Log4Shell ha 10,0 con CVSS 3.1 e 9,3 con CVSS 2.0 nel database NVD.
+      - text: Falso
+        correct: false
+        explain: No. Ogni versione del CVSS calcola il punteggio in modo diverso.

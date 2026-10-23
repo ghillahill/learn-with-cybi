@@ -1,0 +1,69 @@
+id: triade-rid
+passingScore: 0.7
+questions:
+  - id: proprieta
+    type: match
+    prompt: Abbina ogni proprietà della triade RID a ciò che significa perderla (FIPS 199).
+    pairs:
+      - left: Riservatezza
+        right: Divulgazione non autorizzata delle informazioni
+        explain: Qualcuno vede ciò che non doveva vedere.
+      - left: Integrità
+        right: Modifica o distruzione non autorizzata delle informazioni
+        explain: Le informazioni non sono più quelle vere.
+      - left: Disponibilità
+        right: Interruzione dell'accesso alle informazioni o al sistema
+        explain: Le informazioni ci sono, ma non si riesce a usarle.
+
+  - id: iban
+    type: single
+    prompt: Qualcuno cambia l'IBAN su una fattura prima del pagamento. Quale proprietà è violata?
+    options:
+      - text: Integrità
+        correct: true
+        explain: Giusto. Un dato è stato modificato senza autorizzazione.
+      - text: Riservatezza
+        correct: false
+        explain: No. Il problema non è che qualcuno abbia letto la fattura, ma che l'abbia cambiata.
+      - text: Disponibilità
+        correct: false
+        explain: No. La fattura resta accessibile, ma con un dato falso.
+
+  - id: guasto
+    type: truefalse
+    prompt: Per violare la disponibilità serve sempre un attaccante.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. Anche un guasto o un cavo tranciato interrompono l'accesso alle informazioni.
+      - text: Falso
+        correct: true
+        explain: Giusto. Una perdita di disponibilità è un'interruzione dell'accesso, qualunque sia la causa.
+
+  - id: impatto
+    type: single
+    prompt: Quali livelli di impatto usa il FIPS 199 per ogni proprietà?
+    options:
+      - text: Basso, moderato, alto
+        correct: true
+        explain: Esatto. Per ogni proprietà si stima l'impatto di una perdita su questi tre livelli.
+      - text: Da 0 a 10
+        correct: false
+        explain: No. La scala da 0 a 10 è quella del CVSS, che vedrai nella prossima lezione.
+      - text: Verde, giallo, rosso
+        correct: false
+        explain: No. Il FIPS 199 usa tre livelli con un nome, non dei colori.
+
+  - id: autenticita
+    type: multiple
+    prompt: Quali proprietà si aggiungono spesso alla triade RID? (Più risposte corrette)
+    options:
+      - text: Autenticità
+        correct: true
+        explain: Sì. È la fiducia che un messaggio venga davvero da chi dice di mandarlo.
+      - text: Non ripudio
+        correct: true
+        explain: Sì. Protegge contro chi nega falsamente di aver compiuto un'azione.
+      - text: Velocità
+        correct: false
+        explain: No. La velocità non è una proprietà di sicurezza.

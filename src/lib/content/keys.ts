@@ -21,5 +21,6 @@ export const LAB_IDS = [
   "terminale",
   "ip-privati",
   "viaggio-pacchetto",
+  "triade-rid",
 ] as const;
 export type LabId = (typeof LAB_IDS)[number];

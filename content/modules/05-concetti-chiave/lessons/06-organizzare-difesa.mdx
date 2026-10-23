@@ -1,0 +1,135 @@
+---
+id: organizzare-difesa
+title: Come si organizza la difesa
+minutes: 15
+xp: 75
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Conoscere le sei funzioni del NIST Cybersecurity Framework 2.0
+  - Distinguere red team, blue team e SOC
+  - Capire come si risponde a un incidente
+  - Conoscere la Cyber Kill Chain e MITRE ATT&CK
+sources:
+  - id: nist-csf-2
+    level: A
+    title: "The NIST Cybersecurity Framework (CSF) 2.0 (NIST CSWP 29)"
+    publisher: NIST
+    year: 2024
+    url: https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf
+  - id: nist-csf-2-news
+    level: A
+    title: NIST Releases Version 2.0 of Landmark Cybersecurity Framework
+    publisher: NIST
+    year: 2024
+    url: https://www.nist.gov/news-events/news/2024/02/nist-releases-version-20-landmark-cybersecurity-framework
+  - id: nist-red-team
+    level: A
+    title: NIST CSRC Glossary, "red team"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/red_team
+    note: Definizione di CNSSI 4009-2022.
+  - id: nist-blue-team
+    level: A
+    title: NIST CSRC Glossary, "blue team"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/blue_team
+    note: Definizione di CNSSI 4009-2022.
+  - id: sp800-61r3
+    level: A
+    title: "NIST SP 800-61 Rev. 3: Incident Response Recommendations and Considerations for Cybersecurity Risk Management"
+    publisher: NIST
+    year: 2025
+    url: https://csrc.nist.gov/pubs/sp/800/61/r3/final
+  - id: lm-kill-chain
+    level: A
+    title: Intelligence-Driven Computer Network Defense Informed by Analysis of Adversary Campaigns and Intrusion Kill Chains
+    author: E. M. Hutchins, M. J. Cloppert, R. M. Amin
+    publisher: Lockheed Martin
+    year: 2011
+    url: https://www.lockheedmartin.com/content/dam/lockheed-martin/rms/documents/cyber/LM-White-Paper-Intel-Driven-Defense.pdf
+  - id: mitre-attack-faq
+    level: A
+    title: MITRE ATT&CK, FAQ
+    publisher: MITRE
+    url: https://attack.mitre.org/resources/faq/
+  - id: paloalto-attack
+    level: B
+    title: "Evolution of MITRE ATT&CK: Continuous Improvement and Adaptation"
+    publisher: Palo Alto Networks
+    url: https://www.paloaltonetworks.com/cyberpedia/evolution-of-mitre-attack-continuous-improvement-and-adaptation
+quiz: organizzare-difesa
+---
+
+<Cybi mood="fiero">
+Ultima lezione del modulo! Hai il vocabolario, i principi e conosci gli attaccanti. Ora vediamo come lavora chi difende, ogni giorno.
+</Cybi>
+
+## Le sei funzioni del NIST CSF 2.0
+
+Il **NIST Cybersecurity Framework** (CSF) è una guida per gestire i rischi di sicurezza, usata da organizzazioni di ogni tipo. La versione 2.0 è uscita il 26 febbraio 2024. Organizza tutto in sei **funzioni**:<Cite id="nist-csf-2" />
+
+- **Govern** (governare): definire strategia, aspettative e regole di sicurezza dell'organizzazione;
+- **Identify** (identificare): capire i rischi attuali, a partire dagli asset da proteggere;
+- **Protect** (proteggere): usare le misure di protezione, come gestione delle identità, formazione, sicurezza dei dati;
+- **Detect** (rilevare): trovare e analizzare possibili attacchi;
+- **Respond** (rispondere): agire su un incidente rilevato;
+- **Recover** (recuperare): ripristinare i sistemi e le attività colpite.
+
+La prima versione del CSF è del 2014. **Govern** è la novità della 2.0: si aggiunge alle cinque funzioni della versione originale.<Cite id="nist-csf-2-news" /> Il suo compito è orientare le altre cinque e stabilirne le priorità.<Cite id="nist-csf-2" />
+
+<Cybi mood="pensieroso">
+Govern è come l'allenatore: non scende in campo, ma decide le priorità per tutte le altre cinque funzioni.
+</Cybi>
+
+## Chi fa cosa
+
+- Il **red team** è un gruppo autorizzato a imitare gli attacchi di un possibile avversario, per mostrare gli effetti di un attacco riuscito e quali difese funzionano.<Cite id="nist-red-team" />
+- Il **blue team** è il gruppo che difende i sistemi informatici di un'organizzazione.<Cite id="nist-blue-team" />
+- Il **SOC** (*Security Operations Center*) riceve gli allarmi dei sistemi di sicurezza e li analizza. Può essere interno o affidato a un fornitore esterno.<Cite id="sp800-61r3" />
+
+<Callout type="legal" title="La parola chiave è autorizzato">
+Il red team attacca davvero, ma con l'autorizzazione dell'organizzazione. Senza autorizzazione, le stesse azioni sono un reato: ricordi la lezione su hacker, etica e legge del Modulo 0?
+</Callout>
+
+## Rispondere a un incidente
+
+Le raccomandazioni del NIST sulla risposta agli incidenti sono la **SP 800-61 Rev. 3** (aprile 2025). Sostituiscono la Rev. 2 del 2012 e collegano la risposta alle sei funzioni del CSF 2.0.<Cite id="sp800-61r3" />
+
+- **Govern**, **Identify** e **Protect** sono la preparazione: non fanno parte della risposta, ma la rendono possibile.
+- **Detect**, **Respond** e **Recover** sono la risposta vera e propria.
+- Le lezioni imparate in ogni fase servono a migliorare tutte le altre.<Cite id="sp800-61r3" />
+
+Perché cambiare? Secondo il NIST, una volta gli incidenti erano rari e si chiudevano in un giorno o due. Oggi sono frequenti, fanno molti più danni e il ripristino può richiedere settimane o mesi.<Cite id="sp800-61r3" />
+
+## La Cyber Kill Chain
+
+Nel 2011 tre autori di Lockheed Martin, Eric Hutchins, Michael Cloppert e Rohan Amin, descrivono un'intrusione come una catena di sette fasi:<Cite id="lm-kill-chain" />
+
+1. **ricognizione**: studiare e scegliere il bersaglio;
+2. **armamento** (*weaponization*): unire un exploit e un programma di controllo remoto in un unico "pacco";
+3. **consegna**: far arrivare il pacco al bersaglio, per esempio come allegato email;
+4. **sfruttamento**: il codice dell'attaccante parte, di solito sfruttando una vulnerabilità;
+5. **installazione**: l'attaccante installa una <Term id="backdoor">backdoor</Term> per restare nel sistema;
+6. **comando e controllo**: il sistema infettato si collega a un server dell'attaccante, che lo comanda da remoto;
+7. **azioni sugli obiettivi**: solo ora l'attaccante fa ciò che voleva, per esempio rubare dati.
+
+L'idea chiave: basta **una** contromisura che spezza la catena per fermare l'avversario.<Cite id="lm-kill-chain" /> Per chi difende, ogni fase è un'occasione.
+
+## MITRE ATT&CK
+
+**MITRE ATT&CK** è una base di conoscenza sul comportamento degli attaccanti. Organizza le loro azioni in **tattiche** (l'obiettivo, *perché*) e **tecniche** (il modo per raggiungerlo, *come*). MITRE ha iniziato a costruirla nel 2013.<Cite id="mitre-attack-faq" /> La prima versione pubblica, per i sistemi aziendali, esce a maggio 2015 con 9 tattiche e 96 tecniche.<Cite id="paloalto-attack" />
+
+<MythVsFact
+  myth="Difendersi vuol dire solo bloccare gli attacchi."
+  fact="Il CSF 2.0 ha sei funzioni: oltre a proteggere, bisogna governare, identificare i rischi, rilevare gli attacchi, rispondere e ripristinare."
+  source="nist-csf-2"
+/>
+
+<KeyPoints>
+- NIST CSF 2.0 (26 febbraio 2024): Govern, Identify, Protect, Detect, Respond, Recover. Govern è la novità.
+- Red team: attacca con autorizzazione. Blue team: difende. SOC: riceve e analizza gli allarmi.
+- NIST SP 800-61 Rev. 3 (aprile 2025): la risposta agli incidenti segue il CSF 2.0 e sostituisce la Rev. 2 del 2012.
+- Cyber Kill Chain (Lockheed Martin, 2011): sette fasi; spezzarne una ferma l'attacco.
+- MITRE ATT&CK: tattiche e tecniche degli attaccanti; iniziata nel 2013, pubblica da maggio 2015.
+</KeyPoints>

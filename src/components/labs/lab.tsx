@@ -1,5 +1,6 @@
 import type { LabId } from "@/lib/content/keys";
 import { Base64Lab } from "./base64-lab";
+import { CiaLab } from "./cia-lab";
 import { IpLab } from "./ip-lab";
 import { NumberConverterLab } from "./number-converter-lab";
 import { PacketLab } from "./packet-lab";
@@ -13,6 +14,7 @@ const labs: Record<LabId, React.ComponentType> = {
   terminale: TerminalLab,
   "ip-privati": IpLab,
   "viaggio-pacchetto": PacketLab,
+  "triade-rid": CiaLab,
 };
 
 export function Lab({ id }: { id: string }) {

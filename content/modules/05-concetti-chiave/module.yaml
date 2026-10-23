@@ -1,0 +1,20 @@
+id: concetti-chiave-sicurezza
+order: 5
+title: Concetti chiave della sicurezza
+subtitle: Il vocabolario e i principi che ogni professionista usa ogni giorno
+description: La triade RID, il vocabolario del rischio, identità e accessi, i principi di difesa, chi attacca e perché, e come si organizza la difesa. Con un laboratorio simulato per classificare gli incidenti.
+icon: shield
+color: rose
+requires:
+  - come-funziona-internet
+estimatedMinutes: 75
+badge:
+  id: guardiano-dei-principi
+  name: Guardiano dei principi
+lessons:
+  - 01-triade-rid
+  - 02-vocabolario-rischio
+  - 03-identita-accessi
+  - 04-principi-difesa
+  - 05-chi-attacca
+  - 06-organizzare-difesa
