@@ -61,3 +61,14 @@ describe("splitFrontmatter", () => {
     expect(() => splitFrontmatter("Testo", "x.mdx")).toThrow(/frontmatter/);
   });
 });
+
+describe("controlli delle lezioni", () => {
+  it("segnala i laboratori inesistenti", async () => {
+    const content = loadContent();
+    const [mod] = content.modules;
+    const [lesson] = mod.lessons;
+    content.modules = [{ ...mod, lessons: [{ ...lesson, body: '<Lab id="lab-inesistente" />' }] }];
+    const messages = (await checkContent(content)).map((i) => i.message);
+    expect(messages).toContain('laboratorio "lab-inesistente" inesistente');
+  });
+});

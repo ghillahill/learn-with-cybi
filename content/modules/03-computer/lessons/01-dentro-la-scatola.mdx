@@ -1,0 +1,82 @@
+---
+id: dentro-la-scatola
+title: Dentro la scatola
+minutes: 10
+xp: 50
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Riconoscere le parti principali di un computer (CPU, RAM, storage, periferiche)
+  - Capire la differenza tra memoria volatile e non volatile
+  - Sapere perché questa differenza conta nelle indagini e negli attacchi
+sources:
+  - id: rfc3227
+    level: A
+    title: "RFC 3227: Guidelines for Evidence Collection and Archiving"
+    author: D. Brezinski, T. Killalea
+    publisher: IETF
+    year: 2002
+    url: https://www.rfc-editor.org/rfc/rfc3227
+  - id: ms-fileless
+    level: A
+    title: Fileless threats
+    publisher: Microsoft Learn
+    url: https://learn.microsoft.com/defender-endpoint/malware/fileless-threats
+quiz: dentro-la-scatola
+---
+
+<Cybi mood="felice">
+Nei moduli di storia abbiamo visto cosa succede quando i computer vengono attaccati. Ora apriamo la scatola: per difendere qualcosa bisogna sapere com'è fatto!
+</Cybi>
+
+## I quattro pezzi principali
+
+Ogni computer, dal portatile allo smartphone fino ai grandi server, ha gli stessi pezzi di base:
+
+- **CPU** (*Central Processing Unit*, il processore): esegue le istruzioni dei programmi, una dopo l'altra, a grandissima velocità.
+- **RAM** (*Random Access Memory*, la memoria di lavoro): contiene i programmi aperti e i dati che stanno usando. È **volatile**: quando il computer si spegne, il suo contenuto si cancella.
+- **Storage** (disco o SSD): conserva file e programmi anche a computer spento. È **non volatile**.
+- **Periferiche**: tutto ciò che entra ed esce, come tastiera, schermo, rete, chiavette USB.
+
+<Cybi mood="pensieroso">
+Pensa alla RAM come a una lavagna e al disco come a un quaderno. La lavagna è comoda e veloce, ma a fine giornata qualcuno la cancella.
+</Cybi>
+
+## Perché conta: le indagini
+
+Quando c'è un incidente informatico, chi indaga deve raccogliere le prove. L'RFC 3227, una guida dell'IETF del febbraio 2002, consiglia di partire dalle prove **più volatili**, quelle che spariscono per prime. Il suo esempio di ordine è:<Cite id="rfc3227" />
+
+1. registri e cache della CPU;
+2. tabelle di rete, elenco dei processi, memoria;
+3. file temporanei;
+4. disco;
+5. log e dati di monitoraggio salvati su altri computer;
+6. configurazione fisica e schema della rete;
+7. archivi.
+
+La stessa guida raccomanda di non spegnere il computer prima di aver finito di raccogliere le prove: molte andrebbero perse, a cominciare da quelle in memoria.<Cite id="rfc3227" />
+
+<MythVsFact
+  myth="Quando c'è un attacco, la prima cosa da fare è spegnere il computer: così si salvano le prove."
+  fact="Spegnendo si perde il contenuto della memoria volatile. Per questo le linee guida chiedono di raccogliere prima le prove più volatili."
+  source="rfc3227"
+/>
+
+## Perché conta: il malware "fileless"
+
+Alcuni programmi dannosi cercano di vivere **solo in memoria**, senza lasciare file sul disco, per farsi trovare più difficilmente. Si chiamano minacce *fileless* ("senza file").<Cite id="ms-fileless" />
+
+<Callout type="info" title="Un termine da usare con cautela">
+Microsoft avverte che "fileless" è usato in modo impreciso: alcune minacce chiamate così usano comunque dei file, per esempio per ripartire dopo un riavvio.<Cite id="ms-fileless" />
+</Callout>
+
+<Cybi mood="detective">
+Visto? Anche una distinzione tecnica semplice, volatile o non volatile, cambia il modo di attaccare e di difendere.
+</Cybi>
+
+<KeyPoints>
+- CPU esegue, RAM ricorda per poco, lo storage conserva, le periferiche fanno entrare e uscire i dati.
+- La RAM è volatile: a computer spento il suo contenuto si perde. Disco e SSD sono non volatili.
+- Nelle indagini si raccolgono prima le prove più volatili (RFC 3227): spegnere subito fa perdere quelle in memoria.
+- Le minacce "fileless" cercano di restare solo in memoria, ma il termine è impreciso.
+</KeyPoints>

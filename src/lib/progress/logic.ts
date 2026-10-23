@@ -62,6 +62,16 @@ export function recordQuiz(
   return score >= passingScore ? completeLesson(updated, key, xp, now) : updated;
 }
 
+export function isLabCompleted(p: Progress, labId: string): boolean {
+  return labId in p.labs;
+}
+
+// Un laboratorio si completa una volta sola; rifarlo non cambia la data.
+export function completeLab(p: Progress, labId: string, now: Date = new Date()): Progress {
+  if (isLabCompleted(p, labId)) return p;
+  return { ...p, labs: { ...p.labs, [labId]: { completedAt: now.toISOString() } } };
+}
+
 export function isModuleComplete(p: Progress, lessonKeys: string[]): boolean {
   return lessonKeys.length > 0 && lessonKeys.every((key) => isCompleted(p, key));
 }

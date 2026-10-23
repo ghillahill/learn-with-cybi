@@ -1,0 +1,72 @@
+id: bit-byte-numeri
+passingScore: 0.7
+questions:
+  - id: binario-dieci
+    type: single
+    prompt: Quanto vale 1010 in binario, scritto in decimale?
+    options:
+      - text: "10"
+        correct: true
+        explain: Giusto. 8 + 0 + 2 + 0 = 10.
+      - text: "1010"
+        correct: false
+        explain: No. In binario ogni posizione vale il doppio della precedente, non dieci volte tanto.
+      - text: "5"
+        correct: false
+        explain: No. 5 in binario è 101.
+
+  - id: cifre-byte
+    type: single
+    prompt: Con quante cifre esadecimali si scrive un byte?
+    options:
+      - text: Due
+        correct: true
+        explain: Esatto. Un byte ha 8 bit e ogni cifra esadecimale ne vale 4.
+      - text: Otto
+        correct: false
+        explain: No. Otto sono i bit di un byte, cioè le cifre binarie.
+      - text: Una
+        correct: false
+        explain: No. Una cifra esadecimale vale solo 4 bit, mezzo byte.
+
+  - id: abbina-basi
+    type: match
+    prompt: Abbina ogni numero al suo valore in decimale.
+    pairs:
+      - left: FF (esadecimale)
+        right: "255"
+        explain: 15 × 16 + 15 = 255, il valore più alto di un byte.
+      - left: 1101 (binario)
+        right: "13"
+        explain: 8 + 4 + 1 = 13.
+      - left: A (esadecimale)
+        right: "10"
+        explain: Dopo il 9, l'esadecimale usa le lettere da A (10) a F (15).
+      - left: 100 (binario)
+        right: "4"
+        explain: La terza posizione da destra vale 4.
+
+  - id: kib
+    type: truefalse
+    prompt: 1 KiB (kibibyte) vale 1000 byte.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. 1000 byte è 1 kB; 1 KiB vale 1024 byte.
+      - text: Falso
+        correct: true
+        explain: Giusto. 1 KiB = 1024 byte (2¹⁰), mentre 1 kB = 1000 byte.
+
+  - id: prefissi-iec
+    type: single
+    prompt: Perché la IEC ha introdotto i prefissi binari (KiB, MiB…)?
+    options:
+      - text: Per distinguere i multipli di 1024 da quelli di 1000, che si usavano con lo stesso nome
+        correct: true
+        explain: Esatto. Per anni "kilo" è stato usato per 1024 in informatica, ma per il Sistema Internazionale vale 1000.
+      - text: Per rendere i dischi più capienti
+        correct: false
+        explain: No. I prefissi cambiano solo il modo di contare, non la capacità.
+      - text: Per sostituire il byte con un'unità più grande
+        correct: false
+        explain: No. Il byte resta l'unità; cambiano solo i prefissi per i multipli.

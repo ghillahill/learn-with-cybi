@@ -1,5 +1,5 @@
 import path from "node:path";
-import { LESSON_COMPONENTS } from "./keys";
+import { LAB_IDS, LESSON_COMPONENTS } from "./keys";
 import type { Content } from "./loader";
 import type { Source } from "./schema";
 
@@ -8,6 +8,7 @@ export type CheckIssue = { file: string; message: string };
 const CITE = /<Cite\s+id="([^"]+)"/g;
 const TERM = /<Term\s+id="([^"]+)"/g;
 const MYTH_SOURCE = /<MythVsFact[^>]*\bsource="([^"]+)"/g;
+const LAB = /<Lab\s+id="([^"]+)"/g;
 const COMPONENT = /<([A-Z][A-Za-z0-9]*)/g;
 
 function idsFrom(body: string, pattern: RegExp): string[] {
@@ -26,6 +27,7 @@ export async function checkContent(content: Content): Promise<CheckIssue[]> {
   const issues: CheckIssue[] = [];
   const glossaryIds = new Set(content.glossary.map((e) => e.id));
   const allowed = new Set<string>(LESSON_COMPONENTS);
+  const labIds = new Set<string>(LAB_IDS);
 
   for (const entry of content.glossary) {
     if (onlyLevelC(entry.sources)) {
@@ -50,6 +52,9 @@ export async function checkContent(content: Content): Promise<CheckIssue[]> {
       }
       for (const id of idsFrom(lesson.body, TERM)) {
         if (!glossaryIds.has(id)) report(`termine "${id}" assente dal glossario`);
+      }
+      for (const id of idsFrom(lesson.body, LAB)) {
+        if (!labIds.has(id)) report(`laboratorio "${id}" inesistente`);
       }
       for (const name of new Set(idsFrom(lesson.body, COMPONENT))) {
         if (!allowed.has(name)) report(`componente sconosciuto <${name}>`);

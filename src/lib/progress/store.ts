@@ -11,6 +11,7 @@ type ProgressState = {
   startLesson: (key: string) => void;
   completeLesson: (key: string, xp: number) => void;
   recordQuiz: (key: string, score: number, passingScore: number, xp: number) => void;
+  completeLab: (labId: string) => void;
   setFreeMode: (freeMode: boolean) => void;
   replace: (progress: Progress) => void;
   reset: () => void;
@@ -28,6 +29,8 @@ export const useProgressStore = create<ProgressState>()((set) => ({
     set((s) => ({
       progress: logic.recordQuiz(s.progress, key, score, passingScore, xp),
     })),
+  completeLab: (labId) =>
+    set((s) => ({ progress: logic.completeLab(s.progress, labId) })),
   setFreeMode: (freeMode) =>
     set((s) => ({
       progress: { ...s.progress, settings: { ...s.progress.settings, freeMode } },

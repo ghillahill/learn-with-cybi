@@ -1,0 +1,19 @@
+id: come-funziona-computer
+order: 3
+title: Come funziona un computer
+subtitle: Il modello mentale minimo per capire dove si attacca
+description: Cosa c'è dentro la scatola, come un computer rappresenta numeri e testo, cosa fa il sistema operativo e perché ogni programma può avere bug e vulnerabilità. Con tre laboratori simulati.
+icon: cpu
+color: sky
+requires:
+  - storia-evoluzione
+estimatedMinutes: 60
+badge:
+  id: meccanico-digitale
+  name: Meccanico digitale
+lessons:
+  - 01-dentro-la-scatola
+  - 02-bit-byte-numeri
+  - 03-codificare-dati
+  - 04-sistema-operativo
+  - 05-bug-vulnerabilita

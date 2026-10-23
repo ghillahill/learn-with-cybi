@@ -1,0 +1,78 @@
+---
+id: bug-vulnerabilita
+title: Software, bug e vulnerabilità
+minutes: 11
+xp: 60
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Distinguere codice sorgente, programma compilato e programma interpretato
+  - Distinguere bug, vulnerabilità ed exploit
+  - Capire perché gli aggiornamenti vanno installati
+sources:
+  - id: nist-vulnerability
+    level: A
+    title: NIST CSRC Glossary, "vulnerability"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/vulnerability
+  - id: cisa-niccs-glossary
+    level: A
+    title: NICCS Cybersecurity Glossary
+    publisher: CISA
+    url: https://niccs.cisa.gov/resources/glossary
+  - id: ms17-010
+    level: A
+    title: "Microsoft Security Bulletin MS17-010"
+    publisher: Microsoft
+    year: 2017
+    url: https://learn.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010
+quiz: bug-vulnerabilita
+---
+
+<Cybi mood="pensieroso">
+Ogni programma è scritto da persone, e le persone sbagliano. Alcuni errori fanno solo comparire un pulsante storto. Altri aprono una porta a chi attacca. Come si distinguono?
+</Cybi>
+
+## Dal codice al programma
+
+Un programma nasce come **codice sorgente**: istruzioni scritte da una persona in un linguaggio di programmazione, leggibili da chi lo conosce. La CPU, però, capisce solo numeri. Ci sono due strade principali:
+
+- **compilato**: un programma chiamato *compilatore* traduce tutto il sorgente in istruzioni per la CPU, una volta per tutte, prima dell'esecuzione;
+- **interpretato**: un programma chiamato *interprete* legge il sorgente e lo esegue un pezzo alla volta, ogni volta che parte.
+
+In entrambi i casi, un errore nel sorgente finisce nel programma.
+
+## Bug, vulnerabilità, exploit
+
+- Un **bug** è un difetto qualsiasi del software: un calcolo sbagliato, un pulsante che non funziona.
+- Una <Term id="vulnerabilita">vulnerabilità</Term> è una debolezza di un sistema, delle sue procedure di sicurezza, dei controlli interni o dell'implementazione, che una minaccia può sfruttare.<Cite id="nist-vulnerability" />
+- Un <Term id="exploit">exploit</Term> è una tecnica per violare la sicurezza di una rete o di un sistema informatico, contro le sue regole di sicurezza.<Cite id="cisa-niccs-glossary" /> In pratica, è il codice o il metodo che sfrutta una vulnerabilità.
+
+Ogni vulnerabilità nasce da un bug o da un errore di configurazione, ma non ogni bug è una vulnerabilità.
+
+<Cybi mood="detective">
+Un pulsante storto è un bug. Un pulsante che lascia entrare senza password è una vulnerabilità. Il trucco per premerlo apposta è l'exploit.
+</Cybi>
+
+<MythVsFact
+  myth="Bug e vulnerabilità sono sinonimi."
+  fact="Una vulnerabilità è una debolezza che una minaccia può sfruttare. Molti bug non hanno nessun effetto sulla sicurezza."
+  source="nist-vulnerability"
+/>
+
+## Aggiornamenti e patch
+
+Quando un produttore scopre una vulnerabilità nel suo software, pubblica una correzione: una <Term id="patch">patch</Term>. La patch arriva con gli aggiornamenti, ma protegge solo chi la installa.
+
+Ricordi WannaCry? Microsoft aveva pubblicato la patch MS17-010 il 14 marzo 2017, circa due mesi prima dell'attacco. I sistemi colpiti erano quelli che non l'avevano installata.<Cite id="ms17-010" />
+
+<Callout type="info" title="Cosa puoi fare tu">
+Tieni attivi gli aggiornamenti automatici del sistema operativo, del browser e delle app. Ne parleremo meglio nel modulo sull'igiene digitale.
+</Callout>
+
+<KeyPoints>
+- Il codice sorgente viene compilato in anticipo o interpretato durante l'esecuzione.
+- Bug: un difetto qualsiasi. Vulnerabilità: una debolezza che una minaccia può sfruttare (NIST). Exploit: la tecnica che la sfrutta (CISA).
+- Non ogni bug è una vulnerabilità, ma ogni vulnerabilità nasce da un bug o da un errore di configurazione.
+- Le patch correggono le vulnerabilità solo se vengono installate: WannaCry ha colpito chi non aveva installato MS17-010.
+</KeyPoints>

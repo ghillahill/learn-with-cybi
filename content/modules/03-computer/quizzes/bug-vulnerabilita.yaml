@@ -1,0 +1,58 @@
+id: bug-vulnerabilita
+passingScore: 0.7
+questions:
+  - id: definizioni
+    type: match
+    prompt: Abbina ogni termine alla sua descrizione.
+    pairs:
+      - left: Bug
+        right: Un difetto qualsiasi del software
+        explain: Può non avere nessun effetto sulla sicurezza.
+      - left: Vulnerabilità
+        right: Una debolezza che una minaccia può sfruttare
+        explain: È la definizione del NIST.
+      - left: Exploit
+        right: La tecnica o il codice che sfrutta una debolezza
+        explain: Il glossario NICCS di CISA lo definisce come tecnica per violare la sicurezza.
+      - left: Patch
+        right: La correzione distribuita dal produttore
+        explain: Arriva con gli aggiornamenti.
+
+  - id: ogni-bug
+    type: truefalse
+    prompt: Ogni bug è una vulnerabilità.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. Molti bug non hanno effetti sulla sicurezza.
+      - text: Falso
+        correct: true
+        explain: "Giusto. È vero il contrario: ogni vulnerabilità nasce da un bug o da un errore di configurazione."
+
+  - id: compilato
+    type: single
+    prompt: Cosa fa un compilatore?
+    options:
+      - text: Traduce tutto il codice sorgente in istruzioni per la CPU prima dell'esecuzione
+        correct: true
+        explain: Giusto. L'interprete, invece, esegue il sorgente un pezzo alla volta.
+      - text: Trova e corregge da solo tutti i bug
+        correct: false
+        explain: No. Un errore nel sorgente finisce anche nel programma compilato.
+      - text: Cifra il programma per proteggerlo
+        correct: false
+        explain: No. Tradurre non vuol dire cifrare.
+
+  - id: wannacry
+    type: single
+    prompt: Perché WannaCry ha colpito tanti sistemi nel maggio 2017?
+    options:
+      - text: Perché non avevano installato la patch MS17-010, pubblicata due mesi prima
+        correct: true
+        explain: Esatto. La correzione esisteva già dal 14 marzo 2017.
+      - text: Perché la vulnerabilità non si poteva correggere
+        correct: false
+        explain: No. La patch esisteva già.
+      - text: Perché era un bug senza effetti sulla sicurezza
+        correct: false
+        explain: No. Era una vulnerabilità sfruttata da un exploit.

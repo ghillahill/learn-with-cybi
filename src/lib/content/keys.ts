@@ -11,4 +11,9 @@ export const LESSON_COMPONENTS = [
   "MythVsFact",
   "KeyPoints",
   "Callout",
+  "Lab",
 ] as const;
+
+// Laboratori simulati disponibili per <Lab id> (§8.3).
+export const LAB_IDS = ["convertitore-numeri", "base64", "terminale"] as const;
+export type LabId = (typeof LAB_IDS)[number];

@@ -68,3 +68,21 @@ test("tutti i quiz del Modulo 2 si completano con le risposte corrette", async (
     await expect(page.getByText(`${quiz.questions.length} risposte corrette su`)).toBeVisible();
   }
 });
+
+test("tutti i quiz del Modulo 3 si completano con le risposte corrette", async ({ page }) => {
+  test.slow();
+  await enableFreeMode(page);
+
+  for (const id of [
+    "dentro-la-scatola",
+    "bit-byte-numeri",
+    "codificare-dati",
+    "sistema-operativo",
+    "bug-vulnerabilita",
+  ]) {
+    const quiz = loadQuiz("03-computer", id);
+    await page.goto(`/moduli/come-funziona-computer/${id}`);
+    await completeQuiz(page, quiz);
+    await expect(page.getByText(`${quiz.questions.length} risposte corrette su`)).toBeVisible();
+  }
+});

@@ -1,6 +1,7 @@
 import { evaluate } from "@mdx-js/mdx";
 import * as runtime from "react/jsx-runtime";
 import { CybiBubble } from "@/components/cybi/cybi-bubble";
+import { Lab } from "@/components/labs/lab";
 import type { CybiMood } from "@/components/cybi/cybi-avatar";
 import type { GlossaryEntry, Source } from "@/lib/content/schema";
 import { Callout } from "./callout";
@@ -54,6 +55,7 @@ export async function LessonBody({
     ),
     KeyPoints,
     Callout,
+    Lab,
   };
 
   return (

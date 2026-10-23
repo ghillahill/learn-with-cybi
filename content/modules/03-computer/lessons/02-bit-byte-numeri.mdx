@@ -1,0 +1,88 @@
+---
+id: bit-byte-numeri
+title: Bit, byte e numeri
+minutes: 12
+xp: 60
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Leggere e scrivere numeri in binario e in esadecimale
+  - Capire perché un byte si scrive con due cifre esadecimali
+  - Distinguere kB (1000 byte) da KiB (1024 byte)
+sources:
+  - id: nist-binary
+    level: A
+    title: Prefixes for binary multiples
+    publisher: NIST
+    url: https://physics.nist.gov/cuu/Units/binary.html
+  - id: iec-80000-13
+    level: A
+    title: "ISO/IEC 80000-13: Quantities and units, Part 13: Information science and technology"
+    publisher: IEC/ISO
+    note: Norma a pagamento, non letta direttamente; i prefissi sono riportati dal VIM del BIPM.
+  - id: bipm-vim
+    level: A
+    title: "VIM, 1.17: multiple of a unit (nota 2 sui prefissi binari)"
+    publisher: BIPM / JCGM
+    url: https://jcgm.bipm.org/vim/en/1.17.html
+  - id: iec-kibibyte
+    level: A
+    title: IEC Electropedia, "kibibyte"
+    publisher: IEC
+    url: https://electropedia.org/iev/iev.nsf/17127c61f2426ed8c1257cb5003c9bec/e80750e32db7deb9c125839800589831
+quiz: bit-byte-numeri
+---
+
+<Cybi mood="sorpreso">
+Dentro un computer non ci sono lettere, foto o canzoni: ci sono solo 0 e 1. Tutto il resto è un modo di leggerli. Impariamo a contare come lui!
+</Cybi>
+
+## Il binario: contare con due cifre
+
+Noi contiamo in **base 10**: dieci cifre, da 0 a 9. Un computer conta in **base 2**, il **binario**: due sole cifre, 0 e 1. Ogni cifra binaria si chiama **bit**.
+
+In base 10 ogni posizione vale dieci volte quella alla sua destra (unità, decine, centinaia). In base 2 ogni posizione vale **il doppio**: 1, 2, 4, 8, 16, e così via. Per esempio:
+
+- `1101` in binario = 8 + 4 + 0 + 1 = **13**.
+
+Un **byte** è un gruppo di **8 bit**. Con 8 bit si scrivono 2⁸ = 256 valori diversi, da 0 a 255.
+
+## L'esadecimale: il binario in versione corta
+
+Scrivere lunghe file di 0 e 1 è scomodo. Per questo gli informatici usano l'**esadecimale**, la **base 16**: le cifre da 0 a 9 e poi le lettere da A (10) a F (15).
+
+Il trucco è che 16 = 2⁴: **una cifra esadecimale vale esattamente 4 bit**. Quindi un byte (8 bit) si scrive sempre con **due cifre esadecimali**: per esempio `1010 0101` diventa `A5`, e il byte più alto, `1111 1111`, diventa `FF`.
+
+<Cybi mood="detective">
+L'esadecimale tornerà spesso nei prossimi moduli, quindi vale la pena prenderci la mano. Prova il convertitore qui sotto!
+</Cybi>
+
+<Lab id="convertitore-numeri" />
+
+## Kilo vale 1000… o 1024?
+
+Per il Sistema Internazionale "kilo" vale **1000**: 1 kB (kilobyte) = 1000 byte. I prefissi del Sistema Internazionale indicano solo potenze di 10 e non vanno usati per le potenze di 2.<Cite id="bipm-vim" />
+
+Per anni, però, gli informatici hanno usato "kilo" per dire **1024**, perché 2¹⁰ = 1024 è molto vicino a 1000.<Cite id="nist-binary" /> Per eliminare la confusione, nel dicembre 1998 la IEC ha approvato i **prefissi binari**, pubblicati nel gennaio 1999 come emendamento alla norma IEC 60027-2:<Cite id="nist-binary" />
+
+- 1 **KiB** (kibibyte) = 1024 byte;<Cite id="iec-kibibyte" />
+- 1 **MiB** (mebibyte) = 1.048.576 byte (2²⁰);<Cite id="nist-binary" />
+- 1 **GiB** (gibibyte) = 2³⁰ byte.
+
+Oggi questi prefissi sono nella norma ISO/IEC 80000-13.<Cite id="iec-80000-13" /><Cite id="bipm-vim" />
+
+<MythVsFact
+  myth="1 kB e 1 KiB sono la stessa cosa."
+  fact="1 kB = 1000 byte, 1 KiB = 1024 byte. Nella pratica, però, l'uso è ancora misto: «KB» può voler dire l'uno o l'altro."
+  source="nist-binary"
+/>
+
+<Callout type="info" title="Il disco che si restringe">
+Un disco da 1 TB contiene 10¹² byte. Se un programma li conta in multipli di 1024, mostra circa 931 GiB: nessun byte è sparito, cambia solo l'unità di misura.
+</Callout>
+
+<KeyPoints>
+- Il binario (base 2) usa solo 0 e 1; ogni cifra è un bit. Un byte è fatto di 8 bit e vale da 0 a 255.
+- L'esadecimale (base 16) usa 0–9 e A–F. Una cifra esadecimale vale 4 bit, quindi un byte si scrive con due cifre.
+- 1 kB = 1000 byte (Sistema Internazionale); 1 KiB = 1024 byte (prefissi binari IEC, approvati nel dicembre 1998).
+</KeyPoints>

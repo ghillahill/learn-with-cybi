@@ -1,0 +1,73 @@
+id: dentro-la-scatola
+passingScore: 0.7
+questions:
+  - id: volatile
+    type: single
+    prompt: Quale di queste memorie perde il suo contenuto quando il computer si spegne?
+    options:
+      - text: La RAM
+        correct: true
+        explain: Giusto. La RAM è volatile, per questo è la memoria di lavoro e non l'archivio.
+      - text: L'SSD
+        correct: false
+        explain: No. L'SSD è storage non volatile e conserva i dati a computer spento.
+      - text: Il disco
+        correct: false
+        explain: No. Il disco è non volatile, come l'SSD.
+
+  - id: pezzi
+    type: match
+    prompt: Abbina ogni pezzo al suo compito.
+    pairs:
+      - left: CPU
+        right: Esegue le istruzioni dei programmi
+        explain: È il processore.
+      - left: RAM
+        right: Tiene i programmi aperti e i loro dati
+        explain: È la memoria di lavoro, veloce ma volatile.
+      - left: Storage
+        right: Conserva file e programmi a computer spento
+        explain: Disco o SSD, memoria non volatile.
+      - left: Periferiche
+        right: Fanno entrare e uscire i dati
+        explain: Tastiera, schermo, rete, chiavette USB.
+
+  - id: ordine-volatilita
+    type: order
+    prompt: "Secondo l'esempio dell'RFC 3227, in che ordine si raccolgono le prove? Dalla più volatile alla meno volatile."
+    items:
+      - text: Registri e cache della CPU
+        explain: Sono le prove che cambiano e spariscono più in fretta.
+      - text: Memoria ed elenco dei processi
+        explain: Si perdono allo spegnimento.
+      - text: File temporanei
+        explain: Possono essere cancellati presto, ma sopravvivono più a lungo della memoria.
+      - text: Disco
+        explain: È non volatile.
+      - text: Archivi
+        explain: Sono le prove più stabili.
+
+  - id: spegnere
+    type: truefalse
+    prompt: Spegnere subito un computer attaccato protegge tutte le prove.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. Spegnendo si perde tutto ciò che è in memoria.
+      - text: Falso
+        correct: true
+        explain: "Giusto. Le prove in memoria spariscono allo spegnimento: per questo si raccolgono per prime."
+
+  - id: fileless
+    type: single
+    prompt: Cosa dice Microsoft sul termine "fileless"?
+    options:
+      - text: È impreciso, perché alcune minacce chiamate così usano comunque dei file
+        correct: true
+        explain: Esatto. Per esempio per ripartire dopo un riavvio.
+      - text: Indica solo i virus degli anni '80
+        correct: false
+        explain: No. Indica minacce che cercano di restare in memoria.
+      - text: È un sinonimo di ransomware
+        correct: false
+        explain: No. Il ransomware è definito da ciò che fa (chiede un riscatto), non da dove vive.

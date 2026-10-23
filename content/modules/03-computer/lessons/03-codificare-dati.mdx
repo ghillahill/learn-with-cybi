@@ -1,0 +1,78 @@
+---
+id: codificare-dati
+title: Codificare i dati
+minutes: 12
+xp: 60
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Capire come un computer trasforma il testo in numeri (ASCII, Unicode, UTF-8)
+  - Sapere a cosa serve Base64
+  - Distinguere una codifica da una cifratura
+sources:
+  - id: ieee-ascii
+    level: B
+    title: "Milestones: American Standard Code for Information Interchange (ASCII), 1963"
+    publisher: IEEE / Engineering and Technology History Wiki
+    url: https://ethw.org/Milestones:American_Standard_Code_for_Information_Interchange_ASCII,_1963
+  - id: rfc3629
+    level: A
+    title: "RFC 3629: UTF-8, a transformation format of ISO 10646"
+    author: F. Yergeau
+    publisher: IETF
+    year: 2003
+    url: https://www.rfc-editor.org/rfc/rfc3629
+  - id: rfc4648
+    level: A
+    title: "RFC 4648: The Base16, Base32, and Base64 Data Encodings"
+    author: S. Josefsson
+    publisher: IETF
+    year: 2006
+    url: https://www.rfc-editor.org/rfc/rfc4648
+quiz: codificare-dati
+---
+
+<Cybi mood="pensieroso">
+Se dentro il computer ci sono solo numeri, dove finisce la lettera "A" che hai appena scritto? Basta mettersi d'accordo su un codice: ogni carattere diventa un numero.
+</Cybi>
+
+## ASCII: il primo grande accordo
+
+**ASCII** (*American Standard Code for Information Interchange*) è uno standard americano pubblicato nel **1963**. Usa **7 bit**, quindi 2⁷ = **128 codici**: 33 caratteri di controllo (per esempio "a capo") e i caratteri stampabili, come lettere, cifre e punteggiatura.<Cite id="ieee-ascii" />
+
+Curiosità: la prima edizione non aveva le lettere minuscole. Sono arrivate con la revisione del 1967.<Cite id="ieee-ascii" />
+
+## Unicode e UTF-8: tutte le lingue del mondo
+
+128 codici bastano per l'inglese, non per "è", "ß", per l'arabo o per le emoji. **Unicode** assegna un numero a ogni carattere, da U+0000 a U+10FFFF.<Cite id="rfc3629" />
+
+**UTF-8** è il modo più diffuso di scrivere questi numeri in byte: usa da **1 a 4 byte** per carattere. Ed è compatibile con ASCII: un testo scritto solo in ASCII è già un testo UTF-8 valido.<Cite id="rfc3629" />
+
+<Cybi mood="felice">
+Quindi la "a" usa un byte, la "è" ne usa di più. Il computer non si confonde perché segue sempre le stesse regole.
+</Cybi>
+
+## Base64: dati binari travestiti da testo
+
+Alcuni sistemi, come la posta elettronica, sono nati per trasportare solo testo. Come si spedisce una foto? Con **Base64**, definito nell'RFC 4648 (ottobre 2006): trasforma qualsiasi sequenza di byte in testo, usando solo caratteri ASCII. Ogni carattere rappresenta 6 bit.<Cite id="rfc4648" />
+
+Base64 è una **codifica**, non una **cifratura**: non usa nessuna chiave e chiunque può tornare indietro. L'RFC stesso avverte che Base64 nasconde le informazioni alla vista, ma non offre nessuna vera riservatezza.<Cite id="rfc4648" />
+
+<Lab id="base64" />
+
+<MythVsFact
+  myth="Base64 è crittografia: se una password è in Base64, è protetta."
+  fact="Base64 è una codifica senza chiavi: chiunque può decodificarla. Non garantisce nessuna riservatezza."
+  source="rfc4648"
+/>
+
+<Callout type="warning" title="Codifica o cifratura?">
+Una **codifica** cambia il formato dei dati e si inverte senza segreti. Una **cifratura** li rende illeggibili a chi non ha la chiave. Ne parleremo nel modulo sulla crittografia.
+</Callout>
+
+<KeyPoints>
+- ASCII (1963) usa 7 bit e 128 codici; le minuscole arrivano nel 1967.
+- UTF-8 scrive tutti i caratteri Unicode con 1–4 byte ed è compatibile con ASCII.
+- Base64 (RFC 4648) trasforma dati binari in testo ASCII, per i sistemi che accettano solo testo.
+- Base64 è una codifica, non una cifratura: nessuna chiave, nessuna protezione.
+</KeyPoints>

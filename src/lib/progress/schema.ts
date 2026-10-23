@@ -8,9 +8,15 @@ export const lessonProgressSchema = z.object({
   completedAt: z.iso.datetime().optional(),
 });
 
+export const labProgressSchema = z.object({
+  completedAt: z.iso.datetime(),
+});
+
 export const progressSchema = z.object({
   version: z.literal(1),
   lessons: z.record(z.string(), lessonProgressSchema),
+  // Aggiunto con i laboratori (fase 3): il default mantiene validi i salvataggi precedenti.
+  labs: z.record(z.string(), labProgressSchema).default({}),
   xp: z.number().int().nonnegative(),
   badges: z.array(z.string()),
   streak: z.object({
@@ -21,12 +27,14 @@ export const progressSchema = z.object({
 });
 
 export type LessonProgress = z.infer<typeof lessonProgressSchema>;
+export type LabProgress = z.infer<typeof labProgressSchema>;
 export type Progress = z.infer<typeof progressSchema>;
 
 export function emptyProgress(): Progress {
   return {
     version: 1,
     lessons: {},
+    labs: {},
     xp: 0,
     badges: [],
     streak: { current: 0, lastActiveDate: "" },

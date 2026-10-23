@@ -17,4 +17,10 @@ describe("parseProgress", () => {
     delete old.settings;
     expect(parseProgress(old)?.settings.freeMode).toBe(false);
   });
+
+  it("aggiunge i laboratori mancanti ai file vecchi", () => {
+    const old: Record<string, unknown> = { ...emptyProgress() };
+    delete old.labs;
+    expect(parseProgress(old)?.labs).toEqual({});
+  });
 });

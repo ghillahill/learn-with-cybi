@@ -1,0 +1,72 @@
+id: sistema-operativo
+passingScore: 0.7
+questions:
+  - id: minimo-privilegio
+    type: single
+    prompt: Cosa dice il principio del minimo privilegio?
+    options:
+      - text: Ogni programma e ogni utente deve avere solo i privilegi necessari per il suo compito
+        correct: true
+        explain: Giusto. È la formulazione di Saltzer e Schroeder (1975).
+      - text: Solo l'amministratore può usare il computer
+        correct: false
+        explain: No. Anzi, l'amministratore va usato il meno possibile.
+      - text: I programmi più importanti devono avere tutti i privilegi
+        correct: false
+        explain: No. Anche i programmi importanti ricevono solo i privilegi che servono.
+
+  - id: scopo
+    type: truefalse
+    prompt: Secondo Saltzer e Schroeder, il minimo privilegio serve soprattutto a limitare i danni di un incidente o di un errore.
+    options:
+      - text: Vero
+        correct: true
+        explain: Esatto. Se qualcosa va storto, il danno resta dentro i privilegi concessi.
+      - text: Falso
+        correct: false
+        explain: Invece è vero. È lo scopo principale indicato dagli autori.
+
+  - id: comandi
+    type: match
+    prompt: Abbina ogni comando a quello che fa.
+    pairs:
+      - left: whoami
+        right: Mostra il nome del tuo utente
+        explain: In inglese "who am I", cioè "chi sono io".
+      - left: pwd
+        right: Mostra la cartella in cui ti trovi
+        explain: La specifica POSIX lo descrive come "return working directory name".
+      - left: ls
+        right: Elenca il contenuto di una cartella
+        explain: In inglese "list directory contents".
+      - left: cd
+        right: Cambia cartella
+        explain: In inglese "change the working directory".
+      - left: cat
+        right: Mostra il contenuto di un file
+        explain: "In inglese \"concatenate and print files\": può anche unire più file."
+
+  - id: root-ogni-giorno
+    type: single
+    prompt: Perché non conviene usare l'account amministratore per il lavoro di ogni giorno?
+    options:
+      - text: Perché un errore o un programma dannoso avrebbero poteri illimitati
+        correct: true
+        explain: Giusto. Con un utente normale i danni restano limitati ai suoi permessi.
+      - text: Perché l'amministratore rende il computer più lento
+        correct: false
+        explain: No. Il problema è di sicurezza, non di velocità.
+      - text: Perché l'amministratore non può aprire i file
+        correct: false
+        explain: "No. L'amministratore può fare tutto: proprio questo è il rischio."
+
+  - id: permesso-negato
+    type: truefalse
+    prompt: Nel laboratorio, il messaggio "permesso negato" per il diario in /root era un errore del sistema operativo.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. Era il sistema operativo che faceva il suo lavoro, proteggendo i file dell'amministratore.
+      - text: Falso
+        correct: true
+        explain: Giusto. Il tuo utente non aveva quel privilegio, ed è giusto così.

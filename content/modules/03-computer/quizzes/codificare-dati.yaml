@@ -1,0 +1,66 @@
+id: codificare-dati
+passingScore: 0.7
+questions:
+  - id: ascii-bit
+    type: single
+    prompt: Quanti codici ha ASCII, che usa 7 bit?
+    options:
+      - text: "128"
+        correct: true
+        explain: Giusto. 2⁷ = 128.
+      - text: "256"
+        correct: false
+        explain: No. 256 codici servirebbero 8 bit.
+      - text: "26"
+        correct: false
+        explain: No. Oltre alle lettere ci sono cifre, punteggiatura e caratteri di controllo.
+
+  - id: utf8-ascii
+    type: truefalse
+    prompt: Un testo scritto solo con caratteri ASCII è già un testo UTF-8 valido.
+    options:
+      - text: Vero
+        correct: true
+        explain: Esatto. UTF-8 è compatibile con ASCII.
+      - text: Falso
+        correct: false
+        explain: Invece è vero. UTF-8 è stato progettato per essere compatibile con ASCII.
+
+  - id: base64-scopo
+    type: single
+    prompt: A cosa serve Base64?
+    options:
+      - text: A trasformare dati binari in testo ASCII, per i sistemi che accettano solo testo
+        correct: true
+        explain: Giusto. Per esempio per spedire un allegato via email.
+      - text: A cifrare le password
+        correct: false
+        explain: No. Base64 non usa chiavi e chiunque può decodificarlo.
+      - text: A comprimere i file
+        correct: false
+        explain: No. Anzi, il testo in Base64 è più lungo dei dati di partenza.
+
+  - id: codifica-cifratura
+    type: match
+    prompt: Abbina ogni termine alla sua descrizione.
+    pairs:
+      - left: Codifica
+        right: Cambia il formato dei dati e si inverte senza segreti
+        explain: È il caso di ASCII, UTF-8 e Base64.
+      - left: Cifratura
+        right: Rende i dati illeggibili a chi non ha la chiave
+        explain: La vedremo nel modulo sulla crittografia.
+      - left: UTF-8
+        right: Scrive i caratteri Unicode con 1–4 byte
+        explain: È compatibile con ASCII.
+
+  - id: base64-sicuro
+    type: truefalse
+    prompt: Una password salvata in Base64 è protetta.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. Basta decodificarla, come hai fatto nel laboratorio.
+      - text: Falso
+        correct: true
+        explain: Giusto. L'RFC 4648 avverte che Base64 non offre riservatezza.

@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import {
+  completeLab,
   completeLesson,
+  isLabCompleted,
   isModuleUnlocked,
   lessonProgress,
   recordQuiz,
@@ -49,5 +51,12 @@ describe("progressi", () => {
   it("in modalità libera tutto è sbloccato", () => {
     const p = { ...emptyProgress(), settings: { freeMode: true } };
     expect(isModuleUnlocked(p, [["m/a"]])).toBe(true);
+  });
+
+  it("completeLab registra il laboratorio una sola volta", () => {
+    const once = completeLab(emptyProgress(), "lab", now);
+    expect(isLabCompleted(once, "lab")).toBe(true);
+    expect(completeLab(once, "lab", new Date())).toBe(once);
+    expect(once.labs.lab.completedAt).toBe(now.toISOString());
   });
 });

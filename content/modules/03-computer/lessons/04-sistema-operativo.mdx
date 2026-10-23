@@ -1,0 +1,111 @@
+---
+id: sistema-operativo
+title: Il sistema operativo
+minutes: 14
+xp: 70
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Sapere cosa fa il sistema operativo (kernel, processi, memoria, file system)
+  - Capire utenti, permessi e il ruolo dell'amministratore
+  - Conoscere il principio del minimo privilegio
+  - Usare i comandi base di un terminale in un ambiente simulato
+sources:
+  - id: saltzer-schroeder
+    level: A
+    title: The Protection of Information in Computer Systems
+    author: Jerome H. Saltzer, Michael D. Schroeder
+    publisher: Proceedings of the IEEE
+    year: 1975
+    url: https://www.cs.virginia.edu/~evans/cs551/saltzer/
+  - id: nist-least-privilege
+    level: A
+    title: NIST CSRC Glossary, "least privilege"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/least_privilege
+    note: Definizione tratta da CNSSI 4009-2022.
+  - id: posix-ls
+    level: A
+    title: "POSIX.1-2024: ls, list directory contents"
+    publisher: The Open Group / IEEE (IEEE Std 1003.1-2024)
+    url: https://pubs.opengroup.org/onlinepubs/9799919799/utilities/ls.html
+  - id: posix-cd
+    level: A
+    title: "POSIX.1-2024: cd, change the working directory"
+    publisher: The Open Group / IEEE (IEEE Std 1003.1-2024)
+    url: https://pubs.opengroup.org/onlinepubs/9799919799/utilities/cd.html
+  - id: posix-pwd
+    level: A
+    title: "POSIX.1-2024: pwd, return working directory name"
+    publisher: The Open Group / IEEE (IEEE Std 1003.1-2024)
+    url: https://pubs.opengroup.org/onlinepubs/9799919799/utilities/pwd.html
+  - id: posix-cat
+    level: A
+    title: "POSIX.1-2024: cat, concatenate and print files"
+    publisher: The Open Group / IEEE (IEEE Std 1003.1-2024)
+    url: https://pubs.opengroup.org/onlinepubs/9799919799/utilities/cat.html
+  - id: gnu-whoami
+    level: A
+    title: "GNU Coreutils: whoami invocation"
+    publisher: Free Software Foundation
+    url: https://www.gnu.org/software/coreutils/manual/html_node/whoami-invocation.html
+quiz: sistema-operativo
+---
+
+<Cybi mood="felice">
+CPU, memoria, disco… chi li mette d'accordo? Il sistema operativo: il direttore d'orchestra del computer. Ed è anche il primo guardiano della sicurezza.
+</Cybi>
+
+## Cosa fa il sistema operativo
+
+Windows, macOS, Linux, Android e iOS sono sistemi operativi. Il loro cuore si chiama **kernel**: la parte che parla direttamente con l'hardware e decide chi può usare cosa. Il sistema operativo si occupa di:
+
+- **processi**: ogni programma in esecuzione è un processo, e il sistema decide a turno quale usa la CPU;
+- **memoria**: assegna a ogni processo il suo spazio in RAM e impedisce che un processo legga quello degli altri;
+- **file system**: organizza i dati sul disco in file e cartelle.
+
+## Utenti, permessi e amministratore
+
+Un computer può avere più **utenti**, raggruppati in **gruppi**. Ogni file e ogni cartella ha dei **permessi**: chi può leggerli, chi può modificarli, chi può eseguirli.
+
+C'è poi un utente speciale che può fare tutto: l'**amministratore** (su Linux e macOS si chiama **root**). Proprio perché può fare tutto, usarlo ogni giorno è rischioso: un errore, o un programma dannoso avviato per sbaglio, avrebbero gli stessi poteri illimitati.
+
+## Il principio del minimo privilegio
+
+Nel 1975 Jerome Saltzer e Michael Schroeder pubblicano un articolo che diventa un classico. Tra i principi di progettazione che propongono c'è il <Term id="minimo-privilegio">**minimo privilegio**</Term> (*least privilege*): ogni programma e ogni utente deve lavorare con il minimo insieme di privilegi necessario per il suo compito.<Cite id="saltzer-schroeder" />
+
+Secondo gli autori, lo scopo principale è limitare i danni di un incidente o di un errore.<Cite id="saltzer-schroeder" /> Ancora oggi il glossario del NIST lo definisce in modo simile.<Cite id="nist-least-privilege" />
+
+<Cybi mood="pensieroso">
+È come dare a un ospite la chiave della sua camera, non quella di tutta la casa. Se la perde, il danno resta piccolo.
+</Cybi>
+
+<MythVsFact
+  myth="Usare sempre l'account amministratore è più comodo e non cambia niente per la sicurezza."
+  fact="Con il minimo privilegio un errore o un programma dannoso possono fare solo i danni consentiti all'utente che li ha avviati."
+  source="saltzer-schroeder"
+/>
+
+## Il terminale
+
+Oltre alle finestre, quasi ogni sistema operativo offre un **terminale**: si scrive un comando e il sistema risponde. Ecco i comandi che userai nel laboratorio, presenti nei sistemi di tipo Unix come Linux e macOS:
+
+- `whoami` mostra il nome del tuo utente;<Cite id="gnu-whoami" />
+- `pwd` mostra la cartella in cui ti trovi;<Cite id="posix-pwd" />
+- `ls` elenca il contenuto di una cartella;<Cite id="posix-ls" />
+- `cd` cambia cartella;<Cite id="posix-cd" />
+- `cat` mostra il contenuto di un file.<Cite id="posix-cat" />
+
+<Lab id="terminale" />
+
+<Callout type="info" title="Un terminale finto">
+Il laboratorio è una simulazione: il file system è inventato e i comandi non toccano il tuo computer. Anche i messaggi sono semplificati e tradotti in italiano.
+</Callout>
+
+<KeyPoints>
+- Il sistema operativo gestisce processi, memoria e file system; il kernel è il suo cuore.
+- Utenti, gruppi e permessi decidono chi può leggere, modificare o eseguire ogni file.
+- L'amministratore (root) può tutto: per questo non si usa per il lavoro di ogni giorno.
+- Minimo privilegio (Saltzer e Schroeder, 1975): a ognuno solo i privilegi che gli servono, per limitare i danni.
+- whoami, pwd, ls, cd e cat sono i comandi base del terminale nei sistemi di tipo Unix.
+</KeyPoints>
