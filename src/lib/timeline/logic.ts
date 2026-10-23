@@ -31,31 +31,3 @@ export function eventYear(event: Pick<TimelineEvent, "date">): number {
 export function eventDecade(event: Pick<TimelineEvent, "date">): number {
   return Math.floor(eventYear(event) / 10) * 10;
 }
-
-// Mini-gioco "Metti in ordine" (§8.2): `count` eventi casuali con anni tutti
-// diversi, così l'ordine giusto non è mai ambiguo. Esclude gli eventi con
-// data approssimativa. Restituisce gli eventi in ordine cronologico.
-export function pickOrderingRound<T extends Pick<TimelineEvent, "date" | "approximate">>(
-  events: T[],
-  count: number,
-  random: () => number = Math.random,
-): T[] {
-  const pool = events.filter((e) => !e.approximate);
-  const byYear = new Map<number, T[]>();
-  for (const event of pool) {
-    const year = eventYear(event);
-    byYear.set(year, [...(byYear.get(year) ?? []), event]);
-  }
-  const years = [...byYear.keys()];
-  for (let i = years.length - 1; i > 0; i--) {
-    const j = Math.floor(random() * (i + 1));
-    [years[i], years[j]] = [years[j], years[i]];
-  }
-  return years
-    .slice(0, count)
-    .sort((a, b) => a - b)
-    .map((year) => {
-      const options = byYear.get(year)!;
-      return options[Math.floor(random() * options.length)];
-    });
-}
