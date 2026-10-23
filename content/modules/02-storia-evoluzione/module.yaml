@@ -1,0 +1,21 @@
+id: storia-evoluzione
+order: 2
+title: "Evoluzione: da Internet a oggi"
+subtitle: Dal web per tutti al ransomware moderno
+description: Come la cybersecurity passa da curiosità tecnica a industria, crimine organizzato e questione geopolitica. Dai worm di massa a Stuxnet, da Heartbleed a SolarWinds, fino alle regole di oggi.
+icon: globe
+color: violet
+requires:
+  - storia-origini
+estimatedMinutes: 95
+badge:
+  id: cronista-della-rete
+  name: Cronista della rete
+lessons:
+  - 01-anni-90-web
+  - 02-worm-di-massa
+  - 03-crimine-industria
+  - 04-stati-cyberguerra
+  - 05-vulnerabilita-internet
+  - 06-supply-chain-ransomware
+  - 07-oggi-e-domani

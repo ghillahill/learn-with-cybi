@@ -1,0 +1,129 @@
+---
+id: stati-cyberguerra
+title: Stati e cyberguerra
+minutes: 15
+xp: 70
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Capire cosa cambia quando ad attaccare sono gli Stati (APT)
+  - Conoscere i casi di Estonia 2007, Stuxnet, Ucraina 2015 e NotPetya
+  - Distinguere un'attribuzione ufficiale da una non confermata
+sources:
+  - id: stratcom-estonia
+    level: B
+    title: 2007 cyber attacks on Estonia
+    publisher: NATO StratCom COE
+    url: https://stratcomcoe.org/hybrid-threats-2007-cyber-attacks-estonia
+  - id: rferl-goloskokov
+    level: B
+    title: Russian Group's Claims Reopen Debate On Estonian Cyberattacks
+    publisher: Radio Free Europe/Radio Liberty
+    year: 2009
+    url: https://www.rferl.org/a/Russian_Groups_Claims_Reopen_Debate_On_Estonian_Cyberattacks_/1564694.html
+  - id: symantec-stuxnet
+    level: B
+    title: W32.Stuxnet Dossier
+    author: Nicolas Falliere, Liam O Murchu, Eric Chien
+    publisher: Symantec
+    year: 2011
+  - id: zetter-countdown
+    level: B
+    title: "Countdown to Zero Day"
+    author: Kim Zetter
+    year: 2014
+  - id: register-olympic-games
+    level: B
+    title: Articolo del New York Times sull'operazione "Olympic Games"
+    publisher: The Register
+    year: 2012
+    url: https://www.theregister.co.uk/2012/06/01/stuxnet_joint_us_israeli_op/
+  - id: parliament-guardian
+    level: A
+    title: Testimonianza scritta del Guardian Media Group
+    publisher: UK Parliament
+    url: https://committees.parliament.uk/writtenevidence/47696/html/
+  - id: sans-ukraine-grid
+    level: B
+    title: Analysis of the Cyber Attack on the Ukrainian Power Grid
+    publisher: E-ISAC / SANS
+    year: 2016
+    url: https://nsarchive.gwu.edu/sites/default/files/documents/3891751/SANS-and-Electricity-Information-Sharing-and.pdf
+  - id: helpnet-notpetya
+    level: B
+    title: UK government blames Russia for NotPetya attack
+    publisher: Help Net Security
+    year: 2018
+    url: https://www.helpnetsecurity.com/2018/02/15/uk-government-blames-russia-notpetya-attack/
+  - id: tripwire-notpetya
+    level: B
+    title: UK Government publicly attributes NotPetya outbreak to Russia
+    publisher: Tripwire
+    year: 2018
+    url: https://www.tripwire.com/state-of-security/uk-government-publicly-attributes-notpetya-outbreak-russia
+quiz: stati-cyberguerra
+---
+
+<Cybi mood="preoccupato">
+Finora abbiamo visto studenti, criminali e curiosi. In questa lezione entrano in scena gli Stati, con servizi segreti ed eserciti. E quando attacca uno Stato, capire chi è stato diventa difficilissimo.
+</Cybi>
+
+## Un nuovo tipo di avversario: le APT
+
+Un'<Term id="apt">APT</Term> (Advanced Persistent Threat, "minaccia avanzata persistente") è un avversario con grandi competenze e risorse. Non cerca un colpo veloce: entra nei sistemi di un'organizzazione, ci resta a lungo e si adatta alle difese, per rubare informazioni o sabotarne le attività. Tieni a mente questa idea mentre leggi i casi di questa lezione.
+
+## Estonia 2007: un Paese sotto DDoS
+
+Dalla fine di aprile 2007, per circa tre settimane, attacchi <Term id="ddos">DDoS</Term> colpiscono i siti del governo, del parlamento, delle banche e dei media dell'**Estonia**. Gli attacchi iniziano dopo la decisione di spostare il "Soldato di bronzo", un monumento sovietico di Tallinn. Nel maggio 2008 nasce proprio a Tallinn il centro di eccellenza della NATO per la cyberdifesa (CCDCOE).<Cite id="stratcom-estonia" />
+
+Chi c'era dietro? La Russia nega ogni coinvolgimento. Nel settembre 2007 il ministro della difesa estone ammette di non avere prove di un ruolo delle autorità russe.<Cite id="stratcom-estonia" /> Nel 2009 Konstantin Goloskokov, attivista di Nashi, movimento giovanile vicino al Cremlino, rivendica gli attacchi.<Cite id="rferl-goloskokov" />
+
+<Callout type="warning" title="Attribuzione non provata">
+Il coinvolgimento dello Stato russo negli attacchi all'Estonia non è mai stato provato. Una rivendicazione individuale non basta a dimostrare chi abbia organizzato un attacco.
+</Callout>
+
+## Stuxnet: un malware contro le centrifughe
+
+Nel giugno 2010 l'azienda bielorussa VirusBlokAda individua **Stuxnet**. Il primo resoconto ampiamente letto è sul blog del giornalista Brian Krebs, il 15 luglio 2010.<Cite id="zetter-countdown" />
+
+Stuxnet si diffonde attraverso Windows, ma il vero bersaglio sono i **PLC** Siemens, i computer industriali che comandano macchinari: manipola il software Step 7 che li programma. Nell'agosto 2010 circa il 60% dei computer infetti si trova in Iran; l'obiettivo è l'impianto di arricchimento dell'uranio di Natanz. Symantec pubblica l'analisi completa nel febbraio 2011.<Cite id="symantec-stuxnet" />
+
+<Callout type="warning" title="Chi ha creato Stuxnet? Dibattuto">
+Nel giugno 2012 il *New York Times* scrive, citando funzionari anonimi, che Stuxnet fa parte di un'operazione di Stati Uniti e Israele chiamata "Olympic Games".<Cite id="register-olympic-games" /> Nessuno dei due governi lo ha mai confermato ufficialmente.
+</Callout>
+
+<Cybi mood="sorpreso">
+Stuxnet mostra che un programma può uscire dallo schermo e colpire macchine vere. La sicurezza informatica riguarda anche fabbriche, centrali e impianti.
+</Cybi>
+
+## Snowden e la sorveglianza di massa
+
+Il 5 giugno 2013 (il 6 giugno, ora britannica) il quotidiano *Guardian* pubblica il primo articolo basato sui documenti di **Edward Snowden**: la NSA, l'agenzia americana per l'intelligence dei segnali, raccoglie in massa i tabulati telefonici dei clienti di Verizon. Il giorno dopo escono gli articoli sul programma **PRISM**.<Cite id="parliament-guardian" />
+
+## Ucraina 2015: il primo blackout da attacco informatico
+
+Il 23 dicembre 2015 un attacco colpisce tre aziende di distribuzione elettrica ucraine: circa **225.000** utenti restano senza corrente per un periodo da 1 a 6 ore. Gli attaccanti erano entrati mesi prima con email di *spear phishing* (phishing mirato a persone precise) che contenevano il malware BlackEnergy 3. È il primo blackout causato da un attacco informatico riconosciuto pubblicamente.<Cite id="sans-ukraine-grid" />
+
+## NotPetya: un finto ransomware
+
+Il 27 giugno 2017 **NotPetya** parte da un aggiornamento manomesso di M.E.Doc, un software di contabilità ucraino, e si propaga con l'<Term id="exploit">exploit</Term> EternalBlue. Si presenta come un <Term id="ransomware">ransomware</Term>, ma è progettato per distruggere: i dati non si possono recuperare.<Cite id="tripwire-notpetya" />
+
+Il 15 febbraio 2018 Regno Unito e Stati Uniti attribuiscono ufficialmente l'attacco all'esercito russo (il servizio di intelligence militare GRU, gruppo noto come Sandworm). Il National Cyber Security Centre britannico lo giudica "quasi certamente" responsabile.<Cite id="helpnet-notpetya" />
+
+<MythVsFact
+  myth="NotPetya era un ransomware: pagando, le vittime riavevano i dati."
+  fact="NotPetya si presentava come ransomware, ma era progettato per distruggere: i dati non si potevano recuperare."
+  source="tripwire-notpetya"
+/>
+
+<Cybi mood="detective">
+Nota la differenza tra Stuxnet e NotPetya: nel primo caso l'attribuzione viene da fonti anonime, nel secondo da una dichiarazione ufficiale di due governi. Quando leggi "è stato il Paese X", chiediti sempre: chi lo dice, e con quali prove?
+</Cybi>
+
+<KeyPoints>
+- Un'APT è un avversario con grandi risorse che resta a lungo nei sistemi e si adatta alle difese.
+- Estonia 2007: tre settimane di DDoS; il ruolo dello Stato russo non è mai stato provato.
+- Stuxnet (scoperto nel giugno 2010) colpisce i PLC Siemens di Natanz; l'attribuzione a USA e Israele viene da fonti anonime.
+- 23 dicembre 2015: il primo blackout causato da un attacco informatico riconosciuto pubblicamente, in Ucraina.
+- NotPetya (2017) sembra un ransomware ma distrugge; nel 2018 Regno Unito e USA lo attribuiscono ufficialmente al GRU russo.
+</KeyPoints>

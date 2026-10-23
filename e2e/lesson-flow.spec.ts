@@ -48,3 +48,23 @@ test("quiz con domande order e match", async ({ page }) => {
   await page.goto("/moduli/storia-origini/arpanet-creeper-crittografia");
   await completeQuiz(page, loadQuiz("01-storia-origini", "arpanet-creeper-crittografia"));
 });
+
+test("tutti i quiz del Modulo 2 si completano con le risposte corrette", async ({ page }) => {
+  test.slow();
+  await enableFreeMode(page);
+
+  for (const id of [
+    "anni-90-web",
+    "worm-di-massa",
+    "crimine-industria",
+    "stati-cyberguerra",
+    "vulnerabilita-internet",
+    "supply-chain-ransomware",
+    "oggi-e-domani",
+  ]) {
+    const quiz = loadQuiz("02-storia-evoluzione", id);
+    await page.goto(`/moduli/storia-evoluzione/${id}`);
+    await completeQuiz(page, quiz);
+    await expect(page.getByText(`${quiz.questions.length} risposte corrette su`)).toBeVisible();
+  }
+});

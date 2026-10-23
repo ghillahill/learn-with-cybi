@@ -210,3 +210,90 @@ entries:
         title: Ransomware General Security Postcard
         publisher: CISA
         url: https://www.cisa.gov/sites/default/files/publications/Ransomware%20General%20Security%20Postcard%206.23.2021_508c.pdf
+
+  - id: exploit
+    term: Exploit
+    definition: Tecnica per violare la sicurezza di una rete o di un sistema informatico, contro le regole di sicurezza. Di solito sfrutta una vulnerabilità.
+    sources:
+      - &niccs
+        id: cisa-niccs-glossary
+        level: A
+        title: NICCS Cybersecurity Glossary
+        publisher: CISA
+        url: https://niccs.cisa.gov/resources/glossary
+
+  - id: patch
+    term: Patch
+    definition: Correzione di un programma ("fix") distribuita agli utenti per risolvere un problema individuato, come un difetto di sicurezza. È la soluzione immediata, non sempre quella definitiva.
+    sources:
+      - id: nist-patch
+        level: A
+        title: NIST CSRC Glossary, "patch"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/patch
+        note: Definizione tratta da NIST SP 800-45 Version 2.
+
+  - id: zero-day
+    term: Zero-day
+    definition: Attacco che sfrutta una vulnerabilità dell'hardware, del firmware o del software non ancora nota. Chi difende ha avuto "zero giorni" per correggerla.
+    sources:
+      - id: nist-zero-day
+        level: A
+        title: NIST CSRC Glossary, "zero day attack"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/zero_day_attack
+        note: Definizione tratta da CNSSI 4009-2022. La spiegazione del nome è una parafrasi didattica.
+
+  - id: botnet
+    term: Botnet
+    definition: Rete di dispositivi collegati a Internet (computer, smartphone, oggetti IoT) presi sotto controllo da un criminale, che li comanda a distanza. Si usa per attacchi DDoS, spam e furto di dati.
+    sources:
+      - *niccs
+      - id: nist-botnet
+        level: A
+        title: NIST CSRC Glossary, "botnet"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/botnet
+
+  - id: ddos
+    term: DDoS (Distributed Denial of Service)
+    definition: Attacco che rende un servizio irraggiungibile (denial of service) usando contemporaneamente moltissimi computer o dispositivi.
+    sources:
+      - id: nist-ddos
+        level: A
+        title: NIST CSRC Glossary, "distributed denial of service"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/distributed_denial_of_service
+
+  - id: apt
+    term: APT (Advanced Persistent Threat)
+    definition: Avversario con grandi competenze e risorse, che usa più strade d'attacco per entrare nei sistemi di un'organizzazione e restarci a lungo, per rubare informazioni o danneggiarne le attività. Insiste nel tempo e si adatta alle difese.
+    sources:
+      - id: nist-apt
+        level: A
+        title: NIST CSRC Glossary, "advanced persistent threat"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/advanced_persistent_threat
+        note: Definizione tratta da NIST SP 800-39.
+
+  - id: backdoor
+    term: Backdoor
+    definition: Modo non documentato di accedere a un sistema informatico, una "porta sul retro" che aggira i controlli normali. È un rischio per la sicurezza.
+    sources:
+      - id: nist-backdoor
+        level: A
+        title: NIST CSRC Glossary, "backdoor"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/backdoor
+        note: Definizione tratta da NIST SP 800-82r3.
+
+  - id: attacco-supply-chain
+    term: Attacco alla supply chain
+    definition: Attacco in cui l'avversario sfrutta le vulnerabilità della catena di fornitura (supply chain) dell'obiettivo, cioè dei prodotti o servizi da cui dipende, per esempio un software e i suoi aggiornamenti.
+    sources:
+      - id: nist-supply-chain-attack
+        level: A
+        title: NIST CSRC Glossary, "supply chain attack"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/supply_chain_attack
+        note: Definizione tratta da CNSSI 4009-2022.

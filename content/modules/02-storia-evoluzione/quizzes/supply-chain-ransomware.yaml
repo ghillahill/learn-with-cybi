@@ -1,0 +1,75 @@
+id: supply-chain-ransomware
+passingScore: 0.7
+questions:
+  - id: doppia-estorsione
+    type: single
+    prompt: Cos'è la "doppia estorsione" introdotta da Maze nel 2019?
+    options:
+      - text: Rubare i dati prima di cifrarli e minacciare di pubblicarli
+        correct: true
+        explain: Giusto. Così anche chi ha un backup subisce un ricatto.
+      - text: Chiedere il riscatto due volte alla stessa vittima
+        correct: false
+        explain: No. Le due minacce sono la cifratura dei dati e la loro pubblicazione.
+      - text: Attaccare due aziende nello stesso giorno
+        correct: false
+        explain: No. Riguarda le due minacce rivolte alla stessa vittima.
+
+  - id: supply-chain
+    type: single
+    prompt: Cosa rende SolarWinds un attacco alla supply chain?
+    options:
+      - text: Gli attaccanti hanno manomesso gli aggiornamenti di un software usato da molti clienti
+        correct: true
+        explain: Esatto. Chi installava l'aggiornamento ufficiale di Orion installava anche il codice degli attaccanti.
+      - text: Gli attaccanti hanno rubato camion di merci
+        correct: false
+        explain: No. La "catena di fornitura" qui è quella del software.
+      - text: Gli attaccanti hanno indovinato le password dei dipendenti
+        correct: false
+        explain: No. Il punto d'ingresso erano gli aggiornamenti manomessi.
+
+  - id: colonial
+    type: truefalse
+    prompt: Gli attaccanti di Colonial Pipeline sono entrati da un account VPN protetto dall'autenticazione a più fattori.
+    options:
+      - text: Vero
+        correct: false
+        explain: "No. È il contrario: l'account VPN compromesso non aveva l'autenticazione a più fattori."
+      - text: Falso
+        correct: true
+        explain: Giusto. L'account VPN compromesso non aveva l'autenticazione a più fattori.
+
+  - id: xz
+    type: multiple
+    prompt: Quali affermazioni sulla backdoor di XZ Utils sono corrette?
+    options:
+      - text: Andres Freund se ne accorge perché i login SSH sono più lenti di circa mezzo secondo
+        correct: true
+        explain: Sì. Da circa 0,3 a 0,8 secondi.
+      - text: Era nascosta in file di test binari, non nel codice sorgente visibile
+        correct: true
+        explain: Sì. Per questo leggere il codice non bastava a trovarla.
+      - text: Viene scoperta prima di arrivare nelle versioni stabili delle principali distribuzioni Linux
+        correct: true
+        explain: Sì. È stata fermata in tempo.
+      - text: Era presente in tutte le versioni di XZ Utils dal 2010
+        correct: false
+        explain: No. Riguardava solo le versioni 5.6.0 e 5.6.1.
+
+  - id: abbina
+    type: match
+    prompt: Abbina ogni attacco al gruppo o al protagonista.
+    pairs:
+      - left: Colonial Pipeline (2021)
+        right: DarkSide
+        explain: Il riscatto pagato fu di circa 75 bitcoin; il Dipartimento di Giustizia ne sequestrò 63,7.
+      - left: Kaseya VSA (2021)
+        right: REvil
+        explain: Migliaia di vittime in almeno 17 paesi.
+      - left: MOVEit Transfer (2023)
+        right: Cl0p
+        explain: Una SQL injection ancora sconosciuta (CVE-2023-34362).
+      - left: SolarWinds (2020)
+        right: SVR russo (APT29)
+        explain: Attribuzione ufficiale di Stati Uniti e Regno Unito, 15 aprile 2021.

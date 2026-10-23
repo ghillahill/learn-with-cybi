@@ -168,9 +168,9 @@ sources:
   # Modulo 2
   - id: cern-public-domain
     level: A
-    title: CERN puts the World Wide Web in the public domain
+    title: A short history of the Web
     publisher: CERN
-    url: https://timeline.web.cern.ch/node/794
+    url: https://home.cern/science/computing/the-birth-of-the-web/short-history-web/
   - id: doj-mitnick-1995
     level: A
     title: Comunicato sull'arresto di Kevin Mitnick (15/02/1995)
@@ -182,6 +182,7 @@ sources:
     title: "RFC 2246: The TLS Protocol Version 1.0"
     publisher: IETF
     year: 1999
+    url: https://www.rfc-editor.org/rfc/rfc2246
   - id: cve-history
     level: A
     title: History of the CVE Program
@@ -271,11 +272,13 @@ sources:
     title: Regolamento (UE) 2016/679 (GDPR), art. 99
     publisher: EUR-Lex
     year: 2016
+    url: https://eur-lex.europa.eu/eli/reg/2016/679/oj
   - id: cisa-ed-21-01
     level: A
     title: Emergency Directive 21-01
     publisher: CISA
     year: 2020
+    url: https://www.cisa.gov/news-events/directives/ed-21-01-mitigate-solarwinds-orion-code-compromise
   - id: doj-colonial
     level: A
     title: Department of Justice seizes $2.3 million in cryptocurrency paid to the ransomware extortionists DarkSide
@@ -641,6 +644,7 @@ events:
     description: >-
       Il CERN rinuncia a ogni diritto sul software del World Wide Web: il Web
       diventa uno standard aperto.
+    lesson: { module: storia-evoluzione, lesson: anni-90-web }
     sources: [cern-public-domain]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -664,6 +668,7 @@ events:
     description: >-
       L'FBI arresta Kevin Mitnick a Raleigh dopo una caccia elettronica di due
       settimane. Mitnick è famoso soprattutto per l'ingegneria sociale.
+    lesson: { module: storia-evoluzione, lesson: anni-90-web }
     sources: [doj-mitnick-1995]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -674,6 +679,7 @@ events:
     title: Nasce TLS 1.0
     description: >-
       L'IETF pubblica TLS 1.0 (RFC 2246), il successore di SSL 3.0 di Netscape.
+    lesson: { module: storia-evoluzione, lesson: anni-90-web }
     sources: [rfc-2246]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -686,6 +692,7 @@ events:
       Un macro virus in un documento Word che si invia da solo ai primi 50
       contatti della rubrica. L'FBI stima circa 80 milioni di dollari di danni.
     note: Il danno è una stima dell'FBI.
+    lesson: { module: storia-evoluzione, lesson: worm-di-massa }
     sources: [fbi-melissa]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -697,6 +704,7 @@ events:
     description: >-
       MITRE pubblica la prima lista CVE, con 321 voci. Da allora ogni
       vulnerabilità nota ha un identificatore comune.
+    lesson: { module: storia-evoluzione, lesson: anni-90-web }
     sources: [cve-history]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -709,6 +717,7 @@ events:
       Un worm si diffonde via email con l'allegato LOVE-LETTER-FOR-YOU.TXT.VBS.
       In poche ore il CERT riceve segnalazioni di oltre 300.000 sistemi colpiti.
     note: Le stime dei computer infettati in tutto il mondo variano molto tra le fonti.
+    lesson: { module: storia-evoluzione, lesson: worm-di-massa }
     sources: [cert-ca-2000-04]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -720,6 +729,7 @@ events:
     description: >-
       Bill Gates scrive a tutti i dipendenti Microsoft: tra nuove funzioni e
       sicurezza, si sceglie la sicurezza.
+    lesson: { module: storia-evoluzione, lesson: worm-di-massa }
     sources: [microsoft-twc-20]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -731,6 +741,7 @@ events:
     description: >-
       Sfrutta un buffer overflow in Microsoft SQL Server e infetta oltre il 90%
       degli host vulnerabili in circa 10 minuti.
+    lesson: { module: storia-evoluzione, lesson: worm-di-massa }
     sources: [moore-slammer]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -742,6 +753,7 @@ events:
     description: >-
       Microsoft raggruppa le correzioni di sicurezza in un'uscita mensile
       prevedibile.
+    lesson: { module: storia-evoluzione, lesson: worm-di-massa }
     sources: [msrc-patch-tuesday]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -755,6 +767,7 @@ events:
       parlamento, delle banche e dei media estoni, dopo lo spostamento del
       "Soldato di bronzo" di Tallinn.
     note: La Russia nega ogni coinvolgimento e il ruolo dello Stato russo non è mai stato provato.
+    lesson: { module: storia-evoluzione, lesson: stati-cyberguerra }
     sources: [stratcom-estonia]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -768,6 +781,7 @@ events:
       Siemens. L'obiettivo è l'impianto di arricchimento dell'uranio di Natanz,
       in Iran.
     note: L'attribuzione a USA e Israele viene da fonti anonime; nessuno dei due governi l'ha confermata.
+    lesson: { module: storia-evoluzione, lesson: stati-cyberguerra }
     sources: [zetter-countdown]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -780,6 +794,7 @@ events:
       Il Guardian rivela la raccolta di massa dei tabulati telefonici Verizon da
       parte della NSA. Il giorno dopo escono gli articoli su PRISM.
     note: Il 6 giugno secondo l'ora britannica.
+    lesson: { module: storia-evoluzione, lesson: stati-cyberguerra }
     sources: [parliament-guardian]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -791,6 +806,7 @@ events:
     description: >-
       Un ransomware che cifra i file delle vittime e chiede un riscatto in
       Bitcoin. Si diffonde con email di phishing e con la botnet Gameover ZeuS.
+    lesson: { module: storia-evoluzione, lesson: crimine-industria }
     sources: [sophos-cryptolocker]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -802,6 +818,7 @@ events:
     description: >-
       Un bug in OpenSSL 1.0.1 (CVE-2014-0160) permette di leggere la memoria
       del server, incluse le chiavi private.
+    lesson: { module: storia-evoluzione, lesson: vulnerabilita-internet }
     sources: [nvd-heartbleed]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -814,6 +831,7 @@ events:
       Un attacco a tre aziende elettriche ucraine lascia circa 225.000 utenti
       senza corrente. È il primo blackout causato da un attacco informatico
       riconosciuto pubblicamente.
+    lesson: { module: storia-evoluzione, lesson: stati-cyberguerra }
     sources: [sans-ukraine-grid]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -826,6 +844,7 @@ events:
       Botnet di dispositivi IoT con password di fabbrica attaccano il provider
       DNS Dyn: molti siti famosi diventano irraggiungibili per tanti utenti.
     note: Dyn stima fino a 100.000 dispositivi coinvolti.
+    lesson: { module: storia-evoluzione, lesson: oggi-e-domani }
     sources: [nhbr-dyn]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -838,6 +857,7 @@ events:
       Un ransomware sfrutta EternalBlue contro i sistemi non aggiornati: la
       patch esisteva da due mesi. Nel Regno Unito colpisce almeno 81 dei 236
       trust del servizio sanitario.
+    lesson: { module: storia-evoluzione, lesson: vulnerabilita-internet }
     sources: [nao-wannacry]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -851,6 +871,7 @@ events:
       Sembra un ransomware, ma è fatto per distruggere: i dati non si possono
       recuperare.
     note: Regno Unito e Stati Uniti lo attribuiscono all'esercito russo (GRU) il 15 febbraio 2018.
+    lesson: { module: storia-evoluzione, lesson: stati-cyberguerra }
     sources: [helpnet-notpetya]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -862,6 +883,7 @@ events:
     description: >-
       Il Regolamento generale sulla protezione dei dati (UE 2016/679) si applica
       in tutta l'Unione europea.
+    lesson: { module: storia-evoluzione, lesson: oggi-e-domani }
     sources: [gdpr]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -874,6 +896,7 @@ events:
       Si scopre che gli aggiornamenti del software Orion erano stati manomessi:
       un attacco alla supply chain. CISA emette la direttiva di emergenza 21-01.
     note: Il 15 aprile 2021 Stati Uniti e Regno Unito lo attribuiscono ufficialmente all'SVR russo.
+    lesson: { module: storia-evoluzione, lesson: supply-chain-ransomware }
     sources: [cisa-ed-21-01]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -886,6 +909,7 @@ events:
       Il ransomware DarkSide entra da un account VPN senza autenticazione a più
       fattori. L'azienda ferma l'oleodotto e paga circa 75 bitcoin; il
       Dipartimento di Giustizia USA ne sequestra 63,7.
+    lesson: { module: storia-evoluzione, lesson: supply-chain-ransomware }
     sources: [doj-colonial]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -896,6 +920,7 @@ events:
     title: Nasce l'Agenzia per la Cybersicurezza Nazionale
     description: >-
       In Italia il decreto-legge 82/2021 istituisce l'ACN.
+    lesson: { module: storia-evoluzione, lesson: oggi-e-domani }
     sources: [dl-82-2021]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -907,6 +932,7 @@ events:
     description: >-
       Una vulnerabilità nella libreria Java Log4j (CVE-2021-44228), segnalata in
       privato ad Apache due settimane prima.
+    lesson: { module: storia-evoluzione, lesson: vulnerabilita-internet }
     sources: [nvd-log4shell]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -919,6 +945,7 @@ events:
       Andres Freund nota che i login SSH sono più lenti di circa mezzo secondo e
       scopre una backdoor nelle versioni 5.6.0 e 5.6.1 di XZ Utils, prima che
       arrivi nelle versioni stabili delle principali distribuzioni Linux.
+    lesson: { module: storia-evoluzione, lesson: supply-chain-ransomware }
     sources: [freund-xz]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -931,6 +958,7 @@ events:
       Un file di configurazione difettoso del software di sicurezza Falcon manda
       in crash milioni di computer Windows. Anche la disponibilità è sicurezza.
     note: Microsoft stima circa 8,5 milioni di computer coinvolti.
+    lesson: { module: storia-evoluzione, lesson: oggi-e-domani }
     sources: [crowdstrike-rca, techtarget-crowdstrike]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -942,6 +970,7 @@ events:
     description: >-
       Il NIST approva FIPS 203, 204 e 205, i primi standard di crittografia
       pensati per resistere ai computer quantistici.
+    lesson: { module: storia-evoluzione, lesson: oggi-e-domani }
     sources: [nist-pqc]
     status: fonti-verificate
     lastVerified: 2026-10-22
@@ -953,6 +982,7 @@ events:
     description: >-
       Il decreto legislativo 138/2024 recepisce la direttiva europea NIS2;
       l'ACN è l'autorità nazionale competente.
+    lesson: { module: storia-evoluzione, lesson: oggi-e-domani }
     sources: [dlgs-138-2024]
     status: fonti-verificate
     lastVerified: 2026-10-22

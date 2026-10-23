@@ -1,0 +1,69 @@
+id: anni-90-web
+passingScore: 0.7
+questions:
+  - id: pubblico-dominio
+    type: single
+    prompt: Cosa fa il CERN il 30 aprile 1993?
+    options:
+      - text: Mette il software del Web nel pubblico dominio
+        correct: true
+        explain: Giusto. Chiunque può usarlo senza pagare, e il Web resta uno standard aperto.
+      - text: Brevetta il World Wide Web
+        correct: false
+        explain: "No. È il contrario: il CERN rinuncia a ogni diritto."
+      - text: Pubblica la prima proposta di Tim Berners-Lee
+        correct: false
+        explain: No. La prima proposta di Berners-Lee è del marzo 1989.
+
+  - id: mitnick
+    type: single
+    prompt: Per quale tecnica è famoso soprattutto Kevin Mitnick?
+    options:
+      - text: L'ingegneria sociale, cioè convincere le persone a dare informazioni o accessi
+        correct: true
+        explain: Esatto. Lui stesso la descrive nel libro "The Art of Deception" (2002).
+      - text: La scrittura dei primi virus per PC
+        correct: false
+        explain: No. Il primo virus per PC è Brain (1986), dei fratelli Alvi.
+      - text: L'invenzione di SSL
+        correct: false
+        explain: No. SSL è stato creato da Netscape.
+
+  - id: arresto
+    type: truefalse
+    prompt: "Quando viene arrestato nel 1995, l'accusa formale contro Mitnick è la violazione della libertà vigilata."
+    options:
+      - text: Vero
+        correct: true
+        explain: Giusto. Era già stato condannato nel 1988.
+      - text: Falso
+        correct: false
+        explain: Invece è vero. Secondo il Dipartimento di Giustizia americano, l'accusa al momento dell'arresto è la violazione della libertà vigilata.
+
+  - id: ssl-tls
+    type: multiple
+    prompt: Quali affermazioni su SSL e TLS sono corrette?
+    options:
+      - text: SSL 1.0 non è mai stato pubblicato
+        correct: true
+        explain: Sì. Aveva troppi difetti.
+      - text: TLS 1.0 (RFC 2246, 1999) è il successore di SSL 3.0
+        correct: true
+        explain: Sì. Lo pubblica l'IETF nel gennaio 1999.
+      - text: SSL è stato creato dal CERN insieme al Web
+        correct: false
+        explain: No. SSL è stato creato dall'azienda Netscape.
+
+  - id: cve
+    type: single
+    prompt: A cosa serve la lista CVE, pubblicata da MITRE nel settembre 1999?
+    options:
+      - text: A dare un identificatore comune a ogni vulnerabilità nota
+        correct: true
+        explain: Giusto. Per esempio CVE-2014-0160. La prima lista aveva 321 voci.
+      - text: A elencare gli hacker ricercati dall'FBI
+        correct: false
+        explain: No. CVE riguarda le vulnerabilità, non le persone.
+      - text: A cifrare le pagine web
+        correct: false
+        explain: No. Questo è il compito di SSL/TLS.

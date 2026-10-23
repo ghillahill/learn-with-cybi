@@ -1,0 +1,95 @@
+---
+id: crimine-industria
+title: "Il crimine diventa un'industria (2005–2015)"
+minutes: 12
+xp: 60
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Capire perché gli attacchi passano dalla sfida personale al guadagno
+  - Conoscere Zeus e CryptoLocker, e il ruolo delle botnet
+  - Conoscere due grandi furti di dati (Target, Yahoo)
+sources:
+  - id: itpro-zeus
+    level: B
+    title: "Timeline: three years of Zeus terror"
+    publisher: ITPro
+    url: https://itpro.com/625912/timeline-three-years-of-zeus-terror
+  - id: sophos-cryptolocker
+    level: B
+    title: CryptoLocker ransomware
+    publisher: Sophos / Dell SecureWorks
+    url: https://www.sophos.com/research/cryptolocker-ransomware
+  - id: us-cert-ta13-309a
+    level: A
+    title: "Alert TA13-309A: CryptoLocker Ransomware Infections"
+    publisher: US-CERT (CISA)
+    year: 2013
+    url: https://cisa.gov/ncas/alerts/TA13-309A
+  - id: krebs-tovar
+    level: B
+    title: Operation Tovar
+    publisher: Krebs on Security
+    year: 2014
+    url: https://krebsonsecurity.com/page/164/
+  - id: infoworld-target
+    level: B
+    title: Target says 40 million cards likely skimmed in security breach
+    publisher: InfoWorld
+    year: 2013
+    url: https://www.infoworld.com/article/2183937/target-says-40-million-cards-likely-skimmed-in-security-breach-2.html
+  - id: darkreading-yahoo
+    level: B
+    title: "Yahoo: All 3 billion accounts affected in 2013 breach"
+    publisher: Dark Reading
+    year: 2017
+    url: https://www.darkreading.com/attacks-breaches/yahoo-all-3-billion-accounts-affected-in-2013-breach/d/d-id/1330039
+quiz: crimine-industria
+---
+
+<Cybi mood="pensieroso">
+Fino a qui abbiamo visto tanti attacchi nati per curiosità, sfida o protesta. Da metà anni 2000 cambia tutto: chi attacca vuole soprattutto soldi.
+</Cybi>
+
+## Un'economia criminale
+
+In questi anni <Term id="botnet">botnet</Term>, trojan bancari e mercati di carte di credito rubate diventano una vera economia criminale. Una botnet è una rete di dispositivi presi sotto controllo e comandati a distanza: chi la possiede può usarla per spedire spam, rubare dati o lanciare attacchi.
+
+## Zeus, il trojan bancario
+
+Un *trojan bancario* è un programma malevolo che punta ai dati dei conti bancari online; vedremo meglio i trojan nel Modulo 6. Il più famoso di quegli anni è **Zeus**: viene identificato per la prima volta nel luglio 2007, in un furto di dati al Dipartimento dei Trasporti degli Stati Uniti, e si diffonde molto dal 2009.<Cite id="itpro-zeus" />
+
+<Callout type="warning" title="Origine incerta">
+Non è chiaro chi abbia creato Zeus né quando sia nato esattamente: il 2007 è la data del primo caso identificato, non della sua creazione.
+</Callout>
+
+## CryptoLocker: i file in ostaggio
+
+Ricordi l'AIDS Trojan del 1989, il primo <Term id="ransomware">ransomware</Term>? Ventiquattro anni dopo l'idea torna, molto più efficace.
+
+**CryptoLocker** compare nel settembre 2013: i primi campioni sono del 5 settembre e Dell SecureWorks lo individua a metà mese. Cifra i file delle vittime e chiede un riscatto in Bitcoin. Si diffonde con email di <Term id="phishing">phishing</Term>, per esempio finte notifiche di spedizione, e attraverso la botnet Gameover ZeuS.<Cite id="sophos-cryptolocker" />
+
+Il 5 novembre 2013 US-CERT, la squadra di emergenza informatica del governo americano, pubblica un avviso ufficiale su CryptoLocker.<Cite id="us-cert-ta13-309a" /> Nel giugno 2014 l'operazione internazionale **Tovar** abbatte Gameover ZeuS e CryptoLocker.<Cite id="krebs-tovar" />
+
+<Cybi mood="sorpreso">
+Nessuno sa con precisione quanto abbia incassato CryptoLocker: le stime variano. Ma una cosa è chiara: con i riscatti in Bitcoin, il ransomware diventa un affare.
+</Cybi>
+
+## Furti di dati da record
+
+Nel dicembre 2013 la catena di negozi americana **Target** dichiara il furto dei dati di circa **40 milioni** di carte di credito e di debito, usate nei suoi negozi tra il 27 novembre e il 15 dicembre.<Cite id="infoworld-target" />
+
+Nell'ottobre 2017 **Yahoo** ammette che una violazione dell'agosto 2013 ha colpito **tutti** i suoi circa 3 miliardi di account. In precedenza aveva parlato di 1 miliardo.<Cite id="darkreading-yahoo" />
+
+<MythVsFact
+  myth="Un furto di dati si scopre e si dichiara subito, con numeri precisi."
+  fact="Yahoo ha ammesso solo nell'ottobre 2017 che la violazione del 2013 aveva colpito tutti i suoi circa 3 miliardi di account, dopo aver parlato di 1 miliardo."
+  source="darkreading-yahoo"
+/>
+
+<KeyPoints>
+- Dal 2005 circa gli attacchi diventano soprattutto un affare economico: botnet, trojan bancari, carte rubate.
+- Zeus, trojan bancario, è identificato nel luglio 2007; la sua origine non è chiara.
+- CryptoLocker (settembre 2013) cifra i file e chiede un riscatto in Bitcoin; l'operazione Tovar lo abbatte nel giugno 2014.
+- Target (2013): circa 40 milioni di carte. Yahoo: tutti i circa 3 miliardi di account, ammesso solo nel 2017.
+</KeyPoints>

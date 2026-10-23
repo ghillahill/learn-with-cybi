@@ -1,0 +1,137 @@
+---
+id: worm-di-massa
+title: "L'era dei worm di massa (1999–2004)"
+minutes: 14
+xp: 70
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Conoscere i grandi worm e virus di inizio millennio (Melissa, ILOVEYOU, Code Red, Nimda, Slammer, Blaster)
+  - Capire perché l'ingegneria sociale e i server non aggiornati li hanno resi così veloci
+  - Sapere come Microsoft ha cambiato il suo approccio alla sicurezza (Trustworthy Computing, Patch Tuesday)
+sources:
+  - id: fbi-melissa
+    level: A
+    title: Melissa Virus
+    publisher: FBI
+    url: https://www.fbi.gov/history/famous-cases/melissa-virus
+  - id: cert-ca-1999-04
+    level: A
+    title: "CERT Advisory CA-99-04: Melissa Macro Virus"
+    publisher: CERT/CC
+    year: 1999
+    url: https://cert.org/advisories/CA-1999-04.html
+  - id: cert-ca-2000-04
+    level: A
+    title: "CERT Advisory CA-2000-04: Love Letter Worm"
+    publisher: CERT/CC
+    year: 2000
+    url: https://attrition.org/security/advisory/cert/cert-advisory/CA-00.04.windows
+  - id: white-crime-dot-com
+    level: B
+    title: "Crime Dot Com: From Viruses to Vote Rigging, How Hacking Went Global"
+    author: Geoff White
+    year: 2020
+  - id: kaspersky-code-red
+    level: B
+    title: "History lessons: Code Red"
+    publisher: Kaspersky
+    url: https://www.kaspersky.com/blog/history-lessons-code-red/45082/
+  - id: bugtraq-nimda
+    level: A
+    title: Segnalazione di Nimda su Bugtraq (18/09/2001)
+    publisher: Bugtraq (SecLists.org)
+    year: 2001
+    url: https://seclists.org/bugtraq/2001/Sep/191
+  - id: moore-slammer
+    level: A
+    title: Inside the Slammer Worm
+    author: David Moore et al.
+    publisher: IEEE Security & Privacy 1(4)
+    year: 2003
+    url: https://css.csail.mit.edu/6.566/2018/readings/slammer.pdf
+  - id: ms03-026
+    level: A
+    title: "Microsoft Security Bulletin MS03-026"
+    publisher: Microsoft
+    year: 2003
+    url: https://learn.microsoft.com/en-us/security-updates/securitybulletins/2003/ms03-026
+  - id: register-twc-memo
+    level: B
+    title: Testo del memo "Trustworthy Computing" di Bill Gates
+    publisher: The Register
+    year: 2002
+    url: https://www.theregister.com/2002/01/17/ms_highest_priority_must/
+  - id: microsoft-twc-20
+    level: A
+    title: Celebrating 20 years of Trustworthy Computing
+    publisher: Microsoft
+    year: 2022
+    url: https://microsoft.com/en-us/security/blog/2022/01/21/celebrating-20-years-of-trustworthy-computing
+  - id: msrc-patch-tuesday
+    level: A
+    title: Reflecting on 20 years of Patch Tuesday
+    publisher: Microsoft Security Response Center
+    year: 2023
+    url: https://msrc.microsoft.com/blog/2023/11/reflecting-on-20-years-of-patch-tuesday
+quiz: worm-di-massa
+---
+
+<Cybi mood="preoccupato">
+Fine anni '90: quasi tutti hanno un indirizzo email e tanti computer usano gli stessi programmi. Per un worm è come una città dove tutte le porte hanno la stessa serratura.
+</Cybi>
+
+## Melissa: un documento che si spedisce da solo
+
+Il 26 marzo 1999 compare **Melissa**, un *macro virus*: un <Term id="virus">virus</Term> nascosto nelle macro, i piccoli programmi che si possono inserire in un documento Word. Lo ha scritto David L. Smith.<Cite id="fbi-melissa" />
+
+Quando la vittima apre il file, il programma di posta Outlook invia una copia del documento ai **primi 50 contatti** della rubrica. Chi lo riceve vede un messaggio che arriva da una persona conosciuta, e lo apre.<Cite id="fbi-melissa" /> Il giorno dopo il CERT/CC pubblica un avviso ufficiale (advisory) per spiegare come difendersi.<Cite id="cert-ca-1999-04" />
+
+L'FBI stima circa 80 milioni di dollari di danni. Smith viene condannato a 20 mesi di carcere federale.<Cite id="fbi-melissa" />
+
+## ILOVEYOU: chi non apre una lettera d'amore?
+
+Il 4 maggio 2000 un <Term id="worm">worm</Term> scritto in VBScript si diffonde via email con l'allegato `LOVE-LETTER-FOR-YOU.TXT.VBS`. In poche ore il CERT riceve segnalazioni di oltre 300.000 sistemi colpiti.<Cite id="cert-ca-2000-04" />
+
+L'autore è **Onel de Guzman**, uno studente filippino, che lo ammette solo nel 2019 parlando con il giornalista Geoff White. Non viene processato: nelle Filippine non esisteva ancora una legge contro la diffusione di virus.<Cite id="white-crime-dot-com" />
+
+<Callout type="warning" title="Stime molto diverse">
+Le stime dei computer infettati in tutto il mondo da ILOVEYOU variano molto tra le fonti (si parla di decine di milioni). Il dato del CERT, oltre 300.000 sistemi segnalati in poche ore, è più limitato ma documentato.
+</Callout>
+
+<Cybi mood="detective">
+Un messaggio da un amico, una lettera d'amore: Melissa e ILOVEYOU non puntavano solo sul software, ma sulla curiosità e sulla fiducia delle persone. È ingegneria sociale.
+</Cybi>
+
+## Worm che non aspettano nessuno
+
+Melissa e ILOVEYOU avevano bisogno che qualcuno aprisse un allegato. Altri worm, invece, attaccano direttamente i server.
+
+- **Code Red** (luglio 2001) colpisce i server web Microsoft IIS; l'azienda eEye lo scopre il 13 luglio.<Cite id="kaspersky-code-red" />
+- **Nimda** (18 settembre 2001) si diffonde in tre modi diversi: email, siti web compromessi e una vulnerabilità di IIS.<Cite id="bugtraq-nimda" />
+- **SQL Slammer** (25 gennaio 2003) sfrutta un <Term id="buffer-overflow">buffer overflow</Term> in Microsoft SQL Server. Infetta oltre il **90%** degli host vulnerabili in circa **10 minuti**: almeno 75.000 host, ed è una stima minima.<Cite id="moore-slammer" />
+- **Blaster** (agosto 2003) sfrutta una falla del servizio DCOM RPC di Windows. La <Term id="patch">patch</Term> per correggerla (MS03-026) esisteva già da circa un mese.<Cite id="ms03-026" />
+
+<Cybi mood="sorpreso">
+Dieci minuti! Il tempo di un caffè, e quasi tutti i server vulnerabili del mondo sono già infetti. Contro una velocità così, nessun umano fa in tempo a reagire: la difesa va preparata prima.
+</Cybi>
+
+## Microsoft cambia rotta
+
+Il 15 gennaio 2002 Bill Gates invia a tutti i dipendenti Microsoft il memo **"Trustworthy Computing"**. Il principio: quando bisogna scegliere tra aggiungere nuove funzioni e risolvere problemi di sicurezza, si sceglie la sicurezza.<Cite id="register-twc-memo" /><Cite id="microsoft-twc-20" />
+
+Il 14 ottobre 2003 arriva il primo **Patch Tuesday** ufficiale: Microsoft raggruppa le correzioni di sicurezza in un'uscita mensile, sempre nello stesso giorno. Gli amministratori di sistema possono così organizzarsi per installarle.<Cite id="msrc-patch-tuesday" />
+
+<MythVsFact
+  myth="Un worm può colpire solo se qualcuno apre un allegato."
+  fact="Slammer non aveva bisogno di nessuno: sfruttava un buffer overflow in SQL Server e infettò oltre il 90% degli host vulnerabili in circa 10 minuti."
+  source="moore-slammer"
+/>
+
+<KeyPoints>
+- 1999–2000: Melissa e ILOVEYOU si diffondono via email sfruttando la fiducia (contatti conosciuti, una "lettera d'amore").
+- Le stime dei danni e delle infezioni di quegli anni vanno lette come stime.
+- 2001–2003: Code Red, Nimda, Slammer e Blaster attaccano direttamente i server e i computer non aggiornati.
+- Slammer infetta oltre il 90% degli host vulnerabili in circa 10 minuti.
+- Microsoft risponde con il memo Trustworthy Computing (gennaio 2002) e il Patch Tuesday (ottobre 2003).
+</KeyPoints>

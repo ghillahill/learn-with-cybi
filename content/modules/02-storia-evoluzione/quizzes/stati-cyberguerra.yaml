@@ -1,0 +1,84 @@
+id: stati-cyberguerra
+passingScore: 0.7
+questions:
+  - id: apt
+    type: single
+    prompt: Cosa caratterizza un'APT (Advanced Persistent Threat)?
+    options:
+      - text: Grandi competenze e risorse, presenza prolungata nei sistemi e capacità di adattarsi alle difese
+        correct: true
+        explain: Giusto. Non cerca un colpo veloce, ma resta a lungo.
+      - text: Un attacco veloce, che dura pochi minuti
+        correct: false
+        explain: No. "Persistent" vuol dire proprio che insiste a lungo.
+      - text: Un virus che si diffonde solo con i floppy disk
+        correct: false
+        explain: No. Un'APT è un avversario, non un tipo di virus.
+
+  - id: estonia
+    type: truefalse
+    prompt: È stato provato che lo Stato russo ha organizzato gli attacchi all'Estonia del 2007.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. La Russia nega, il ministro estone ammette di non avere prove, e una rivendicazione individuale non basta.
+      - text: Falso
+        correct: true
+        explain: Giusto. Il coinvolgimento dello Stato russo non è mai stato provato.
+
+  - id: stuxnet
+    type: multiple
+    prompt: Quali affermazioni su Stuxnet sono corrette?
+    options:
+      - text: Colpisce i PLC Siemens manipolando il software Step 7
+        correct: true
+        explain: Sì. Si diffonde tramite Windows, ma il bersaglio sono i controllori industriali.
+      - text: L'obiettivo è l'impianto di arricchimento dell'uranio di Natanz, in Iran
+        correct: true
+        explain: Sì. Nell'agosto 2010 circa il 60% dei computer infetti è in Iran.
+      - text: Stati Uniti e Israele hanno confermato ufficialmente di averlo creato
+        correct: false
+        explain: No. L'attribuzione viene da un articolo del New York Times basato su fonti anonime; nessuno dei due governi l'ha confermata.
+
+  - id: ucraina
+    type: single
+    prompt: Cosa succede in Ucraina il 23 dicembre 2015?
+    options:
+      - text: Il primo blackout causato da un attacco informatico riconosciuto pubblicamente
+        correct: true
+        explain: Esatto. Circa 225.000 utenti restano senza corrente da 1 a 6 ore.
+      - text: Il primo attacco ransomware a un ospedale
+        correct: false
+        explain: No. L'attacco colpisce tre aziende di distribuzione elettrica.
+      - text: La scoperta di Stuxnet
+        correct: false
+        explain: No. Stuxnet viene individuato nel giugno 2010 da VirusBlokAda.
+
+  - id: notpetya
+    type: single
+    prompt: Perché NotPetya viene definito un "finto ransomware"?
+    options:
+      - text: Si presenta come ransomware, ma è progettato per distruggere i dati, che non si possono recuperare
+        correct: true
+        explain: Giusto. Pagare non serviva a riavere i dati.
+      - text: Perché non ha mai colpito nessuno
+        correct: false
+        explain: No. Parte da un aggiornamento manomesso del software ucraino M.E.Doc e si propaga con EternalBlue.
+      - text: Perché chiedeva il riscatto in euro invece che in Bitcoin
+        correct: false
+        explain: No. Il punto è che era fatto per distruggere, non per restituire i dati.
+
+  - id: ordine
+    type: order
+    prompt: Metti in ordine cronologico questi eventi, dal più vecchio al più recente.
+    items:
+      - text: Attacchi DDoS contro l'Estonia
+        explain: Aprile–maggio 2007.
+      - text: VirusBlokAda individua Stuxnet
+        explain: Giugno 2010.
+      - text: Il Guardian pubblica il primo articolo sui documenti di Snowden
+        explain: 5 giugno 2013.
+      - text: Il blackout ucraino
+        explain: 23 dicembre 2015.
+      - text: NotPetya
+        explain: 27 giugno 2017.

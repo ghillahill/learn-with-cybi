@@ -1,0 +1,140 @@
+---
+id: oggi-e-domani
+title: Oggi e domani
+minutes: 14
+xp: 70
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Capire i rischi degli oggetti connessi (IoT) con il caso Mirai
+  - Sapere che anche un incidente senza attaccanti è un problema di sicurezza (CrowdStrike)
+  - Conoscere la crittografia post-quantistica e le principali regole europee e italiane
+sources:
+  - id: techcrunch-mirai
+    level: B
+    title: Hackers release source code for a powerful DDoS app called Mirai
+    publisher: TechCrunch
+    year: 2016
+    url: https://techcrunch.com/2016/10/10/hackers-release-source-code-for-a-powerful-ddos-app-called-mirai/
+  - id: nhbr-dyn
+    level: B
+    title: Dyn issues analysis of complex and sophisticated cyberattacks
+    publisher: New Hampshire Business Review
+    year: 2016
+    url: https://www.nhbr.com/dyn-issues-analysis-of-complex-and-sophisticated-cyberattacks/
+  - id: nist-pqc
+    level: A
+    title: Announcing approval of three Federal Information Processing Standards (FIPS) for post-quantum cryptography
+    publisher: NIST
+    year: 2024
+    url: https://www.nist.gov/news-events/news/2024/08/announcing-approval-three-federal-information-processing-standards-fips
+  - id: crowdstrike-rca
+    level: A
+    title: Channel File 291 Incident Root Cause Analysis
+    publisher: CrowdStrike
+    year: 2024
+    url: https://crowdstrike.com/wp-content/uploads/2024/08/Channel-File-291-Incident-Root-Cause-Analysis-08.06.2024.pdf
+  - id: techtarget-crowdstrike
+    level: B
+    title: Explaining the largest IT outage in history and what's next
+    publisher: TechTarget
+    year: 2024
+    url: https://techtarget.com/WhatIs/feature/Explaining-the-largest-IT-outage-in-history-and-whats-next
+  - id: gdpr
+    level: A
+    title: Regolamento (UE) 2016/679 (GDPR), art. 99
+    publisher: EUR-Lex
+    year: 2016
+    url: https://eur-lex.europa.eu/eli/reg/2016/679/oj
+  - id: dl-82-2021
+    level: A
+    title: Decreto-legge 14 giugno 2021, n. 82, convertito dalla Legge 4 agosto 2021, n. 109
+    publisher: Normattiva
+    year: 2021
+  - id: nis2
+    level: A
+    title: Direttiva (UE) 2022/2555 (NIS2)
+    publisher: EUR-Lex
+    year: 2022
+    url: https://eur-lex.europa.eu/eli/dir/2022/2555/oj
+  - id: dlgs-138-2024
+    level: A
+    title: Decreto legislativo 4 settembre 2024, n. 138
+    publisher: Normattiva
+    year: 2024
+  - id: cra
+    level: A
+    title: Regolamento (UE) 2024/2847 (Cyber Resilience Act)
+    publisher: EUR-Lex
+    year: 2024
+    url: https://eur-lex.europa.eu/eli/reg/2024/2847/oj
+quiz: oggi-e-domani
+---
+
+<Cybi mood="felice">
+Ultima tappa del viaggio nella storia: arriviamo a oggi! Telecamere connesse, computer quantistici in arrivo e nuove leggi. E un incidente enorme… senza nessun attaccante.
+</Cybi>
+
+## Mirai: l'esercito delle telecamere
+
+**Mirai** è un malware che infetta dispositivi connessi a Internet (l'*Internet delle cose*, o IoT) come router, telecamere e videoregistratori, che usano ancora le **password di fabbrica**. All'inizio di ottobre 2016 il suo codice sorgente viene pubblicato online.<Cite id="techcrunch-mirai" />
+
+Il 21 ottobre 2016 alcune <Term id="botnet">botnet</Term> basate su Mirai lanciano un attacco <Term id="ddos">DDoS</Term> contro **Dyn**, un fornitore di servizi DNS, il sistema che traduce i nomi dei siti in indirizzi. Twitter, GitHub, Netflix, Reddit e altri siti diventano irraggiungibili per molti utenti. Dyn stima che siano coinvolti fino a 100.000 dispositivi infetti.<Cite id="nhbr-dyn" />
+
+<Cybi mood="sorpreso">
+Una telecamera con la password "admin" sembra un problema piccolo. Moltiplicala per centomila e diventa un'arma capace di rendere irraggiungibili siti usati da milioni di persone!
+</Cybi>
+
+## CrowdStrike: non un attacco, ma un disastro
+
+Il 19 luglio 2024 un file di configurazione difettoso, il "Channel File 291", del software di sicurezza **Falcon** di CrowdStrike manda in crash circa **8,5 milioni** di computer Windows, secondo una stima di Microsoft. Molti vanno riparati a mano.<Cite id="techtarget-crowdstrike" />
+
+La causa, secondo l'analisi di CrowdStrike: il programma si aspettava 20 campi di dati, ma l'aggiornamento ne forniva 21. Il programma prova a leggere un dato che non c'è, fuori dai limiti della memoria prevista, e il sistema si blocca.<Cite id="crowdstrike-rca" />
+
+<MythVsFact
+  myth="Il blackout informatico del 19 luglio 2024 è stato un attacco hacker."
+  fact="Non c'è stato nessun attacco: la causa è un aggiornamento difettoso del software di sicurezza Falcon, che forniva 21 campi di dati invece dei 20 attesi."
+  source="crowdstrike-rca"
+/>
+
+<Cybi mood="pensieroso">
+Ricordi la <Term id="disponibilita">disponibilità</Term>? Anche quando nessuno attacca, un sistema che non funziona è un problema di sicurezza.
+</Cybi>
+
+## Crittografia per l'era quantistica
+
+Il 13 agosto 2024 il NIST approva i primi tre standard di **crittografia post-quantistica**, pensati per resistere anche ai futuri computer quantistici:<Cite id="nist-pqc" />
+
+- **FIPS 203** (ML-KEM, derivato da CRYSTALS-Kyber), per stabilire una chiave segreta condivisa su un canale pubblico;
+- **FIPS 204** (ML-DSA, derivato da CRYSTALS-Dilithium), per le firme digitali;
+- **FIPS 205** (SLH-DSA, derivato da SPHINCS+), anche questo per le firme digitali.
+
+Ne riparleremo nel Modulo 7, dedicato alla crittografia.
+
+## Le regole di oggi
+
+La sicurezza oggi è anche una questione di leggi:
+
+- **GDPR** (Regolamento UE 2016/679), sulla protezione dei dati personali: si applica dal 25 maggio 2018.<Cite id="gdpr" />
+- In Italia il decreto-legge 14 giugno 2021, n. 82 (convertito dalla Legge 109/2021) istituisce l'**Agenzia per la Cybersicurezza Nazionale** (ACN).<Cite id="dl-82-2021" />
+- La direttiva **NIS2** (UE 2022/2555) riguarda le misure per un livello comune elevato di cybersicurezza in tutta l'Unione; gli Stati devono recepirla entro il 17 ottobre 2024.<Cite id="nis2" /> L'Italia lo fa con il decreto legislativo 4 settembre 2024, n. 138, che indica l'ACN come autorità nazionale competente.<Cite id="dlgs-138-2024" />
+- Il **Cyber Resilience Act** (Regolamento UE 2024/2847) fissa requisiti di sicurezza per i prodotti con elementi digitali. Si applica in generale dall'11 dicembre 2027; gli obblighi di segnalazione sono partiti prima, nel settembre 2026.<Cite id="cra" />
+
+## E domani?
+
+Il lavoro da remoto e il cloud hanno reso meno netto il confine tra "dentro" e "fuori" la rete di un'organizzazione: ne parleremo nel Modulo 5 con l'approccio *zero trust*. Anche l'intelligenza artificiale cambia il gioco, sia per chi attacca sia per chi difende.
+
+<Callout type="info" title="Un tema aperto">
+Sull'intelligenza artificiale nella sicurezza non ci sono ancora dati verificati da citare in questo corso. Per ora trattala come una domanda aperta, non come un fatto.
+</Callout>
+
+<Cybi mood="fiero">
+Hai attraversato più di cento anni di storia, dal telegrafo di Maskelyne ai computer quantistici! Ora sai da dove vengono le minacce di oggi. Dal prossimo modulo apriamo la scatola: come funziona davvero un computer?
+</Cybi>
+
+<KeyPoints>
+- Mirai (2016) usa dispositivi IoT con password di fabbrica: le botnet basate su Mirai mettono fuori uso il provider DNS Dyn.
+- CrowdStrike (19 luglio 2024) non è un attacco: un aggiornamento difettoso blocca circa 8,5 milioni di computer (stima Microsoft).
+- 13 agosto 2024: il NIST approva FIPS 203, 204 e 205, i primi standard post-quantistici.
+- Regole: GDPR (dal 2018), ACN (2021), NIS2 recepita in Italia con il D.Lgs. 138/2024, Cyber Resilience Act (dal 2027).
+</KeyPoints>

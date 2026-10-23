@@ -1,0 +1,72 @@
+id: crimine-industria
+passingScore: 0.7
+questions:
+  - id: botnet
+    type: single
+    prompt: Cos'è una botnet?
+    options:
+      - text: Una rete di dispositivi presi sotto controllo e comandati a distanza da un criminale
+        correct: true
+        explain: Giusto. Si usa per spam, furto di dati e attacchi DDoS.
+      - text: Un antivirus che protegge più computer insieme
+        correct: false
+        explain: No. Una botnet è uno strumento di chi attacca, non di chi difende.
+      - text: Un tipo di cifrario
+        correct: false
+        explain: No. Una botnet è una rete di dispositivi infetti.
+
+  - id: zeus
+    type: truefalse
+    prompt: Si sa con certezza chi ha creato Zeus e quando.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. L'origine di Zeus non è chiara. Il luglio 2007 è la data del primo caso identificato.
+      - text: Falso
+        correct: true
+        explain: Giusto. L'origine non è chiara; il 2007 è solo il primo caso identificato.
+
+  - id: cryptolocker
+    type: multiple
+    prompt: Quali affermazioni su CryptoLocker sono corrette?
+    options:
+      - text: Cifra i file delle vittime e chiede un riscatto in Bitcoin
+        correct: true
+        explain: Sì. È un ransomware.
+      - text: Si diffonde anche con email di phishing, come finte notifiche di spedizione
+        correct: true
+        explain: Sì. E attraverso la botnet Gameover ZeuS.
+      - text: Viene abbattuto dall'operazione internazionale Tovar nel giugno 2014
+        correct: true
+        explain: Sì. L'operazione colpisce Gameover ZeuS e CryptoLocker.
+      - text: È il primo ransomware della storia
+        correct: false
+        explain: No. Il primo è considerato l'AIDS Trojan del 1989.
+
+  - id: target
+    type: single
+    prompt: Cosa dichiara Target nel dicembre 2013?
+    options:
+      - text: Il furto dei dati di circa 40 milioni di carte di credito e di debito
+        correct: true
+        explain: Esatto. Carte usate nei suoi negozi tra il 27 novembre e il 15 dicembre.
+      - text: Il furto di 3 miliardi di account email
+        correct: false
+        explain: No. Questo riguarda Yahoo.
+      - text: Un attacco ransomware ai suoi magazzini
+        correct: false
+        explain: No. Si tratta di un furto di dati delle carte di pagamento.
+
+  - id: yahoo
+    type: single
+    prompt: Quanti account ha colpito la violazione di Yahoo dell'agosto 2013, secondo quanto ammesso nel 2017?
+    options:
+      - text: Tutti, circa 3 miliardi
+        correct: true
+        explain: Giusto. In precedenza Yahoo aveva parlato di 1 miliardo.
+      - text: Circa 40 milioni
+        correct: false
+        explain: No. 40 milioni è il numero di carte del caso Target.
+      - text: Nessuno, era un falso allarme
+        correct: false
+        explain: No. La violazione è reale e ha colpito tutti gli account.

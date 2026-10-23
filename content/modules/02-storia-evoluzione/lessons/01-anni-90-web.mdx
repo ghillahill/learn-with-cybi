@@ -1,0 +1,98 @@
+---
+id: anni-90-web
+title: "Anni '90: il web per tutti"
+minutes: 12
+xp: 60
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Sapere come nasce il World Wide Web e perché diventa uno standard aperto
+  - Conoscere il caso di Kevin Mitnick e il ruolo dell'ingegneria sociale
+  - Capire a cosa servono SSL/TLS e gli identificatori CVE
+sources:
+  - id: cern-short-history
+    level: A
+    title: A short history of the Web
+    publisher: CERN
+    url: https://home.cern/science/computing/the-birth-of-the-web/short-history-web/
+  - id: legge-547-1993
+    level: A
+    title: Legge 23 dicembre 1993, n. 547 (testo su WIPO Lex)
+    url: https://www.wipo.int/wipolex/en/legislation/details/2532
+  - id: doj-mitnick-1995
+    level: A
+    title: Comunicato sull'arresto di Kevin Mitnick (15/02/1995)
+    publisher: US Department of Justice
+    year: 1995
+    url: https://www.justice.gov/opa/pr/Pre_96/February95/89.txt.html
+  - id: mitnick-art-of-deception
+    level: B
+    title: The Art of Deception
+    author: Kevin Mitnick, William L. Simon
+    year: 2002
+  - id: acunetix-ssl-tls
+    level: B
+    title: History of SSL/TLS (parte 2)
+    publisher: Acunetix
+    url: https://www.acunetix.com/blog/articles/history-of-tls-ssl-part-2/
+  - id: rfc-2246
+    level: A
+    title: "RFC 2246: The TLS Protocol Version 1.0"
+    publisher: IETF
+    year: 1999
+    url: https://www.rfc-editor.org/rfc/rfc2246
+  - id: cve-history
+    level: A
+    title: History of the CVE Program
+    publisher: CVE.org (MITRE)
+    url: https://www.cve.org/Resources/Media/Archives/OldWebsite/about/history.html
+quiz: anni-90-web
+---
+
+<Cybi mood="felice">
+Benvenuto negli anni '90! Internet esce dai laboratori ed entra nelle case. Più persone collegate vuol dire più opportunità… anche per chi attacca.
+</Cybi>
+
+## Il Web diventa di tutti
+
+Nel marzo 1989 **Tim Berners-Lee**, informatico del CERN di Ginevra, scrive la prima proposta di un sistema distribuito per condividere informazioni: è l'idea da cui nasce il **World Wide Web**.<Cite id="cern-short-history" />
+
+Il 30 aprile 1993 il CERN pubblica un documento che mette il software del Web **nel pubblico dominio**: chiunque può usarlo e costruirci sopra, senza pagare nulla. Così il Web resta uno standard aperto.<Cite id="cern-short-history" />
+
+Nello stesso anno, in Italia, la Legge 547/1993 introduce i reati informatici nel Codice Penale, tra cui l'accesso abusivo a un sistema informatico (art. 615-ter). L'abbiamo già incontrata nel Modulo 0.<Cite id="legge-547-1993" />
+
+<Cybi mood="pensieroso">
+Pensa al Web come a una lingua comune: se fosse stata a pagamento, forse oggi parleremmo tutti dialetti diversi. Ma una lingua parlata da tutti la impara anche chi ha cattive intenzioni.
+</Cybi>
+
+## Kevin Mitnick, l'hacker più ricercato
+
+Il 15 febbraio 1995 l'FBI arresta **Kevin Mitnick** a Raleigh, in Carolina del Nord, dopo una caccia elettronica durata due settimane. Al momento dell'arresto l'accusa formale è la violazione della libertà vigilata: Mitnick era già stato condannato nel 1988.<Cite id="doj-mitnick-1995" />
+
+Mitnick è famoso soprattutto per l'**ingegneria sociale**: convincere le persone a dare informazioni o accessi, invece di forzare un sistema con la tecnica. Lui stesso descrive questi metodi nel libro *The Art of Deception* (2002).<Cite id="mitnick-art-of-deception" />
+
+<Callout type="info" title="L'anello debole">
+L'ingegneria sociale colpisce le persone, non i computer. Ne parleremo in dettaglio nel Modulo 6, insieme al <Term id="phishing">phishing</Term>.
+</Callout>
+
+## SSL e TLS: il lucchetto del Web
+
+Per fare acquisti online serve un modo per proteggere i dati che viaggiano tra il browser e il sito. L'azienda Netscape crea **SSL** (Secure Sockets Layer). La versione 1.0 non viene mai pubblicata perché ha troppi difetti; SSL 2.0 esce nel 1995 e SSL 3.0 nel 1996.<Cite id="acunetix-ssl-tls" />
+
+Nel gennaio 1999 l'IETF, l'organizzazione che scrive gli standard di Internet, pubblica **TLS 1.0** (Transport Layer Security) nell'RFC 2246: è il successore di SSL 3.0.<Cite id="rfc-2246" />
+
+## Un nome per ogni vulnerabilità
+
+Nel settembre 1999 MITRE pubblica la prima lista **CVE** (Common Vulnerabilities and Exposures), con 321 voci. Da allora ogni <Term id="vulnerabilita">vulnerabilità</Term> nota riceve un identificatore comune, come CVE-2014-0160.<Cite id="cve-history" />
+
+<Cybi mood="sorpreso">
+Un nome comune è come il nome di una malattia: se tutti i medici del mondo lo usano, possono confrontare i casi e curarla insieme.
+</Cybi>
+
+<KeyPoints>
+- Marzo 1989: Tim Berners-Lee propone al CERN il sistema da cui nasce il Web; il 30 aprile 1993 il CERN lo mette nel pubblico dominio.
+- 1993: in Italia la Legge 547/1993 introduce i reati informatici.
+- 15 febbraio 1995: arresto di Kevin Mitnick, famoso per l'ingegneria sociale.
+- SSL 2.0 (1995) e 3.0 (1996), poi TLS 1.0 nel 1999 (RFC 2246).
+- Settembre 1999: la prima lista CVE, con 321 voci, dà un nome comune alle vulnerabilità.
+</KeyPoints>

@@ -1,0 +1,144 @@
+---
+id: supply-chain-ransomware
+title: Supply chain e ransomware moderno
+minutes: 15
+xp: 70
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Capire cos'è la doppia estorsione nel ransomware moderno
+  - Capire cos'è un attacco alla supply chain (SolarWinds, Kaseya, MOVEit)
+  - Conoscere il caso XZ Utils e il ruolo della fiducia nel software open source
+sources:
+  - id: checkpoint-double-extortion
+    level: B
+    title: "Ransomware evolved: double extortion"
+    publisher: Check Point Research
+    year: 2020
+    url: https://research.checkpoint.com/2020/ransomware-evolved-double-extortion/
+  - id: bleeping-maze
+    level: B
+    title: Maze ransomware is shutting down its cybercrime operation
+    publisher: BleepingComputer
+    year: 2020
+    url: https://www.bleepingcomputer.com/news/security/maze-ransomware-is-shutting-down-its-cybercrime-operation
+  - id: cisa-ed-21-01
+    level: A
+    title: "Emergency Directive 21-01: Mitigate SolarWinds Orion Code Compromise"
+    publisher: CISA
+    year: 2020
+    url: https://www.cisa.gov/news-events/directives/ed-21-01-mitigate-solarwinds-orion-code-compromise
+  - id: cyberscoop-solarwinds
+    level: B
+    title: Attribuzione ufficiale di SolarWinds e sanzioni (15/04/2021)
+    publisher: CyberScoop
+    year: 2021
+    url: https://cyberscoop.com/biden-russia-solarwinds-sanctions-white-house/
+  - id: mitre-apt29
+    level: A
+    title: "APT29 (G0016)"
+    publisher: MITRE ATT&CK
+    url: https://attack.mitre.org/groups/G0016/
+  - id: trendmicro-darkside
+    level: B
+    title: What we know about DarkSide ransomware and the US pipeline attack
+    publisher: Trend Micro
+    year: 2021
+    url: https://trendmicro.com/de_de/research/21/e/what-we-know-about-darkside-ransomware-and-the-us-pipeline-attac.html
+  - id: ccdcoe-colonial
+    level: B
+    title: Colonial Pipeline ransomware attack (2021)
+    publisher: CCDCOE Cyber Law Toolkit
+  - id: doj-colonial
+    level: A
+    title: Department of Justice seizes $2.3 million in cryptocurrency paid to the ransomware extortionists DarkSide
+    publisher: US Department of Justice
+    year: 2021
+    url: https://www.justice.gov/archives/opa/pr/department-justice-seizes-23-million-cryptocurrency-paid-ransomware-extortionists-darkside
+  - id: cbs-kaseya
+    level: B
+    title: Copertura dell'attacco a Kaseya
+    publisher: CBS News
+    year: 2021
+    url: https://www.cbsnews.com/cybersecurity/4/
+  - id: cisa-aa23-158a
+    level: A
+    title: "AA23-158A: CL0P Ransomware Gang Exploits CVE-2023-34362 MOVEit Vulnerability"
+    publisher: CISA / FBI
+    year: 2023
+    url: https://cisa.gov/news-events/cybersecurity-advisories/aa23-158a
+  - id: freund-xz
+    level: A
+    title: backdoor in upstream xz/liblzma leading to ssh server compromise
+    author: Andres Freund
+    publisher: oss-security
+    year: 2024
+    url: https://www.openwall.com/lists/oss-security/2024/03/29/4
+  - id: qualys-xz
+    level: B
+    title: XZ Utils sshd backdoor
+    publisher: Qualys
+    year: 2024
+    url: https://blog.qualys.com/vulnerabilities-threat-research/2024/03/29/xz-utils-sshd-backdoor
+quiz: supply-chain-ransomware
+---
+
+<Cybi mood="pensieroso">
+Ti fidi del pane che compri, perché ti fidi del fornaio. E se qualcuno avvelenasse la farina prima che arrivi al forno? Oggi parliamo di attacchi che colpiscono proprio la fiducia.
+</Cybi>
+
+## La doppia estorsione
+
+Nel novembre 2019 il gruppo **Maze** ruba i dati dell'azienda Allied Universal **prima** di cifrarli, e minaccia di pubblicarli se il riscatto non viene pagato.<Cite id="bleeping-maze" /> È il primo caso pubblico di **doppia estorsione**: cifrare i dati e minacciare di diffonderli. Quasi tutti i gruppi <Term id="ransomware">ransomware</Term> copiano poi la tecnica.<Cite id="checkpoint-double-extortion" />
+
+<Cybi mood="preoccupato">
+Con la doppia estorsione anche un buon backup non basta più: i dati si recuperano, ma intanto i criminali li hanno già copiati.
+</Cybi>
+
+## SolarWinds: l'aggiornamento avvelenato
+
+Un <Term id="attacco-supply-chain">attacco alla supply chain</Term> non colpisce direttamente il bersaglio, ma un prodotto o un servizio da cui il bersaglio dipende.
+
+Il 13 dicembre 2020 si scopre che gli aggiornamenti di **Orion**, un software dell'azienda SolarWinds usato per gestire le reti, erano stati manomessi (versioni dalla 2019.4 alla 2020.2.1 HF1). Chi installava l'aggiornamento ufficiale installava anche il codice degli attaccanti. Lo stesso giorno l'agenzia americana CISA emette la direttiva di emergenza 21-01.<Cite id="cisa-ed-21-01" />
+
+Il 15 aprile 2021 Stati Uniti e Regno Unito attribuiscono ufficialmente l'attacco al servizio di intelligence estera russo (SVR), noto anche come <Term id="apt">APT</Term>29 o Cozy Bear; seguono sanzioni ed espulsioni di diplomatici.<Cite id="cyberscoop-solarwinds" /><Cite id="mitre-apt29" />
+
+## Colonial Pipeline: senza un secondo fattore
+
+Il 7 maggio 2021 il ransomware **DarkSide** colpisce Colonial Pipeline, un grande oleodotto americano. Gli attaccanti entrano da un account VPN compromesso **senza autenticazione a più fattori**. L'azienda ferma l'oleodotto per precauzione e sulla costa est degli Stati Uniti mancano carburanti.<Cite id="trendmicro-darkside" /><Cite id="ccdcoe-colonial" />
+
+Colonial paga circa 75 bitcoin. Il 7 giugno 2021 il Dipartimento di Giustizia americano annuncia di averne sequestrati 63,7, circa 2,3 milioni di dollari.<Cite id="doj-colonial" />
+
+<Callout type="info" title="Una password non basta">
+L'autenticazione a più fattori chiede una prova in più oltre alla password, per esempio un codice o una chiave fisica. La vedremo nel Modulo 8.
+</Callout>
+
+## Kaseya e MOVEit: un fornitore, migliaia di vittime
+
+Il 2 luglio 2021 il gruppo **REvil** colpisce Kaseya VSA, un software che i fornitori di servizi IT usano per gestire i computer dei loro clienti. Le vittime sono migliaia, in almeno 17 paesi.<Cite id="cbs-kaseya" />
+
+Dal 27 maggio 2023 il gruppo **Cl0p** sfrutta una SQL injection ancora sconosciuta, cioè uno <Term id="zero-day">zero-day</Term> (CVE-2023-34362), in MOVEit Transfer, un software per scambiare file. Ruba dati a centinaia di organizzazioni. CISA e FBI pubblicano un avviso congiunto il 7 giugno 2023.<Cite id="cisa-aa23-158a" />
+
+## XZ Utils: mezzo secondo di troppo
+
+Il 29 marzo 2024 **Andres Freund**, ingegnere di Microsoft, annuncia sulla mailing list oss-security di aver trovato una <Term id="backdoor">backdoor</Term> nelle versioni 5.6.0 e 5.6.1 di **XZ Utils**, un programma open source di compressione dei dati usato da molte distribuzioni Linux.<Cite id="freund-xz" /><Cite id="qualys-xz" />
+
+Come se n'è accorto? I login SSH su un suo computer erano diventati più lenti: da circa 0,3 a 0,8 secondi, mezzo secondo in più.<Cite id="freund-xz" /> La backdoor era nascosta in file di test binari, non nel codice sorgente che chiunque può leggere. La vulnerabilità (CVE-2024-3094) ha gravità massima, 10.0 su 10. Viene scoperta prima di arrivare nelle versioni stabili delle principali distribuzioni Linux.<Cite id="qualys-xz" />
+
+<Cybi mood="detective">
+Mezzo secondo! Come i 75 centesimi di Clifford Stoll nel Modulo 1: in sicurezza i dettagli strani non si ignorano mai.
+</Cybi>
+
+<MythVsFact
+  myth="Il software open source è sicuro perché chiunque può leggerne il codice."
+  fact="La backdoor di XZ Utils era nascosta in file di test binari, non nel codice sorgente visibile: è stata scoperta grazie a un rallentamento di mezzo secondo notato da un ingegnere."
+  source="qualys-xz"
+/>
+
+<KeyPoints>
+- Doppia estorsione (Maze, 2019): i dati vengono rubati prima di essere cifrati, poi si minaccia di pubblicarli.
+- Un attacco alla supply chain colpisce un fornitore per raggiungere i suoi clienti: SolarWinds (2020), Kaseya (2021), MOVEit (2023).
+- SolarWinds è attribuito ufficialmente all'SVR russo (APT29) il 15 aprile 2021.
+- Colonial Pipeline (2021): accesso da una VPN senza autenticazione a più fattori; parte del riscatto viene sequestrata.
+- XZ Utils (2024): una backdoor scoperta grazie a mezzo secondo di ritardo nei login SSH.
+</KeyPoints>

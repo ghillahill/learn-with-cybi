@@ -1,0 +1,69 @@
+id: worm-di-massa
+passingScore: 0.7
+questions:
+  - id: melissa
+    type: single
+    prompt: Come si diffondeva Melissa (1999)?
+    options:
+      - text: Outlook inviava una copia del documento ai primi 50 contatti della rubrica
+        correct: true
+        explain: Giusto. Il messaggio sembrava arrivare da una persona conosciuta.
+      - text: Attaccava direttamente i server web senza bisogno di nessuno
+        correct: false
+        explain: No. Questo lo fanno worm come Code Red; Melissa aveva bisogno che la vittima aprisse il documento.
+      - text: Si copiava sui floppy disk inseriti nel computer
+        correct: false
+        explain: No. Era un macro virus in un documento Word, diffuso via email.
+
+  - id: iloveyou-stime
+    type: truefalse
+    prompt: Il numero di computer infettati da ILOVEYOU in tutto il mondo è noto con precisione.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. Le stime variano molto tra le fonti. Il dato documentato del CERT è di oltre 300.000 sistemi segnalati in poche ore.
+      - text: Falso
+        correct: true
+        explain: Giusto. Le stime variano molto; vanno sempre lette come stime.
+
+  - id: slammer
+    type: single
+    prompt: Quanto è stato veloce SQL Slammer, nel gennaio 2003?
+    options:
+      - text: Ha infettato oltre il 90% degli host vulnerabili in circa 10 minuti
+        correct: true
+        explain: Esatto. Almeno 75.000 host, ed è una stima minima.
+      - text: Ha impiegato circa un anno per diffondersi
+        correct: false
+        explain: No. Gli sono bastati circa 10 minuti.
+      - text: Ha infettato un solo server, quello di Microsoft
+        correct: false
+        explain: No. Ha colpito almeno 75.000 host in tutto il mondo.
+
+  - id: blaster
+    type: truefalse
+    prompt: "Quando arriva Blaster, nell'agosto 2003, la patch per la falla che sfrutta esiste già da circa un mese."
+    options:
+      - text: Vero
+        correct: true
+        explain: Giusto. Era il bollettino MS03-026. I computer colpiti erano quelli non aggiornati.
+      - text: Falso
+        correct: false
+        explain: Invece è vero. La patch MS03-026 esisteva già da circa un mese.
+
+  - id: microsoft
+    type: match
+    prompt: Abbina ogni evento alla sua descrizione.
+    pairs:
+      - left: Trustworthy Computing (15 gennaio 2002)
+        right: Tra nuove funzioni e sicurezza, si sceglie la sicurezza
+        explain: È il principio del memo di Bill Gates a tutti i dipendenti Microsoft.
+      - left: Patch Tuesday (dal 14 ottobre 2003)
+        right: Le correzioni arrivano in un'uscita mensile prevedibile
+        explain: Così gli amministratori di sistema possono organizzarsi per installarle.
+      - left: Nimda (18 settembre 2001)
+        right: Si diffonde in tre modi diversi
+        explain: Email, siti web compromessi e una vulnerabilità di IIS.
+      - left: Code Red (luglio 2001)
+        right: Attacca i server web Microsoft IIS
+        explain: L'azienda eEye lo scopre il 13 luglio 2001.

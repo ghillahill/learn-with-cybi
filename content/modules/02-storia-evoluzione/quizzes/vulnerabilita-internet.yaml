@@ -1,0 +1,72 @@
+id: vulnerabilita-internet
+passingScore: 0.7
+questions:
+  - id: heartbleed
+    type: single
+    prompt: Cosa permetteva Heartbleed (CVE-2014-0160)?
+    options:
+      - text: Leggere la memoria del server, comprese le chiavi private
+        correct: true
+        explain: Giusto. Il bug era nell'estensione Heartbeat di OpenSSL 1.0.1.
+      - text: Spegnere i computer da remoto
+        correct: false
+        explain: No. Il problema era la lettura di dati in memoria.
+      - text: Cifrare i file del server e chiedere un riscatto
+        correct: false
+        explain: No. Heartbleed è una vulnerabilità, non un ransomware.
+
+  - id: wannacry-patch
+    type: truefalse
+    prompt: Quando arriva WannaCry, il 12 maggio 2017, la patch per la falla sfruttata da EternalBlue esiste già.
+    options:
+      - text: Vero
+        correct: true
+        explain: Giusto. Microsoft aveva pubblicato MS17-010 il 14 marzo 2017, circa due mesi prima.
+      - text: Falso
+        correct: false
+        explain: Invece è vero. La patch MS17-010 esisteva da circa due mesi; i sistemi colpiti erano quelli non aggiornati.
+
+  - id: nhs
+    type: single
+    prompt: Quanti trust del servizio sanitario britannico (NHS) colpisce WannaCry, secondo il National Audit Office?
+    options:
+      - text: Almeno 81 su 236
+        correct: true
+        explain: Esatto. È il dato del rapporto del National Audit Office (aprile 2018).
+      - text: Tutti i 236
+        correct: false
+        explain: No. Ne colpisce almeno 81.
+      - text: Nessuno
+        correct: false
+        explain: No. Il rapporto del National Audit Office ne conta almeno 81.
+
+  - id: chi-cosa
+    type: match
+    prompt: Abbina ogni vulnerabilità a quello che colpisce.
+    pairs:
+      - left: Heartbleed (2014)
+        right: La libreria OpenSSL
+        explain: Un bug nell'estensione Heartbeat di OpenSSL 1.0.1.
+      - left: Shellshock (2014)
+        right: La shell Bash
+        explain: Bash eseguiva comandi nascosti nelle variabili d'ambiente.
+      - left: Spectre e Meltdown (2018)
+        right: I processori
+        explain: Questa volta il problema non è in un programma, ma nell'hardware.
+      - left: Log4Shell (2021)
+        right: Una libreria Java per registrare eventi
+        explain: La libreria Log4j, segnalata in privato ad Apache il 24 novembre 2021.
+
+  - id: lezione
+    type: single
+    prompt: Qual è la lezione principale del caso WannaCry?
+    options:
+      - text: Installare gli aggiornamenti di sicurezza
+        correct: true
+        explain: Giusto. La soluzione c'era già, mancava solo l'installazione.
+      - text: Non usare mai Windows
+        correct: false
+        explain: No. Il problema non era Windows in sé, ma i sistemi non aggiornati.
+      - text: Le vulnerabilità non si possono mai correggere
+        correct: false
+        explain: No. La patch MS17-010 correggeva proprio la falla sfruttata.

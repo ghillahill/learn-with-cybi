@@ -1,0 +1,75 @@
+id: oggi-e-domani
+passingScore: 0.7
+questions:
+  - id: mirai
+    type: single
+    prompt: Quali dispositivi infetta Mirai?
+    options:
+      - text: Dispositivi IoT come router e telecamere che usano ancora le password di fabbrica
+        correct: true
+        explain: Giusto. Poi le botnet basate su Mirai attaccano il provider DNS Dyn.
+      - text: Solo i computer con Windows
+        correct: false
+        explain: No. Mirai punta agli oggetti connessi (IoT).
+      - text: I controllori industriali delle centrifughe iraniane
+        correct: false
+        explain: No. Questo è Stuxnet.
+
+  - id: crowdstrike
+    type: truefalse
+    prompt: L'incidente CrowdStrike del 19 luglio 2024 è stato un attacco informatico.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. La causa è un aggiornamento difettoso di Falcon, che forniva 21 campi di dati invece dei 20 attesi.
+      - text: Falso
+        correct: true
+        explain: Giusto. Nessun attacco, ma un problema di disponibilità enorme.
+
+  - id: pqc
+    type: single
+    prompt: Cosa approva il NIST il 13 agosto 2024?
+    options:
+      - text: I primi tre standard di crittografia post-quantistica (FIPS 203, 204 e 205)
+        correct: true
+        explain: Esatto. Sono pensati per resistere anche ai futuri computer quantistici.
+      - text: Il primo computer quantistico
+        correct: false
+        explain: No. Il NIST approva standard di crittografia, non computer.
+      - text: Il ritiro di TLS
+        correct: false
+        explain: No. Il 13 agosto 2024 escono gli standard FIPS 203, 204 e 205.
+
+  - id: regole
+    type: match
+    prompt: Abbina ogni norma a quello che fa.
+    pairs:
+      - left: GDPR (Regolamento UE 2016/679)
+        right: Protezione dei dati personali, applicabile dal 25 maggio 2018
+        explain: Si applica in tutta l'Unione europea.
+      - left: Decreto-legge 82/2021
+        right: Istituisce l'Agenzia per la Cybersicurezza Nazionale
+        explain: L'ACN, poi indicata come autorità nazionale competente per la NIS2.
+      - left: D.Lgs. 138/2024
+        right: Recepisce in Italia la direttiva NIS2
+        explain: La direttiva andava recepita entro il 17 ottobre 2024.
+      - left: Cyber Resilience Act (Regolamento UE 2024/2847)
+        right: Requisiti di sicurezza per i prodotti con elementi digitali
+        explain: Si applica in generale dall'11 dicembre 2027.
+
+  - id: metti-in-ordine
+    type: order
+    prompt: Metti in ordine cronologico questi eventi del Modulo 2, dal più vecchio al più recente.
+    items:
+      - text: Il CERN mette il Web nel pubblico dominio
+        explain: 30 aprile 1993.
+      - text: ILOVEYOU
+        explain: 4 maggio 2000.
+      - text: Heartbleed
+        explain: 7 aprile 2014.
+      - text: WannaCry
+        explain: 12 maggio 2017.
+      - text: SolarWinds
+        explain: 13 dicembre 2020.
+      - text: L'incidente CrowdStrike
+        explain: 19 luglio 2024.

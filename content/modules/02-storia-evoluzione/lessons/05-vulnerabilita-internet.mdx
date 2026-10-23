@@ -1,0 +1,107 @@
+---
+id: vulnerabilita-internet
+title: Vulnerabilità che hanno scosso Internet
+minutes: 13
+xp: 60
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Conoscere le grandi vulnerabilità dal 2014 al 2021 (Heartbleed, Shellshock, Spectre e Meltdown, Log4Shell)
+  - Capire il caso WannaCry e perché la patch esisteva già
+  - Sapere dove trovare la scheda di una vulnerabilità (CVE e NVD)
+sources:
+  - id: nvd-heartbleed
+    level: A
+    title: CVE-2014-0160
+    publisher: NIST National Vulnerability Database
+    url: https://nvd.nist.gov/vuln/detail/CVE-2014-0160
+  - id: nvd-shellshock
+    level: A
+    title: CVE-2014-6271
+    publisher: NIST National Vulnerability Database
+    url: https://nvd.nist.gov/vuln/detail/CVE-2014-6271
+  - id: ms17-010
+    level: A
+    title: "Microsoft Security Bulletin MS17-010"
+    publisher: Microsoft
+    year: 2017
+    url: https://learn.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010
+  - id: nao-wannacry
+    level: A
+    title: "Investigation: WannaCry cyber attack and the NHS"
+    publisher: UK National Audit Office
+    year: 2018
+    url: https://www.nao.org.uk/reports/investigation-wannacry-cyber-attack-and-the-nhs/
+  - id: meltdownattack
+    level: A
+    title: Meltdown and Spectre
+    publisher: meltdownattack.com (sito dei ricercatori)
+    year: 2018
+    url: https://meltdownattack.com/
+  - id: nvd-log4shell
+    level: A
+    title: CVE-2021-44228
+    publisher: NIST National Vulnerability Database
+    url: https://nvd.nist.gov/vuln/detail/CVE-2021-44228
+  - id: cisa-aa21-356a
+    level: A
+    title: "AA21-356A: Mitigating Log4Shell and Other Log4j-Related Vulnerabilities"
+    publisher: CISA
+    year: 2021
+    url: https://www.cisa.gov/news-events/cybersecurity-advisories/aa21-356a
+quiz: vulnerabilita-internet
+---
+
+<Cybi mood="pensieroso">
+Ricordi i codici CVE della prima lezione del modulo? Oggi li vediamo all'opera. Alcune <Term id="vulnerabilita">vulnerabilità</Term> sono così gravi e diffuse da meritarsi un soprannome, oltre al codice.
+</Cybi>
+
+## La scheda di una vulnerabilità
+
+**CVE-2014-0160** è il nome ufficiale di Heartbleed. Nel database americano NVD (National Vulnerability Database), gestito dal NIST, ogni CVE ha una scheda con la descrizione del problema, la sua gravità e i collegamenti ad avvisi e correzioni.<Cite id="nvd-heartbleed" />
+
+## 2014: Heartbleed e Shellshock
+
+Il 7 aprile 2014 diventa pubblica **Heartbleed** (CVE-2014-0160), un bug nell'estensione Heartbeat di OpenSSL 1.0.1, una libreria che implementa il protocollo TLS. Permette di leggere la memoria del server, comprese le **chiavi private**.<Cite id="nvd-heartbleed" />
+
+<Cybi mood="sorpreso">
+OpenSSL serve a proteggere le connessioni con TLS, il lucchetto del Web. Con Heartbleed proprio lo strumento di protezione diventava la porta d'ingresso!
+</Cybi>
+
+Il 24 settembre 2014 arriva **Shellshock** (CVE-2014-6271): la shell Bash, il programma che interpreta i comandi su molti sistemi, esegue comandi nascosti nelle variabili d'ambiente. La prima correzione è incompleta e serve un secondo identificatore, CVE-2014-7169.<Cite id="nvd-shellshock" />
+
+## 2017: WannaCry e la patch che c'era già
+
+Il 14 marzo 2017 Microsoft pubblica la <Term id="patch">patch</Term> MS17-010, che corregge alcune vulnerabilità di SMBv1, il protocollo di Windows per la condivisione di file in rete.<Cite id="ms17-010" />
+
+Il 12 maggio 2017 il <Term id="ransomware">ransomware</Term> **WannaCry** usa **EternalBlue**, un <Term id="exploit">exploit</Term> attribuito alla NSA e pubblicato dal gruppo Shadow Brokers, contro i sistemi che **non** avevano installato quella patch. Nel Regno Unito colpisce almeno 81 dei 236 trust del servizio sanitario nazionale (NHS), le organizzazioni che gestiscono ospedali e servizi sanitari.<Cite id="nao-wannacry" />
+
+<MythVsFact
+  myth="WannaCry ha sfruttato una falla che nessuno poteva correggere."
+  fact="La patch MS17-010 esisteva da circa due mesi: i sistemi colpiti erano quelli non aggiornati."
+  source="ms17-010"
+/>
+
+## 2018: falle nei processori
+
+Il 3 gennaio 2018 diventano pubbliche **Spectre** (CVE-2017-5753 e CVE-2017-5715) e **Meltdown** (CVE-2017-5754). Questa volta il problema non è in un programma, ma nei **processori**: le vulnerabilità permettono a un programma di leggere dati in memoria che non dovrebbe vedere.<Cite id="meltdownattack" />
+
+## 2021: Log4Shell
+
+**Log4Shell** (CVE-2021-44228) è una vulnerabilità di Log4j, una libreria Java usata dalle applicazioni per registrare eventi (i *log*). Viene segnalata in privato ad Apache, che sviluppa la libreria, il 24 novembre 2021 e diventa pubblica il 9 dicembre 2021.<Cite id="nvd-log4shell" /> L'agenzia americana CISA pubblica un avviso congiunto con indicazioni per difendersi.<Cite id="cisa-aa21-356a" />
+
+<Callout type="info" title="Segnalare in privato">
+Segnalare una falla prima in privato a chi sviluppa il software, per dargli il tempo di correggerla, è la <Term id="divulgazione-coordinata">divulgazione coordinata</Term> che abbiamo visto nel Modulo 0.
+</Callout>
+
+<Cybi mood="fiero">
+La lezione più importante di oggi è semplice: aggiornare. Per WannaCry la soluzione c'era già, mancava solo l'installazione.
+</Cybi>
+
+<KeyPoints>
+- Ogni vulnerabilità nota ha un nome CVE e una scheda nel database NVD.
+- Heartbleed (aprile 2014) permette di leggere la memoria dei server con OpenSSL, chiavi private comprese; Shellshock (settembre 2014) colpisce Bash.
+- WannaCry (12 maggio 2017) usa EternalBlue contro i sistemi senza la patch MS17-010, pubblicata due mesi prima.
+- Spectre e Meltdown (gennaio 2018) sono vulnerabilità dei processori.
+- Log4Shell (dicembre 2021) colpisce la libreria Java Log4j, segnalata prima in privato ad Apache.
+</KeyPoints>
