@@ -1,6 +1,7 @@
 import { evaluate } from "@mdx-js/mdx";
 import * as runtime from "react/jsx-runtime";
 import { CybiBubble } from "@/components/cybi/cybi-bubble";
+import { MythTracker } from "@/components/gamification/myth-tracker";
 import { Lab } from "@/components/labs/lab";
 import type { CybiMood } from "@/components/cybi/cybi-avatar";
 import type { GlossaryEntry, Source } from "@/lib/content/schema";
@@ -16,8 +17,10 @@ export async function LessonBody({
   body,
   sources,
   glossary,
+  lessonKey,
 }: {
   body: string;
+  lessonKey: string;
   sources: Source[];
   glossary: GlossaryEntry[];
 }) {
@@ -47,11 +50,13 @@ export async function LessonBody({
       fact: string;
       source?: string;
     }) => (
-      <MythVsFact
-        myth={myth}
-        fact={fact}
-        cite={source ? <Cite id={source} sources={sources} /> : undefined}
-      />
+      <MythTracker lessonKey={lessonKey} myth={myth}>
+        <MythVsFact
+          myth={myth}
+          fact={fact}
+          cite={source ? <Cite id={source} sources={sources} /> : undefined}
+        />
+      </MythTracker>
     ),
     KeyPoints,
     Callout,

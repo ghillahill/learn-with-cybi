@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { CybiChat } from "@/components/cybi/cybi-chat";
 import { LessonBody } from "@/components/lesson/lesson-body";
 import { SourcesList } from "@/components/lesson/sources-list";
 import { PageSkeleton } from "@/components/layout/page-skeleton";
@@ -96,7 +97,7 @@ async function LessonContent({ params }: { params: PageProps<"/moduli/[modulo]/[
           </ul>
         </section>
 
-        <LessonBody body={lesson.body} sources={lesson.sources} glossary={getGlossary()} />
+        <LessonBody body={lesson.body} sources={lesson.sources} glossary={getGlossary()} lessonKey={lesson.key} />
 
         {lesson.quizData ? (
           <LessonQuiz quiz={lesson.quizData} lessonKey={lesson.key} xp={lesson.xp} />
@@ -107,6 +108,7 @@ async function LessonContent({ params }: { params: PageProps<"/moduli/[modulo]/[
         )}
 
         <SourcesList sources={lesson.sources} />
+        <CybiChat lessonKey={lesson.key} lessonTitle={lesson.title} />
       </ModuleGate>
 
       <nav aria-label="Lezioni" className="flex justify-between gap-4 border-t pt-6">

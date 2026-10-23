@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { toast } from "sonner";
 import { CybiBubble } from "@/components/cybi/cybi-bubble";
 import { Badge } from "@/components/ui/badge";
+import { LAB_XP } from "@/lib/gamification/levels";
 import { isLabCompleted } from "@/lib/progress/logic";
 import { useProgressStore } from "@/lib/progress/store";
 
@@ -35,7 +36,7 @@ export function LabFrame({
     if (!hydrated || !solved) return;
     if (isLabCompleted(useProgressStore.getState().progress, id)) return;
     completeLab(id);
-    toast.success(`Laboratorio completato: ${title}`);
+    toast.success(`Laboratorio completato: ${title}`, { description: `+${LAB_XP} XP` });
   }, [hydrated, solved, id, title, completeLab]);
 
   const headingId = `lab-${id}`;

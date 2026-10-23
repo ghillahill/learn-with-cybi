@@ -1,6 +1,8 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
+import type { CybiAccessory } from "@/lib/progress/schema";
+import { useProgressStore } from "@/lib/progress/store";
 import { cn } from "@/lib/utils";
 import type { CybiMood } from "./moods";
 
@@ -72,6 +74,52 @@ function Face({ mood }: { mood: CybiMood }) {
   }
 }
 
+// Accessori sbloccati con i livelli: solo estetici (§8.4).
+function Accessory({ accessory }: { accessory: CybiAccessory }) {
+  switch (accessory) {
+    case "papillon":
+      return (
+        <g className="fill-destructive stroke-background" strokeWidth="2" strokeLinejoin="round">
+          <path d="M42 92 L60 101 L42 110 Z" />
+          <path d="M78 92 L60 101 L78 110 Z" />
+          <circle cx="60" cy="101" r="5" />
+        </g>
+      );
+    case "occhiali":
+      return (
+        <g className="stroke-warning" strokeWidth="2.5" fill="none">
+          <rect x="37" y="50" width="22" height="16" rx="5" />
+          <rect x="61" y="50" width="22" height="16" rx="5" />
+          <path d="M59 57 h2 M37 56 l-8 -3 M83 56 l8 -3" strokeLinecap="round" />
+        </g>
+      );
+    case "cuffie":
+      return (
+        <g className="fill-muted-foreground stroke-muted-foreground">
+          <path d="M14 62 V54 a46 46 0 0 1 92 0 V62" strokeWidth="5" fill="none" strokeLinecap="round" />
+          <rect x="6" y="52" width="14" height="24" rx="5" />
+          <rect x="100" y="52" width="14" height="24" rx="5" />
+        </g>
+      );
+    case "corona":
+      return (
+        <path
+          d="M78 31 L80 15 L88 23 L94 12 L99 24 L106 16 L105 32 Z"
+          className="fill-warning stroke-warning"
+          strokeWidth="1.5"
+          strokeLinejoin="round"
+        />
+      );
+    case "nessuno":
+      return null;
+  }
+}
+
+// Senza un accessorio esplicito, Cybi indossa quello scelto nei progressi.
+function useChosenAccessory(): CybiAccessory {
+  return useProgressStore((s) => (s.hydrated ? s.progress.settings.accessory : "nessuno"));
+}
+
 // Trasformazioni dei gruppi SVG calcolate sul loro riquadro, non sull'intero disegno.
 const fillBox = { transformBox: "fill-box", transformOrigin: "50% 50%" } as const;
 
@@ -83,12 +131,16 @@ export function CybiAvatar({
   idle = false,
   className,
   title,
+  accessory,
 }: {
   mood?: CybiMood;
   idle?: boolean;
   className?: string;
   title?: string;
+  accessory?: CybiAccessory;
 }) {
+  const chosen = useChosenAccessory();
+  const worn = accessory ?? chosen;
   return (
     <svg
       viewBox="0 0 120 120"
@@ -128,6 +180,7 @@ export function CybiAvatar({
           </motion.g>
         </AnimatePresence>
       </motion.g>
+      <Accessory accessory={worn} />
       <AnimatePresence initial={false}>
         {mood === "fiero" && (
           <motion.path

@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
+import { GamificationSync } from "@/components/gamification/gamification-sync";
 import { SiteHeader } from "@/components/layout/site-header";
 import { MotionProvider } from "@/components/motion/motion-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { getBadgeCatalog } from "@/lib/content/loader";
 import { ProgressSync } from "@/lib/progress/progress-sync";
 import { accentScript } from "@/lib/accent-script";
 import "./globals.css";
@@ -33,6 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <MotionProvider>
           <TooltipProvider>
             <ProgressSync />
+            <GamificationSync catalog={getBadgeCatalog()} />
             <SiteHeader />
             <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8 sm:py-12">
               {children}

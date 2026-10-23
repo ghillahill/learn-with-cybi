@@ -46,6 +46,7 @@ Il corso è modulare: aggiungere un modulo vuol dire aggiungere una cartella in 
 - Codice: schemi Zod in `src/lib/content/schema.ts` → `loader.ts` legge i file (in sviluppo a ogni richiesta, in produzione una volta) e filtra per stato → `check.ts` fa i controlli incrociati (citazioni, termini, componenti, `lastVerified`, fonti solo C, sintassi MDX, riferimenti della timeline). `src/components/lesson/lesson-body.tsx` collega i componenti MDX alle fonti della lezione e al glossario.
 - Laboratori simulati (§8.3): logica pura e testata in `src/lib/labs/`, componenti client in `src/components/labs/` dentro `LabFrame`. Per aggiungerne uno: id in `LAB_IDS` (`keys.ts`), componente nel registro di `lab.tsx`. Il completamento si salva in `progress.labs`; le risposte della checklist personale (lab `checklist-sicurezza`, 8.5) in `progress.checklist`.
 - Progressi: logica pura in `src/lib/progress/logic.ts` (testata), store Zustand in `store.ts`, salvataggio tramite `ProgressRepository` (`repository.ts`), caricamento/salvataggio automatico in `progress-sync.tsx`. Chiave lezione = `modulo/lezione` (`lessonKey`). I componenti client leggono lo store solo dopo `hydrated` per evitare differenze di idratazione.
+- Gamification (§8.4): logica pura in `src/lib/gamification/` (livelli e XP in `levels.ts`, serie di giorni in `streak.ts`, badge in `badges.ts`, accessori di Cybi in `accessories.ts`). Il catalogo dei badge (`getBadgeCatalog` nel loader) viene dai contenuti visibili: badge di ogni `module.yaml`, blocchi Mito vs Realtà e laboratori presenti nelle lezioni. `GamificationSync` (nel layout) assegna i badge e festeggia solo le azioni dello studente, non caricamenti o import (`loads` nello store). Nuovi campi dei progressi sempre con `.default(...)` nello schema Zod, così i salvataggi vecchi restano validi.
 
 ## Regole sui contenuti (vincolanti)
 
@@ -60,4 +61,7 @@ L'utente impara da questi contenuti senza poterli verificare: un fatto sbagliato
 
 ## Cybi AI
 
-La chat è opzionale: senza API key l'app funziona con il solo Cybi scritto. La chiamata al modello passa solo da una route API server (`/api/cybi`): la chiave non arriva mai al browser. Il modello si configura da variabile d'ambiente. Ogni risposta mostra il badge "Risposta generata dall'AI" (§4.4).
+La chat è opzionale: senza API key l'app funziona con il solo Cybi scritto. La chiamata al modello passa solo da una route API server (`/api/cybi`): la chiave non arriva mai al browser. Ogni risposta mostra il badge "Risposta generata dall'AI" (§4.4).
+
+- Variabili d'ambiente (in `.env.local`, esclusa da git): `ANTHROPIC_API_KEY` attiva la chat (senza, `GET /api/cybi` risponde `enabled: false` e il pulsante non compare); `CYBI_MODEL` sceglie il modello (predefinito `claude-sonnet-5-5`, effort `low`, fallback lato server in caso di rifiuto dei filtri di sicurezza).
+- Prompt e validazione della richiesta in `src/lib/cybi-ai/prompt.ts` (testati): regole di Cybi, glossario e testo della lezione nel prompt di sistema, con cache. Pannello in `src/components/cybi/cybi-chat.tsx`. I test e2e simulano la route con `page.route`: nessuna chiamata reale.

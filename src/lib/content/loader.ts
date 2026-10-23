@@ -16,6 +16,7 @@ import {
   type Quiz,
   type Timeline,
 } from "./schema";
+import { labsInBody, mythId, mythsInBody, type BadgeCatalog } from "@/lib/gamification/badges";
 
 export const CONTENT_DIR = path.join(process.cwd(), "content");
 
@@ -243,5 +244,21 @@ export function getVisibleTimeline(): Timeline {
       .map((event) =>
         event.lesson && !lessonVisible(event.lesson) ? { ...event, lesson: undefined } : event,
       ),
+  };
+}
+
+// Catalogo dei badge calcolato sui contenuti visibili (§8.4).
+export function getBadgeCatalog(): BadgeCatalog {
+  const modules = getVisibleModules();
+  const lessons = modules.flatMap((m) => m.lessons);
+  return {
+    modules: modules.map((m) => ({
+      id: m.id,
+      title: m.title,
+      badge: m.badge,
+      lessonKeys: m.lessons.map((l) => l.key),
+    })),
+    mythIds: lessons.flatMap((l) => mythsInBody(l.body).map((myth) => mythId(l.key, myth))),
+    labIds: [...new Set(lessons.flatMap((l) => labsInBody(l.body)))],
   };
 }

@@ -1,10 +1,16 @@
 import { z } from "zod";
 
+// Accessori estetici di Cybi, sbloccati con i livelli (§8.4).
+export const CYBI_ACCESSORIES = ["nessuno", "papillon", "occhiali", "cuffie", "corona"] as const;
+export type CybiAccessory = (typeof CYBI_ACCESSORIES)[number];
+
 // Formato dei progressi salvati (§6.3). Cambiare il formato vuol dire
 // incrementare `version` e scrivere una migrazione.
 export const lessonProgressSchema = z.object({
   status: z.enum(["not_started", "in_progress", "completed"]),
   bestQuizScore: z.number().min(0).max(1),
+  // Aggiunto con la gamification (fase 4): tentativi del quiz finale.
+  quizAttempts: z.number().int().nonnegative().default(0),
   completedAt: z.iso.datetime().optional(),
 });
 
@@ -22,13 +28,21 @@ export const progressSchema = z.object({
   labs: z.record(z.string(), labProgressSchema).default({}),
   // Aggiunto con il Modulo 8: le scelte della checklist personale.
   checklist: z.record(z.string(), checklistStatusSchema).default({}),
+  // Aggiunto con la gamification: blocchi Mito vs Realtà letti (id da mythId).
+  mythsSeen: z.array(z.string()).default([]),
   xp: z.number().int().nonnegative(),
   badges: z.array(z.string()),
   streak: z.object({
     current: z.number().int().nonnegative(),
     lastActiveDate: z.string(),
   }),
-  settings: z.object({ freeMode: z.boolean() }).default({ freeMode: false }),
+  settings: z
+    .object({
+      freeMode: z.boolean(),
+      // Accessorio di Cybi scelto dallo studente (fase 4).
+      accessory: z.enum(CYBI_ACCESSORIES).default("nessuno"),
+    })
+    .default({ freeMode: false, accessory: "nessuno" }),
 });
 
 export type LessonProgress = z.infer<typeof lessonProgressSchema>;
@@ -42,9 +56,10 @@ export function emptyProgress(): Progress {
     lessons: {},
     labs: {},
     checklist: {},
+    mythsSeen: [],
     xp: 0,
     badges: [],
     streak: { current: 0, lastActiveDate: "" },
-    settings: { freeMode: false },
+    settings: { freeMode: false, accessory: "nessuno" },
   };
 }

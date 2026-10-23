@@ -1,11 +1,13 @@
 "use client";
 
-import { CheckCircle2Icon, CircleDashedIcon, CircleIcon, LockIcon } from "lucide-react";
+import { CheckCircle2Icon, CircleDashedIcon, CircleIcon, FlameIcon, LockIcon } from "lucide-react";
 import { useEffect } from "react";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { levelFor } from "@/lib/gamification/levels";
+import { currentStreak } from "@/lib/gamification/streak";
 import { isModuleUnlocked, lessonProgress } from "@/lib/progress/logic";
 import { useProgressStore } from "@/lib/progress/store";
 
@@ -100,8 +102,21 @@ export function ModuleGate({
   return <>{children}</>;
 }
 
+// Livello, XP e serie di giorni nell'intestazione (§8.4).
 export function XpBadge() {
   const xp = useProgressStore((s) => (s.hydrated ? s.progress.xp : null));
+  const streak = useProgressStore((s) => (s.hydrated ? currentStreak(s.progress.streak, new Date()) : 0));
   if (xp === null) return null;
-  return <Badge variant="secondary">{xp} XP</Badge>;
+  return (
+    <span className="flex items-center gap-1.5">
+      {streak > 0 && (
+        <Badge variant="outline" aria-label={`Serie: ${streak} giorni di fila`} title="Giorni di fila">
+          <FlameIcon className="text-warning" /> {streak}
+        </Badge>
+      )}
+      <Badge variant="secondary" title="Livello e punti esperienza">
+        {levelFor(xp).level.name} · {xp} XP
+      </Badge>
+    </span>
+  );
 }

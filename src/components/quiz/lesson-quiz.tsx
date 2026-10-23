@@ -9,6 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import type { Quiz, QuizQuestion } from "@/lib/content/schema";
+import { PERFECT_QUIZ_BONUS } from "@/lib/gamification/levels";
 import { useProgressStore } from "@/lib/progress/store";
 import { isAnswerCorrect, quizScore, type Answer } from "@/lib/quiz/score";
 import { shuffledIndexes } from "@/lib/quiz/shuffle";
@@ -91,12 +92,15 @@ export function LessonQuiz({
     const finalAnswers = [...answers];
     finalAnswers[index] = selected;
     const result = quizScore(quiz.questions, finalAnswers);
-    const alreadyCompleted =
-      useProgressStore.getState().progress.lessons[lessonKey]?.status === "completed";
+    const before = useProgressStore.getState().progress.lessons[lessonKey];
+    const alreadyCompleted = before?.status === "completed";
+    const perfectFirstTry = !alreadyCompleted && (before?.quizAttempts ?? 0) === 0 && result === 1;
     recordQuiz(lessonKey, result, quiz.passingScore, xp);
     setScore(result);
     if (result >= quiz.passingScore && !alreadyCompleted) {
-      toast.success(`Lezione completata: +${xp} XP`);
+      toast.success(`Lezione completata: +${xp} XP`, {
+        description: perfectFirstTry ? `Tutto giusto al primo colpo: +${PERFECT_QUIZ_BONUS} XP di bonus!` : undefined,
+      });
     }
   }
 

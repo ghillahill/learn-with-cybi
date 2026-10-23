@@ -50,7 +50,7 @@ describe("progressi", () => {
   });
 
   it("in modalità libera tutto è sbloccato", () => {
-    const p = { ...emptyProgress(), settings: { freeMode: true } };
+    const p = { ...emptyProgress(), settings: { freeMode: true, accessory: "nessuno" as const } };
     expect(isModuleUnlocked(p, [["m/a"]])).toBe(true);
   });
 

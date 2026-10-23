@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { checkContent } from "./check";
 import { loadContent, splitFrontmatter } from "./loader";
 import { quizQuestionSchema } from "./schema";
+import { labsInBody, mythsInBody } from "@/lib/gamification/badges";
 
 describe("contenuti del corso", () => {
   it("si caricano e superano tutti i controlli", async () => {
@@ -70,5 +71,17 @@ describe("controlli delle lezioni", () => {
     content.modules = [{ ...mod, lessons: [{ ...lesson, body: '<Lab id="lab-inesistente" />' }] }];
     const messages = (await checkContent(content)).map((i) => i.message);
     expect(messages).toContain('laboratorio "lab-inesistente" inesistente');
+  });
+});
+
+describe("catalogo dei badge", () => {
+  it("trova tutti i blocchi Mito vs Realtà e i laboratori delle lezioni", () => {
+    const content = loadContent();
+    for (const lesson of content.modules.flatMap((m) => m.lessons)) {
+      const blocks = lesson.body.match(/<MythVsFact\b/g)?.length ?? 0;
+      expect(mythsInBody(lesson.body), lesson.key).toHaveLength(blocks);
+      const labs = lesson.body.match(/<Lab\b/g)?.length ?? 0;
+      expect(labsInBody(lesson.body), lesson.key).toHaveLength(labs);
+    }
   });
 });
