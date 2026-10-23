@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import { SiteHeader } from "@/components/layout/site-header";
+import { MotionProvider } from "@/components/motion/motion-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ProgressSync } from "@/lib/progress/progress-sync";
@@ -29,13 +30,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Script id="accento" strategy="beforeInteractive">
           {accentScript}
         </Script>
-        <TooltipProvider>
-          <ProgressSync />
-          <SiteHeader />
-          <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8 sm:py-12">
-            {children}
-          </main>
-        </TooltipProvider>
+        <MotionProvider>
+          <TooltipProvider>
+            <ProgressSync />
+            <SiteHeader />
+            <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8 sm:py-12">
+              {children}
+            </main>
+          </TooltipProvider>
+        </MotionProvider>
         <Toaster />
       </body>
     </html>

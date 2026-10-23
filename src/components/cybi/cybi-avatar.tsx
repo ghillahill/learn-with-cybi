@@ -1,15 +1,10 @@
+"use client";
+
+import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import type { CybiMood } from "./moods";
 
-export const cybiMoods = [
-  "felice",
-  "pensieroso",
-  "sorpreso",
-  "preoccupato",
-  "fiero",
-  "detective",
-] as const;
-
-export type CybiMood = (typeof cybiMoods)[number];
+export type { CybiMood } from "./moods";
 
 const glow = "stroke-cybi-glow";
 const eye = "fill-cybi-glow";
@@ -77,13 +72,20 @@ function Face({ mood }: { mood: CybiMood }) {
   }
 }
 
+// Trasformazioni dei gruppi SVG calcolate sul loro riquadro, non sull'intero disegno.
+const fillBox = { transformBox: "fill-box", transformOrigin: "50% 50%" } as const;
+
 // Cybi: robottino con l'antenna a forma di arco di lucchetto (§4.1).
+// Con `idle` l'antenna oscilla e lo schermo "sbatte le palpebre"; il cambio di
+// umore è sempre animato. Il primo disegno è statico, come quello del server.
 export function CybiAvatar({
   mood = "felice",
+  idle = false,
   className,
   title,
 }: {
   mood?: CybiMood;
+  idle?: boolean;
   className?: string;
   title?: string;
 }) {
@@ -95,24 +97,51 @@ export function CybiAvatar({
       aria-hidden={title ? undefined : true}
       aria-label={title}
     >
-      <path
+      <motion.path
         d="M47 32 V23 a13 13 0 0 1 26 0 V32"
         className="stroke-cybi"
         strokeWidth="6"
         strokeLinecap="round"
         fill="none"
+        animate={idle ? { y: [0, -2, 0] } : undefined}
+        transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
       />
       <circle cx="17" cy="64" r="7" className="fill-cybi opacity-70" />
       <circle cx="103" cy="64" r="7" className="fill-cybi opacity-70" />
       <rect x="18" y="30" width="84" height="72" rx="26" className="fill-cybi" />
       <rect x="29" y="42" width="62" height="44" rx="15" className="fill-cybi-screen" />
-      <Face mood={mood} />
-      {mood === "fiero" && (
-        <path
-          d="M101 18 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z"
-          className="fill-warning"
-        />
-      )}
+      <motion.g
+        style={fillBox}
+        animate={idle ? { scaleY: [1, 0.1, 1] } : undefined}
+        transition={{ duration: 0.25, delay: 2, repeat: Infinity, repeatDelay: 4.5 }}
+      >
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.g
+            key={mood}
+            style={fillBox}
+            initial={{ opacity: 0, scale: 0.6 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.6 }}
+            transition={{ duration: 0.18 }}
+          >
+            <Face mood={mood} />
+          </motion.g>
+        </AnimatePresence>
+      </motion.g>
+      <AnimatePresence initial={false}>
+        {mood === "fiero" && (
+          <motion.path
+            key="scintilla"
+            d="M101 18 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z"
+            className="fill-warning"
+            style={fillBox}
+            initial={{ scale: 0, rotate: -90 }}
+            animate={{ scale: 1, rotate: 0 }}
+            exit={{ scale: 0 }}
+            transition={{ type: "spring", stiffness: 400, damping: 15 }}
+          />
+        )}
+      </AnimatePresence>
     </svg>
   );
 }

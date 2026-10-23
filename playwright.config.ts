@@ -11,6 +11,8 @@ export default defineConfig({
   use: {
     baseURL: "http://localhost:3000",
     trace: "retain-on-failure",
+    // Le animazioni di Motion diventano istantanee: i test non le aspettano.
+    contextOptions: { reducedMotion: "reduce" },
   },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   webServer: {
