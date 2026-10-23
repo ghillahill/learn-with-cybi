@@ -1,0 +1,72 @@
+id: attacchi-rete-web
+passingScore: 0.7
+questions:
+  - id: attacchi
+    type: match
+    prompt: Abbina ogni attacco alla sua idea di base.
+    pairs:
+      - left: Man-in-the-middle
+        right: Intercettare e modificare i dati tra due parti
+        explain: Come un postino disonesto che apre le lettere.
+      - left: DDoS
+        right: Bloccare un servizio con moltissimi computer insieme
+        explain: Spesso con i computer di una botnet.
+      - left: SQL injection
+        right: Input dell'utente passato al database senza controlli
+        explain: Il database scambia il dato per un ordine.
+      - left: Cross-site scripting
+        right: Codice malevolo inserito in un sito innocuo
+        explain: Gira nel browser degli altri utenti del sito.
+
+  - id: rid
+    type: single
+    prompt: Quale proprietà della triade RID colpisce un attacco DoS?
+    options:
+      - text: Disponibilità
+        correct: true
+        explain: Esatto. Il servizio c'è, ma chi ne ha diritto non riesce a usarlo.
+      - text: Riservatezza
+        correct: false
+        explain: No. Un DoS di per sé non svela informazioni.
+      - text: Integrità
+        correct: false
+        explain: No. Un DoS di per sé non modifica i dati.
+
+  - id: owasp-primo
+    type: single
+    prompt: Qual è la prima categoria dell'OWASP Top 10:2025?
+    options:
+      - text: Broken Access Control (controllo degli accessi difettoso)
+        correct: true
+        explain: Giusto, resta al primo posto.
+      - text: Injection
+        correct: false
+        explain: No. Nel 2025 Injection è al quinto posto.
+      - text: Software Supply Chain Failures
+        correct: false
+        explain: No. È una categoria nuova, al terzo posto.
+
+  - id: https
+    type: truefalse
+    prompt: Un sito con HTTPS non può avere vulnerabilità come l'XSS.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. HTTPS protegge la comunicazione, non corregge gli errori del sito.
+      - text: Falso
+        correct: true
+        explain: Giusto. L'XSS nasce da come il sito mostra i dati degli utenti.
+
+  - id: tls
+    type: single
+    prompt: Quale protezione rende difficile un attacco man-in-the-middle su una connessione web?
+    options:
+      - text: TLS, cioè la "S" di HTTPS
+        correct: true
+        explain: Esatto. Garantisce riservatezza e integrità dei dati in viaggio.
+      - text: Una password più lunga
+        correct: false
+        explain: No. La password non protegge i dati mentre viaggiano.
+      - text: Il DDoS
+        correct: false
+        explain: No. Il DDoS è un attacco, non una protezione.

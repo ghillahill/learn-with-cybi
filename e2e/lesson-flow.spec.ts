@@ -117,3 +117,22 @@ test("tutti i quiz del Modulo 5 si completano con le risposte corrette", async (
     await expect(page.getByText(`${quiz.questions.length} risposte corrette su`)).toBeVisible();
   }
 });
+
+test("tutti i quiz del Modulo 6 si completano con le risposte corrette", async ({ page }) => {
+  test.slow();
+  await enableFreeMode(page);
+
+  for (const id of [
+    "malware",
+    "malware-moderno",
+    "ingegneria-sociale",
+    "detective-phishing",
+    "attacchi-password",
+    "attacchi-rete-web",
+  ]) {
+    const quiz = loadQuiz("06-minacce-attacchi", id);
+    await page.goto(`/moduli/minacce-attacchi/${id}`);
+    await completeQuiz(page, quiz);
+    await expect(page.getByText(`${quiz.questions.length} risposte corrette su`)).toBeVisible();
+  }
+});

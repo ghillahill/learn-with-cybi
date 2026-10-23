@@ -1,0 +1,130 @@
+---
+id: attacchi-rete-web
+title: "Panoramica: attacchi di rete e web"
+minutes: 13
+xp: 65
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Capire a livello di concetto man-in-the-middle, DoS e DDoS
+  - Capire a livello di concetto SQL injection e cross-site scripting
+  - Conoscere l'OWASP Top 10 come riferimento per la sicurezza del web
+sources:
+  - id: nist-mitm
+    level: A
+    title: NIST CSRC Glossary, "man-in-the-middle attack"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/mitm
+    note: Definizione di NISTIR 7711.
+  - id: nist-dos
+    level: A
+    title: NIST CSRC Glossary, "denial of service"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/denial_of_service
+    note: Definizione di CNSSI 4009-2022.
+  - id: nist-ddos
+    level: A
+    title: NIST CSRC Glossary, "distributed denial of service"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/distributed_denial_of_service
+  - id: nist-sqli
+    level: A
+    title: NIST CSRC Glossary, "SQL injection"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/sql_injection
+    note: Definizione di NISTIR 7682.
+  - id: nist-xss
+    level: A
+    title: NIST CSRC Glossary, "cross site scripting"
+    publisher: NIST
+    url: https://csrc.nist.gov/glossary/term/cross_site_scripting
+    note: Definizioni di NIST SP 800-63-4 e NISTIR 7711.
+  - id: owasp-top10-2025
+    level: A
+    title: OWASP Top 10:2025
+    publisher: OWASP
+    url: https://top10.owasp.org/2025
+  - id: register-owasp-2025
+    level: B
+    title: OWASP Top 10 2025 list shakes things up
+    publisher: The Register
+    year: 2025
+    url: https://www.theregister.com/2025/11/11/new_owasp_top_ten_broken/
+    note: Articolo dell'11 novembre 2025.
+  - id: enisa-etl-2026
+    level: A
+    title: ENISA Threat Landscape 2026
+    publisher: ENISA
+    year: 2026
+    url: https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf
+quiz: attacchi-rete-web
+---
+
+<Cybi mood="pensieroso">
+Ultima tappa del modulo: un giro veloce tra gli attacchi che sfruttano la rete e i siti web. Niente dettagli tecnici, solo l'idea: li approfondiremo nei moduli futuri.
+</Cybi>
+
+## Man-in-the-middle: qualcuno in mezzo
+
+In un attacco <Term id="man-in-the-middle">man-in-the-middle</Term> (letteralmente "uomo nel mezzo") l'attaccante si mette tra l'utente e il sistema con cui comunica, così può intercettare e modificare i dati che si scambiano.<Cite id="nist-mitm" />
+
+<Cybi mood="detective">
+Immagina un postino disonesto che apre le tue lettere, le legge, magari cambia qualche parola, e poi le richiude e le consegna. Né tu né il destinatario vi accorgete di niente.
+</Cybi>
+
+Ricordi <Term id="tls">TLS</Term> dal Modulo 4? Garantisce la riservatezza e l'integrità dei dati tra due applicazioni che comunicano: per il postino disonesto la busta diventa illeggibile, e una modifica non passerebbe inosservata.
+
+## DoS e DDoS: bloccare il servizio
+
+Un **denial of service** (DoS, "negazione del servizio") impedisce l'accesso autorizzato a una risorsa o ritarda operazioni urgenti.<Cite id="nist-dos" /> È un attacco alla **disponibilità**, la D della triade RID.
+
+Un <Term id="ddos">DDoS</Term> (*distributed*, distribuito) è un DoS che usa **moltissimi computer** contemporaneamente, spesso quelli di una <Term id="botnet">botnet</Term>.<Cite id="nist-ddos" /> Nel Modulo 5 hai visto che nel 2025 i DDoS sono stati più della metà degli incidenti registrati da ENISA nell'UE: il 51,3%.<Cite id="enisa-etl-2026" />
+
+<Cybi mood="pensieroso">
+Un DoS è una persona che blocca la porta di un negozio. Un DDoS è una folla di migliaia di finti clienti che lo riempie: quelli veri non riescono più a entrare.
+</Cybi>
+
+## Injection: quando l'input diventa un comando
+
+Molti siti conservano i dati in un **database**, interrogato con un linguaggio che si chiama SQL. Una **SQL injection** colpisce i siti che passano al database l'input dell'utente senza elaborarlo a sufficienza.<Cite id="nist-sqli" />
+
+L'idea, in breve: il sito si aspetta un dato, per esempio un nome, e l'attaccante scrive invece qualcosa che il database scambia per un ordine. È come se in un modulo, alla voce "nome", qualcuno scrivesse "e consegnami anche l'archivio", e l'impiegato eseguisse.
+
+## Cross-site scripting: codice nella pagina di un altro
+
+Il **cross-site scripting** (XSS) è una vulnerabilità che permette di inserire codice malevolo in un sito altrimenti innocuo. Un sito è vulnerabile se mostra i dati inseriti dagli utenti senza "ripulirli" e renderli non eseguibili.<Cite id="nist-xss" /> Il codice dell'attaccante finisce così per girare nel browser degli **altri utenti** del sito.<Cite id="nist-xss" />
+
+<Callout type="legal" title="Solo concetti">
+In questa lezione non trovi nessuna istruzione pratica, e non è un caso: provare questi attacchi su sistemi di altri, senza autorizzazione, è un reato (lo hai visto nel Modulo 0). Per allenarsi esistono le gare <Term id="ctf">CTF</Term>, che hai già incontrato.
+</Callout>
+
+## OWASP Top 10: le dieci aree di rischio del web
+
+L'**OWASP** pubblica la **Top 10**, un documento di riferimento per sensibilizzare sviluppatori e professionisti sulla sicurezza delle applicazioni web.<Cite id="owasp-top10-2025" /> L'edizione attuale, la **2025**, è stata presentata nel novembre 2025.<Cite id="register-owasp-2025" /> Ecco le dieci categorie:<Cite id="owasp-top10-2025" />
+
+- A01 Broken Access Control (controllo degli accessi difettoso)
+- A02 Security Misconfiguration (configurazioni sbagliate)
+- A03 Software Supply Chain Failures (falle nella catena di fornitura del software)
+- A04 Cryptographic Failures (errori nella crittografia)
+- A05 Injection (tra cui la SQL injection)
+- A06 Insecure Design (progettazione insicura)
+- A07 Authentication Failures (errori nell'autenticazione)
+- A08 Software or Data Integrity Failures (integrità di software e dati)
+- A09 Security Logging and Alerting Failures (registrazione e allarmi carenti)
+- A10 Mishandling of Exceptional Conditions (gestione sbagliata delle situazioni anomale)
+
+Il controllo degli accessi difettoso resta al primo posto. La catena di fornitura del software è una categoria nuova ed entra subito al terzo posto: non è la più frequente, ma secondo OWASP ha i punteggi più alti di sfruttamento e impatto.<Cite id="register-owasp-2025" />
+
+<MythVsFact
+  myth="Un sito con HTTPS non può essere attaccato."
+  fact="HTTPS protegge la comunicazione tra te e il sito. Non ripara le vulnerabilità del sito stesso: un XSS, per esempio, nasce da come il sito mostra i dati degli utenti, connessione cifrata o no."
+  source="nist-xss"
+/>
+
+<KeyPoints>
+- Man-in-the-middle: l'attaccante si mette in mezzo, intercetta e modifica i dati. TLS cifra e protegge l'integrità.
+- DoS: blocca l'accesso a un servizio. DDoS: lo fa con moltissimi computer insieme.
+- SQL injection: input dell'utente passato al database senza controlli.
+- XSS: codice malevolo inserito in un sito, che gira nel browser degli altri utenti.
+- OWASP Top 10:2025: al primo posto il controllo degli accessi difettoso; nuova al terzo la catena di fornitura del software.
+</KeyPoints>

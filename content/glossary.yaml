@@ -400,3 +400,79 @@ entries:
         publisher: NIST
         url: https://csrc.nist.gov/glossary/term/defense_in_depth
         note: Definizioni tratte da CNSSI 4009 e ISA/IEC 62443. Traduzione di LearnWithCybi.
+
+  - id: malware
+    term: Malware
+    definition: Software malevolo, inserito di nascosto in un sistema per distruggere dati, eseguire programmi dannosi o compromettere la riservatezza, l'integrità o la disponibilità di dati, applicazioni o sistema operativo. Virus, worm e trojan sono tipi di malware.
+    sources:
+      - id: nist-malware
+        level: A
+        title: NIST CSRC Glossary, "malware"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/malware
+        note: Definizione di NIST SP 800-83 Rev. 1. Traduzione di LearnWithCybi.
+
+  - id: trojan
+    term: Trojan (cavallo di Troia)
+    definition: Programma che sembra utile ma nasconde una funzione dannosa, che si attiva quando viene eseguito. A differenza di virus e worm, non si replica.
+    sources:
+      - id: nist-trojan
+        level: A
+        title: NIST CSRC Glossary, "Trojan horse"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/trojan_horse
+      - id: sp800-83
+        level: A
+        title: "NIST SP 800-83 Rev. 1: Guide to Malware Incident Prevention and Handling for Desktops and Laptops"
+        publisher: NIST
+        year: 2013
+        url: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-83r1.pdf
+
+  - id: rootkit
+    term: Rootkit
+    definition: Insieme di strumenti che un attaccante installa dopo aver ottenuto i privilegi più alti su un computer, per nascondere la propria attività e mantenere l'accesso.
+    sources:
+      - id: nist-rootkit
+        level: A
+        title: NIST CSRC Glossary, "rootkit"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/rootkit
+        note: Definizione di CNSSI 4009-2022 e NIST SP 800-150. Traduzione di LearnWithCybi.
+
+  - id: infostealer
+    term: Infostealer
+    definition: Malware che ruba informazioni dal computer infetto, come credenziali, dati del browser, cookie di sessione e portafogli di criptovalute.
+    sources:
+      - id: cisa-aa25-141b
+        level: A
+        title: "AA25-141B: Threat Actors Deploy LummaC2 Malware to Exfiltrate Sensitive Data from Organizations"
+        publisher: CISA e FBI
+        year: 2025
+        url: https://www.cisa.gov/news-events/cybersecurity-advisories/aa25-141b
+      - id: enisa-etl-2026
+        level: A
+        title: ENISA Threat Landscape 2026
+        publisher: ENISA
+        year: 2026
+        url: https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf
+
+  - id: ingegneria-sociale
+    term: Ingegneria sociale
+    definition: Attacco che usa l'interazione umana per ottenere o compromettere informazioni, manipolando le persone invece dei sistemi.
+    sources:
+      - id: cisa-social-engineering
+        level: A
+        title: Avoiding Social Engineering and Phishing Attacks
+        publisher: CISA
+        url: https://www.cisa.gov/news-events/news/avoiding-social-engineering-and-phishing-attacks
+
+  - id: man-in-the-middle
+    term: Man-in-the-middle
+    definition: Attacco in cui l'avversario si mette tra l'utente e il sistema con cui comunica, per intercettare e modificare i dati che si scambiano.
+    sources:
+      - id: nist-mitm
+        level: A
+        title: NIST CSRC Glossary, "man-in-the-middle attack"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/mitm
+        note: Definizione di NISTIR 7711. Traduzione di LearnWithCybi.

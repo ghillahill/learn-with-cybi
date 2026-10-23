@@ -1,0 +1,78 @@
+id: ingegneria-sociale
+passingScore: 0.7
+questions:
+  - id: tipi
+    type: match
+    prompt: Abbina ogni attacco al suo canale o alla sua tecnica.
+    pairs:
+      - left: Smishing
+        right: Arriva via SMS
+        explain: Lo stesso inganno del phishing, su un canale diverso.
+      - left: Vishing
+        right: Arriva con una telefonata
+        explain: È ingegneria sociale fatta con la voce, al telefono.
+      - left: Pretexting
+        right: Una storia inventata e un ruolo finto
+        explain: L'attaccante recita una parte per farti dare informazioni.
+      - left: Tailgating
+        right: Entrare in un ufficio dietro a qualcuno autorizzato
+        explain: È ingegneria sociale anche senza computer.
+
+  - id: cialdini
+    type: multiple
+    prompt: Quali di questi sono principi di Cialdini? Seleziona tutti quelli giusti.
+    options:
+      - text: Autorità
+        correct: true
+        explain: Sì. Il phishing finge di venire da una banca o da un capo.
+      - text: Scarsità
+        correct: true
+        explain: Sì. Un'offerta che sta per scadere sembra più preziosa.
+      - text: Reciprocità
+        correct: true
+        explain: Sì. Ci sentiamo in dovere di ricambiare un favore.
+      - text: Paura
+        correct: false
+        explain: No. La paura è una leva comune, ma non è nell'elenco di Cialdini.
+
+  - id: spear
+    type: single
+    prompt: Cosa rende diverso lo spear phishing dal phishing normale?
+    options:
+      - text: È mirato a una persona o a un gruppo e usa informazioni su di loro
+        correct: true
+        explain: Esatto, per questo è più credibile.
+      - text: Arriva solo via SMS
+        correct: false
+        explain: No, quello è lo smishing.
+      - text: Non chiede mai credenziali
+        correct: false
+        explain: No. Le credenziali restano un bersaglio frequente.
+
+  - id: bec
+    type: single
+    prompt: "Secondo l'FBI, nel 2025 negli Stati Uniti le truffe BEC:"
+    options:
+      - text: Hanno causato perdite dichiarate per circa 3 miliardi di dollari
+        correct: true
+        explain: Giusto, seconde solo alle truffe sugli investimenti.
+      - text: Sono il reato più denunciato
+        correct: false
+        explain: No. Il più denunciato è il phishing; le BEC sono meno frequenti ma molto più costose.
+      - text: Non hanno causato perdite
+        correct: false
+        explain: No. Sono tra i reati più costosi.
+
+  - id: verifica
+    type: single
+    prompt: Ricevi un'email dalla "banca" con un numero da chiamare per sbloccare il conto. Cosa fai?
+    options:
+      - text: Chiamo la banca al numero che conosco già, non a quello dell'email
+        correct: true
+        explain: Esatto. CISA consiglia di verificare con un contatto che non viene dal messaggio sospetto.
+      - text: Chiamo il numero dell'email, così faccio prima
+        correct: false
+        explain: No. Quel numero potrebbe essere dell'attaccante.
+      - text: Rispondo all'email con i miei dati
+        correct: false
+        explain: No. CISA raccomanda di non dare informazioni personali via email.

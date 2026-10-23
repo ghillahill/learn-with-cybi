@@ -1,0 +1,58 @@
+id: detective-phishing
+passingScore: 0.7
+questions:
+  - id: segnali
+    type: multiple
+    prompt: Quali sono segnali di phishing secondo CISA? Seleziona tutti quelli giusti.
+    options:
+      - text: Un mittente che imita l'indirizzo di un'azienda vera
+        correct: true
+        explain: Sì, spesso cambiando poche lettere.
+      - text: Un saluto generico come "Gentile cliente"
+        correct: true
+        explain: Sì. Chi ti conosce davvero di solito usa il tuo nome.
+      - text: Un allegato che non aspettavi, con una richiesta urgente
+        correct: true
+        explain: Sì, è una strada comune per il malware.
+      - text: Un'email che arriva di lunedì
+        correct: false
+        explain: No. Il giorno della settimana non dice niente.
+
+  - id: link
+    type: single
+    prompt: "Il testo di un link dice \"www.bancaesempio.example\", ma la destinazione reale è \"bancaesempio.example.accesso.example\". Quale dominio comanda?"
+    options:
+      - text: accesso.example
+        correct: true
+        explain: Esatto. Il dominio si legge da destra, e tutto quello che c'è a sinistra lo decide chi controlla accesso.example.
+      - text: bancaesempio.example
+        correct: false
+        explain: No. Il nome della banca compare all'inizio, ma è solo un'etichetta scelta dall'attaccante.
+      - text: www.bancaesempio.example
+        correct: false
+        explain: No. Quello è solo il testo mostrato, non la destinazione reale.
+
+  - id: legittima
+    type: truefalse
+    prompt: Ogni email che contiene un link o un allegato è phishing.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. Anche le email legittime hanno link e allegati. Conta l'insieme degli indizi.
+      - text: Falso
+        correct: true
+        explain: Giusto. L'obiettivo è ragionare sugli indizi, non avere paura di tutto.
+
+  - id: dubbio
+    type: single
+    prompt: Un'email del "supporto IT" ti chiede di accedere entro stasera. Hai un dubbio. Cosa fai?
+    options:
+      - text: Contatto il supporto IT con un recapito che conosco già
+        correct: true
+        explain: Esatto, è il consiglio di CISA.
+      - text: Clicco il link per vedere dove porta
+        correct: false
+        explain: No. Basta passarci sopra con il mouse, senza cliccare.
+      - text: Rispondo all'email chiedendo se è vera
+        correct: false
+        explain: No. Potrebbe risponderti proprio l'attaccante.

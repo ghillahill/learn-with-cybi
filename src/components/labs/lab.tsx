@@ -4,6 +4,8 @@ import { CiaLab } from "./cia-lab";
 import { IpLab } from "./ip-lab";
 import { NumberConverterLab } from "./number-converter-lab";
 import { PacketLab } from "./packet-lab";
+import { PasswordLab } from "./password-lab";
+import { PhishingLab } from "./phishing-lab";
 import { TerminalLab } from "./terminal-lab";
 
 // Registro dei laboratori per il blocco <Lab id> delle lezioni (§7.3).
@@ -15,6 +17,8 @@ const labs: Record<LabId, React.ComponentType> = {
   "ip-privati": IpLab,
   "viaggio-pacchetto": PacketLab,
   "triade-rid": CiaLab,
+  "detective-phishing": PhishingLab,
+  "forza-password": PasswordLab,
 };
 
 export function Lab({ id }: { id: string }) {

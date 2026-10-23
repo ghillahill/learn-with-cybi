@@ -1,0 +1,20 @@
+id: minacce-attacchi
+order: 6
+title: Minacce e attacchi comuni
+subtitle: Riconoscere le minacce principali, senza istruzioni operative
+description: Malware classico e moderno, ingegneria sociale, attacchi alle password e una panoramica degli attacchi di rete e web. Con due laboratori simulati, il detective del phishing e la forza delle password.
+icon: bug
+color: orange
+requires:
+  - concetti-chiave-sicurezza
+estimatedMinutes: 85
+badge:
+  id: cacciatore-di-minacce
+  name: Cacciatore di minacce
+lessons:
+  - 01-malware
+  - 02-malware-moderno
+  - 03-ingegneria-sociale
+  - 04-detective-phishing
+  - 05-attacchi-password
+  - 06-attacchi-rete-web

@@ -1,0 +1,159 @@
+---
+id: ingegneria-sociale
+title: Ingegneria sociale
+minutes: 15
+xp: 70
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Capire perché gli attaccanti puntano alle persone invece che ai sistemi
+  - Conoscere le leve psicologiche della persuasione
+  - Distinguere phishing, spear phishing, smishing, vishing, BEC, pretexting, baiting e tailgating
+sources:
+  - id: cisa-social-engineering
+    level: A
+    title: Avoiding Social Engineering and Phishing Attacks
+    publisher: CISA
+    year: 2021
+    url: https://www.cisa.gov/news-events/news/avoiding-social-engineering-and-phishing-attacks
+    note: Pubblicato il 1° febbraio 2021.
+  - id: capec-98
+    level: A
+    title: CAPEC-98, Phishing
+    publisher: MITRE
+    url: https://capec.mitre.org/data/definitions/98.html
+  - id: capec-163
+    level: A
+    title: CAPEC-163, Spear Phishing
+    publisher: MITRE
+    url: https://capec.mitre.org/data/definitions/163.html
+  - id: capec-407
+    level: A
+    title: CAPEC-407, Pretexting
+    publisher: MITRE
+    url: https://capec.mitre.org/data/definitions/407.html
+  - id: capec-457
+    level: A
+    title: CAPEC-457, USB Memory Attacks
+    publisher: MITRE
+    url: https://capec.mitre.org/data/definitions/457.html
+  - id: kaspersky-whaling
+    level: B
+    title: What is a whaling attack?
+    publisher: Kaspersky
+    url: https://www.kaspersky.com/resource-center/definitions/what-is-a-whaling-attack
+  - id: kaspersky-social-engineering
+    level: B
+    title: What is social engineering?
+    publisher: Kaspersky
+    url: https://www.kaspersky.com/resource-center/definitions/what-is-social-engineering
+  - id: trendmicro-tailgating
+    level: B
+    title: What is tailgating?
+    publisher: Trend Micro
+    url: https://www.trendmicro.com/en_us/what-is/social-engineering/what-is-tailgating.html
+  - id: cialdini-influence
+    level: B
+    title: "Influence: The Psychology of Persuasion"
+    author: Robert B. Cialdini
+    year: 1984
+  - id: cialdini-presuasion
+    level: B
+    title: "Pre-Suasion: A Revolutionary Way to Influence and Persuade"
+    author: Robert B. Cialdini
+    year: 2016
+  - id: influence-at-work
+    level: B
+    title: The 7 Principles of Persuasion
+    publisher: Influence at Work (società di Robert Cialdini)
+    url: https://www.influenceatwork.com/7-principles-of-persuasion/
+  - id: enisa-etl-2026
+    level: A
+    title: ENISA Threat Landscape 2026
+    publisher: ENISA
+    year: 2026
+    url: https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf
+  - id: ic3-2025
+    level: A
+    title: Internet Crime Report 2025
+    publisher: FBI Internet Crime Complaint Center (IC3)
+    year: 2026
+    url: https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf
+    note: Dati delle denunce ricevute dall'IC3 nel 2025; definizioni nell'Appendice B.
+quiz: ingegneria-sociale
+---
+
+<Cybi mood="pensieroso">
+Perché forzare una porta blindata, se basta convincere qualcuno ad aprirla? È l'idea dietro l'ingegneria sociale: l'attacco non punta al computer, punta a te.
+</Cybi>
+
+## Hackerare le persone
+
+L'<Term id="ingegneria-sociale">ingegneria sociale</Term> è un attacco in cui l'aggressore usa l'interazione umana, le sue "abilità sociali", per ottenere o compromettere informazioni. Invece dei sistemi, manipola le persone.<Cite id="cisa-social-engineering" />
+
+Hai già visto quanto conta: secondo il NIST, il malware moderno si appoggia molto all'ingegneria sociale per farsi installare.
+
+## Le leve della persuasione
+
+Lo psicologo **Robert Cialdini**, nel libro *Influence* (1984), descrive sei principi che spingono le persone a dire di sì:<Cite id="cialdini-influence" /><Cite id="influence-at-work" />
+
+- **reciprocità**: ci sentiamo in dovere di ricambiare un favore;
+- **impegno e coerenza**: vogliamo restare coerenti con ciò che abbiamo già detto o fatto;
+- **riprova sociale**: facciamo quello che vediamo fare agli altri;
+- **autorità**: tendiamo a obbedire a chi sembra esperto o importante;
+- **simpatia**: diciamo più facilmente di sì a chi ci piace;
+- **scarsità**: diamo più valore a ciò che è raro o sta per finire.
+
+Nel 2016, nel libro *Pre-Suasion*, Cialdini aggiunge un settimo principio, l'**unità**: il senso di appartenenza a un "noi".<Cite id="cialdini-presuasion" /><Cite id="influence-at-work" />
+
+Gli attaccanti usano queste leve. Il phishing si **finge un'organizzazione affidabile**, come una banca: è l'autorità.<Cite id="cisa-social-engineering" /> E spesso crea un **falso senso di urgenza**, per spingerti ad aprire un allegato senza controllarlo.<Cite id="cisa-social-engineering" /> Ricorda la scarsità: qui a "finire" è il tempo.
+
+<Callout type="info" title="Attenzione ai nomi">
+Negli avvisi di sicurezza leggerai spesso parole come urgenza, paura o fiducia. Sono leve vere, ma non sono "principi di Cialdini": il suo elenco è quello qui sopra.
+</Callout>
+
+## Un attacco, tanti nomi
+
+- <Term id="phishing">Phishing</Term>: email o siti web malevoli che si fingono un'organizzazione affidabile per ottenere informazioni personali.<Cite id="cisa-social-engineering" /> Spesso il bersaglio sono le credenziali.<Cite id="capec-98" />
+- **Spear phishing** (phishing "con la lancia"): un phishing mirato a una persona o a un gruppo, con informazioni su di loro per renderlo più credibile.<Cite id="capec-163" />
+- **Whaling** (caccia alla balena): un termine di settore, senza una definizione ufficiale; di solito indica gli attacchi che impersonano o colpiscono dirigenti e persone importanti di un'organizzazione.<Cite id="kaspersky-whaling" />
+- **Smishing**: ingegneria sociale via SMS.<Cite id="cisa-social-engineering" />
+- **Vishing**: ingegneria sociale via voce, cioè al telefono.<Cite id="cisa-social-engineering" />
+- **BEC** (*Business Email Compromise*): una truffa contro aziende o persone che fanno spesso bonifici. I truffatori compromettono account email o altri canali di comunicazione, con l'ingegneria sociale o con un'intrusione, per far partire un trasferimento di denaro non autorizzato.<Cite id="ic3-2025" />
+- **Pretexting**: l'attaccante inventa uno scenario, un "pretesto", e assume un'identità o un ruolo per convincere la vittima a dare informazioni o a fare qualcosa.<Cite id="capec-407" />
+- **Baiting** (esca): sfrutta la curiosità con la promessa di qualcosa di gratis; un esempio classico sono le chiavette USB lasciate in luoghi pubblici.<Cite id="kaspersky-social-engineering" /> Una chiavetta con codice malevolo può infettare il sistema in cui viene inserita.<Cite id="capec-457" />
+- **Tailgating**: un intruso entra fisicamente in un'area riservata seguendo una persona autorizzata. Anche questo è un termine di settore: alcuni lo distinguono dal *piggybacking*, in cui la persona autorizzata fa entrare l'intruso consapevolmente, magari per cortesia.<Cite id="trendmicro-tailgating" />
+
+<Cybi mood="detective">
+Il pretexting è un attore con un copione: "Sono del supporto tecnico, mi serve la tua password per sistemare un guasto". Nessun supporto vero te la chiede.
+</Cybi>
+
+## Quanto è diffusa?
+
+- In Europa, tra le tecniche di ingegneria sociale usate negli incidenti del 2025, il phishing è di gran lunga la più comune: **77,8%**, seguito dallo spam malevolo (*malspam*) con il 13%. ENISA segnala anche la crescita dello smishing e di **ClickFix**, il trucco del finto problema da "sistemare" con un comando, come il finto CAPTCHA della lezione precedente.<Cite id="enisa-etl-2026" />
+- Negli Stati Uniti, nel 2025 l'FBI ha ricevuto **191.561** denunce per phishing e *spoofing* (falsificazione del mittente): il tipo di reato più denunciato. Le truffe BEC sono molte meno (24.768 denunce), ma hanno causato perdite dichiarate per circa **3,05 miliardi di dollari**, seconde solo alle truffe sugli investimenti.<Cite id="ic3-2025" />
+
+## Come difendersi
+
+Le raccomandazioni di CISA:<Cite id="cisa-social-engineering" />
+
+- diffida di chiamate, visite o email inattese che chiedono informazioni sui dipendenti o altre informazioni interne;
+- se qualcuno dice di essere di un'organizzazione, **verifica direttamente** con l'organizzazione, usando un contatto che conosci già e non quello indicato nel messaggio;
+- non dare informazioni personali o finanziarie via email e non seguire i link che le chiedono;
+- usa l'autenticazione a più fattori;
+- se pensi di aver dato una password, cambiala subito, ovunque l'hai usata.
+
+<MythVsFact
+  myth="Se un'email mi chiama per nome e conosce il mio lavoro, è autentica."
+  fact="Lo spear phishing usa proprio informazioni sulla vittima per sembrare credibile. Conoscere il tuo nome non prova niente."
+  source="capec-163"
+/>
+
+<KeyPoints>
+- Ingegneria sociale: manipolare le persone invece dei sistemi (CISA).
+- Cialdini: reciprocità, impegno e coerenza, riprova sociale, autorità, simpatia, scarsità (1984), più l'unità (2016).
+- Phishing, spear phishing, whaling, smishing, vishing, BEC, pretexting, baiting, tailgating: stesso trucco, canali diversi.
+- ENISA: il phishing è il 77,8% delle tecniche di ingegneria sociale negli incidenti europei del 2025.
+- FBI: nel 2025 il phishing è il reato più denunciato, la BEC causa perdite per circa 3 miliardi di dollari.
+- La difesa migliore: verificare con un canale che conosci già.
+</KeyPoints>

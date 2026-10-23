@@ -1,4 +1,5 @@
 import { expect, type Page, test } from "@playwright/test";
+import { phishingEmails } from "../src/lib/labs/phishing";
 import { enableFreeMode } from "./helpers";
 
 function lab(page: Page, id: string) {
@@ -110,4 +111,46 @@ test("triade RID: dieci incidenti classificati", async ({ page }) => {
   await section.getByRole("button", { name: "Verifica" }).click();
   await expect(section.getByText("Completato")).toBeVisible();
   expect(await savedLabs(page)).toHaveProperty("triade-rid");
+});
+
+test("detective del phishing: sei email", async ({ page }) => {
+  await page.goto("/moduli/minacce-attacchi/detective-phishing");
+  const section = lab(page, "detective-phishing");
+  const email = section.getByRole("article");
+
+  await section.getByRole("button", { name: "È phishing" }).click();
+  await section.getByRole("button", { name: "Verifica", exact: true }).click();
+  await expect(section.getByText(/^Non ancora: hai trovato 0 indizi/)).toBeVisible();
+
+  for (const [i, data] of phishingEmails.entries()) {
+    const parts = email.getByRole("button");
+    for (const [j, part] of data.parts.entries()) {
+      if (part.suspicious) await parts.nth(j).click();
+    }
+    await section.getByRole("button", { name: data.verdict === "phishing" ? "È phishing" : "È legittima" }).click();
+    await section.getByRole("button", { name: "Verifica", exact: true }).click();
+    await expect(section.getByText(/^Giusto!/)).toBeVisible();
+    if (i < phishingEmails.length - 1) await section.getByRole("button", { name: "Prossima email" }).click();
+  }
+  await expect(section.getByText("Completato")).toBeVisible();
+  expect(await savedLabs(page)).toHaveProperty("detective-phishing");
+});
+
+test("forza delle password: calcolatore e due sfide", async ({ page }) => {
+  await page.goto("/moduli/minacce-attacchi/attacchi-password");
+  const section = lab(page, "forza-password");
+
+  await expect(section.getByTestId("tempo-medio")).toHaveText("meno di un secondo");
+  for (let i = 0; i < 8; i++) await section.getByRole("button", { name: "Un carattere in più" }).click();
+  await expect(section.getByTestId("tempo-medio")).toHaveText(/^circa \d+ anni$/);
+
+  await section.getByLabel(/^1\. Solo lettere minuscole/).fill("15");
+  await section.getByLabel(/^2\. Tutti e quattro/).fill("12");
+  await section.getByRole("button", { name: "Verifica" }).click();
+  await expect(section.getByText(/^Non ancora/)).toBeVisible();
+
+  await section.getByLabel(/^1\. Solo lettere minuscole/).fill("16");
+  await section.getByRole("button", { name: "Verifica" }).click();
+  await expect(section.getByText("Completato")).toBeVisible();
+  expect(await savedLabs(page)).toHaveProperty("forza-password");
 });

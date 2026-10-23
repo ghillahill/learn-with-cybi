@@ -1,0 +1,91 @@
+---
+id: detective-phishing
+title: "Lab: detective del phishing"
+minutes: 15
+xp: 80
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Riconoscere i segnali tipici di un'email di phishing
+  - Controllare la destinazione reale di un link
+  - Distinguere un'email sospetta da una legittima senza diventare paranoici
+sources:
+  - id: cisa-social-engineering
+    level: A
+    title: Avoiding Social Engineering and Phishing Attacks
+    publisher: CISA
+    year: 2021
+    url: https://www.cisa.gov/news-events/news/avoiding-social-engineering-and-phishing-attacks
+    note: Pubblicato il 1° febbraio 2021. Sezioni sui segnali del phishing e su come evitarlo.
+  - id: rfc1034
+    level: A
+    title: "RFC 1034: Domain Names - Concepts and Facilities"
+    author: P. Mockapetris
+    publisher: IETF
+    year: 1987
+    url: https://www.rfc-editor.org/rfc/rfc1034
+    note: Sezione 3.1, struttura dei nomi di dominio.
+  - id: rfc-2606
+    level: A
+    title: "RFC 2606: Reserved Top Level DNS Names"
+    publisher: IETF
+    year: 1999
+    url: https://www.rfc-editor.org/rfc/rfc2606
+quiz: detective-phishing
+---
+
+<Cybi mood="detective">
+Oggi indossiamo la lente d'ingrandimento! Ti mostro sei email: alcune sono trappole, altre no. Il tuo compito è trovare gli indizi e dare un verdetto.
+</Cybi>
+
+## I segnali da cercare
+
+CISA elenca cinque segnali tipici di un'email di phishing:<Cite id="cisa-social-engineering" />
+
+- **mittente sospetto**: l'indirizzo imita quello di un'azienda vera, cambiando poche lettere;
+- **saluto e firma generici**: "Gentile cliente", senza i contatti di una persona vera;
+- **link e siti falsi**: il testo del link non corrisponde alla destinazione reale;
+- **ortografia e impaginazione**: errori di grammatica, parole sbagliate, formattazione strana;
+- **allegati sospetti**: allegati che non aspettavi, spesso accompagnati da una richiesta urgente di aprirli.
+
+C'è poi la leva che hai visto nella lezione precedente: il **falso senso di urgenza**.<Cite id="cisa-social-engineering" />
+
+## Dove porta davvero quel link?
+
+Il testo di un link può dire una cosa e portare altrove. CISA consiglia di passare il mouse sopra il link senza cliccare: se l'indirizzo che compare non corrisponde al testo, il link può essere falso.<Cite id="cisa-social-engineering" />
+
+E quando leggi l'indirizzo, parti da destra. Un nome di dominio è una sequenza di etichette separate da punti, scritta dalla più specifica, a sinistra, alla più generale, a destra.<Cite id="rfc1034" /> Chi controlla un dominio può creare a sinistra tutte le etichette che vuole: in `posta.esempio.example.truffa.example/login` comanda `truffa.example`, anche se il nome giusto compare all'inizio.
+
+## Il laboratorio
+
+Nel laboratorio ogni email è divisa in parti: mittente, oggetto, testo, link, allegati. Clicca quelle sospette, poi decidi se l'email è phishing o legittima. Sotto ogni link vedi la "destinazione reale", come se ci passassi sopra con il mouse.
+
+Nomi e indirizzi sono inventati. I domini finiscono in `.example`, un nome riservato apposta per gli esempi, che non esiste su Internet.<Cite id="rfc-2606" />
+
+<Lab id="detective-phishing" />
+
+<Callout type="info" title="Niente paranoia">
+Non tutte le email sono trappole: nel laboratorio due su sei sono legittime, e segnalare come sospetto qualcosa di normale conta come errore. L'obiettivo è ragionare sugli indizi, non avere paura di ogni messaggio.
+</Callout>
+
+## E se il dubbio resta?
+
+Le regole di CISA:<Cite id="cisa-social-engineering" />
+
+- non rispondere a un'email che chiede informazioni personali o finanziarie, e non seguire i suoi link;
+- verifica la richiesta **contattando direttamente l'azienda**, con un recapito che conosci già (per esempio da un estratto conto), mai con quello scritto nel messaggio sospetto;
+- se pensi di aver dato informazioni sensibili dell'organizzazione, avvisa subito chi si occupa della sicurezza;
+- se hai inserito una password, cambiala subito, ovunque l'hai usata.
+
+<MythVsFact
+  myth="Il phishing si riconosce sempre dagli errori di grammatica."
+  fact="Gli errori sono solo uno dei segnali. Nel laboratorio l'email più insidiosa è scritta bene: la tradiscono il dominio sosia del mittente e la destinazione reale del link."
+  source="cisa-social-engineering"
+/>
+
+<KeyPoints>
+- I segnali di CISA: mittente sospetto, saluto generico, link falsi, errori, allegati inattesi. Più l'urgenza.
+- Controlla sempre la destinazione reale di un link: il dominio si legge da destra.
+- Un'email può essere legittima: giudica gli indizi, non avere paura di tutto.
+- Nel dubbio, verifica con un canale che conosci già.
+</KeyPoints>
