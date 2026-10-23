@@ -312,3 +312,14 @@ entries:
         level: A
         title: The Protection of Information in Computer Systems (Saltzer e Schroeder, 1975)
         url: https://www.cs.virginia.edu/~evans/cs551/saltzer/
+
+  - id: tls
+    term: TLS (Transport Layer Security)
+    definition: Protocollo di sicurezza che garantisce riservatezza e integrità dei dati tra due applicazioni che comunicano, per esempio tra browser e server web. Il traffico HTTP protetto con TLS si chiama HTTPS.
+    sources:
+      - id: nist-tls
+        level: A
+        title: NIST CSRC Glossary, "transport layer security"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/transport_layer_security
+        note: Definizioni tratte da CNSSI 4009-2022 e NISTIR 7711. Traduzione di LearnWithCybi.

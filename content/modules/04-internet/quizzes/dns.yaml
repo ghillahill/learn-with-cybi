@@ -1,0 +1,72 @@
+id: dns
+passingScore: 0.7
+questions:
+  - id: scopo
+    type: single
+    prompt: Cosa fa il DNS?
+    options:
+      - text: Traduce i nomi, come www.example.com, in indirizzi IP
+        correct: true
+        explain: Giusto. È la rubrica di Internet.
+      - text: Cifra le pagine web
+        correct: false
+        explain: No. La cifratura delle pagine è il compito di TLS, con HTTPS.
+      - text: Assegna gli indirizzi IP ai dispositivi di casa
+        correct: false
+        explain: No. Questo lo fa il DHCP.
+
+  - id: record
+    type: match
+    prompt: Abbina ogni record DNS al suo contenuto.
+    pairs:
+      - left: A
+        right: Un indirizzo IPv4
+        explain: Da address, indirizzo.
+      - left: AAAA
+        right: Un indirizzo IPv6
+        explain: Definito nell'RFC 3596.
+      - left: MX
+        right: Il server di posta del dominio
+        explain: Da mail exchange.
+      - left: CNAME
+        right: Un alias, cioè un altro nome
+        explain: Il nome punta al suo nome "canonico".
+
+  - id: mockapetris
+    type: single
+    prompt: Chi ha scritto le specifiche di base del DNS (RFC 1034 e 1035, 1987)?
+    options:
+      - text: Paul Mockapetris
+        correct: true
+        explain: Esatto, nel novembre 1987.
+      - text: Tim Berners-Lee
+        correct: false
+        explain: No. Berners-Lee ha inventato il web (Modulo 2), non il DNS.
+      - text: Jon Postel
+        correct: false
+        explain: No. Postel è l'autore dell'RFC 768 su UDP, che hai visto nella lezione precedente.
+
+  - id: autoritativo
+    type: truefalse
+    prompt: Il name server autoritativo è quello che ha i dati ufficiali per un certo dominio.
+    options:
+      - text: Vero
+        correct: true
+        explain: Giusto. Il resolver chiede in giro finché non lo trova.
+      - text: Falso
+        correct: false
+        explain: Invece è vero. "Autoritativo" vuol dire che ha i dati ufficiali.
+
+  - id: falsificato
+    type: single
+    prompt: Cosa può succedere se qualcuno falsifica una risposta DNS?
+    options:
+      - text: Il browser si collega a un indirizzo sbagliato, anche se il nome sembra giusto
+        correct: true
+        explain: Esatto. Per questo il DNS è un bersaglio interessante per chi attacca.
+      - text: Il computer si spegne
+        correct: false
+        explain: No. Il problema è dove ti porta la connessione.
+      - text: Niente, perché il browser controlla sempre l'indirizzo IP a mano
+        correct: false
+        explain: No. Il browser si fida della risposta del DNS.

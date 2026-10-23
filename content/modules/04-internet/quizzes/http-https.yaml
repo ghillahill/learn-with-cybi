@@ -1,0 +1,70 @@
+id: http-https
+passingScore: 0.7
+questions:
+  - id: codici
+    type: match
+    prompt: Abbina ogni codice di stato HTTP al suo significato.
+    pairs:
+      - left: "200"
+        right: OK, tutto bene
+        explain: La richiesta è andata a buon fine.
+      - left: "404"
+        right: La risorsa non esiste
+        explain: Not Found.
+      - left: "500"
+        right: Errore del server
+        explain: Internal Server Error.
+
+  - id: metodi
+    type: single
+    prompt: Quale metodo HTTP usa il browser per chiedere una pagina?
+    options:
+      - text: GET
+        correct: true
+        explain: Giusto. GET chiede una risorsa.
+      - text: POST
+        correct: false
+        explain: No. POST si usa per mandare dati da elaborare, come un modulo.
+      - text: SYN
+        correct: false
+        explain: No. SYN è un messaggio di TCP, non un metodo HTTP.
+
+  - id: cookie
+    type: single
+    prompt: A cosa servono i cookie?
+    options:
+      - text: A far ricordare lo stato al server, per esempio che hai fatto il login
+        correct: true
+        explain: Esatto. HTTP da solo non ricorda niente tra una richiesta e l'altra.
+      - text: A cifrare la connessione
+        correct: false
+        explain: No. La cifratura è il compito di TLS.
+      - text: A tradurre i nomi in indirizzi IP
+        correct: false
+        explain: No. Questo è il compito del DNS.
+
+  - id: lucchetto
+    type: truefalse
+    prompt: Il lucchetto (HTTPS) garantisce che il sito è onesto.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. Indica solo che la connessione è cifrata. Alla fine del 2019 il 74% dei siti di phishing usava HTTPS.
+      - text: Falso
+        correct: true
+        explain: Giusto. Per questo Google ha annunciato di sostituirlo con un'icona neutra da Chrome 117.
+
+  - id: viaggio
+    type: order
+    prompt: Metti in ordine le tappe del viaggio di una pagina HTTPS.
+    items:
+      - text: Il browser chiede al DNS l'indirizzo IP del sito
+        explain: Prima serve sapere dove andare.
+      - text: Three-way handshake TCP verso la porta 443
+        explain: Si apre la connessione.
+      - text: Browser e server preparano il canale cifrato TLS
+        explain: Da qui in poi i dati viaggiano cifrati.
+      - text: Il browser manda la richiesta GET
+        explain: Chiede la pagina.
+      - text: Il server risponde 200 OK con la pagina
+        explain: Il browser la disegna sullo schermo.

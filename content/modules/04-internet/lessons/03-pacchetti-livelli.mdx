@@ -1,0 +1,77 @@
+---
+id: pacchetti-livelli
+title: Pacchetti e livelli
+minutes: 12
+xp: 60
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Capire perché i dati viaggiano divisi in pacchetti
+  - Conoscere i 7 livelli del modello OSI e i 4 del modello Internet
+  - Capire l'incapsulamento
+sources:
+  - id: iso-7498-1
+    level: A
+    title: "ISO/IEC 7498-1:1994, Open Systems Interconnection, Basic Reference Model (identico a ITU-T X.200)"
+    publisher: ISO/IEC
+    year: 1994
+    note: Prima edizione 1984, seconda edizione 1994.
+  - id: rfc1122
+    level: A
+    title: "RFC 1122: Requirements for Internet Hosts, Communication Layers (sezione 1.1.3)"
+    author: R. Braden (editor)
+    publisher: IETF
+    year: 1989
+    url: https://www.rfc-editor.org/rfc/rfc1122
+quiz: pacchetti-livelli
+---
+
+<Cybi mood="pensieroso">
+Quando guardi un video, i dati non arrivano tutti insieme in un blocco unico. Arrivano a pezzetti, ognuno con la sua busta e il suo indirizzo. Vediamo come.
+</Cybi>
+
+## I pacchetti
+
+In rete i dati viaggiano divisi in **pacchetti**: piccoli pezzi, ognuno con le informazioni che servono per arrivare a destinazione. Così la rete può far viaggiare insieme i dati di tanti utenti, e un pezzo perso si può rispedire senza ripartire da capo.
+
+## Un problema alla volta: i livelli
+
+Far viaggiare dati nel mondo è complicato. Per renderlo gestibile, il lavoro si divide in **livelli**: ognuno risolve un problema e si appoggia a quello sotto.
+
+Il **modello OSI** (ISO/IEC 7498-1, prima edizione 1984, seconda 1994) descrive **7 livelli**:<Cite id="iso-7498-1" />
+
+1. fisico;
+2. collegamento dati;
+3. rete;
+4. trasporto;
+5. sessione;
+6. presentazione;
+7. applicazione.
+
+Internet però segue un modello più semplice, descritto nell'RFC 1122 (ottobre 1989), con **4 livelli**: collegamento (*link*), Internet, trasporto e applicazione.<Cite id="rfc1122" /> I livelli sessione e presentazione dell'OSI confluiscono nel livello applicazione.
+
+<Cybi mood="felice">
+L'OSI è la mappa che si studia a scuola. Il modello a 4 livelli è la strada che Internet percorre davvero. Conoscerle tutte e due aiuta a orientarsi!
+</Cybi>
+
+## L'incapsulamento: buste dentro buste
+
+Quando spedisci un messaggio, ogni livello lo mette in una **busta** e ci scrive sopra le sue informazioni:
+
+- il livello **applicazione** prepara il messaggio (per esempio la richiesta di una pagina web);
+- il livello **trasporto** lo mette in una busta con le porte di partenza e di arrivo;
+- il livello **Internet** aggiunge una busta con gli indirizzi IP;
+- il livello **collegamento** aggiunge l'ultima busta, per il tratto di rete locale.
+
+All'arrivo si fa il contrario: ogni livello apre la sua busta e passa il contenuto al livello sopra. Questo meccanismo si chiama **incapsulamento**.
+
+<Callout type="info" title="Perché conta per la sicurezza">
+Gli attacchi e le difese lavorano su livelli diversi. Un firewall può guardare indirizzi e porte; altri controlli guardano il contenuto dell'applicazione. Sapere su che livello si lavora aiuta a capire cosa si può vedere e cosa no.
+</Callout>
+
+<KeyPoints>
+- I dati viaggiano divisi in pacchetti.
+- Modello OSI (ISO/IEC 7498-1): 7 livelli, da fisico ad applicazione.
+- Modello Internet (RFC 1122, 1989): 4 livelli, collegamento, Internet, trasporto, applicazione.
+- Incapsulamento: ogni livello aggiunge la sua "busta" in partenza e la toglie all'arrivo.
+</KeyPoints>

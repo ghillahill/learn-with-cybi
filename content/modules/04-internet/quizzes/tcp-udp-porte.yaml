@@ -1,0 +1,66 @@
+id: tcp-udp-porte
+passingScore: 0.7
+questions:
+  - id: handshake
+    type: order
+    prompt: Metti in ordine i messaggi del three-way handshake di TCP.
+    items:
+      - text: SYN
+        explain: Il client chiede di aprire la connessione.
+      - text: SYN-ACK
+        explain: Il server conferma e accetta.
+      - text: ACK
+        explain: "Il client conferma: la connessione è aperta."
+
+  - id: tcp-udp
+    type: match
+    prompt: Abbina ogni protocollo alla sua descrizione.
+    pairs:
+      - left: TCP
+        right: Affidabile e orientato alla connessione
+        explain: Controlla che tutto arrivi, in ordine.
+      - left: UDP
+        right: Senza connessione e senza garanzia di consegna
+        explain: Più semplice e più veloce.
+
+  - id: porte-note
+    type: match
+    prompt: Abbina ogni porta al suo servizio.
+    pairs:
+      - left: "22"
+        right: SSH
+        explain: Accesso remoto sicuro.
+      - left: "53"
+        right: DNS
+        explain: La rubrica di Internet, prossima lezione.
+      - left: "80"
+        right: HTTP
+        explain: Il web senza cifratura.
+      - left: "443"
+        right: HTTPS
+        explain: Il web cifrato con TLS.
+
+  - id: fasce
+    type: single
+    prompt: In quale fascia sta la porta 50000?
+    options:
+      - text: Porte dinamiche (49152–65535)
+        correct: true
+        explain: Giusto. Sono le porte mai assegnate a un servizio.
+      - text: Porte di sistema (0–1023)
+        correct: false
+        explain: No. Le porte di sistema arrivano solo a 1023.
+      - text: Porte utente (1024–49151)
+        correct: false
+        explain: No. Le porte utente finiscono a 49151.
+
+  - id: rfc793
+    type: truefalse
+    prompt: La specifica attuale di TCP è ancora l'RFC 793 del 1981.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. Dall'agosto 2022 la specifica è l'RFC 9293.
+      - text: Falso
+        correct: true
+        explain: Giusto. L'RFC 9293 (2022) sostituisce l'RFC 793.

@@ -1,0 +1,96 @@
+---
+id: indirizzi
+title: Indirizzi
+minutes: 13
+xp: 60
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Distinguere indirizzo MAC e indirizzo IP
+  - Capire perché gli indirizzi IPv4 non bastano e cosa cambia con IPv6
+  - Riconoscere gli indirizzi IP privati e sapere a cosa servono NAT e DHCP
+sources:
+  - id: ieee-eui
+    level: A
+    title: Guidelines for Use of Extended Unique Identifier (EUI), Organizationally Unique Identifier (OUI), and Company ID (CID)
+    publisher: IEEE Registration Authority
+    url: https://standards.ieee.org/wp-content/uploads/import/documents/tutorials/eui.pdf
+  - id: rfc791
+    level: A
+    title: "RFC 791: Internet Protocol"
+    publisher: USC Information Sciences Institute, per DARPA
+    year: 1981
+    url: https://www.rfc-editor.org/rfc/rfc791
+  - id: rfc8200
+    level: A
+    title: "RFC 8200: Internet Protocol, Version 6 (IPv6) Specification"
+    author: S. Deering, R. Hinden
+    publisher: IETF
+    year: 2017
+    url: https://www.rfc-editor.org/rfc/rfc8200
+  - id: rfc1918
+    level: A
+    title: "RFC 1918: Address Allocation for Private Internets"
+    publisher: IETF
+    year: 1996
+    url: https://www.rfc-editor.org/rfc/rfc1918
+  - id: rfc3022
+    level: A
+    title: "RFC 3022: Traditional IP Network Address Translator (Traditional NAT)"
+    author: P. Srisuresh, K. Egevang
+    publisher: IETF
+    year: 2001
+    url: https://www.rfc-editor.org/rfc/rfc3022
+  - id: rfc2131
+    level: A
+    title: "RFC 2131: Dynamic Host Configuration Protocol"
+    author: R. Droms
+    publisher: IETF
+    year: 1997
+    url: https://www.rfc-editor.org/rfc/rfc2131
+quiz: indirizzi
+---
+
+<Cybi mood="detective">
+Per spedire una lettera serve un indirizzo. Per spedire dati in rete, anche: anzi, ne servono due di tipo diverso. Scopriamo quali.
+</Cybi>
+
+## L'indirizzo MAC: la targa della scheda di rete
+
+Ogni scheda di rete ha un **indirizzo MAC**: un identificatore a **48 bit** che l'IEEE oggi chiama **EUI-48**.<Cite id="ieee-eui" /> Serve a riconoscere un dispositivo dentro la stessa rete locale. Si scrive di solito in esadecimale: 48 bit sono 6 byte, cioè 12 cifre esadecimali.
+
+## L'indirizzo IP: dove ti trovi in Internet
+
+L'**indirizzo IP** serve a far arrivare i dati da una rete all'altra.
+
+- **IPv4** (RFC 791, settembre 1981) usa indirizzi a **32 bit**, scritti come quattro numeri da 0 a 255: per esempio `192.168.1.10`.<Cite id="rfc791" /> Gli indirizzi possibili sono 2³², circa **4,3 miliardi**: pochi per tutti i dispositivi del mondo.
+- **IPv6** usa indirizzi a **128 bit**, cioè 2¹²⁸ indirizzi possibili. La specifica attuale è l'RFC 8200 (luglio 2017), ma il protocollo esisteva già dagli anni '90.<Cite id="rfc8200" />
+
+<Cybi mood="sorpreso">
+2¹²⁸ è un numero con 39 cifre. Prova a scriverlo per intero su un foglio: ti serve un foglio lungo!
+</Cybi>
+
+## Indirizzi privati e NAT
+
+L'RFC 1918 (febbraio 1996) riserva tre blocchi di indirizzi IPv4 alle reti **private**:<Cite id="rfc1918" />
+
+- `10.0.0.0/8` (da 10.0.0.0 a 10.255.255.255);
+- `172.16.0.0/12` (da 172.16.0.0 a 172.31.255.255);
+- `192.168.0.0/16` (da 192.168.0.0 a 192.168.255.255).
+
+Questi indirizzi **non sono instradati su Internet**: ogni casa e ogni ufficio possono riusarli.<Cite id="rfc1918" />
+
+Come esce su Internet un dispositivo con un indirizzo privato? Ci pensa il **NAT** (*Network Address Translation*, RFC 3022, gennaio 2001): il router traduce gli indirizzi privati in un indirizzo pubblico. Nella forma più comune, chiamata NAPT, molti dispositivi condividono **un solo IP pubblico** e il router li distingue grazie alle porte.<Cite id="rfc3022" />
+
+<Lab id="ip-privati" />
+
+## DHCP: l'indirizzo arriva da solo
+
+Quando colleghi il telefono al Wi-Fi non scrivi nessun indirizzo. Lo fa il **DHCP** (*Dynamic Host Configuration Protocol*, RFC 2131, marzo 1997): assegna automaticamente l'indirizzo IP e la configurazione di rete ai dispositivi.<Cite id="rfc2131" />
+
+<KeyPoints>
+- MAC: identificatore a 48 bit della scheda di rete (EUI-48), usato nella rete locale.
+- IPv4: 32 bit, circa 4,3 miliardi di indirizzi (RFC 791, 1981). IPv6: 128 bit (RFC 8200, 2017).
+- Indirizzi privati (RFC 1918): 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16. Non sono instradati su Internet.
+- Il NAT (RFC 3022) fa uscire molti dispositivi privati con un solo IP pubblico. Il DHCP (RFC 2131) assegna gli indirizzi in automatico.
+</KeyPoints>

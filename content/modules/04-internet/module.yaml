@@ -1,0 +1,20 @@
+id: come-funziona-internet
+order: 4
+title: Come funziona Internet
+subtitle: Come viaggiano i dati, e perché quasi ogni attacco passa dalla rete
+description: Reti, indirizzi, pacchetti e livelli, TCP e UDP, il DNS e il web. Con due laboratori simulati per riconoscere gli IP privati e seguire il viaggio di una pagina HTTPS.
+icon: network
+color: emerald
+requires:
+  - come-funziona-computer
+estimatedMinutes: 75
+badge:
+  id: navigatore-di-pacchetti
+  name: Navigatore di pacchetti
+lessons:
+  - 01-cose-una-rete
+  - 02-indirizzi
+  - 03-pacchetti-livelli
+  - 04-tcp-udp-porte
+  - 05-dns
+  - 06-http-https

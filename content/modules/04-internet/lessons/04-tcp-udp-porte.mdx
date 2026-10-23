@@ -1,0 +1,88 @@
+---
+id: tcp-udp-porte
+title: TCP, UDP e porte
+minutes: 12
+xp: 60
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Distinguere TCP e UDP
+  - Capire il three-way handshake di TCP
+  - Sapere cosa sono le porte e conoscere le più comuni
+sources:
+  - id: rfc9293
+    level: A
+    title: "RFC 9293: Transmission Control Protocol (TCP)"
+    author: W. Eddy (editor)
+    publisher: IETF
+    year: 2022
+    url: https://www.rfc-editor.org/rfc/rfc9293
+  - id: rfc768
+    level: A
+    title: "RFC 768: User Datagram Protocol"
+    author: J. Postel
+    year: 1980
+    url: https://www.rfc-editor.org/rfc/rfc768
+  - id: rfc6335
+    level: A
+    title: "RFC 6335: IANA Procedures for the Management of the Service Name and Transport Protocol Port Number Registry"
+    publisher: IETF
+    year: 2011
+    url: https://www.rfc-editor.org/rfc/rfc6335
+  - id: iana-ports
+    level: A
+    title: Service Name and Transport Protocol Port Number Registry
+    publisher: IANA
+    url: https://www.iana.org/assignments/service-names-port-numbers
+quiz: tcp-udp-porte
+---
+
+<Cybi mood="felice">
+L'indirizzo IP porta i dati al computer giusto. Ma su quel computer girano tanti programmi: browser, chat, musica. Come fanno i dati a trovare il programma giusto? Con le porte!
+</Cybi>
+
+## TCP: la raccomandata con ricevuta di ritorno
+
+**TCP** (*Transmission Control Protocol*) è **affidabile** e **orientato alla connessione**: prima di scambiarsi dati, i due computer aprono una connessione, e TCP controlla che tutto arrivi, in ordine.<Cite id="rfc9293" />
+
+La connessione si apre con il **three-way handshake**, una stretta di mano in tre messaggi:<Cite id="rfc9293" />
+
+1. **SYN**: "vorrei aprire una connessione";
+2. **SYN-ACK**: "ricevuto, va bene anche per me";
+3. **ACK**: "ricevuto: si parte".
+
+Tre messaggi servono anche a evitare che vecchie richieste duplicate, arrivate in ritardo, aprano connessioni confuse.<Cite id="rfc9293" /> La specifica attuale di TCP è l'RFC 9293 (agosto 2022), che sostituisce l'RFC 793 del 1981.<Cite id="rfc9293" />
+
+## UDP: la cartolina
+
+**UDP** (*User Datagram Protocol*, RFC 768, 28 agosto 1980) è **senza connessione**: spedisce i dati e basta, senza garanzia di consegna. È più semplice e più veloce.<Cite id="rfc768" />
+
+<Cybi mood="pensieroso">
+TCP è una raccomandata: lenta ma sicura. UDP è una cartolina: parte subito, ma nessuno ti dice se è arrivata.
+</Cybi>
+
+## Le porte
+
+Una **porta** è un numero da **0 a 65535** che indica a quale programma sono destinati i dati. L'IANA, l'organizzazione che gestisce il registro delle porte, le divide in tre fasce (RFC 6335):<Cite id="rfc6335" />
+
+- **porte di sistema**: da 0 a 1023;
+- **porte utente**: da 1024 a 49151;
+- **porte dinamiche**: da 49152 a 65535, mai assegnate a un servizio e usate per esempio dal lato client delle connessioni.
+
+Alcune porte da conoscere:<Cite id="iana-ports" />
+
+- **22**: SSH (accesso remoto sicuro)
+- **53**: DNS
+- **80**: HTTP
+- **443**: HTTPS
+
+<Callout type="legal" title="Porte e legge">
+Esistono programmi che controllano quali porte sono aperte su un computer. Usali solo su sistemi tuoi o con un'autorizzazione scritta: provare a entrare in sistemi altrui è un reato (Modulo 0).
+</Callout>
+
+<KeyPoints>
+- TCP è affidabile e orientato alla connessione; si apre con SYN, SYN-ACK, ACK (RFC 9293, 2022).
+- UDP è senza connessione e senza garanzia di consegna (RFC 768, 1980).
+- Le porte vanno da 0 a 65535: di sistema (0–1023), utente (1024–49151), dinamiche (49152–65535).
+- Porte note: 22 SSH, 53 DNS, 80 HTTP, 443 HTTPS.
+</KeyPoints>

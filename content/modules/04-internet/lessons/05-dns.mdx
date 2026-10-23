@@ -1,0 +1,78 @@
+---
+id: dns
+title: "DNS: la rubrica di Internet"
+minutes: 11
+xp: 60
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Capire come un nome come example.com diventa un indirizzo IP
+  - Distinguere resolver e server autoritativi
+  - Conoscere i record DNS principali (A, AAAA, MX, CNAME)
+  - Capire perché manipolare il DNS è pericoloso
+sources:
+  - id: rfc1034
+    level: A
+    title: "RFC 1034: Domain Names, Concepts and Facilities"
+    author: P. Mockapetris
+    publisher: IETF
+    year: 1987
+    url: https://www.rfc-editor.org/rfc/rfc1034
+  - id: rfc1035
+    level: A
+    title: "RFC 1035: Domain Names, Implementation and Specification"
+    author: P. Mockapetris
+    publisher: IETF
+    year: 1987
+    url: https://www.rfc-editor.org/rfc/rfc1035
+  - id: rfc3596
+    level: A
+    title: "RFC 3596: DNS Extensions to Support IP Version 6"
+    publisher: IETF
+    year: 2003
+    url: https://www.rfc-editor.org/rfc/rfc3596
+quiz: dns
+---
+
+<Cybi mood="sorpreso">
+Ti ricordi a memoria i numeri di telefono dei tuoi amici? Probabilmente no: c'è la rubrica. Internet ha lo stesso problema con gli indirizzi IP, e la stessa soluzione.
+</Cybi>
+
+## Dal nome all'indirizzo
+
+Le persone ricordano i nomi, come `www.example.com`. I computer, per collegarsi, hanno bisogno di indirizzi IP. Il **DNS** (*Domain Name System*) traduce i nomi in indirizzi. Le specifiche di base sono l'RFC 1034 e l'RFC 1035, scritte da **Paul Mockapetris** nel **novembre 1987**.<Cite id="rfc1034" /><Cite id="rfc1035" />
+
+## Chi fa il lavoro
+
+- Il **resolver** è il programma che cerca le informazioni per conto di chi le chiede: per esempio per il tuo browser.<Cite id="rfc1034" />
+- I **name server** conservano le informazioni su una parte dei nomi. Quello che ha i dati ufficiali per un certo dominio si chiama **autoritativo**.<Cite id="rfc1034" />
+
+Quando scrivi un indirizzo nel browser, il resolver chiede in giro finché non trova il server autoritativo per quel nome, e ti riporta la risposta.
+
+## I record principali
+
+Le informazioni del DNS sono organizzate in **record**, ognuno di un tipo diverso:
+
+- **A**: un indirizzo IPv4<Cite id="rfc1034" />
+- **AAAA**: un indirizzo IPv6<Cite id="rfc3596" />
+- **MX**: il server di posta del dominio<Cite id="rfc1034" />
+- **CNAME**: un alias, cioè un altro nome che rimanda al nome principale<Cite id="rfc1034" />
+
+<Cybi mood="detective">
+Fai caso alle lunghezze: un indirizzo IPv6 (record AAAA) ha 128 bit, quattro volte i 32 bit di un indirizzo IPv4 (record A).
+</Cybi>
+
+## Perché manipolare il DNS è pericoloso
+
+Quasi ogni connessione comincia con una domanda al DNS. Se qualcuno riesce a falsificare la risposta, il tuo browser va a collegarsi a un indirizzo sbagliato, magari a un sito che imita quello vero, senza che tu te ne accorga dal nome nella barra degli indirizzi.
+
+<Callout type="info" title="Lo rivedremo">
+Gli attacchi che passano dalla rete torneranno nel modulo sulle minacce e sugli attacchi comuni.
+</Callout>
+
+<KeyPoints>
+- Il DNS traduce i nomi in indirizzi IP. Specifiche di base: RFC 1034 e 1035 di Paul Mockapetris (novembre 1987).
+- Il resolver cerca le risposte; il name server autoritativo ha i dati ufficiali di un dominio.
+- Record principali: A (IPv4), AAAA (IPv6, RFC 3596), MX (posta), CNAME (alias).
+- Una risposta DNS falsificata può portarti su un sito sbagliato senza che il nome cambi.
+</KeyPoints>

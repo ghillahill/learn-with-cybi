@@ -1,0 +1,59 @@
+id: pacchetti-livelli
+passingScore: 0.7
+questions:
+  - id: osi-ordine
+    type: order
+    prompt: Metti in ordine alcuni livelli del modello OSI, dal più basso (1) al più alto.
+    items:
+      - text: Fisico
+        explain: È il livello 1.
+      - text: Collegamento dati
+        explain: È il livello 2.
+      - text: Rete
+        explain: È il livello 3.
+      - text: Trasporto
+        explain: È il livello 4.
+      - text: Applicazione
+        explain: È il livello 7, il più alto.
+
+  - id: quanti-internet
+    type: single
+    prompt: Quanti livelli ha il modello Internet descritto nell'RFC 1122?
+    options:
+      - text: "4"
+        correct: true
+        explain: Giusto. Collegamento, Internet, trasporto, applicazione.
+      - text: "7"
+        correct: false
+        explain: No. 7 sono i livelli del modello OSI.
+      - text: "2"
+        correct: false
+        explain: No. Sono 4.
+
+  - id: sessione
+    type: truefalse
+    prompt: Nel modello Internet, i livelli sessione e presentazione dell'OSI confluiscono nel livello applicazione.
+    options:
+      - text: Vero
+        correct: true
+        explain: Esatto. Per questo il modello Internet ha meno livelli.
+      - text: Falso
+        correct: false
+        explain: Invece è vero. Sessione e presentazione stanno dentro il livello applicazione.
+
+  - id: buste
+    type: match
+    prompt: Abbina ogni livello del modello Internet a cosa scrive sulla sua busta.
+    pairs:
+      - left: Applicazione
+        right: Il messaggio, per esempio la richiesta di una pagina
+        explain: È il contenuto da spedire.
+      - left: Trasporto
+        right: Le porte di partenza e di arrivo
+        explain: Le porte indicano il programma giusto.
+      - left: Internet
+        right: Gli indirizzi IP
+        explain: Servono ad attraversare le reti.
+      - left: Collegamento
+        right: I dati per il tratto di rete locale
+        explain: È l'ultima busta, la più esterna.

@@ -3,7 +3,7 @@ import { CybiAvatar } from "@/components/cybi/cybi-avatar";
 import { XpBadge } from "@/components/progress/lesson-progress";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ThemeToggle } from "./theme-toggle";
+import { AccentPicker } from "./accent-picker";
 
 // Su schermi stretti "Percorso" si nasconde: ci porta già il logo.
 const links = [
@@ -35,7 +35,7 @@ export function SiteHeader() {
         <span className="hidden sm:contents">
           <XpBadge />
         </span>
-        <ThemeToggle />
+        <AccentPicker />
       </div>
     </header>
   );

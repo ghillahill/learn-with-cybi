@@ -1,0 +1,72 @@
+id: indirizzi
+passingScore: 0.7
+questions:
+  - id: bit
+    type: match
+    prompt: Abbina ogni indirizzo alla sua lunghezza.
+    pairs:
+      - left: Indirizzo MAC (EUI-48)
+        right: 48 bit
+        explain: Lo dice il nome stesso, EUI-48.
+      - left: Indirizzo IPv4
+        right: 32 bit
+        explain: Circa 4,3 miliardi di indirizzi possibili.
+      - left: Indirizzo IPv6
+        right: 128 bit
+        explain: 2¹²⁸ indirizzi possibili.
+
+  - id: privati
+    type: multiple
+    prompt: Quali di questi indirizzi sono privati secondo l'RFC 1918?
+    options:
+      - text: 192.168.0.5
+        correct: true
+        explain: Giusto, è nel blocco 192.168.0.0/16.
+      - text: 10.1.2.3
+        correct: true
+        explain: Giusto, è nel blocco 10.0.0.0/8.
+      - text: 172.20.0.1
+        correct: true
+        explain: Giusto, il blocco 172.16.0.0/12 va da 172.16.0.0 a 172.31.255.255.
+      - text: 172.40.0.1
+        correct: false
+        explain: No. 172.40 è fuori dal blocco, che finisce a 172.31.255.255.
+
+  - id: nat
+    type: single
+    prompt: Cosa fa il NAT nella sua forma più comune (NAPT)?
+    options:
+      - text: Fa uscire molti dispositivi su Internet con un solo IP pubblico, distinguendoli con le porte
+        correct: true
+        explain: Esatto. È quello che fa il router di casa.
+      - text: Assegna gli indirizzi IP ai dispositivi
+        correct: false
+        explain: No. Questo è il compito del DHCP.
+      - text: Cifra il traffico verso Internet
+        correct: false
+        explain: No. Il NAT traduce gli indirizzi, non cifra.
+
+  - id: instradati
+    type: truefalse
+    prompt: Gli indirizzi privati dell'RFC 1918 sono instradati su Internet.
+    options:
+      - text: Vero
+        correct: false
+        explain: "No. Restano dentro le reti private: per uscire serve il NAT."
+      - text: Falso
+        correct: true
+        explain: Giusto. Per questo ogni rete può riusarli.
+
+  - id: dhcp
+    type: single
+    prompt: Quale protocollo assegna automaticamente l'indirizzo IP quando ti colleghi al Wi-Fi?
+    options:
+      - text: DHCP
+        correct: true
+        explain: Giusto. È definito nell'RFC 2131 (1997).
+      - text: NAT
+        correct: false
+        explain: No. Il NAT traduce gli indirizzi privati in pubblici.
+      - text: IPv6
+        correct: false
+        explain: No. IPv6 è una versione del protocollo IP, non un servizio di assegnazione.

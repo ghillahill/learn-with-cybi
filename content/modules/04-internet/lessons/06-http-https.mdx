@@ -1,0 +1,100 @@
+---
+id: http-https
+title: "Il web: HTTP e HTTPS"
+minutes: 14
+xp: 70
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Capire richieste, risposte, metodi e codici di stato di HTTP
+  - Sapere cosa sono i cookie
+  - Capire cosa garantisce HTTPS e cosa no
+  - Seguire il viaggio completo di una pagina web
+sources:
+  - id: rfc9110
+    level: A
+    title: "RFC 9110: HTTP Semantics"
+    author: R. Fielding, M. Nottingham, J. Reschke (editor)
+    publisher: IETF
+    year: 2022
+    url: https://www.rfc-editor.org/rfc/rfc9110
+  - id: rfc6265
+    level: A
+    title: "RFC 6265: HTTP State Management Mechanism"
+    author: A. Barth
+    publisher: IETF
+    year: 2011
+    url: https://www.rfc-editor.org/rfc/rfc6265
+  - id: chromium-lock
+    level: A
+    title: An Update on the Lock Icon
+    publisher: Chromium Blog (Google)
+    year: 2023
+    url: https://blog.chromium.org/2023/05/an-update-on-lock-icon.html
+  - id: apwg-q4-2019
+    level: A
+    title: Phishing Activity Trends Report, 4th Quarter 2019
+    publisher: Anti-Phishing Working Group (APWG)
+    year: 2020
+    url: https://docs.apwg.org/reports/apwg_trends_report_q4_2019.pdf
+    note: Dato fornito all'APWG da PhishLabs.
+quiz: http-https
+---
+
+<Cybi mood="felice">
+Eccoci al pezzo di Internet che usi di più: il web. Ogni pagina che apri è una conversazione tra il tuo browser e un server. Ascoltiamola!
+</Cybi>
+
+## Richiesta e risposta
+
+Il web parla **HTTP** (*HyperText Transfer Protocol*). Funziona a domanda e risposta: il client manda una **richiesta**, il server manda una **risposta**. La specifica attuale della semantica di HTTP è l'RFC 9110 (giugno 2022).<Cite id="rfc9110" />
+
+Ogni richiesta ha un **metodo**, che dice cosa si vuole fare:<Cite id="rfc9110" />
+
+- **GET**: "dammi questa risorsa", per esempio una pagina;
+- **POST**: "elabora questi dati", per esempio un modulo compilato.
+
+Ogni risposta ha un **codice di stato**:<Cite id="rfc9110" />
+
+- **200**: OK, tutto bene
+- **404**: Not Found, la risorsa non esiste
+- **500**: Internal Server Error, errore del server
+
+## I cookie
+
+HTTP da solo non ricorda nulla: ogni richiesta è a sé. Per ricordare lo stato, per esempio che hai fatto il login, il server può salvare nel browser piccoli dati chiamati **cookie**. Il browser li rimanda al server nelle richieste successive. Sono definiti nell'RFC 6265 (aprile 2011).<Cite id="rfc6265" />
+
+<Cybi mood="pensieroso">
+Un cookie di login è come il braccialetto di un concerto: chi lo indossa può entrare. Per questo rubare i cookie di qualcuno è un attacco serio.
+</Cybi>
+
+## HTTPS: HTTP dentro TLS
+
+**HTTPS** è HTTP che viaggia dentro un canale cifrato con <Term id="tls">TLS</Term>. Lo schema `https://` è definito nell'RFC 9110, che sostituisce il vecchio RFC 2818.<Cite id="rfc9110" /> Chi sta in mezzo alla rete non può leggere né modificare i dati scambiati.
+
+<Lab id="viaggio-pacchetto" />
+
+## Il lucchetto non vuol dire "sito onesto"
+
+Il lucchetto nella barra degli indirizzi indica **solo** che la connessione è cifrata. Non dice niente sull'onestà di chi gestisce il sito: anche un sito di phishing può avere HTTPS.
+
+- Alla fine del 2019 il **74%** dei siti di phishing usava HTTPS, secondo i dati raccolti dall'APWG.<Cite id="apwg-q4-2019" />
+- Nel maggio 2023 Google scrive che quasi tutti i siti di phishing usano HTTPS, e che in una sua ricerca del 2021 solo l'11% dei partecipanti capiva il significato preciso del lucchetto.<Cite id="chromium-lock" />
+- Per questo Google annuncia che, da Chrome 117 (settembre 2023), il lucchetto viene sostituito da un'icona neutra, quella delle impostazioni ("tune").<Cite id="chromium-lock" />
+
+<MythVsFact
+  myth="C'è il lucchetto, quindi il sito è affidabile."
+  fact="Il lucchetto dice solo che la connessione è cifrata. Alla fine del 2019 il 74% dei siti di phishing usava HTTPS."
+  source="apwg-q4-2019"
+/>
+
+<Cybi mood="detective">
+Il lucchetto è come una busta chiusa: nessuno può leggere la lettera durante il viaggio. Ma non ti dice niente su chi l'ha scritta!
+</Cybi>
+
+<KeyPoints>
+- HTTP funziona a richiesta e risposta, con metodi (GET, POST) e codici di stato (200, 404, 500). Specifica attuale: RFC 9110 (2022).
+- I cookie (RFC 6265) fanno ricordare lo stato al server, per esempio il login.
+- HTTPS è HTTP dentro TLS: protegge i dati durante il viaggio.
+- Il lucchetto non indica un sito onesto: alla fine del 2019 il 74% dei siti di phishing usava HTTPS. Google ha annunciato che da Chrome 117 lo sostituisce con un'icona neutra.
+</KeyPoints>

@@ -65,3 +65,30 @@ test("terminale: missioni guidate fino al permesso negato", async ({ page }) => 
   await page.reload();
   await expect(lab(page, "terminale").getByText("Completato")).toBeVisible();
 });
+
+test("IP privati: solo i quattro indirizzi dell'RFC 1918", async ({ page }) => {
+  await page.goto("/moduli/come-funziona-internet/indirizzi");
+  const section = lab(page, "ip-privati");
+
+  await section.getByText("172.32.0.1").click();
+  await section.getByRole("button", { name: "Verifica" }).click();
+  await expect(section.getByText(/^Non ancora/)).toBeVisible();
+
+  await section.getByText("172.32.0.1").click();
+  for (const address of ["192.168.1.10", "10.200.1.1", "172.31.255.254", "172.16.5.4"]) {
+    await section.getByText(address, { exact: true }).click();
+  }
+  await section.getByRole("button", { name: "Verifica" }).click();
+  await expect(section.getByText("Completato")).toBeVisible();
+  expect(await savedLabs(page)).toHaveProperty("ip-privati");
+});
+
+test("viaggio di un pacchetto: tutte le tappe", async ({ page }) => {
+  await page.goto("/moduli/come-funziona-internet/http-https");
+  const section = lab(page, "viaggio-pacchetto");
+
+  await expect(section.getByText("Qual è l'indirizzo di www.example.com?")).toBeVisible();
+  for (let i = 0; i < 4; i++) await section.getByRole("button", { name: "Avanti" }).click();
+  await expect(section.getByText("200 OK")).toBeVisible();
+  await expect(section.getByText("Completato")).toBeVisible();
+});

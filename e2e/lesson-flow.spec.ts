@@ -86,3 +86,15 @@ test("tutti i quiz del Modulo 3 si completano con le risposte corrette", async (
     await expect(page.getByText(`${quiz.questions.length} risposte corrette su`)).toBeVisible();
   }
 });
+
+test("tutti i quiz del Modulo 4 si completano con le risposte corrette", async ({ page }) => {
+  test.slow();
+  await enableFreeMode(page);
+
+  for (const id of ["cose-una-rete", "indirizzi", "pacchetti-livelli", "tcp-udp-porte", "dns", "http-https"]) {
+    const quiz = loadQuiz("04-internet", id);
+    await page.goto(`/moduli/come-funziona-internet/${id}`);
+    await completeQuiz(page, quiz);
+    await expect(page.getByText(`${quiz.questions.length} risposte corrette su`)).toBeVisible();
+  }
+});

@@ -1,0 +1,55 @@
+id: cose-una-rete
+passingScore: 0.7
+questions:
+  - id: reti
+    type: match
+    prompt: Abbina ogni rete alla sua descrizione.
+    pairs:
+      - left: LAN
+        right: Rete locale, come quella di casa o di un ufficio
+        explain: Local Area Network.
+      - left: WAN
+        right: Rete che collega luoghi lontani
+        explain: Wide Area Network.
+      - left: Internet
+        right: Una rete di reti
+        explain: Milioni di reti collegate con regole comuni.
+
+  - id: client-server
+    type: single
+    prompt: Quando apri un sito, il tuo browser è…
+    options:
+      - text: Il client, perché chiede la pagina
+        correct: true
+        explain: Giusto. Il server è il computer che risponde e fornisce la pagina.
+      - text: Il server, perché mostra la pagina
+        correct: false
+        explain: "No. Mostrare la pagina non basta: il server è chi la fornisce."
+      - text: Il router
+        correct: false
+        explain: No. Il router è un dispositivo di rete, non un programma come il browser.
+
+  - id: router
+    type: single
+    prompt: Quale dispositivo collega la rete di casa a Internet?
+    options:
+      - text: Il router
+        correct: true
+        explain: Esatto. Il router collega reti diverse.
+      - text: Lo switch
+        correct: false
+        explain: No. Lo switch collega i dispositivi della stessa rete locale.
+      - text: La stampante
+        correct: false
+        explain: No. La stampante è un dispositivo collegato alla rete, non un collegamento tra reti.
+
+  - id: ruolo
+    type: truefalse
+    prompt: Un computer può essere client in un momento e server in un altro.
+    options:
+      - text: Vero
+        correct: true
+        explain: Giusto. Client e server sono ruoli.
+      - text: Falso
+        correct: false
+        explain: Invece è vero. Sono ruoli, non tipi di macchina.
