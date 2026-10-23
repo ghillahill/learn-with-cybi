@@ -16,7 +16,7 @@ const links = [
 export function SiteHeader() {
   return (
     <header className="bg-background/90 sticky top-0 z-40 border-b backdrop-blur">
-      <div className="mx-auto flex h-14 w-full max-w-3xl items-center gap-2 px-4">
+      <div className="mx-auto flex h-14 w-full max-w-5xl items-center gap-2 px-4">
         <Link href="/" className="mr-auto flex items-center gap-2 font-semibold">
           <CybiAvatar className="size-8" />
           <span className="hidden sm:inline">LearnWithCybi</span>

@@ -34,10 +34,10 @@ export default function Home() {
           Nessuna lezione pubblicata, per ora. Torna presto!
         </p>
       ) : (
-        <ol className="space-y-4">
+        <ol className="grid grid-cols-1 gap-4 lg:grid-cols-2">
           {modules.map((mod) => (
             <li key={mod.id}>
-              <Card>
+              <Card className="h-full">
                 <CardHeader>
                   <CardDescription>Modulo {mod.order}</CardDescription>
                   <CardTitle className="text-lg">{mod.title}</CardTitle>

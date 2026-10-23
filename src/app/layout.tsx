@@ -34,7 +34,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <TooltipProvider>
             <ProgressSync />
             <SiteHeader />
-            <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8 sm:py-12">
+            <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8 sm:py-12">
               {children}
             </main>
           </TooltipProvider>
