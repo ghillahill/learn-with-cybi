@@ -1,0 +1,65 @@
+id: autenticazione-piu-fattori
+passingScore: 0.7
+questions:
+  - id: classifica
+    type: order
+    prompt: Metti i tipi di MFA in ordine, dal più debole al più forte, secondo CISA.
+    items:
+      - text: SMS o chiamata vocale
+        explain: Vulnerabili a phishing, SS7 e SIM swapping. Ultima risorsa.
+      - text: Notifica push senza number matching
+        explain: Vulnerabile al push bombing.
+      - text: App TOTP o push con number matching
+        explain: Le migliori se non si può ancora usare una MFA resistente al phishing.
+      - text: FIDO/WebAuthn
+        explain: Resistente al phishing, il "gold standard".
+
+  - id: attacchi
+    type: match
+    prompt: Abbina ogni attacco alla sua descrizione.
+    pairs:
+      - left: Push bombing
+        right: Raffica di notifiche finché la vittima accetta
+        explain: Il number matching lo blocca.
+      - left: SIM swapping
+        right: Il numero della vittima passa a una SIM dell'attaccante
+        explain: Così l'attaccante riceve gli SMS con i codici.
+      - left: SS7
+        right: Debolezze della rete telefonica per leggere i codici
+        explain: Colpisce i codici inviati via SMS o con chiamata vocale.
+
+  - id: totp-phishing
+    type: truefalse
+    prompt: Per il NIST i codici delle app di autenticazione (OTP) sono resistenti al phishing.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. Un codice scritto a mano si può scrivere anche su un sito falso, che lo usa subito.
+      - text: Falso
+        correct: true
+        explain: Giusto. Sono più sicuri degli SMS, ma non resistono al phishing.
+
+  - id: totp
+    type: single
+    prompt: Ogni quanto cambia, di solito, un codice TOTP (RFC 6238)?
+    options:
+      - text: Ogni 30 secondi
+        correct: true
+        explain: Giusto, è il passo predefinito dell'RFC 6238.
+      - text: Ogni giorno
+        correct: false
+        explain: "No, sarebbe troppo lento: il codice dura 30 secondi."
+      - text: Solo quando cambi password
+        correct: false
+        explain: No. Il codice si calcola dall'ora corrente.
+
+  - id: meglio-di-niente
+    type: truefalse
+    prompt: Per CISA, una MFA via SMS è comunque meglio di nessuna MFA.
+    options:
+      - text: Vero
+        correct: true
+        explain: Giusto. Qualsiasi MFA riduce il rischio, anche se gli SMS sono l'ultima risorsa.
+      - text: Falso
+        correct: false
+        explain: No. CISA dice che qualsiasi MFA è meglio di nessuna MFA.

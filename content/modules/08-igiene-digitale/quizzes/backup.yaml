@@ -1,0 +1,61 @@
+id: backup
+passingScore: 0.7
+questions:
+  - id: regola
+    type: match
+    prompt: Completa la regola del 3-2-1.
+    pairs:
+      - left: "3"
+        right: Copie dei dati
+        explain: L'originale più due copie.
+      - left: "2"
+        right: Tipi di supporto diversi
+        explain: Per esempio il disco del computer e un disco esterno.
+      - left: "1"
+        right: Copia fuori sede
+        explain: In un posto diverso, per resistere a furti, incendi e guasti.
+
+  - id: ransomware
+    type: single
+    prompt: Perché un disco esterno sempre collegato non basta contro il ransomware?
+    options:
+      - text: Perché molti ransomware cercano i backup raggiungibili e li cancellano o li cifrano
+        correct: true
+        explain: Esatto. Per questo CISA consiglia backup offline.
+      - text: Perché i dischi esterni sono troppo lenti
+        correct: false
+        explain: No, la velocità non c'entra.
+      - text: Perché il ransomware colpisce solo i dischi esterni
+        correct: false
+        explain: No. Colpisce il computer e tutto ciò che riesce a raggiungere.
+
+  - id: cisa
+    type: multiple
+    prompt: Cosa consiglia CISA per i backup? Seleziona tutte le risposte giuste.
+    options:
+      - text: Tenerli offline
+        correct: true
+        explain: Giusto, così il ransomware non li raggiunge.
+      - text: Cifrarli
+        correct: true
+        explain: Giusto, così chi li ruba non li legge.
+      - text: Provare regolarmente a ripristinarli
+        correct: true
+        explain: Giusto. Un backup mai provato può non funzionare.
+      - text: Tenerne una sola copia, per non fare confusione
+        correct: false
+        explain: No. Una copia sola è un singolo punto di rottura.
+
+  - id: zero
+    type: single
+    prompt: Nella regola 3-2-1-1-0, cosa indica lo 0?
+    options:
+      - text: Zero errori nella verifica dei backup
+        correct: true
+        explain: Esatto. Ogni backup viene controllato per sapere che si può ripristinare.
+      - text: Zero copie nel cloud
+        correct: false
+        explain: No. Il cloud può benissimo ospitare la copia fuori sede.
+      - text: Zero euro spesi
+        correct: false
+        explain: No, non riguarda i costi.

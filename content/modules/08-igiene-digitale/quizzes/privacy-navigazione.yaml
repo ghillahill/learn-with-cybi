@@ -1,0 +1,72 @@
+id: privacy-navigazione
+passingScore: 0.7
+questions:
+  - id: wifi
+    type: truefalse
+    prompt: Secondo la FTC, oggi collegarsi a un Wi-Fi pubblico è di solito sicuro.
+    options:
+      - text: Vero
+        correct: true
+        explain: Giusto, perché la maggior parte dei siti usa la cifratura. Controlla comunque https prima di inserire dati personali.
+      - text: Falso
+        correct: false
+        explain: No. Il consiglio "mai usare il Wi-Fi pubblico" è superato.
+
+  - id: sito-falso
+    type: single
+    prompt: Un sito di phishing usa HTTPS. Cosa vuol dire?
+    options:
+      - text: I dati viaggiano cifrati, ma arrivano comunque al truffatore che gestisce il sito
+        correct: true
+        explain: Esatto. La cifratura protegge il viaggio, non dice se il sito è onesto.
+      - text: Che il sito è stato controllato e approvato
+        correct: false
+        explain: No. Anche i siti falsi possono avere la cifratura.
+      - text: Che i dati non arrivano al sito
+        correct: false
+        explain: No. Arrivano eccome, cifrati, proprio a chi gestisce il sito.
+
+  - id: vpn
+    type: multiple
+    prompt: Cosa dice la FTC sulle app VPN? Seleziona tutte le risposte giuste.
+    options:
+      - text: Spostano la fiducia dalla rete che usi al fornitore della VPN
+        correct: true
+        explain: Giusto. L'app può intercettare tutto il tuo traffico.
+      - text: Alcune non cifrano il traffico, o ne cifrano solo una parte
+        correct: true
+        explain: Giusto.
+      - text: Alcune condividono i tuoi dati con terzi
+        correct: true
+        explain: Giusto.
+      - text: Ti rendono completamente anonimo
+        correct: false
+        explain: No. I siti possono riconoscerti dalle informazioni che dai tu.
+
+  - id: permessi
+    type: single
+    prompt: Un'app di torcia chiede l'accesso ai tuoi contatti. Cosa consiglia la FTC?
+    options:
+      - text: Togliere i permessi che non servono, e valutare di eliminare l'app
+        correct: true
+        explain: Esatto. Un'app non dovrebbe chiedere più di quanto le serve.
+      - text: Accettare tutto, tanto non succede niente
+        correct: false
+        explain: No. I contatti sono dati personali tuoi e dei tuoi amici.
+      - text: Installare una seconda torcia per confronto
+        correct: false
+        explain: No, non risolve il problema dei permessi.
+
+  - id: identificativo
+    type: single
+    prompt: A cosa serve reimpostare l'identificativo pubblicitario del telefono?
+    options:
+      - text: A rendere più difficile agli inserzionisti seguirti tra un'app e l'altra
+        correct: true
+        explain: Esatto. Gli inserzionisti possono usarlo per tracciarti.
+      - text: A velocizzare il telefono
+        correct: false
+        explain: No, non c'entra con la velocità.
+      - text: A eliminare tutti i virus
+        correct: false
+        explain: No. Riguarda il tracciamento, non il malware.

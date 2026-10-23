@@ -4,6 +4,7 @@ import {
   completeLesson,
   isLabCompleted,
   isModuleUnlocked,
+  setChecklistItem,
   lessonProgress,
   recordQuiz,
   startLesson,
@@ -58,5 +59,12 @@ describe("progressi", () => {
     expect(isLabCompleted(once, "lab")).toBe(true);
     expect(completeLab(once, "lab", new Date())).toBe(once);
     expect(once.labs.lab.completedAt).toBe(now.toISOString());
+  });
+
+  it("setChecklistItem salva, cambia e toglie una scelta", () => {
+    const done = setChecklistItem(emptyProgress(), "mfa", "fatto");
+    expect(done.checklist).toEqual({ mfa: "fatto" });
+    expect(setChecklistItem(done, "mfa", "da-fare").checklist).toEqual({ mfa: "da-fare" });
+    expect(setChecklistItem(done, "mfa", null).checklist).toEqual({});
   });
 });

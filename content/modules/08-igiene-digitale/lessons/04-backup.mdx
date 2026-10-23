@@ -1,0 +1,70 @@
+---
+id: backup
+title: Backup
+minutes: 11
+xp: 60
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Conoscere la regola del 3-2-1 e la sua versione moderna
+  - Capire perché il ransomware dà la caccia ai backup
+  - Sapere come tenere backup che funzionano davvero quando servono
+sources:
+  - id: avepoint-321
+    level: B
+    title: What Is the 3-2-1 Backup Rule? (And Why It's Evolved to 3-2-1-1-0)
+    author: Grace Harrison
+    publisher: AvePoint
+    year: 2026
+    url: https://www.avepoint.com/blog/backup/what-is-the-3-2-1-backup-rule
+  - id: cisa-stopransomware
+    level: A
+    title: "#StopRansomware Guide"
+    publisher: CISA
+    year: 2023
+    url: https://www.cisa.gov/stopransomware/ransomware-guide
+    note: Versione del settembre 2023.
+quiz: backup
+---
+
+<Cybi mood="pensieroso">
+Immagina di accendere il computer e trovare tutte le tue foto cifrate da un <Term id="ransomware">ransomware</Term>. Hai due strade: pagare e sperare, oppure aprire il backup e ripartire. Oggi costruiamo la seconda.
+</Cybi>
+
+## La regola del 3-2-1
+
+La regola più conosciuta per i backup è il **3-2-1**, resa popolare dal fotografo Peter Krogh e poi adottata in tutta l'informatica:<Cite id="avepoint-321" />
+
+- **3** copie dei dati;
+- su **2** tipi di supporto diversi;
+- **1** copia tenuta fuori sede, cioè in un posto diverso.
+
+<Cybi mood="felice">
+Una copia sul computer, una su un disco esterno, una nel cloud o a casa dei nonni. Se si rompe il computer, o va a fuoco la casa, almeno una copia si salva.
+</Cybi>
+
+## Perché il ransomware cerca i backup
+
+Secondo CISA, molti ransomware **cercano i backup raggiungibili** e li cancellano o li cifrano: così, senza pagare il riscatto, non puoi più ripristinare i dati.<Cite id="cisa-stopransomware" /> Un disco esterno sempre collegato al computer, per il ransomware, è solo un'altra cartella da cifrare.
+
+Per questo CISA consiglia di:<Cite id="cisa-stopransomware" />
+
+- tenere backup **offline** e **cifrati** dei dati importanti;
+- **verificare regolarmente** che i backup siano disponibili e integri, provando a ripristinarli come in una vera emergenza.
+
+## La versione moderna: 3-2-1-1-0
+
+Oggi molti usano una versione estesa, il **3-2-1-1-0**. Aggiunge una copia **offline o immutabile**, cioè che non si può modificare, contro il ransomware, e la **verifica** obbligatoria dei backup.<Cite id="avepoint-321" /> Lo zero ricorda l'obiettivo: nessun errore quando provi a ripristinare.
+
+<MythVsFact
+  myth="Se ho un backup, sono a posto."
+  fact="Un backup sempre collegato può essere cifrato insieme a tutto il resto, e uno mai provato può non funzionare. CISA consiglia backup offline e cifrati, da testare regolarmente."
+  source="cisa-stopransomware"
+/>
+
+<KeyPoints>
+- Regola 3-2-1: 3 copie, 2 supporti diversi, 1 fuori sede.
+- Molti ransomware cercano i backup raggiungibili per cancellarli o cifrarli.
+- CISA: backup offline e cifrati, provati regolarmente con un ripristino.
+- 3-2-1-1-0: in più una copia offline o immutabile e la verifica dei ripristini.
+</KeyPoints>

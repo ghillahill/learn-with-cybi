@@ -1,0 +1,88 @@
+---
+id: autenticazione-piu-fattori
+title: Autenticazione a più fattori
+minutes: 13
+xp: 70
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Conoscere i tipi di MFA, dal più debole al più forte
+  - Capire gli attacchi contro la MFA, dal phishing al SIM swapping
+  - Sapere quale MFA scegliere per i tuoi account
+sources:
+  - id: cisa-mfa-2022
+    level: A
+    title: Implementing Phishing-Resistant MFA
+    publisher: CISA
+    year: 2022
+    url: https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf
+    note: Ottobre 2022.
+  - id: sp800-63b-4
+    level: A
+    title: "NIST SP 800-63B-4: Authentication and Authenticator Management"
+    publisher: NIST
+    year: 2025
+    url: https://pages.nist.gov/800-63-4/sp800-63b.html
+    note: Parti su AAL2, autenticatori out-of-band e OTP, resistenza al phishing (3.2.5) e autenticatori ristretti.
+  - id: rfc-6238
+    level: A
+    title: "RFC 6238: TOTP, Time-Based One-Time Password Algorithm"
+    author: D. M'Raihi e altri
+    publisher: IETF
+    year: 2011
+    url: https://www.rfc-editor.org/rfc/rfc6238
+quiz: autenticazione-piu-fattori
+---
+
+<Cybi mood="pensieroso">
+Nel Modulo 5 hai visto che la <Term id="mfa">MFA</Term> chiede almeno due prove diverse, per esempio una password e il telefono. Ma non tutte le seconde prove sono uguali: alcune un attaccante furbo riesce ad aggirarle.
+</Cybi>
+
+## Come si attacca la MFA
+
+CISA descrive quattro modi in cui gli attaccanti superano la MFA:<Cite id="cisa-mfa-2022" />
+
+- **Phishing**: un'email porta la vittima su un sito che imita la pagina di accesso vera. La vittima scrive nome utente, password e anche il **codice a 6 cifre** dell'app di autenticazione.
+- **Push bombing** (o *push fatigue*): l'attaccante manda una raffica di notifiche di accesso sul telefono della vittima, finché questa preme "Accetta".
+- **Attacchi alla rete telefonica (SS7)**: sfruttando le debolezze del protocollo SS7, l'attaccante ottiene i codici mandati via SMS o con una chiamata vocale.
+- <Term id="sim-swapping">SIM swapping</Term>: l'attaccante convince l'operatore telefonico a trasferire il numero della vittima su una SIM controllata da lui.
+
+## Dal più debole al più forte
+
+CISA mette in fila i tipi di MFA così (ottobre 2022):<Cite id="cisa-mfa-2022" />
+
+1. **SMS o chiamata vocale**: vulnerabili a phishing, SS7 e SIM swapping. Vanno usati solo come **ultima risorsa**.
+2. **Notifica push senza "number matching"**: vulnerabile al push bombing e agli errori dell'utente.
+3. **App con codici temporanei** o **notifica push con number matching**: con il *number matching* devi scrivere nell'app un numero mostrato sullo schermo del computer, e questo blocca il push bombing.
+4. **MFA resistente al phishing**: **FIDO/WebAuthn** (chiavi di sicurezza e passkey) o PKI. CISA la chiama "il gold standard".
+
+CISA ricorda anche che **qualsiasi MFA è meglio di nessuna MFA**.<Cite id="cisa-mfa-2022" />
+
+<Cybi mood="detective">
+Guarda il primo attacco: la vittima consegna anche il codice dell'app. Un codice che si copia a mano si può copiare anche su un sito falso!
+</Cybi>
+
+## I codici temporanei (TOTP)
+
+Le app di autenticazione usano di solito l'algoritmo **TOTP**, descritto nell'RFC 6238 (maggio 2011): il codice si calcola dall'ora corrente, e il passo predefinito è di **30 secondi**.<Cite id="rfc-6238" />
+
+Sono più sicure degli SMS, ma per il NIST **non sono resistenti al phishing**: un codice scritto a mano non è legato alla connessione con il sito vero, quindi un sito falso può farselo dare e usarlo subito.<Cite id="sp800-63b-4" />
+
+## Cosa dice il NIST
+
+- L'uso della rete telefonica (SMS e chiamate) è l'unico autenticatore **"ristretto"**: chi lo offre deve avvisare dei rischi e offrire un'alternativa.<Cite id="sp800-63b-4" />
+- Al livello di sicurezza AAL2, un servizio **deve offrire almeno un'opzione resistente al phishing**.<Cite id="sp800-63b-4" />
+- La resistenza al phishing richiede l'autenticazione crittografica: come hai visto nella lezione precedente, WebAuthn la ottiene legando il segreto al dominio del sito.<Cite id="sp800-63b-4" />
+
+<MythVsFact
+  myth="Con un'app di autenticazione sono al sicuro anche dal phishing."
+  fact="L'app è molto meglio degli SMS, ma il codice a 6 cifre si può scrivere anche su un sito falso. Per il NIST le OTP non sono resistenti al phishing: lo sono solo i metodi crittografici come FIDO/WebAuthn."
+  source="sp800-63b-4"
+/>
+
+<KeyPoints>
+- Attacchi alla MFA (CISA): phishing, push bombing, SS7, SIM swapping.
+- Dal più debole: SMS e voce (ultima risorsa), push semplice, app TOTP o push con number matching, FIDO/WebAuthn.
+- TOTP (RFC 6238): un codice nuovo ogni 30 secondi, ma non resistente al phishing.
+- Qualsiasi MFA è meglio di nessuna; la scelta migliore è una passkey o una chiave di sicurezza.
+</KeyPoints>

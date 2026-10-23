@@ -1,5 +1,6 @@
 import { expect, type Page, test } from "@playwright/test";
 import { caesarSecret } from "../src/lib/labs/caesar";
+import { checklistItems } from "../src/lib/labs/checklist";
 import { cipherLetters, correctPlainLetter } from "../src/lib/labs/frequency";
 import { phishingEmails } from "../src/lib/labs/phishing";
 import { enableFreeMode } from "./helpers";
@@ -229,4 +230,36 @@ test("hash: un carattere cambiato e la domanda finale", async ({ page }) => {
   await section.getByRole("button", { name: /^No, un hash non si/ }).click();
   await expect(section.getByText("Completato")).toBeVisible();
   expect(await savedLabs(page)).toHaveProperty("hash");
+});
+
+test("checklist di sicurezza: risposte salvate nei progressi", async ({ page }) => {
+  await page.goto("/moduli/igiene-digitale/privacy-navigazione");
+  const section = lab(page, "checklist-sicurezza");
+  const groups = section.getByRole("group");
+
+  await groups.nth(0).getByRole("button", { name: "Fatto" }).click();
+  await groups.nth(1).getByRole("button", { name: "Da fare" }).click();
+  await expect(section.getByTestId("riepilogo-checklist")).toHaveText(
+    `Fatti: 1 · Da fare: 1 · Senza risposta: ${checklistItems.length - 2}`,
+  );
+  await expect(section.getByText("Il tuo piano")).toBeVisible();
+
+  await page.reload();
+  const reloaded = lab(page, "checklist-sicurezza");
+  await expect(reloaded.getByRole("group").nth(0).getByRole("button", { name: "Fatto" })).toHaveAttribute(
+    "aria-pressed",
+    "true",
+  );
+  for (let i = 2; i < checklistItems.length; i++) {
+    await reloaded.getByRole("group").nth(i).getByRole("button", { name: "Fatto" }).click();
+  }
+  await expect(reloaded.getByText("Completato")).toBeVisible();
+  const saved = await page.evaluate(() => JSON.parse(localStorage.getItem("lwc:progress:v1") ?? "{}"));
+  expect(saved.labs).toHaveProperty("checklist-sicurezza");
+  expect(saved.checklist[checklistItems[1].id]).toBe("da-fare");
+});
+
+test("forza delle password: il lab compare anche nella lezione 8.1", async ({ page }) => {
+  await page.goto("/moduli/igiene-digitale/password-passkey");
+  await expect(lab(page, "forza-password")).toBeVisible();
 });

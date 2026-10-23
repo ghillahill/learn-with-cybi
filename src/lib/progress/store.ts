@@ -2,7 +2,7 @@
 
 import { create } from "zustand";
 import * as logic from "./logic";
-import { emptyProgress, type Progress } from "./schema";
+import { emptyProgress, type ChecklistStatus, type Progress } from "./schema";
 
 type ProgressState = {
   progress: Progress;
@@ -12,6 +12,7 @@ type ProgressState = {
   completeLesson: (key: string, xp: number) => void;
   recordQuiz: (key: string, score: number, passingScore: number, xp: number) => void;
   completeLab: (labId: string) => void;
+  setChecklistItem: (itemId: string, status: ChecklistStatus | null) => void;
   setFreeMode: (freeMode: boolean) => void;
   replace: (progress: Progress) => void;
   reset: () => void;
@@ -31,6 +32,8 @@ export const useProgressStore = create<ProgressState>()((set) => ({
     })),
   completeLab: (labId) =>
     set((s) => ({ progress: logic.completeLab(s.progress, labId) })),
+  setChecklistItem: (itemId, status) =>
+    set((s) => ({ progress: logic.setChecklistItem(s.progress, itemId, status) })),
   setFreeMode: (freeMode) =>
     set((s) => ({
       progress: { ...s.progress, settings: { ...s.progress.settings, freeMode } },

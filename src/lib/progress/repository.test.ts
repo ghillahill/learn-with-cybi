@@ -23,4 +23,14 @@ describe("parseProgress", () => {
     delete old.labs;
     expect(parseProgress(old)?.labs).toEqual({});
   });
+
+  it("aggiunge la checklist mancante ai file vecchi", () => {
+    const old: Record<string, unknown> = { ...emptyProgress() };
+    delete old.checklist;
+    expect(parseProgress(old)?.checklist).toEqual({});
+  });
+
+  it("rifiuta stati sconosciuti nella checklist", () => {
+    expect(parseProgress({ ...emptyProgress(), checklist: { mfa: "forse" } })).toBeNull();
+  });
 });

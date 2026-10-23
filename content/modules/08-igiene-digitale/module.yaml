@@ -1,0 +1,19 @@
+id: igiene-digitale
+order: 8
+title: "Difendersi: igiene digitale"
+subtitle: Applicare subito alla tua vita digitale quello che hai imparato
+description: Password e passkey, autenticazione a più fattori, aggiornamenti, antivirus e firewall, backup, privacy e navigazione sicura. Si chiude con la tua checklist personale di sicurezza.
+icon: shield-check
+color: teal
+requires:
+  - crittografia
+estimatedMinutes: 65
+badge:
+  id: percorso-base
+  name: Percorso base completato
+lessons:
+  - 01-password-passkey
+  - 02-autenticazione-piu-fattori
+  - 03-aggiornamenti-antivirus-firewall
+  - 04-backup
+  - 05-privacy-navigazione

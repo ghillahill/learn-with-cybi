@@ -1,6 +1,7 @@
 import type { LabId } from "@/lib/content/keys";
 import { Base64Lab } from "./base64-lab";
 import { CaesarLab } from "./caesar-lab";
+import { ChecklistLab } from "./checklist-lab";
 import { CiaLab } from "./cia-lab";
 import { FrequencyLab } from "./frequency-lab";
 import { HashLab } from "./hash-lab";
@@ -27,6 +28,7 @@ const labs: Record<LabId, React.ComponentType> = {
   "analisi-frequenza": FrequencyLab,
   "scambio-chiavi": KeyExchangeLab,
   hash: HashLab,
+  "checklist-sicurezza": ChecklistLab,
 };
 
 export function Lab({ id }: { id: string }) {

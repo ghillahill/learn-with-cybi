@@ -1,0 +1,75 @@
+id: aggiornamenti-antivirus-firewall
+passingScore: 0.7
+questions:
+  - id: quattro-passi
+    type: multiple
+    prompt: Quali sono i quattro passi base di CISA? Seleziona tutte le risposte giuste.
+    options:
+      - text: Usare password forti
+        correct: true
+        explain: Giusto.
+      - text: Usare la MFA e un password manager
+        correct: true
+        explain: Giusto.
+      - text: Aggiornare il software
+        correct: true
+        explain: Giusto.
+      - text: Evitare e segnalare il phishing
+        correct: true
+        explain: Giusto.
+      - text: Spegnere il Wi-Fi quando non serve
+        correct: false
+        explain: No, non è uno dei quattro passi.
+
+  - id: automatici
+    type: single
+    prompt: Cosa consiglia CISA per gli aggiornamenti?
+    options:
+      - text: Attivare gli aggiornamenti automatici
+        correct: true
+        explain: Esatto, così si installano appena sono disponibili.
+      - text: Aspettare qualche anno per vedere se funzionano
+        correct: false
+        explain: No. Finché non installi un aggiornamento di sicurezza, la vulnerabilità resta aperta.
+      - text: Aggiornare solo il sistema operativo, non le app
+        correct: false
+        explain: No. Anche le app hanno vulnerabilità da correggere.
+
+  - id: wannacry
+    type: truefalse
+    prompt: Quando WannaCry ha colpito, nel maggio 2017, la patch MS17-010 non esisteva ancora.
+    options:
+      - text: Vero
+        correct: false
+        explain: No. Microsoft l'aveva pubblicata il 14 marzo 2017; i sistemi colpiti non l'avevano installata.
+      - text: Falso
+        correct: true
+        explain: Giusto. La patch c'era da circa due mesi.
+
+  - id: strumenti
+    type: match
+    prompt: Abbina ogni strumento a cosa fa.
+    pairs:
+      - left: Antivirus
+        right: Riconosce soprattutto il malware già noto
+        explain: Cerca le caratteristiche di esemplari conosciuti.
+      - left: EDR
+        right: Monitora i dispositivi e risponde in modo automatico
+        explain: Definizione del memo OMB M-22-01 (ottobre 2021).
+      - left: Firewall
+        right: Limita le connessioni in entrata e in uscita
+        explain: La regola consigliata è bloccare ciò che non è permesso.
+
+  - id: firewall-regola
+    type: single
+    prompt: Come consiglia il NIST di configurare un firewall?
+    options:
+      - text: Bloccare tutto il traffico in entrata che non è esplicitamente permesso
+        correct: true
+        explain: Esatto, è il principio dei default sicuri.
+      - text: Permettere tutto e bloccare solo ciò che sembra pericoloso
+        correct: false
+        explain: No. Così ogni minaccia nuova passerebbe.
+      - text: Spegnerlo quando l'antivirus è attivo
+        correct: false
+        explain: No. Firewall e antivirus fanno cose diverse.

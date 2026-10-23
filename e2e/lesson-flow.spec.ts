@@ -154,3 +154,21 @@ test("tutti i quiz del Modulo 7 si completano con le risposte corrette", async (
     await expect(page.getByText(`${quiz.questions.length} risposte corrette su`)).toBeVisible();
   }
 });
+
+test("tutti i quiz del Modulo 8 si completano con le risposte corrette", async ({ page }) => {
+  test.slow();
+  await enableFreeMode(page);
+
+  for (const id of [
+    "password-passkey",
+    "autenticazione-piu-fattori",
+    "aggiornamenti-antivirus-firewall",
+    "backup",
+    "privacy-navigazione",
+  ]) {
+    const quiz = loadQuiz("08-igiene-digitale", id);
+    await page.goto(`/moduli/igiene-digitale/${id}`);
+    await completeQuiz(page, quiz);
+    await expect(page.getByText(`${quiz.questions.length} risposte corrette su`)).toBeVisible();
+  }
+});

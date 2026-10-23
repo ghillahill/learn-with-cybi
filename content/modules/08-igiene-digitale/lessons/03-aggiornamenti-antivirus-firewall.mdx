@@ -1,0 +1,98 @@
+---
+id: aggiornamenti-antivirus-firewall
+title: Aggiornamenti, antivirus, firewall
+minutes: 12
+xp: 60
+status: fonti-verificate
+lastVerified: 2026-10-23
+objectives:
+  - Conoscere i quattro passi base di CISA
+  - Capire perché gli aggiornamenti automatici sono una delle difese migliori
+  - Sapere cosa fanno, e cosa non fanno, antivirus, EDR e firewall
+sources:
+  - id: cisa-secure-our-world
+    level: A
+    title: Secure Our World
+    publisher: CISA
+    url: https://www.cisa.gov/secure-our-world
+  - id: cisa-update-software
+    level: A
+    title: Update Software
+    publisher: CISA
+    url: https://www.cisa.gov/secure-our-world/update-software
+  - id: ms17-010
+    level: A
+    title: "Microsoft Security Bulletin MS17-010"
+    publisher: Microsoft
+    year: 2017
+    url: https://learn.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010
+  - id: nao-wannacry
+    level: A
+    title: "Investigation: WannaCry cyber attack and the NHS"
+    publisher: UK National Audit Office
+    year: 2018
+    url: https://www.nao.org.uk/reports/investigation-wannacry-cyber-attack-and-the-nhs/
+  - id: sp800-83
+    level: A
+    title: "NIST SP 800-83 Rev. 1: Guide to Malware Incident Prevention and Handling for Desktops and Laptops"
+    publisher: NIST
+    year: 2013
+    url: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-83r1.pdf
+    note: Sezione 3 (prevenzione), parti su antivirus e firewall.
+  - id: omb-m-22-01
+    level: A
+    title: "M-22-01: Improving Detection of Cybersecurity Vulnerabilities and Incidents on Federal Government Systems through Endpoint Detection and Response"
+    publisher: Office of Management and Budget (USA)
+    year: 2021
+    url: https://bidenwhitehouse.archives.gov/wp-content/uploads/2021/10/M-22-01.pdf
+    note: 8 ottobre 2021.
+quiz: aggiornamenti-antivirus-firewall
+---
+
+<Cybi mood="felice">
+Ammettilo: quante volte hai cliccato "Ricordamelo domani" su un aggiornamento? Oggi scopri perché quel pulsante è uno dei regali più graditi agli attaccanti.
+</Cybi>
+
+## I quattro passi base
+
+CISA riassume la sicurezza di tutti i giorni in **quattro passi**:<Cite id="cisa-secure-our-world" />
+
+1. usare password forti;
+2. usare l'autenticazione a più fattori e un password manager;
+3. **aggiornare il software**;
+4. evitare e segnalare il phishing.
+
+I primi due li hai appena visti, il quarto nel Modulo 6. Oggi tocca agli aggiornamenti.
+
+## Aggiorna, e fallo in automatico
+
+Molti aggiornamenti servono a correggere problemi di sicurezza: se non li installi, non ti proteggono. Per questo CISA consiglia di **attivare gli aggiornamenti automatici** nelle impostazioni di dispositivi e app, così si installano appena sono disponibili.<Cite id="cisa-update-software" />
+
+Ricordi WannaCry, nel Modulo 2? La correzione di Microsoft per la vulnerabilità che sfruttava, il bollettino MS17-010, era uscita il **14 marzo 2017**.<Cite id="ms17-010" /> Il 12 maggio WannaCry colpisce i sistemi che **non** l'avevano installata.<Cite id="nao-wannacry" />
+
+<Cybi mood="preoccupato">
+Una vulnerabilità corretta ma non installata è una porta che il produttore ti ha dato la chiave per chiudere… e che resta aperta.
+</Cybi>
+
+## Antivirus ed EDR
+
+L'**antivirus** riconosce il malware soprattutto cercando le caratteristiche di esemplari **già noti**, le cosiddette *firme*. Il NIST spiega che questo metodo è molto efficace contro il malware conosciuto, ma meno contro le minacce nuove o costruite su misura.<Cite id="sp800-83" />
+
+Per questo le organizzazioni usano anche l'<Term id="edr">EDR</Term> (*Endpoint Detection and Response*). Il governo americano lo definisce così: monitoraggio continuo, in tempo reale, dei dispositivi (computer, telefoni, server), unito a capacità automatiche di analisi e di risposta basate su regole.<Cite id="omb-m-22-01" />
+
+## Il firewall
+
+Un <Term id="firewall">firewall</Term> limita il traffico di rete che può passare. Quello **di rete** si mette tra due reti; quello **sul dispositivo** (*host-based firewall*) è un programma che controlla le connessioni in entrata e in uscita di un solo computer.<Cite id="sp800-83" /> Il NIST consiglia di configurarli in modo da **bloccare tutto il traffico in entrata che non è esplicitamente permesso**: è il principio dei default sicuri del Modulo 5.<Cite id="sp800-83" />
+
+<MythVsFact
+  myth="Con un buon antivirus sono protetto da tutto."
+  fact="Per il NIST l'antivirus è necessario ma non ferma tutti gli incidenti: funziona soprattutto contro il malware già noto. Per questo serve insieme alle altre difese: aggiornamenti, MFA e attenzione al phishing."
+  source="sp800-83"
+/>
+
+<KeyPoints>
+- I quattro passi di CISA: password forti, MFA con password manager, aggiornamenti, attenzione al phishing.
+- Attiva gli aggiornamenti automatici: correggono le vulnerabilità, ma solo se li installi.
+- L'antivirus riconosce soprattutto il malware noto; l'EDR monitora il comportamento dei dispositivi e aiuta a rispondere.
+- Il firewall limita le connessioni; la regola consigliata è bloccare ciò che non è permesso.
+</KeyPoints>

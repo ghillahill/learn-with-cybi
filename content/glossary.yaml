@@ -592,3 +592,85 @@ entries:
         publisher: WhatsApp
         year: 2026
         url: https://www.whatsapp.com/security/WhatsApp-Security-Whitepaper.pdf
+
+  - id: password-manager
+    term: Password manager
+    definition: Programma che genera, conserva e compila automaticamente le password, così puoi usarne una lunga, casuale e diversa per ogni account senza doverle ricordare.
+    sources:
+      - id: cisa-strong-passwords
+        level: A
+        title: Use Strong Passwords
+        publisher: CISA
+        url: https://www.cisa.gov/secure-our-world/use-strong-passwords
+      - id: sp800-63b-4
+        level: A
+        title: "NIST SP 800-63B-4: Authentication and Authenticator Management"
+        publisher: NIST
+        year: 2025
+        url: https://pages.nist.gov/800-63-4/sp800-63b.html
+
+  - id: passkey
+    term: Passkey
+    definition: Credenziale di accesso basata sugli standard FIDO (WebAuthn), conservata su telefono, computer o chiave di sicurezza e sbloccata come il dispositivo. Usa la crittografia asimmetrica ed è resistente al phishing.
+    sources:
+      - id: fido-passkeys
+        level: A
+        title: Passkeys
+        publisher: FIDO Alliance
+        url: https://fidoalliance.org/passkeys/
+
+  - id: sim-swapping
+    term: SIM swapping
+    definition: Tecnica di ingegneria sociale in cui l'attaccante convince l'operatore telefonico a trasferire il numero della vittima su una SIM che controlla lui, per ricevere chiamate e SMS, compresi i codici di accesso.
+    sources:
+      - id: cisa-mfa-2022
+        level: A
+        title: Implementing Phishing-Resistant MFA
+        publisher: CISA
+        year: 2022
+        url: https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf
+
+  - id: firewall
+    term: Firewall
+    definition: Dispositivo o programma che limita il traffico tra reti, o da e verso un singolo computer, secondo regole di sicurezza. Il firewall sul dispositivo (host-based) controlla le connessioni in entrata e in uscita di quel solo computer.
+    sources:
+      - id: nist-firewall
+        level: A
+        title: NIST CSRC Glossary, "firewall"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/firewall
+        note: Definizioni di NIST SP 800-12 Rev. 1 e RFC 4949. Traduzione di LearnWithCybi.
+      - id: sp800-83
+        level: A
+        title: "NIST SP 800-83 Rev. 1: Guide to Malware Incident Prevention and Handling for Desktops and Laptops"
+        publisher: NIST
+        year: 2013
+        url: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-83r1.pdf
+
+  - id: edr
+    term: EDR (Endpoint Detection and Response)
+    definition: Soluzione che unisce il monitoraggio continuo, in tempo reale, dei dispositivi (computer, telefoni, server) a capacità automatiche di analisi e di risposta basate su regole.
+    sources:
+      - id: omb-m-22-01
+        level: A
+        title: "M-22-01: Improving Detection of Cybersecurity Vulnerabilities and Incidents on Federal Government Systems through Endpoint Detection and Response"
+        publisher: Office of Management and Budget (USA)
+        year: 2021
+        url: https://bidenwhitehouse.archives.gov/wp-content/uploads/2021/10/M-22-01.pdf
+
+  - id: vpn
+    term: VPN (Virtual Private Network)
+    definition: Rete privata virtuale, un collegamento protetto costruito sopra una rete reale usando cifratura e "tunnel". Chi usa una VPN affida al fornitore il proprio traffico.
+    sources:
+      - id: nist-vpn
+        level: A
+        title: NIST CSRC Glossary, "virtual private network"
+        publisher: NIST
+        url: https://csrc.nist.gov/glossary/term/virtual_private_network
+        note: Definizioni di CNSSI 4009-2022 e RFC 4949. Traduzione di LearnWithCybi.
+      - id: ftc-vpn
+        level: A
+        title: In the market for a VPN app?
+        publisher: FTC
+        year: 2018
+        url: https://www.ftc.gov/business-guidance/blog/2018/02/market-vpn-app

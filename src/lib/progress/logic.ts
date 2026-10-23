@@ -1,4 +1,4 @@
-import type { LessonProgress, Progress } from "./schema";
+import type { ChecklistStatus, LessonProgress, Progress } from "./schema";
 
 const notStarted: LessonProgress = { status: "not_started", bestQuizScore: 0 };
 
@@ -70,6 +70,14 @@ export function isLabCompleted(p: Progress, labId: string): boolean {
 export function completeLab(p: Progress, labId: string, now: Date = new Date()): Progress {
   if (isLabCompleted(p, labId)) return p;
   return { ...p, labs: { ...p.labs, [labId]: { completedAt: now.toISOString() } } };
+}
+
+// Segna una voce della checklist personale; null la riporta a "non scelta".
+export function setChecklistItem(p: Progress, itemId: string, status: ChecklistStatus | null): Progress {
+  const checklist = { ...p.checklist };
+  if (status === null) delete checklist[itemId];
+  else checklist[itemId] = status;
+  return { ...p, checklist };
 }
 
 export function isModuleComplete(p: Progress, lessonKeys: string[]): boolean {

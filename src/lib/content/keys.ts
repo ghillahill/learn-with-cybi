@@ -28,5 +28,6 @@ export const LAB_IDS = [
   "analisi-frequenza",
   "scambio-chiavi",
   "hash",
+  "checklist-sicurezza",
 ] as const;
 export type LabId = (typeof LAB_IDS)[number];
